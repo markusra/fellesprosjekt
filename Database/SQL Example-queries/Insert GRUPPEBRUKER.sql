@@ -1,0 +1,2 @@
+INSERT INTO GRUPPEBRUKER (gruppeID, brukerID)
+VALUES (1, 2);

@@ -1,2 +1,2 @@
 INSERT INTO GRUPPE (navn, admin)
-VALUES ('Gruppe 35', 1);
+VALUES ('Gruppe 35', 2);
