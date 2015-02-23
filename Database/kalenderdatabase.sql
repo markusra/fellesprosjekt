@@ -59,7 +59,7 @@ ENGINE = InnoDB;
 -- Table `kalenderdatabase`.`GRUPPE`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `kalenderdatabase`.`GRUPPE` (
-  `gruppeID` INT NOT NULL,
+  `gruppeID` INT NOT NULL AUTO_INCREMENT,
   `supergruppeID` INT NULL,
   `navn` VARCHAR(45) NOT NULL,
   `admin` INT NOT NULL,
