@@ -38,7 +38,7 @@ ENGINE = InnoDB;
 -- Table `kalenderdatabase`.`AVTALE`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `kalenderdatabase`.`AVTALE` (
-  `avtaleID` INT NOT NULL,
+  `avtaleID` INT NOT NULL AUTO_INCREMENT,
   `start` DATETIME NOT NULL,
   `slutt` DATETIME NOT NULL,
   `navn` VARCHAR(45) NOT NULL,
