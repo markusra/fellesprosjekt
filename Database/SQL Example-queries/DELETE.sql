@@ -1,0 +1,2 @@
+DELETE FROM AVTALE
+WHERE avtaleID = 1

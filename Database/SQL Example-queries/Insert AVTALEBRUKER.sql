@@ -1,0 +1,2 @@
+INSERT INTO AVTALEBRUKER (brukerID, deltar, avtaleID)
+VALUES (2, TRUE, 1);

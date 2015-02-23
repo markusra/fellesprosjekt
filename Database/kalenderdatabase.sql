@@ -83,7 +83,7 @@ ENGINE = InnoDB;
 -- Table `kalenderdatabase`.`AVTALEBRUKER`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `kalenderdatabase`.`AVTALEBRUKER` (
-  `deltar` BOOLEAN NOT NULL,
+  `deltar` BOOL NOT NULL,
   `brukerID` INT NOT NULL,
   `avtaleID` INT NOT NULL,
   PRIMARY KEY (`brukerID`, `avtaleID`),
