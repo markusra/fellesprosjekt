@@ -1,13 +1,13 @@
 Liste over ting som skal leveres:
 
-05.03: MMI – Øving 5 (Gruppe)
-05.03: DOD – DB1 (Gruppe)
-06.03: KOM – KTN1 (Gruppe)
-12.03: DOD – DB2 (Gruppe)
-20.03: Fellesprosjekt (Gruppe)
+05.03: MMI – Øving 5
+05.03: DOD – DB1
+06.03: KOM – KTN1
+12.03: DOD – DB2
+20.03: Fellesprosjekt
 26.03: MMI – Øving 6
 26.03: KOM – Teori 7
-27.03: PVU – Øving 7 (Exercise 8) (Gruppe)
-27.03: KOM – KTN2 (Gruppe)
+27.03: PVU – Øving 7 (Exercise 8)
+27.03: KOM – KTN2
 16.04: MMI - Øving 7
 
