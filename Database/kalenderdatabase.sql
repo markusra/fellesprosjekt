@@ -86,7 +86,6 @@ CREATE TABLE IF NOT EXISTS `kalenderdatabase`.`AVTALEBRUKER` (
   `deltar` BOOLEAN NOT NULL,
   `brukerID` INT NOT NULL,
   `avtaleID` INT NOT NULL,
-  `avtaleAns` VARCHAR(45) NULL,
   PRIMARY KEY (`brukerID`, `avtaleID`),
   INDEX `fk_AVTALEBRUKER_AVTALE1_idx` (`avtaleID` ASC),
   CONSTRAINT `fk_AVTALEBRUKER_BRUKER`

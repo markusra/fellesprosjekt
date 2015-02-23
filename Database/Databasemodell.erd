@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram height="600" made_with_version="1.5" name="Default" width="800">
+<entity id="0" is_weak="false" name="Bruker" x="64" y="104">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="brukerID" type=""/>
+<attribute is_hidden="false" is_key="false" name="brukernavn" type=""/>
+<attribute is_hidden="false" is_key="false" name="passord" type=""/>
+<attribute is_hidden="false" is_key="false" name="fornavn" type=""/>
+<attribute is_hidden="false" is_key="false" name="etternavn" type=""/>
+<attribute is_hidden="false" is_key="false" name="epost" type=""/>
+</attributes>
+</entity>
+<entity id="1" is_weak="false" name="Gruppe" x="389" y="121">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="gruppeID" type=""/>
+<attribute is_hidden="false" is_key="false" name="navn" type=""/>
+<attribute is_hidden="false" is_key="false" name="admin" type=""/>
+</attributes>
+</entity>
+<diamond id="2" is_weak="false" name="" x="248" y="144">
+<attributes/>
+</diamond>
+<diamond id="3" is_weak="false" name="Supergruppe" x="516" y="50">
+<attributes>
+<attribute name="supergruppeID" type=""/>
+</attributes>
+</diamond>
+<line cardinality_string="" has_u="false" id="4" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="2" direction="0" object_id="1" relation_point_x="449" relation_point_y="157"/>
+<connection connection_side="3" direction="1" object_id="3" relation_point_x="532" relation_point_y="82"/>
+</line>
+<line cardinality_string="" has_u="false" id="5" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="1" direction="1" object_id="1" relation_point_x="419" relation_point_y="121"/>
+<connection connection_side="0" direction="0" object_id="3" relation_point_x="516" relation_point_y="66"/>
+</line>
+</diagram>
