@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="168.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="43.0" prefWidth="580.0" spacing="10.0">
+               <children>
+                  <TextField prefHeight="43.0" prefWidth="470.0" promptText="Write Email">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="108.0" text="Get Username">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="20.0" prefHeight="43.0" prefWidth="580.0" spacing="10.0">
+               <children>
+                  <TextField prefHeight="43.0" prefWidth="470.0" promptText="Write Username">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </TextField>
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="108.0" text="Get Password">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="580.0" text="Back to login">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</Pane>
