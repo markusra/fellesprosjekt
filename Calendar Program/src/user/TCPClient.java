@@ -1,8 +1,9 @@
 package user;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.Socket;
 
 public class TCPClient {
@@ -18,9 +19,10 @@ public class TCPClient {
 	public static void main(String argv[]) throws Exception { 
 		String modifiedSentence;
 		Socket clientSocket = new Socket("rauhut.no", 9998);
-		DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+		Writer outToServer = new OutputStreamWriter(clientSocket.getOutputStream());
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		outToServer.writeBytes(username + "\n");
+		outToServer.write(username + "\n");
+		outToServer.flush();
 		modifiedSentence = inFromServer.readLine();
 		System.out.println("This was recieved from server: " + modifiedSentence);
 		clientSocket.close();
