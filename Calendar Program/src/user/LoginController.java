@@ -13,29 +13,22 @@ public class LoginController {
 		
 	@FXML
 	private TextField usernameField;
-	
 	@FXML
 	private PasswordField passwordField;
-	
 	@FXML
 	private Button loginButton;
 	
-	public LoginController () {
-		username = "";
-		password = "";
-	}
-	
-	public void initialize() {
-		username = "yes";
-		password =  "no";
-	}
 	
 	@FXML
 	private void handleLoginButtonAction (ActionEvent event) {
-		username = usernameField.getText();
-		System.out.println("2");
+		System.out.println(usernameField.getText());
 		password = "lol";
-		System.out.println("3");
-		//TCPClient client = new TCPClient(username, password);
+		TCPClient client = new TCPClient(username, password);
+		try {
+			client.main(null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

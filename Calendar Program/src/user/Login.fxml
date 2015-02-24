@@ -23,7 +23,7 @@
                      <font>
                         <Font name="Arial" size="34.0" />
                      </font></Label>
-                  <TextField fx:id="username" prefHeight="43.0" prefWidth="453.0">
+                  <TextField fx:id="usernameField" prefHeight="43.0" prefWidth="453.0">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
@@ -45,7 +45,7 @@
                         <Font name="Arial" size="34.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="password" prefHeight="43.0" prefWidth="453.0">
+                  <PasswordField fx:id="passwordField" prefHeight="43.0" prefWidth="453.0">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
