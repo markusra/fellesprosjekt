@@ -67,7 +67,7 @@
                         <Font size="24.0" />
                      </font>
                   </CheckBox>
-                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="453.0" text="Login">
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="43.0" prefWidth="453.0" text="Login">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
