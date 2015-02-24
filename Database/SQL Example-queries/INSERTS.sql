@@ -11,4 +11,10 @@ INSERT INTO GRUPPE (navn, adminID)
 VALUES ('Gruppe 35', 2);
 
 INSERT INTO GRUPPEBRUKER (gruppeID, brukerID)
-VALUES (1, 2);
+VALUES (1, 3);
+
+INSERT INTO AVTALEBRUKER (deltar, avtaleID, brukerID)
+VALUES (null, 5, 3);
+
+INSERT INTO MOTEROM (sted, størrelse, start, slutt, navn)
+VALUES ('R41', 15, '25.01.2015 10:15', '25.01.2015 12:00', 'Berzelius')
