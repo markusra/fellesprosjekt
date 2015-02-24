@@ -1,0 +1,2 @@
+DELETE FROM BRUKER
+WHERE brukerID = 1
