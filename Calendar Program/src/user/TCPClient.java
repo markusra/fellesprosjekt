@@ -10,7 +10,6 @@ public class TCPClient {
 	
 	private static String username = "Check";
 	private String password;
-	static boolean sant = true;
 	
 	public TCPClient (String username, String password) {
 		this.username = username;
@@ -22,12 +21,10 @@ public class TCPClient {
 		Socket clientSocket = new Socket("rauhut.no", 9998);
 		Writer outToServer = new OutputStreamWriter(clientSocket.getOutputStream());
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		while (sant != false) {
-			outToServer.write(username + "\n");
-			outToServer.flush();
-			modifiedSentence = inFromServer.readLine();
-			System.out.println("This was recieved from server: " + modifiedSentence);			
-		}
+		outToServer.write(username + "\n");
+		outToServer.flush();
+		modifiedSentence = inFromServer.readLine();
+		System.out.println("This was recieved from server: " + modifiedSentence);
 		clientSocket.close();
 	}
 }
