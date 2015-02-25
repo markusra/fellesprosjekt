@@ -12,9 +12,11 @@ public class TCPClient {
 	private static String username = "Check";
 	private String password;
 	
-	public TCPClient (String username, String password) {
-		this.username = username;
-		this.password = password;
+	public TCPClient () {
+		
+	}
+	public boolean validLogin(String username, String password) {
+		return false;
 	}
 	
 	public static void main(String argv[]) throws Exception { 
