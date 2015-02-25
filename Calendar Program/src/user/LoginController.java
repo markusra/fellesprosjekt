@@ -1,5 +1,8 @@
 package user;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,9 +11,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
-	
-	private String username;
-	private String password;
 		
 	@FXML
 	private TextField usernameField;
@@ -22,13 +22,17 @@ public class LoginController {
 	private Hyperlink forgot;
 	
 	@FXML
-	private void handleLoginButtonAction (ActionEvent event) {
-		System.out.println(usernameField.getText());
-		System.out.println(passwordField.getText());
+	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
+		TCPClient client = new TCPClient();
+		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
+			System.out.println("Successful login!");
+		}
+		//Hvis feil blir usernameboksen eller passordboksen rød
 	}
 	
 	@FXML
 	private void handleForgotButtonAction (ActionEvent event) {
 		
 	}
+
 }
