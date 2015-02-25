@@ -13,6 +13,8 @@ public class WeekController {
 	@FXML
 	private Text weekNumber;
 	
+		//weekNumber må settes etter hva som er riktig ukenummer.
+	
 	////Bytte uke
 	@FXML
 	private ImageView previousWeekButton, nextWeekButton;
@@ -34,6 +36,12 @@ public class WeekController {
 	@FXML
 	private Text mondayDate, mondayMonth;
 	
+		/*
+		 * Dette gjelder for alle dagene:
+		 * 
+		 * Text mondayDate og Text mondayMonth må settes ut etter hva som er riktig dato og måned for den gitte dagen. 
+		 */
+	
 	////Avtalefelt
 	
 	@FXML
@@ -54,7 +62,8 @@ public class WeekController {
 		 * 		   men vi må sette visible=True for GridPane (3 x 1) (0,1) eller GridPane (2 x 1) (0,1).
 		 * 		3) Dersom det er satt opp 3 avtaler gjøres det samme som beskrevet i 1) og vi settes visible=True
 		 * 		   på enten GridPane (3 x 1) (0,2) eller GridPane (2 x 1) (0,2).
-		 * 
+		 * 		4) Dersom det er satt opp mer enn 3 avtaler vil vi gjøre som beskrevet i 1) og 2) for de 2 første avtalene,
+		 * 		   mens vi i rad 3 vil sette visible=True for Label "+ ? andre avtaler" der vi vil sette ?=(antallAvtaler-2)
 		 *    
 		 */
 	
@@ -67,6 +76,8 @@ public class WeekController {
 	////Datofelt
 	@FXML
 	private Text tuesdayDate, tuesdayMonth;
+	
+		//*
 	
 	////Avtalefelt
 		
@@ -83,6 +94,8 @@ public class WeekController {
 	@FXML
 	private Text wednesdayDate, wednesdayMonth;
 	
+		//*
+	
 	////Avtalefelt
 	
 		//*
@@ -97,6 +110,8 @@ public class WeekController {
 	////Datofelt
 	@FXML
 	private Text thursdayDate, thursdayMonth;
+	
+		//*
 	
 	////Avtalefelt
 	
@@ -113,6 +128,8 @@ public class WeekController {
 	@FXML
 	private Text fridayDate, fridayMonth;
 	
+		//*
+	
 	////Avtalefelt
 	
 		//*
@@ -127,6 +144,8 @@ public class WeekController {
 	@FXML
 	private Text saturdayDate, saturdayMonth;
 	
+		//*
+	
 	////Avtalefelt
 	
 		//*
@@ -139,6 +158,8 @@ public class WeekController {
 	////Datofelt
 	@FXML
 	private Text sundayDate, sundayMonth;
+	
+		//*
 	
 	////Avtalefelt
 	
