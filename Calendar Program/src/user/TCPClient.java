@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class TCPClient {
 	
@@ -23,21 +22,11 @@ public class TCPClient {
 		Socket clientSocket = new Socket("rauhut.no", 9998);
 		Writer outToServer = new OutputStreamWriter(clientSocket.getOutputStream());
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		
-		Scanner scanner = new Scanner(System.in);
 			
-		System.out.println("Enter your username: ");
-		String username = scanner.next();
+		System.out.println("Sends k2pj39as9d0uo34jkh41:('markusra', 'test')");
+		String username = "k2pj39as9d0uo34jkh41:('markusra', 'test')";
 			
 		outToServer.write(username + "\n");
-		outToServer.flush();
-		modifiedSentence = inFromServer.readLine();
-		System.out.println("This was recieved from server: " + modifiedSentence);
-		
-		System.out.println("Enter your password: ");
-		String password = scanner.next();
-			
-		outToServer.write(password + "\n");
 		outToServer.flush();
 		modifiedSentence = inFromServer.readLine();
 		System.out.println("This was recieved from server: " + modifiedSentence);
