@@ -25,7 +25,7 @@ public class LoginController {
 	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
 		TCPClient client = new TCPClient();
 		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
-			System.out.println("Logged in!");
+			System.out.println("Successful login!");
 		}
 		//Hvis feil blir usernameboksen eller passordboksen rød
 	}
