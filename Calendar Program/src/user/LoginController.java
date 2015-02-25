@@ -23,12 +23,17 @@ public class LoginController {
 	
 	@FXML
 	private void handleLoginButtonAction (ActionEvent event) {
-		System.out.println(usernameField.getText());
-		System.out.println(passwordField.getText());
+		TCPClient client = new TCPClient();
+		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
+			username = usernameField.getText();
+			password = passwordField.getText();
+		}
+		//Hvis feil blir usernameboksen eller passordboksen rød
 	}
 	
 	@FXML
 	private void handleForgotButtonAction (ActionEvent event) {
 		
 	}
+
 }
