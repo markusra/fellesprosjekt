@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginController">
    <children>
       <VBox prefHeight="301.0" prefWidth="800.0" spacing="10.0">
          <children>
@@ -23,7 +23,7 @@
                      <font>
                         <Font name="Arial" size="34.0" />
                      </font></Label>
-                  <TextField fx:id="username" prefHeight="43.0" prefWidth="453.0">
+                  <TextField fx:id="usernameField" prefHeight="43.0" prefWidth="453.0">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
@@ -45,7 +45,7 @@
                         <Font name="Arial" size="34.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="password" prefHeight="43.0" prefWidth="453.0">
+                  <PasswordField fx:id="passwordField" prefHeight="43.0" prefWidth="453.0">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
@@ -67,7 +67,7 @@
                         <Font size="24.0" />
                      </font>
                   </CheckBox>
-                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="453.0" text="Login">
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="43.0" prefWidth="453.0" text="Login">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
