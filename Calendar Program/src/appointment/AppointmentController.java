@@ -1,4 +1,4 @@
-package calendars;
+package appointment;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
