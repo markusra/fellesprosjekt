@@ -1,4 +1,4 @@
-package user;
+package calendars;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
