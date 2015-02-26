@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="168.0" prefWidth="600.0" spacing="10.0">
@@ -40,7 +39,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="580.0" text="Back to login">
+            <Button fx:id="back" mnemonicParsing="false" prefHeight="43.0" prefWidth="580.0" text="Back to login">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>

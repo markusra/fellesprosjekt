@@ -1,5 +1,5 @@
 package program;
 
-public interface ControllerInterface {	
+public interface ControllerInterface {
 	public void setScreenParent(ScreensController screenParent);
 }
