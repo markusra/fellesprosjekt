@@ -101,7 +101,7 @@
                         <Font size="14.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink text="Forgot username/password?" underline="true">
+                  <Hyperlink fx:id="forgot" onAction="#handleForgotButtonAction" text="Forgot username/password?" underline="true">
                      <font>
                         <Font size="14.0" />
                      </font>

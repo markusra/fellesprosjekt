@@ -27,6 +27,8 @@ public class LoginController implements Initializable, ControllerInterface {
 	private PasswordField passwordField;
 	@FXML
 	private Button loginButton;
+	@FXML
+	private Hyperlink forgot;
 	
 	@FXML
 	private ImageView imgUserError;
