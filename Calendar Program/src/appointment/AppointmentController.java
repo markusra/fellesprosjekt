@@ -28,11 +28,18 @@ public class AppointmentController {
 	
 	@FXML
 	private void doConfirm() {
+		Appointment appointment = new Appointment();
+		if (validDate(dpStart.getValue()) && isCorrectTimeSpan()) {
+			appointment.setPlace(txtPlace.getText());
+			appointment.setPurpose(txtPurpose.getText());
+			
+		} else {
+			
+		}
 		validDate(dpStart.getValue());
+		isCorrectTimeSpan();
 	}
-	private boolean validTime(String time) {
-		return false;
-	}
+	
 	private boolean validDate(LocalDate date) {
 		LocalDate today = LocalDate.now();
 		if (date == null) {
@@ -43,17 +50,16 @@ public class AppointmentController {
 			dpStart.setStyle("-fx-border-color: RED; -fx-border-width: 2; -fx-background-color: #PINK");
 			return false;
 		}
-		dpStart.setStyle("-fx-border-color: GREEN; -fx-border-width: 2; -fx-background-color: #00FF00");
 		return true;
 	}
+	
 	private boolean isCorrectTimeSpan() {
 		if (Integer.parseInt(timeEnd.getText().replace(":", "")) > Integer.parseInt(timeStart.getText().replace(":", ""))) {
+			System.out.println("RIKTIG INPUT");
 			return true;
 		}
 		return false;
 	}
-	
-	
 	
 
 }
