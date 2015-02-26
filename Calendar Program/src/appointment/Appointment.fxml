@@ -22,8 +22,10 @@
       <TextField fx:id="timeEnd" alignment="CENTER" layoutX="256.0" layoutY="167.0" prefHeight="26.0" prefWidth="66.0" text="23:59" />
       <ComboBox fx:id="roomField" layoutX="154.0" layoutY="205.0" prefHeight="26.0" prefWidth="168.0" />
       <Label layoutX="21.0" layoutY="210.0" text="Rompicker" />
-      <Label layoutX="22.0" layoutY="247.0" text="Invited" />
-      <ListView fx:id="invitedField" layoutX="154.0" layoutY="242.0" prefHeight="81.0" prefWidth="168.0" />
-      <Button layoutX="154.0" layoutY="354.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="26.0" prefWidth="168.0" text="Create appointment" />
+      <Label layoutX="21.0" layoutY="241.0" text="Invite" />
+      <ListView fx:id="invitedField" layoutX="21.0" layoutY="264.0" prefHeight="81.0" prefWidth="148.0" />
+      <Button layoutX="154.0" layoutY="379.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="26.0" prefWidth="168.0" text="Create appointment" />
+      <Label layoutX="179.0" layoutY="241.0" text="Group" />
+      <ListView layoutX="179.0" layoutY="264.0" prefHeight="81.0" prefWidth="148.0" />
    </children>
 </Pane>
