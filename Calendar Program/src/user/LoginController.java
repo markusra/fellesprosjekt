@@ -34,6 +34,8 @@ public class LoginController {
 		TCPClient client = new TCPClient();
 		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
 			System.out.println("Successful login!");
+			
+			
 		} else {
 			System.out.println("Error");
 			

@@ -31,10 +31,13 @@
                         <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
                      </tooltip>
                   </TextField>
-                  <ImageView fx:id="imgUserError" fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgUserError" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/error.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
                   </ImageView>
                </children>
                <padding>
@@ -56,10 +59,13 @@
                         <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
                      </tooltip>
                   </PasswordField>
-                  <ImageView fx:id="imgPassError" fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="imgPassError" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/error.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
                   </ImageView>
                </children>
                <padding>
