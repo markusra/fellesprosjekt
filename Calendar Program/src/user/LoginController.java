@@ -28,6 +28,7 @@ public class LoginController {
 	@FXML
 	private ImageView imgPassError;
 	
+	
 	@FXML
 	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
 		TCPClient client = new TCPClient();

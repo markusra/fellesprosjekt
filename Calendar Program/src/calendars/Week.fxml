@@ -950,7 +950,7 @@
       </AnchorPane>
       <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="694.0" layoutY="757.0" onMouseClicked="#changeToNextWeek" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Dropbox/Fellesprosjekt/Weektemplate-arrow.png" />
+            <Image url="@../resources/Weektemplate-arrow.png" />
          </image>
          <effect>
             <DropShadow />
@@ -961,7 +961,7 @@
             <DropShadow />
          </effect>
          <image>
-            <Image url="@../../../../../Dropbox/Fellesprosjekt/Weektemplate-arrow.png" />
+            <Image url="@../resources/Weektemplate-arrow.png" />
          </image>
       </ImageView>
    </children>
