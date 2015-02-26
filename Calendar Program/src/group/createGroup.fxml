@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
-
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.groupController">
+   <children>
+      <Label layoutX="119.0" layoutY="23.0" text="Create Group">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="38.0" layoutY="70.0" prefHeight="26.0" prefWidth="270.0" text="Group name" />
+      <Label layoutX="38.0" layoutY="109.0" text="Supergroup" />
+      <ListView fx:id="supergroupID" layoutX="38.0" layoutY="139.0" prefHeight="192.0" prefWidth="128.0" />
+      <Label layoutX="179.0" layoutY="109.0" text="Groupmembers" />
+      <ListView fx:id="groupmember" layoutX="179.0" layoutY="139.0" prefHeight="192.0" prefWidth="128.0" />
+      <Button layoutX="38.0" layoutY="354.0" mnemonicParsing="false" onAction="#doConfirm" text="Confirm" />
+   </children>
+</Pane>
