@@ -12,6 +12,7 @@
 
 <Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginController">
    <children>
+<<<<<<< HEAD
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="299.0" layoutX="567.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
          <effect>
@@ -87,6 +88,117 @@
             <Image url="@../resources/info-sign.png" />
          </image>
       </ImageView>
+=======
+      <VBox prefHeight="280.0" prefWidth="406.0" spacing="10.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="51.0" prefWidth="800.0" text="Calender Login">
+               <font>
+                  <Font name="Arial" size="25.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="43.0" prefWidth="385.0" spacing="5.0">
+               <children>
+                  <Label prefHeight="39.0" prefWidth="125.0" text="Username/Email: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="usernameField" prefHeight="43.0" prefWidth="200.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
+                     </tooltip>
+                  </TextField>
+                  <ImageView fx:id="imgUserError" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/error.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="780.0" spacing="5.0">
+               <children>
+                  <Label prefHeight="42.0" prefWidth="125.0" text="Password: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" prefHeight="43.0" prefWidth="200.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+                     </tooltip>
+                  </PasswordField>
+                  <ImageView fx:id="imgPassError" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/error.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="545.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" text="Remember Me">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </CheckBox>
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="43.0" prefWidth="200.0" text="Login">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/error.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="780.0">
+               <children>
+                  <Hyperlink prefHeight="29.0" prefWidth="130.0" text="Register" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="forgot" onAction="#handleForgotButtonAction" text="Forgot username/password?" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+>>>>>>> 8f9b30435e262dedb6fa0177c6953425ab514628
    </children>
    <padding>
       <Insets top="-1000.0" />

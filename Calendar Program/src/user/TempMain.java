@@ -13,7 +13,11 @@ public class TempMain extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
 			Pane login = (Pane) loader.load();
 			primaryStage.setScene(new Scene(login));
+			
+			primaryStage.setResizable(false);
+			
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
