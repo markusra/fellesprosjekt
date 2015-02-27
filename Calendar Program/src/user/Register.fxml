@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Pane prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="535.0" layoutX="567.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="723.0" layoutY="214.0" stroke="BLACK" strokeType="INSIDE" width="474.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Label layoutX="845.0" layoutY="219.0" text="REGISTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="54.0" />
+               </font>
+            </Label>
+            <Label layoutX="611.0" layoutY="358.0" prefHeight="53.0" prefWidth="320.0" text="First name:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="611.0" layoutY="430.0" prefHeight="53.0" prefWidth="270.0" text="Last name:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="lastNameField" layoutX="970.0" layoutY="428.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+               </tooltip>
+            </PasswordField>
+            <TextField fx:id="firstNameField" layoutX="971.0" layoutY="358.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
+               </tooltip>
+            </TextField>
+            <Rectangle fx:id="registerButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="864.0" layoutY="793.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+            <Label layoutX="889.0" layoutY="796.0" text="REGISTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgFirstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/info-sign.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgLastNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/info-sign.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgEmailInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/info-sign.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="emailField" layoutX="970.0" layoutY="499.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+               </tooltip>
+            </PasswordField>
+            <Label layoutX="611.0" layoutY="501.0" prefHeight="53.0" prefWidth="270.0" text="Email:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="611.0" layoutY="572.0" prefHeight="53.0" prefWidth="270.0" text="Username:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="createUsernameField" layoutX="970.0" layoutY="570.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+               </tooltip>
+            </PasswordField>
+            <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/info-sign.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgPassInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/info-sign.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="createPasswordField" layoutX="970.0" layoutY="640.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+               </tooltip>
+            </PasswordField>
+            <Label layoutX="611.0" layoutY="642.0" prefHeight="53.0" prefWidth="270.0" text="Password:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="611.0" layoutY="713.0" prefHeight="53.0" prefWidth="335.0" text="Confirm password:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="confirmPasswordField" layoutX="970.0" layoutY="711.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+               </tooltip>
+            </PasswordField>
+         </children>
+         <padding>
+            <Insets top="-1000.0" />
+         </padding>
+      </Pane>
+   </children>
+</AnchorPane>

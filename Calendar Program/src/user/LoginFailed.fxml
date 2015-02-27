@@ -26,13 +26,13 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle fx:id="tryAgainButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="844.0" layoutY="644.0" stroke="BLACK" strokeType="INSIDE" width="254.0" />
-      <Label fx:id="loginButton" layoutX="875.0" layoutY="647.0" onMouseClicked="#handleLoginButtonAction" text="TRY AGAIN" textFill="WHITE">
+      <Rectangle fx:id="tryAgainButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="844.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" width="254.0" />
+      <Label layoutX="875.0" layoutY="639.0" onMouseClicked="#handleLoginButtonAction" text="TRY AGAIN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Text layoutX="755.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" THE USERNAME AND/OR PASSWORD THAT YOU ENTERED WAS INCORRECT" textAlignment="CENTER" wrappingWidth="454.07421875">
+      <Text layoutX="744.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The username and/or password that you entered was incorrect." textAlignment="CENTER" wrappingWidth="454.07421875">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
