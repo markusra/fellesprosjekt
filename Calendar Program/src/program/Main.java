@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	
+	//Husk å adde alle grensesnitt (.fxml filer) under screens, og lag et navn for den under ID.
 	public final static String loginID = "Login";
 	private final static String loginScreen = "/user/Login.fxml";
 	public final static String forgotID = "Forgot";
@@ -18,6 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		ScreensController screensController = new ScreensController();
 		
+		//Husk å laste inn grensesnitt med navn her.
 		screensController.loadScreen(loginID, loginScreen);
 		screensController.loadScreen(forgotID, forgotScreen);
 		

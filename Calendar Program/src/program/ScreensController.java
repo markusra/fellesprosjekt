@@ -19,17 +19,19 @@ public class ScreensController extends StackPane {
 	}
 	
 	
+	//Legger til et grensesnitt i HashMappet
 	private void addScreen(String name, Node screen) {
 		screens.put(name, screen);
 	}
 	
 	
+	//Henter et grensesnitt fra HashMappet
 	private Node getScreen(String name) {
 		return screens.get(name);
 	}
 	
 	
-	//Laster inn FXML vinduet og har det klart i screens HashMappet
+	//Laster inn FXML grensesnittet og har det klart i screens HashMappet
 	public void loadScreen(String name, String resource) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
@@ -44,6 +46,8 @@ public class ScreensController extends StackPane {
 		
 	}
 	
+	
+	//Brukes for å fjerne grensesnitt fra HashMappet, generelt sett unødvendig.
 	public void unloadScreen(String name) {
 		if (getScreen(name) != null) {
 			screens.remove(name);			
@@ -54,7 +58,7 @@ public class ScreensController extends StackPane {
 	}
 	
 	
-	//Setter viewet til vinduet name, som eksisterer i screens HashMappet
+	//Setter viewet til grensesnittet med navnet name, som eksisterer i screens HashMappet
 	public void setScreen(String name) {
 		if (getScreen(name) != null) {
 			if (!getChildren().isEmpty()) {
