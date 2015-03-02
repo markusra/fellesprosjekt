@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
+import org.json.simple.parser.ParseException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,8 +40,9 @@ public class LoginController implements Initializable, ControllerInterface {
 	
 	
 	@FXML
-	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
+	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException, ParseException {
 		TCPClient client = new TCPClient();
+		
 		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
 			System.out.println("Successful login!");
 			
@@ -61,7 +64,6 @@ public class LoginController implements Initializable, ControllerInterface {
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;
-		
 	}
 
 	@Override

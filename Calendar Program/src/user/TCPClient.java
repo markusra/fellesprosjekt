@@ -8,9 +8,7 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
 
 
 public class TCPClient {
@@ -39,10 +37,15 @@ public class TCPClient {
 		
 		String[] answer = serverReply.split(":");
 		
-		JSONObject json = (JSONObject)new JSONParser().parse(answer[1]);
-		System.out.println("brukernavn=" + json.get("brukernavn"));
-		
-		
+		JSONArray mJsonArray = new JSONArray(answer[1]);
+		JSONObject mJsonObject = new JSONObject();
+		for (int i = 0; i < mJsonArray.length(); i++) {
+		    mJsonObject = mJsonArray.getJSONObject(i);
+		    mJsonObject.getString("0");
+		    mJsonObject.getString("id");
+		    mJsonObject.getString("1");
+		    mJsonObject.getString("name");
+		}
 		
 		if (answer[0].contains(command) && answer[1].contains("")) {
 			System.out.println("Correct username and password!");
