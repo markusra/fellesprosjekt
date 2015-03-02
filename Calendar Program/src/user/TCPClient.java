@@ -59,6 +59,13 @@ public class TCPClient {
 		
 	}
 	
+	public void test() throws IOException {
+		outToServer.write("Test" + "\n");
+		outToServer.flush();
+		serverReply = inFromServer.readLine();
+		System.out.println("This was recieved from server: " + serverReply);
+	}
+	
 	public void disconnect() throws IOException {
 		clientSocket.close();
 	}

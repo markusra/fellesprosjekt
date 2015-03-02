@@ -1,13 +1,10 @@
 package user;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
-
-
 
 public class LoginTest {
 	
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws IOException {
 		TCPClient client = new TCPClient();
 		
 		if (client.validLogin("markusra", "test1234")) {
@@ -17,6 +14,11 @@ public class LoginTest {
 			System.out.println("Error");
 			
 		}
+		
+		while (true) {
+			client.test();
+		}
+		
 		//Hvis feil blir usernameboksen eller passordboksen rød
 	}
 }
