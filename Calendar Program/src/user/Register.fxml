@@ -10,8 +10,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="1080.0" prefWidth="1920.0">
          <children>
@@ -45,17 +44,11 @@
                <font>
                   <Font size="24.0" />
                </font>
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
-               </tooltip>
             </PasswordField>
             <TextField fx:id="firstNameField" layoutX="971.0" layoutY="358.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
-               </tooltip>
             </TextField>
             <Rectangle fx:id="registerButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="864.0" layoutY="793.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
             <Label layoutX="889.0" layoutY="796.0" text="REGISTER" textFill="WHITE">
@@ -82,9 +75,6 @@
                <font>
                   <Font size="24.0" />
                </font>
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
-               </tooltip>
             </PasswordField>
             <Label layoutX="611.0" layoutY="501.0" prefHeight="53.0" prefWidth="270.0" text="Email:">
                <font>
@@ -101,7 +91,7 @@
                   <Font size="24.0" />
                </font>
                <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
                </tooltip>
             </PasswordField>
             <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
@@ -136,9 +126,6 @@
                <font>
                   <Font size="24.0" />
                </font>
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
-               </tooltip>
             </PasswordField>
          </children>
          <padding>

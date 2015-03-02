@@ -8,8 +8,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane>
          <children>
@@ -35,7 +34,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Text layoutX="744.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The registration was successful. " textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="744.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The registration was successful. " textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
