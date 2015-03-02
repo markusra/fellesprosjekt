@@ -1,18 +1,15 @@
-package user;
+package tests;
 
 import java.io.IOException;
 
-public class LoginTest {
-	
+import user.TCPClient;
+
+public class GetAllUsersTest {
+
 	public static void main(String[] args) throws IOException {
 		TCPClient client = new TCPClient();
 		
-		if (client.validLogin("markusra", "test1234")) {
-			System.out.println("Successful login!");
-			
-		} else {
-			System.out.println("Error");
-		}
+		client.customQuery("u4sl29fjanz680slla0p", "'None'");
 		
 		//Hvis feil blir usernameboksen eller passordboksen rød
 	}

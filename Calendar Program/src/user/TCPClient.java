@@ -59,8 +59,12 @@ public class TCPClient {
 		
 	}
 	
-	public void test() throws IOException {
-		outToServer.write("Test" + "\n");
+	public void customQuery(String cmd, String data) throws IOException {
+		String command = cmd;
+		String raw = command + splitChar + "(" + data + ")";
+		
+		System.out.println(raw);
+		outToServer.write(raw + "\n");
 		outToServer.flush();
 		serverReply = inFromServer.readLine();
 		System.out.println("This was recieved from server: " + serverReply);
