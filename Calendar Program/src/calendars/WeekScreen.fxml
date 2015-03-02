@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="1212.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WeekController">
+<AnchorPane prefHeight="1212.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendars.WeekScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1212.0" stroke="BLACK" strokeType="INSIDE" width="876.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1028.0" layoutX="128.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="621.0">

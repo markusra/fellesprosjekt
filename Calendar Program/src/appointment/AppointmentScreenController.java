@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import program.ControllerInterface;
+import program.ScreensController;
 import appointment.Appointment;
 
 import com.sun.org.apache.xml.internal.security.Init;
@@ -19,7 +21,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class AppointmentController implements Initializable{
+public class AppointmentScreenController implements Initializable, ControllerInterface {
 	
 	private Appointment model;
 	
@@ -139,6 +141,12 @@ public class AppointmentController implements Initializable{
 		timeStart.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		return false;
+	}
+
+	@Override
+	public void setScreenParent(ScreensController screenParent) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

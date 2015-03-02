@@ -1,9 +1,11 @@
-# Eclipse
+# General
 *.pydevproject
 .metadata
 .gradle
 bin/
 tmp/
+target/
+/build/
 *.tmp
 *.bak
 *.swp
@@ -12,6 +14,12 @@ tmp/
 local.properties
 .settings/
 .loadpath
+
+# Packages
+*.jar
+*.war
+*.ear
+*.db 
 
 # Windows
 Thumbs.db

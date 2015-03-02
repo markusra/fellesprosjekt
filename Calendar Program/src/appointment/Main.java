@@ -16,7 +16,7 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/appointment/Appointment.fxml"));
 			FXMLLoader fxmlLoader = new FXMLLoader();
-	        fxmlLoader.setController(new AppointmentController());
+	        fxmlLoader.setController(new AppointmentScreenController());
 			Scene scene = new Scene(root,350,430);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

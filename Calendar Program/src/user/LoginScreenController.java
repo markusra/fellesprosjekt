@@ -19,7 +19,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-public class LoginController implements Initializable, ControllerInterface {
+public class LoginScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
 		
