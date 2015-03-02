@@ -11,6 +11,5 @@ public class GetAllUsersTest {
 		
 		client.customQuery("u4sl29fjanz680slla0p", "'None'");
 		
-		//Hvis feil blir usernameboksen eller passordboksen rød
 	}
 }
