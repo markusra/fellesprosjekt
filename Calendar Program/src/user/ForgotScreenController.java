@@ -18,7 +18,7 @@ public class ForgotScreenController implements Initializable, ControllerInterfac
 	
 	
 	@FXML
-	Button back;
+	 Button back;
 	
 	
 	@Override
