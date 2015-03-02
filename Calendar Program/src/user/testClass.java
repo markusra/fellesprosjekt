@@ -7,7 +7,7 @@ import json.JsonValue;
 public class testClass {
 
 	public static void main(String[] args) {
-		String streng = "[{\"passord\": \"test1234\", \"brukernavn\": \"markusra\"}]";
+		String streng = "[{\"passord\": \"test1234\", \"brukernavn\": \"markusra\"}, {\"passord\": \"test12345\", \"brukernavn\": \"vebjorbe\"}]";
 		
 		
 		JsonArray jsonArray = JsonArray.readFrom( streng );
