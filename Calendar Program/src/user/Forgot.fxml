@@ -29,12 +29,6 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Rectangle fx:id="back" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="810.0" layoutY="650.0" stroke="BLACK" strokeType="INSIDE" width="324.0" />
-            <Label layoutX="825.0" layoutY="653.0" onMouseClicked="#handleBackButtonAction" text="BACK TO SIGN IN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
             <TextField fx:id="writeEmailField" layoutX="703.0" layoutY="525.0" prefHeight="39.0" prefWidth="250.0" promptText="Write email">
                <tooltip>
                   <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
@@ -55,18 +49,21 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Rectangle fx:id="getUsernameButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="703.0" layoutY="575.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
-            <Label layoutX="734.0" layoutY="578.0" onMouseClicked="#handleBackButtonAction" text="GET USERNAME" textFill="WHITE">
+            <Button fx:id="back" layoutX="810.0" layoutY="651.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="324.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
-            </Label>
-            <Rectangle fx:id="getPasswordButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="988.0" layoutY="575.0" stroke="BLACK" strokeType="INSIDE" width="244.0" />
-            <Label layoutX="1017.0" layoutY="578.0" onMouseClicked="#handleBackButtonAction" text="GET PASSWORD" textFill="WHITE">
+            </Button>
+            <Button fx:id="getUsernameButton" layoutX="703.0" layoutY="575.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="250.0" style="-fx-background-color: #69696b;" text="GET USERNAME" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-            </Label>
+            </Button>
+            <Button fx:id="getPasswordButton" layoutX="988.0" layoutY="575.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="244.0" style="-fx-background-color: #69696b;" text="GET PASSWORD" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
