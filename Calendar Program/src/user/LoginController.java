@@ -28,9 +28,9 @@ public class LoginController implements Initializable, ControllerInterface {
 	@FXML
 	private PasswordField passwordField;
 	/*@FXML
-	private Button loginButton;*/
+	private Button loginButton;
 	@FXML
-	private Button forgotButton;
+	private Button forgotButton;*/
 	
 	
 	@FXML

@@ -34,7 +34,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle fx:id="forgotButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="763.0" layoutY="707.0" onMouseClicked="#handleForgotButtonAction" stroke="BLACK" strokeType="INSIDE" width="624.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="763.0" layoutY="707.0" stroke="BLACK" strokeType="INSIDE" width="624.0" />
       <Label layoutX="785.0" layoutY="710.0" text="FORGOT USERNAME/PASSWORD?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
