@@ -13,24 +13,44 @@
 <Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="91.0" layoutX="1394.0" layoutY="944.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="474.0" layoutX="46.0" layoutY="139.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="1445.0" layoutY="949.0" text="SIGN OUT" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="91.0" layoutX="1513.0" layoutY="944.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="1564.0" layoutY="949.0" text="SIGN OUT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="54.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="103.0" layoutY="6.0" prefHeight="1068.0" prefWidth="1244.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="282.0" layoutX="46.0" layoutY="752.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="46.0" layoutY="661.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="211.0" layoutY="667.0" text="GROUPS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="570.0" layoutY="6.0" prefHeight="1068.0" prefWidth="944.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="896.0" layoutX="146.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" width="979.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="896.0" layoutX="146.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" width="675.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <GridPane gridLinesVisible="true" layoutX="146.0" layoutY="133.0" prefHeight="896.0" prefWidth="979.0">
+            <GridPane gridLinesVisible="true" layoutX="146.0" layoutY="133.0" prefHeight="896.0" prefWidth="675.0">
                <children>
                   <GridPane>
                      <children>
@@ -62,7 +82,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane prefHeight="117.0" prefWidth="551.0" GridPane.columnIndex="1">
+                  <GridPane GridPane.columnIndex="1">
                      <children>
                         <GridPane gridLinesVisible="true" visible="false">
                            <children>
@@ -149,7 +169,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label fx:id="ingenAvtalerMonday" prefHeight="27.0" prefWidth="175.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label fx:id="ingenAvtalerMonday" prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" visible="false" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -427,7 +447,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label prefHeight="27.0" prefWidth="190.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -525,7 +545,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label prefHeight="27.0" prefWidth="185.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -623,7 +643,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label prefHeight="27.0" prefWidth="184.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -721,7 +741,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label prefHeight="27.0" prefWidth="184.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -820,7 +840,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label prefHeight="27.0" prefWidth="174.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -918,7 +938,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label prefHeight="27.0" prefWidth="174.0" text="  No appointments" textFill="#bc9c9c" />
+                        <Label prefHeight="27.0" prefWidth="146.0" text="  Ingen avtaler" textFill="#bc9c9c" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -932,7 +952,7 @@
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="148.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="10.0" prefWidth="403.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" prefWidth="403.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
@@ -946,24 +966,24 @@
             </GridPane>
             <AnchorPane layoutX="146.0" layoutY="-20.0" prefHeight="80.0" prefWidth="429.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="979.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="675.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Text fill="WHITE" layoutX="356.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK" textAlignment="CENTER" wrappingWidth="186.0">
+                  <Text fill="WHITE" layoutX="207.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK" textAlignment="CENTER" wrappingWidth="186.0">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Text>
-                  <Text fx:id="weekNumber" fill="WHITE" layoutX="498.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="139.0">
+                  <Text fx:id="weekNumber" fill="WHITE" layoutX="349.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="139.0">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="1130.0" layoutY="529.0" onMouseClicked="#changeToNextWeek" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="828.0" layoutY="37.0" onMouseClicked="#changeToNextWeek" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow />
                </effect>
@@ -971,7 +991,7 @@
                   <Image url="@../resources/Weektemplate-arrow.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="33.0" layoutY="528.0" onMouseClicked="#changeToPreviousWeek" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+            <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="33.0" layoutY="36.0" onMouseClicked="#changeToPreviousWeek" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -981,88 +1001,69 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="1394.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="1513.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1393.0" layoutY="323.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1512.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1394.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1513.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="1503.0" layoutY="51.0" text="ALERTS" textFill="WHITE">
+      <Label layoutX="1622.0" layoutY="51.0" text="ALERTS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1394.0" layoutY="264.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1513.0" layoutY="266.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="1437.0" layoutY="268.0" text="NOTIFICATIONS" textFill="WHITE">
+      <Label layoutX="1556.0" layoutY="270.0" text="NOTIFICATIONS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1395.0" layoutY="490.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Label layoutX="1433.0" layoutY="494.0" text="APPOINTMENTS" textFill="WHITE">
+      <Rectangle fx:id="getUsernameButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="72.0" layoutY="974.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Label layoutX="107.0" layoutY="977.0" onMouseClicked="#handleBackButtonAction" text="CREATE GROUP" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPurpose1" layoutX="73.0" layoutY="803.0" prefHeight="39.0" prefWidth="250.0" />
+      <ListView fx:id="invitedField1" layoutX="73.0" layoutY="882.0" prefHeight="81.0" prefWidth="250.0" />
+      <Label layoutX="74.0" layoutY="757.0" prefHeight="53.0" prefWidth="146.0" text="Groupname:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Line endY="180.0" layoutX="347.0" layoutY="853.0" startY="-100.0" />
+      <Label layoutX="74.0" layoutY="837.0" prefHeight="53.0" prefWidth="239.0" text="Choose members:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="loginButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="95.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="126.0" layoutY="163.0" text="CREATE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1394.0" layoutY="549.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="47.0" layoutY="49.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1394.0" layoutY="775.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1395.0" layoutY="716.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Label layoutX="1498.0" layoutY="720.0" text="GROUPS" textFill="WHITE">
+      <Label layoutX="127.0" layoutY="55.0" text="APPOINTMENT" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="getUsernameButton21" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="1419.0" layoutY="799.0" stroke="BLACK" strokeType="INSIDE" width="311.0" />
-      <Label layoutX="1484.0" layoutY="802.0" onMouseClicked="#handleBackButtonAction" text="CREATE GROUP" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="getUsernameButton2" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="1419.0" layoutY="573.0" stroke="BLACK" strokeType="INSIDE" width="311.0" />
-      <Label layoutX="1442.0" layoutY="576.0" onMouseClicked="#handleBackButtonAction" text="CREATE APPOINTMENT" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="getUsernameButton211" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="1419.0" layoutY="851.0" stroke="BLACK" strokeType="INSIDE" width="311.0" />
-      <Label layoutX="1492.0" layoutY="854.0" onMouseClicked="#handleBackButtonAction" text="VIEW GROUPS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="getUsernameButton22" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="1419.0" layoutY="625.0" stroke="BLACK" strokeType="INSIDE" width="311.0" />
-      <Label layoutX="1450.0" layoutY="628.0" onMouseClicked="#handleBackButtonAction" text="VIEW APPOINTMENTS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="54.0" />
          </font>
       </Label>
    </children>

@@ -28,6 +28,31 @@
             <Font name="System Bold" size="54.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="46.0" layoutY="49.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="299.0" layoutX="1512.0" layoutY="614.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="1512.0" layoutY="523.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="1619.0" layoutY="527.0" text="USER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <Label layoutX="124.0" layoutY="55.0" text="APPOINTMENT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="282.0" layoutX="46.0" layoutY="752.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
          <effect>
             <DropShadow />
@@ -1031,41 +1056,38 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle fx:id="getUsernameButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="72.0" layoutY="974.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
-      <Label layoutX="107.0" layoutY="977.0" onMouseClicked="#handleBackButtonAction" text="CREATE GROUP" textFill="WHITE">
+      <Pane layoutX="152.0" layoutY="169.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="350.0">
+         <children>
+            <TextField fx:id="txtPurpose" layoutX="24.0" layoutY="62.0" prefHeight="26.0" prefWidth="298.0" text="Title" />
+            <TextField fx:id="txtPlace" layoutX="24.0" layoutY="88.0" prefHeight="26.0" prefWidth="298.0" text="Place" />
+            <DatePicker fx:id="dpStart" layoutX="84.0" layoutY="131.0" prefHeight="26.0" prefWidth="157.0" />
+            <Label layoutX="24.0" layoutY="136.0" text="Starts" />
+            <Label layoutX="24.0" layoutY="172.0" text="Ends" />
+            <TextField fx:id="timeStart" alignment="CENTER" layoutX="256.0" layoutY="131.0" prefHeight="26.0" prefWidth="66.0" text="00:00" />
+            <TextField fx:id="timeEnd" alignment="CENTER" layoutX="256.0" layoutY="167.0" prefHeight="26.0" prefWidth="66.0" text="23:59" />
+            <ComboBox fx:id="roomField" layoutX="154.0" layoutY="205.0" prefHeight="26.0" prefWidth="168.0" />
+            <Label layoutX="21.0" layoutY="210.0" text="Rompicker" />
+            <Label layoutX="21.0" layoutY="241.0" text="Invite" />
+            <ListView fx:id="invitedField" layoutX="21.0" layoutY="264.0" prefHeight="81.0" prefWidth="148.0" />
+            <Button layoutX="154.0" layoutY="379.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="26.0" prefWidth="168.0" text="Create appointment" />
+            <Label layoutX="179.0" layoutY="241.0" text="Group" />
+            <ListView layoutX="179.0" layoutY="264.0" prefHeight="81.0" prefWidth="148.0" />
+         </children>
+      </Pane>
+      <Rectangle fx:id="getUsernameButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="39.0" layoutX="75.0" layoutY="974.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Label layoutX="110.0" layoutY="977.0" onMouseClicked="#handleBackButtonAction" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPurpose1" layoutX="73.0" layoutY="803.0" prefHeight="39.0" prefWidth="250.0" />
-      <ListView fx:id="invitedField1" layoutX="73.0" layoutY="882.0" prefHeight="81.0" prefWidth="250.0" />
-      <Label layoutX="74.0" layoutY="757.0" prefHeight="53.0" prefWidth="146.0" text="Groupname:">
+      <TextField fx:id="txtPurpose1" layoutX="62.0" layoutY="818.0" prefHeight="39.0" prefWidth="260.0" />
+      <ListView fx:id="invitedField1" layoutX="470.0" layoutY="849.0" prefHeight="81.0" prefWidth="148.0" />
+      <Label layoutX="62.0" layoutY="765.0" prefHeight="53.0" prefWidth="146.0" text="Groupname:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Line endY="180.0" layoutX="347.0" layoutY="853.0" startY="-100.0" />
-      <Label layoutX="74.0" layoutY="837.0" prefHeight="53.0" prefWidth="239.0" text="Choose members:">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="loginButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="95.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="126.0" layoutY="163.0" text="CREATE" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="47.0" layoutY="49.0" stroke="BLACK" strokeType="INSIDE" width="550.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Label layoutX="127.0" layoutY="55.0" text="APPOINTMENT" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="54.0" />
-         </font>
-      </Label>
    </children>
    <padding>
       <Insets top="-1000.0" />
