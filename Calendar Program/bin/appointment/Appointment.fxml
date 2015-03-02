@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentController">
+   <children>
+      <Label layoutX="105.0" layoutY="22.0" text="New appointment">
+         <font>
+            <Font name="Arial" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPurpose" layoutX="24.0" layoutY="62.0" prefHeight="26.0" prefWidth="298.0" text="Title" />
+      <TextField fx:id="txtPlace" layoutX="24.0" layoutY="88.0" prefHeight="26.0" prefWidth="298.0" text="Place" />
+      <DatePicker fx:id="dpStart" layoutX="84.0" layoutY="131.0" prefHeight="26.0" prefWidth="157.0" />
+      <Label layoutX="24.0" layoutY="136.0" text="Starts" />
+      <Label layoutX="24.0" layoutY="172.0" text="Ends" />
+      <TextField fx:id="timeStart" alignment="CENTER" layoutX="256.0" layoutY="131.0" prefHeight="26.0" prefWidth="66.0" text="00:00" />
+      <TextField fx:id="timeEnd" alignment="CENTER" layoutX="256.0" layoutY="167.0" prefHeight="26.0" prefWidth="66.0" text="23:59" />
+      <ComboBox fx:id="roomField" layoutX="154.0" layoutY="205.0" prefHeight="26.0" prefWidth="168.0" />
+      <Label layoutX="21.0" layoutY="210.0" text="Rompicker" />
+      <Label layoutX="21.0" layoutY="241.0" text="Invite" />
+      <ListView fx:id="invitedField" layoutX="21.0" layoutY="264.0" prefHeight="81.0" prefWidth="148.0" />
+      <Button layoutX="154.0" layoutY="379.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="26.0" prefWidth="168.0" text="Create appointment" />
+      <Label layoutX="179.0" layoutY="241.0" text="Group" />
+      <ListView layoutX="179.0" layoutY="264.0" prefHeight="81.0" prefWidth="148.0" />
+   </children>
+</Pane>

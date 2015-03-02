@@ -12,11 +12,6 @@ public class LoginTest {
 			
 		} else {
 			System.out.println("Error");
-			
-		}
-		
-		while (true) {
-			client.test();
 		}
 		
 		//Hvis feil blir usernameboksen eller passordboksen rød
