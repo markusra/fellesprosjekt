@@ -1,15 +1,26 @@
 package user;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import json.JsonArray;
+import json.JsonValue;
+
 
 public class testClass {
 
-	public static void main(String[] args) throws ParseException {
-		String streng = "{\"passord\": \"test1234\", \"brukernavn\": \"markusra\"}";
+	public static void main(String[] args) {
+		String streng = "[{\"passord\": \"test1234\", \"brukernavn\": \"markusra\"}]";
 		
-		JSONObject json = (JSONObject)new JSONParser().parse(streng);
-		System.out.println("brukernavn=" + json.get("brukernavn"));
+		
+		JsonArray jsonArray = JsonArray.readFrom( streng );
+		
+		String username = null;
+		String password = null;
+		
+		for( JsonValue value : jsonArray ) {
+			username = value.asObject().get( "brukernavn" ).asString();
+			password = value.asObject().get( "passord" ).asString();
+		}
+		
+		System.out.println(username + " - " + password);
+		
 	}
 }

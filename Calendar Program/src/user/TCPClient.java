@@ -8,7 +8,9 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.json.JSONArray;
+import json.JsonArray;
+import json.JsonValue;
+
 
 
 public class TCPClient {
@@ -25,9 +27,9 @@ public class TCPClient {
 		inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	}
 	
-	public boolean validLogin(String username, String password) throws IOException, ParseException {
+	public boolean validLogin(String username, String password) throws IOException  {
 		String command = "k2pj39as9d0uo34jkh41";
-		String raw = command + ":('" + username + "', '" + password + "')";
+		String raw = command + "#('" + username + "', '" + password + "')";
 		
 		outToServer.write(raw + "\n");
 		outToServer.flush();
@@ -35,19 +37,20 @@ public class TCPClient {
 		serverReply = inFromServer.readLine();
 		System.out.println("This was recieved from server: " + serverReply);
 		
-		String[] answer = serverReply.split(":");
+		String[] answer = serverReply.split("#");
 		
-		JSONArray mJsonArray = new JSONArray(answer[1]);
-		JSONObject mJsonObject = new JSONObject();
-		for (int i = 0; i < mJsonArray.length(); i++) {
-		    mJsonObject = mJsonArray.getJSONObject(i);
-		    mJsonObject.getString("0");
-		    mJsonObject.getString("id");
-		    mJsonObject.getString("1");
-		    mJsonObject.getString("name");
+		System.out.println(answer[1]);
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		String un = null;
+		String pw = null;
+		
+		for( JsonValue value : jsonArray ) {
+			un = value.asObject().get( "brukernavn" ).asString();
+			pw = value.asObject().get( "passord" ).asString();
 		}
 		
-		if (answer[0].contains(command) && answer[1].contains("")) {
+		if (answer[0].contains(command) && un.contains(username) && pw.contains(password)) {
 			System.out.println("Correct username and password!");
 			return true;
 		} else {
