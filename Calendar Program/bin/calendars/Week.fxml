@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="1212.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WeekController">
+<AnchorPane prefHeight="1103.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WeekController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1212.0" stroke="BLACK" strokeType="INSIDE" width="876.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1028.0" layoutX="128.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="621.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1212.0" layoutX="-64.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="876.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1028.0" layoutX="64.0" layoutY="144.0" stroke="BLACK" strokeType="INSIDE" width="621.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <GridPane gridLinesVisible="true" layoutX="129.0" layoutY="151.0" prefHeight="1056.0" prefWidth="621.0">
+      <GridPane gridLinesVisible="true" layoutX="65.0" layoutY="145.0" prefHeight="1056.0" prefWidth="621.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="148.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.0" minWidth="10.0" prefWidth="403.0" />
@@ -930,11 +930,11 @@
             </GridPane>
          </children>
       </GridPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutX="97.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="675.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutX="33.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" width="675.0">
          <effect>
             <DropShadow />
          </effect></Rectangle>
-      <AnchorPane layoutX="87.0" layoutY="45.0" prefHeight="80.0" prefWidth="429.0">
+      <AnchorPane layoutX="23.0" layoutY="39.0" prefHeight="80.0" prefWidth="429.0">
          <children>
             <Text fill="WHITE" layoutX="233.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK" textAlignment="CENTER" wrappingWidth="186.0">
                <font>
@@ -948,7 +948,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="758.0" layoutY="763.0" onMouseClicked="#changeToNextWeek" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="694.0" layoutY="757.0" onMouseClicked="#changeToNextWeek" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/Weektemplate-arrow.png" />
          </image>
@@ -956,7 +956,7 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="11.0" layoutY="763.0" onMouseClicked="#changeToPreviousWeek" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="-53.0" layoutY="757.0" onMouseClicked="#changeToPreviousWeek" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <effect>
             <DropShadow />
          </effect>
