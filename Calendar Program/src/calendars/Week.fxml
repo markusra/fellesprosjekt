@@ -930,7 +930,7 @@
             </GridPane>
          </children>
       </GridPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="89.0" layoutX="33.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" width="675.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutX="33.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" width="675.0">
          <effect>
             <DropShadow />
          </effect></Rectangle>

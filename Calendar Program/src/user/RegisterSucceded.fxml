@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <AnchorPane>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="341.0" layoutX="685.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="706.0" layoutY="328.0" stroke="BLACK" strokeType="INSIDE" width="531.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Label layoutX="737.0" layoutY="347.0" text="REGISTRATION SUCCEEDED" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="backToSignInButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="778.0" layoutY="704.0" stroke="BLACK" strokeType="INSIDE" width="379.0" />
+            <Label layoutX="821.0" layoutY="707.0" onMouseClicked="#handleLoginButtonAction" text="BACK TO SIGN IN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Text layoutX="744.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The registration was successful. " textAlignment="CENTER" wrappingWidth="454.07421875">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="754.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="748.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to sign in with your username and password." textAlignment="CENTER" wrappingWidth="454.07421875">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

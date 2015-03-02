@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="308.0" layoutX="685.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="755.0" layoutY="328.0" stroke="BLACK" strokeType="INSIDE" width="431.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="850.0" layoutY="347.0" text="LOGIN FAILED" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="tryAgainButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="844.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" width="254.0" />
+      <Label layoutX="875.0" layoutY="639.0" onMouseClicked="#handleLoginButtonAction" text="TRY AGAIN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Text layoutX="744.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The username and/or password that you entered was incorrect." textAlignment="CENTER" wrappingWidth="454.07421875">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
