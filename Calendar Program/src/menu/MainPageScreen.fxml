@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginController">
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainPageScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <AnchorPane layoutX="103.0" layoutY="6.0" prefHeight="1068.0" prefWidth="1244.0">
@@ -953,7 +953,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="1130.0" layoutY="529.0" onMouseClicked="#changeToNextWeek" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="1130.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow />
                </effect>
@@ -961,7 +961,7 @@
                   <Image url="@../resources/Weektemplate-arrow.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="33.0" layoutY="528.0" onMouseClicked="#changeToPreviousWeek" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+            <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="33.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                <effect>
                   <DropShadow />
                </effect>
