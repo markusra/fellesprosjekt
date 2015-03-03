@@ -13,11 +13,10 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtName" layoutX="38.0" layoutY="70.0" prefHeight="26.0" prefWidth="270.0" text="Group name" />
-      <Label layoutX="38.0" layoutY="109.0" text="Supergroup" />
-      <ListView fx:id="supergroupID" layoutX="38.0" layoutY="139.0" prefHeight="192.0" prefWidth="128.0" />
-      <Label layoutX="179.0" layoutY="109.0" text="Groupmembers" />
-      <ListView fx:id="groupmember" layoutX="179.0" layoutY="139.0" prefHeight="192.0" prefWidth="128.0" />
-      <Button layoutX="38.0" layoutY="354.0" mnemonicParsing="false" onAction="#doConfirm" text="Confirm" />
+      <TextField fx:id="txtGroupName" layoutX="38.0" layoutY="70.0" prefHeight="26.0" prefWidth="270.0" text="Group name" />
+      <Label layoutX="37.0" layoutY="150.0" text="Choose members:" />
+      <ListView fx:id="lvGroupmember" layoutX="37.0" layoutY="171.0" prefHeight="167.0" prefWidth="270.0" />
+      <Button layoutX="38.0" layoutY="372.0" mnemonicParsing="false" onAction="#doConfirm" text="Submit" />
+      <ComboBox fx:id="cmbSubgroupOf" layoutX="37.0" layoutY="109.0" prefHeight="26.0" prefWidth="270.0" promptText="Subgroup of:" />
    </children>
 </Pane>

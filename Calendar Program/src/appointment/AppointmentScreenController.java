@@ -3,11 +3,16 @@ package appointment;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import program.ControllerInterface;
+import program.ScreensController;
+import program.ServerCodes;
 import user.TCPClient;
 import appointment.Appointment;
 
@@ -23,13 +28,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import json.JsonArray;
 import json.JsonValue;
 
-public class AppointmentScreenController implements Initializable{
+public class AppointmentScreenController implements Initializable, ControllerInterface{
 	
 	private Appointment model;
+	private ScreensController mainController;
+	
 	
 	@FXML
 	private TextField txtPurpose;
@@ -45,10 +53,15 @@ public class AppointmentScreenController implements Initializable{
 	private ComboBox roomField;
 	@FXML
 	private ListView<String> invitedField;
+	@FXML
+	private ListView<String> groupField;
+	@FXML
+	private TextField txtSize;
 	
 	private String startTime;
 	private String endTime;
 	private LocalDate date;
+	private String size;
 	
 	
 	private boolean valid=true;
@@ -60,7 +73,7 @@ public class AppointmentScreenController implements Initializable{
 		model.setEnd("23:59");
 		
 		try {
-			addUsers();
+			fetchData();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,6 +99,20 @@ public class AppointmentScreenController implements Initializable{
 					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
 				valid = true;
+			} else {
+				valid = false;
+			}
+ 		});
+		txtSize.textProperty().addListener((observable, oldValue, newValue) -> {
+			if (validate(newValue, "[0-9]+", txtSize, null, null)) {
+				if(!newValue.contains("0") && Integer.parseInt(newValue)>0) {
+					size=txtSize.getText();
+					System.out.println(size);
+					valid = true;
+				} else {
+					valid = false;
+					txtSize.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
+				}
 			} else {
 				valid = false;
 			}
@@ -115,7 +142,6 @@ public class AppointmentScreenController implements Initializable{
         		String style = doesMatch ? "-fx-border-width: 0; -fx-background-color: WHITE" : "-fx-border-color: red; -fx-border-width: 2; "
         				+ "-fx-background-color: #ffbbbb";
         		textField.setStyle(style);
-        		textField.setPromptText("Ugyldig input!");
         		return doesMatch;
     		} else {
     			textField.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
@@ -168,28 +194,50 @@ public class AppointmentScreenController implements Initializable{
 		}
 	}
 	
-	private void addUsers() throws IOException {
+	private void fetchData() throws IOException {
 		TCPClient client = new TCPClient();
-		String serverReply = client.customQuery("u4sl29fjanz680slla0p", "'None'");
+		String serverReply = client.customQuery(ServerCodes.GETALLUSERS, "'None'");
 		
 		String[] answer = serverReply.split("#");
 
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		invitedField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
-		/*String fornavn = "";
-		String etternavn = "";
-		String data = "";*/
-		
-		String[] data=null;
+		List<String> userList = new ArrayList<>();
 		
 		for( JsonValue value : jsonArray ) {
 			String fornavn = value.asObject().get( "fornavn" ).asString();
 			String etternavn = value.asObject().get( "etternavn" ).asString();
 			String temp = fornavn + " " + etternavn;
-			data[0]+=temp;
+			userList.add(temp);
 		}
-		ObservableList<String> items =FXCollections.observableArrayList (data);
+		ObservableList<String> items =FXCollections.observableArrayList (userList);
 		invitedField.setItems(items);
+		
+		
+		serverReply = client.customQuery(ServerCodes.GETALLGROUPS, "'None'");
+		answer = serverReply.split("#");
+		jsonArray = JsonArray.readFrom( answer[1] );
+		groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		List<String> groupList = new ArrayList<>();
+		
+		for( JsonValue value : jsonArray ) {
+			String gruppeNavn = value.asObject().get( "navn" ).asString();
+			groupList.add(gruppeNavn);
+		}
+		
+		ObservableList<String> myObservableList = FXCollections.observableList(groupList);
+	    groupField.setItems(myObservableList);
+	}
+	
+	private void addRooms() throws IOException {
+		
+	}
+
+	@Override
+	public void setScreenParent(ScreensController screenParent) {
+		mainController = screenParent;
 	}
 	
 

@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="535.0" layoutX="567.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
                <effect>
                   <DropShadow />
@@ -40,11 +40,6 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <PasswordField fx:id="lastNameField" layoutX="970.0" layoutY="428.0" prefHeight="53.0" prefWidth="298.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </PasswordField>
             <TextField fx:id="firstNameField" layoutX="971.0" layoutY="358.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
@@ -65,11 +60,6 @@
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="emailField" layoutX="970.0" layoutY="499.0" prefHeight="53.0" prefWidth="298.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </PasswordField>
             <Label layoutX="611.0" layoutY="501.0" prefHeight="53.0" prefWidth="270.0" text="Email:">
                <font>
                   <Font name="System Bold" size="36.0" />
@@ -80,14 +70,6 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <PasswordField fx:id="createUsernameField" layoutX="970.0" layoutY="570.0" prefHeight="53.0" prefWidth="298.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
-               </tooltip>
-            </PasswordField>
             <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
@@ -126,6 +108,21 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
+            <TextField fx:id="lastNameField" layoutX="971.0" layoutY="428.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailField" layoutX="971.0" layoutY="500.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="createUsernameField" layoutX="971.0" layoutY="570.0" prefHeight="53.0" prefWidth="298.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
          </children>
          <padding>
             <Insets top="-1000.0" />
