@@ -50,12 +50,6 @@
                   <Font size="24.0" />
                </font>
             </TextField>
-            <Rectangle fx:id="registerButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="864.0" layoutY="793.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
-            <Label layoutX="889.0" layoutY="796.0" text="REGISTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
             <ImageView fx:id="imgFirstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
@@ -127,6 +121,11 @@
                   <Font size="24.0" />
                </font>
             </PasswordField>
+            <Button fx:id="registerButton" layoutX="862.0" layoutY="791.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="215.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets top="-1000.0" />
