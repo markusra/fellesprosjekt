@@ -16,7 +16,10 @@
          <children>
             <Pane prefHeight="1080.0" prefWidth="1920.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis></Rectangle>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="715.0" layoutX="567.0" layoutY="239.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
                      <effect>
                         <DropShadow />
@@ -116,4 +119,7 @@
          </children>
       </AnchorPane>
    </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
 </Pane>
