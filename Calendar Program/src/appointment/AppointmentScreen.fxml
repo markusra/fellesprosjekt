@@ -1,19 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentScreenController">
    <children>
+      <AnchorPane>
+         <children>
+            <Pane prefHeight="1080.0" prefWidth="1920.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="535.0" layoutX="567.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="655.0" layoutY="214.0" stroke="BLACK" strokeType="INSIDE" width="615.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label layoutX="697.0" layoutY="219.0" text="NEW APPOINTMENT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="54.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="358.0" prefHeight="53.0" prefWidth="320.0" text="Title:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="430.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtPurpose" layoutX="971.0" layoutY="358.0" prefHeight="53.0" prefWidth="298.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fx:id="imgFirstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/info-sign.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgLastNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/info-sign.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="611.0" layoutY="501.0" prefHeight="53.0" prefWidth="270.0" text="Starts:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="572.0" prefHeight="53.0" prefWidth="270.0">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/info-sign.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgPassInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/info-sign.png" />
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="createPasswordField" layoutX="970.0" layoutY="640.0" prefHeight="53.0" prefWidth="298.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
+                     </tooltip>
+                  </PasswordField>
+                  <Label layoutX="611.0" layoutY="642.0" prefHeight="53.0" prefWidth="270.0" text="Password:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="713.0" prefHeight="53.0" prefWidth="335.0" text="Confirm password:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="confirmPasswordField" layoutX="970.0" layoutY="711.0" prefHeight="53.0" prefWidth="298.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </PasswordField>
+                  <Button fx:id="createAppointment" layoutX="797.0" layoutY="792.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="326.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txtPurpose1" layoutX="971.0" layoutY="429.0" prefHeight="53.0" prefWidth="298.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtSize" layoutX="972.0" layoutY="552.0" prefHeight="53.0" prefWidth="298.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="612.0" layoutY="553.0" prefHeight="53.0" prefWidth="270.0" text="Size:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="-1000.0" />
+               </padding>
+            </Pane>
+         </children>
+      </AnchorPane>
       <Label layoutX="105.0" layoutY="22.0" text="New appointment">
          <font>
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPurpose" layoutX="24.0" layoutY="62.0" prefHeight="26.0" prefWidth="298.0" text="Title" />
       <TextField fx:id="txtPlace" layoutX="24.0" layoutY="88.0" prefHeight="26.0" prefWidth="298.0" text="Place" />
       <DatePicker fx:id="dpStart" layoutX="84.0" layoutY="131.0" prefHeight="26.0" prefWidth="157.0" />
       <Label layoutX="24.0" layoutY="136.0" text="Starts" />
