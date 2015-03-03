@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import program.ControllerInterface;
 import program.ScreensController;
+import program.ServerCodes;
 import user.TCPClient;
 import appointment.Appointment;
 
@@ -53,6 +54,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@FXML
 	private ListView<String> invitedField;
 	@FXML
+	private ListView<String> groupField;
+	@FXML
 	private TextField txtSize;
 	
 	private String startTime;
@@ -70,7 +73,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		model.setEnd("23:59");
 		
 		try {
-			addUsers();
+			fetchData();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +181,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		}
 	}
 	
-	private void addUsers() throws IOException {
+	private void fetchData() throws IOException {
 		TCPClient client = new TCPClient();
 		String serverReply = client.customQuery("u4sl29fjanz680slla0p", "'None'");
 		
@@ -186,10 +189,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 		invitedField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		/*String fornavn = "";
-		String etternavn = "";
-		String data = "";*/
 		
 		List<String> userList = new ArrayList<>();
 		
@@ -201,6 +200,23 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		}
 		ObservableList<String> items =FXCollections.observableArrayList (userList);
 		invitedField.setItems(items);
+		
+		
+		serverReply = client.customQuery(ServerCodes.GETALLGROUPS, "'None'");
+		answer = serverReply.split("#");
+		jsonArray = JsonArray.readFrom( answer[1] );
+		
+		List<String> groupList = new ArrayList<>();
+		
+		for( JsonValue value : jsonArray ) {
+			String gruppeNavn = value.asObject().get( "navn" ).asString();
+			groupList.add(gruppeNavn);
+		}
+		
+		ObservableList<String> myObservableList = FXCollections.observableList(groupList);
+	    groupField.setItems(myObservableList);
+		
+		
 	}
 	
 	private void addGroups() throws IOException {
