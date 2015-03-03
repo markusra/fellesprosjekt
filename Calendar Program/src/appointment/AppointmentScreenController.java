@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import json.JsonArray;
 import json.JsonValue;
@@ -184,6 +185,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		String[] answer = serverReply.split("#");
 
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		invitedField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		/*String fornavn = "";
 		String etternavn = "";
