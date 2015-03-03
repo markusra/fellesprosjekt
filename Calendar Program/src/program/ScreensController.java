@@ -7,11 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.transform.Scale;
 
 public class ScreensController extends StackPane {
 	
 	
 	private HashMap<String, Node> screens = new HashMap<String, Node>();
+	
+	final Scale scale = new Scale(0.53333, 0.53333);
 	
 	
 	public ScreensController() {
@@ -36,6 +39,7 @@ public class ScreensController extends StackPane {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
 			Parent screen = (Parent) loader.load();
+			screen.getTransforms().add(scale);
 			ControllerInterface controller = ((ControllerInterface) loader.getController());
 			controller.setScreenParent(this);
 			addScreen(name, screen);

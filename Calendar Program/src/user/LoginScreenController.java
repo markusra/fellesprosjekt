@@ -1,8 +1,7 @@
 package user;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
@@ -11,6 +10,7 @@ import java.util.Scanner;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,10 +27,10 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	private TextField usernameField;
 	@FXML
 	private PasswordField passwordField;
-	/*@FXML
+	@FXML
 	private Button loginButton;
 	@FXML
-	private Button forgotButton;*/
+	private Button forgotButton;
 	
 	
 	@FXML
@@ -38,12 +38,10 @@ public class LoginScreenController implements Initializable, ControllerInterface
 		TCPClient client = new TCPClient();
 		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
 			System.out.println("Successful login!");
-			
-			
+			mainController.setScreen(Main.mainPageID);
 		} else {
-			System.out.println("Error");
+			mainController.setScreen(Main.loginFailedID);
 		}
-		//Hvis feil blir usernameboksen eller passordboksen rød
 	}
 	
 	@FXML
@@ -54,22 +52,29 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;
-		
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		/*File file = new File(getClass().getClassLoader().getResource("settings.txt").getFile());
-		try (Scanner scanner = new Scanner(file)) {
-			while (scanner.hasNextLine()) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				usernameField.requestFocus();
+			}
+		});
+		InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/resources/settings.cfg"));
+		Scanner scanner = new Scanner(in);
+		while (scanner.hasNextLine()) {
+			if (scanner.nextLine().equalsIgnoreCase("true")) {
 				usernameField.setText(scanner.nextLine());
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						passwordField.requestFocus();
+					}
+				});
 			}
 		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Couldn't get file!");
-		}
-		*/
-	}
+		scanner.close();			
+	}	
 }
