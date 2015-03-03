@@ -8,6 +8,7 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import program.ServerCodes;
 import json.JsonArray;
 import json.JsonValue;
 
@@ -27,7 +28,7 @@ public class TCPClient {
 	}
 	
 	public boolean validLogin(String username, String password) throws IOException  {
-		String command = "k2pj39as9d0uo34jkh41";
+		String command = ServerCodes.LOGIN;
 		String raw = command + splitChar + "('" + username + "', '" + password + "')";
 		
 		outToServer.write(raw + "\n");
