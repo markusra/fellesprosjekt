@@ -61,7 +61,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private String startTime;
 	private String endTime;
 	private LocalDate date;
-	private int size;
+	private String size;
 	
 	
 	private boolean valid=true;
@@ -102,6 +102,20 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			} else {
 				valid = false;
 			}
+ 		});
+		txtSize.textProperty().addListener((observable, oldValue, newValue) -> {
+			if (validate(newValue, "[0-9]+", txtSize, null, null)) {
+				if(!newValue.contains("0") && Integer.parseInt(newValue)>0) {
+					size=txtSize.getText();
+					System.out.println(size);
+					valid = true;
+				} else {
+					valid = false;
+					txtSize.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
+				}
+			} else {
+				valid = false;
+			}
 		});
 		dpStart.valueProperty().addListener(new ChangeListener <LocalDate>(){
 			public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate t, LocalDate t1){
@@ -128,7 +142,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
         		String style = doesMatch ? "-fx-border-width: 0; -fx-background-color: WHITE" : "-fx-border-color: red; -fx-border-width: 2; "
         				+ "-fx-background-color: #ffbbbb";
         		textField.setStyle(style);
-        		textField.setPromptText("Ugyldig input!");
         		return doesMatch;
     		} else {
     			textField.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
@@ -183,7 +196,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	private void fetchData() throws IOException {
 		TCPClient client = new TCPClient();
-		String serverReply = client.customQuery("u4sl29fjanz680slla0p", "'None'");
+		String serverReply = client.customQuery(ServerCodes.GETALLUSERS, "'None'");
 		
 		String[] answer = serverReply.split("#");
 
@@ -205,6 +218,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		serverReply = client.customQuery(ServerCodes.GETALLGROUPS, "'None'");
 		answer = serverReply.split("#");
 		jsonArray = JsonArray.readFrom( answer[1] );
+		groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		List<String> groupList = new ArrayList<>();
 		
@@ -215,12 +229,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		ObservableList<String> myObservableList = FXCollections.observableList(groupList);
 	    groupField.setItems(myObservableList);
-		
-		
-	}
-	
-	private void addGroups() throws IOException {
-		
 	}
 	
 	private void addRooms() throws IOException {
@@ -230,7 +238,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;
-		
 	}
 	
 
