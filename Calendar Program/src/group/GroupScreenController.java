@@ -53,7 +53,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	private void fetchData() throws UnknownHostException, IOException {
 		client = new TCPClient();
 		
-		String serverReply = client.customQuery(ServerCodes.GETALLGROUPS, "'None'");
+		String serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
 		
 		String[] answer = serverReply.split("#");
 
@@ -71,7 +71,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		//lvGroupmember.getItems().addAll(myObservableList);
 	    
-	    serverReply = client.customQuery(ServerCodes.GETALLUSERS, "'None'");
+	    serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
 		answer = serverReply.split("#");
 		
 		jsonArray = JsonArray.readFrom( answer[1] );

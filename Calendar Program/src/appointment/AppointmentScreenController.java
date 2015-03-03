@@ -195,6 +195,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private void fetchData() throws IOException {
+		//Henter brukere
 		TCPClient client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.GETALLUSERS, "'None'");
 		
@@ -214,7 +215,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		ObservableList<String> items =FXCollections.observableArrayList (userList);
 		invitedField.setItems(items);
 		
-		
+		//Henter grupper
 		serverReply = client.customQuery(ServerCodes.GETALLGROUPS, "'None'");
 		answer = serverReply.split("#");
 		jsonArray = JsonArray.readFrom( answer[1] );
