@@ -1,5 +1,6 @@
 package appointment;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Observable;
@@ -7,12 +8,15 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import program.ControllerInterface;
-import program.ScreensController;
+import user.TCPClient;
 import appointment.Appointment;
 
 import com.sun.org.apache.xml.internal.security.Init;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,8 +24,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import json.JsonArray;
+import json.JsonValue;
 
-public class AppointmentScreenController implements Initializable, ControllerInterface {
+public class AppointmentScreenController implements Initializable{
 	
 	private Appointment model;
 	
@@ -38,16 +44,27 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@FXML
 	private ComboBox roomField;
 	@FXML
-	private ListView invitedField;
+	private ListView<String> invitedField;
 	
 	private String startTime;
 	private String endTime;
+	private LocalDate date;
+	
+	
+	private boolean valid=true;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new Appointment();
 		model.setStart("00:00");
 		model.setEnd("23:59");
+		
+		try {
+			addUsers();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		timeStart.setText(model.getStart());
 		timeEnd.setText(model.getEnd());
@@ -56,36 +73,49 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	private void createListeners() {
 		timeStart.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan()) {
-				System.out.println(timeStart.getText());
-				System.out.println(timeEnd.getText());
+			if (validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
+					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
 				startTime=timeStart.getText();
-				System.out.println("Tid ble satt");
+				valid = true;
+			} else {
+				valid = false;
 			}
 		});
 		timeEnd.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan()) {
-				System.out.println(timeStart.getText());
-				System.out.println(timeEnd.getText());
+			if (validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
+					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
-				System.out.println("Tid ble satt");
+				valid = true;
+			} else {
+				valid = false;
 			}
+		});
+		dpStart.valueProperty().addListener(new ChangeListener <LocalDate>(){
+			public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate t, LocalDate t1){
+				LocalDate today = LocalDate.now();
+				if (today.compareTo(t1) > 0){
+					dpStart.setStyle("-fx-control-inner-background: #FBB;");
+					valid = false;
+				}
+				else {
+					dpStart.setStyle("-fx-control-inner-background: white;");
+					date = dpStart.getValue();
+					valid = true;
+				}
+			};
 		});
 	}
 	
 	private boolean validate(String value, String regex, TextField textField, DatePicker datePicker, LocalDate date) {
     	if(textField != null) {
-    		//boolean isValid = value.matches(regex, Pattern.CASE_INSENSITIVE);
     		if (!value.isEmpty()) {
     			Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         		Matcher m = p.matcher(value);
-        		
         		boolean doesMatch = m.matches();
         		String style = doesMatch ? "-fx-border-width: 0; -fx-background-color: WHITE" : "-fx-border-color: red; -fx-border-width: 2; "
         				+ "-fx-background-color: #ffbbbb";
         		textField.setStyle(style);
         		textField.setPromptText("Ugyldig input!");
-        		//System.out.println("regex --> " + doesMatch );
         		return doesMatch;
     		} else {
     			textField.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
@@ -108,30 +138,15 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@FXML
 	private void doConfirm() {
 		Appointment appointment = new Appointment();
-		if (validDate(dpStart.getValue()) && isCorrectTimeSpan()) {
+		if (valid) {
 			appointment.setPlace(txtPlace.getText());
 			appointment.setPurpose(txtPurpose.getText());
+			System.out.println("Riktig");
 			System.out.println(model.getStart());
 			System.out.println(model.getEnd());
-			
 		} else {
-			
+			System.out.println("feil");
 		}
-		validDate(dpStart.getValue());
-		isCorrectTimeSpan();
-	}
-	
-	private boolean validDate(LocalDate date) {
-		LocalDate today = LocalDate.now();
-		if (date == null) {
-			dpStart.setStyle("-fx-border-color: RED; -fx-border-width: 2; -fx-background-color: #PINK");
-			return false;
-		}
-		if (date.isBefore(today)) {
-			dpStart.setStyle("-fx-border-color: RED; -fx-border-width: 2; -fx-background-color: #PINK");
-			return false;
-		}
-		return true;
 	}
 	
 	private boolean isCorrectTimeSpan() {
@@ -142,11 +157,39 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		return false;
 	}
-
-	@Override
-	public void setScreenParent(ScreensController screenParent) {
-		// TODO Auto-generated method stub
+	
+	private boolean validTime() {
+		if (!timeStart.getText().matches("[0-2][0-3]:[0-5][0-9]") && !timeEnd.getText().matches("[0-1][0-9]:[0-5][0-9]")) {
+			timeStart.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
+			timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
+			return false;
+		} else {
+			return true; 
+		}
+	}
+	
+	private void addUsers() throws IOException {
+		TCPClient client = new TCPClient();
+		String serverReply = client.customQuery("u4sl29fjanz680slla0p", "'None'");
 		
+		String[] answer = serverReply.split("#");
+
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		/*String fornavn = "";
+		String etternavn = "";
+		String data = "";*/
+		
+		String[] data=null;
+		
+		for( JsonValue value : jsonArray ) {
+			String fornavn = value.asObject().get( "fornavn" ).asString();
+			String etternavn = value.asObject().get( "etternavn" ).asString();
+			String temp = fornavn + " " + etternavn;
+			data[0]+=temp;
+		}
+		ObservableList<String> items =FXCollections.observableArrayList (data);
+		invitedField.setItems(items);
 	}
 	
 
