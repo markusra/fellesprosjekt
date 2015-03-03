@@ -1031,7 +1031,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="sendToCreateAppointmentButton" layoutX="1419.0" layoutY="569.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+      <Button fx:id="createAppointmentButton" layoutX="1419.0" layoutY="569.0" mnemonicParsing="false" onAction="#handleCreateAppointmentButtonAction" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
