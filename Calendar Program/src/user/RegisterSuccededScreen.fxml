@@ -28,12 +28,6 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Rectangle fx:id="backToSignInButton" arcHeight="5.0" arcWidth="5.0" fill="#69696b" height="59.0" layoutX="778.0" layoutY="704.0" stroke="BLACK" strokeType="INSIDE" width="379.0" />
-            <Label layoutX="821.0" layoutY="707.0" onMouseClicked="#handleLoginButtonAction" text="BACK TO SIGN IN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
             <Text layoutX="744.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The registration was successful. " textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
@@ -49,6 +43,11 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
+            <Button fx:id="backToSignInButton" layoutX="778.0" layoutY="703.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
