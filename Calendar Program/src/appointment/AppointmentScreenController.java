@@ -188,6 +188,7 @@ public class AppointmentScreenController implements Initializable{
 			String temp = fornavn + " " + etternavn;
 			data[0]+=temp;
 		}
+		
 		ObservableList<String> items =FXCollections.observableArrayList (data);
 		invitedField.setItems(items);
 	}
