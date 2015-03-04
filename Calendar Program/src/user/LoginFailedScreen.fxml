@@ -31,7 +31,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="tryAgainButton" layoutX="843.0" layoutY="634.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="254.0" style="-fx-background-color: #69696b;" text="TRY AGAIN" textFill="WHITE">
+      <Button fx:id="tryAgainButton" layoutX="843.0" layoutY="634.0" mnemonicParsing="false" onAction="#handleTryAgainButtonAction" prefHeight="59.0" prefWidth="254.0" style="-fx-background-color: #69696b;" text="TRY AGAIN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

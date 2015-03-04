@@ -1036,7 +1036,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="viewAppointmentsButton" layoutX="1418.0" layoutY="622.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="VIEW APPOINTMENTS" textFill="WHITE">
+      <Button layoutX="1418.0" layoutY="622.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="VIEW APPOINTMENTS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -1046,7 +1046,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="sendToCreateGroupButton" layoutX="1419.0" layoutY="796.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
+      <Button fx:id="createGroupButton" layoutX="1419.0" layoutY="796.0" mnemonicParsing="false" onAction="#handleCreateGroupButtonAction" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
