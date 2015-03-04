@@ -117,8 +117,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
-		lvGroupmember.setStyle("-fx-font-size:25;");
-		//cmbSubgroupOf.setStyle("-fx-font-size:25;");
+		lvGroupmember.setStyle("-fx-font-size:30;");
+		cmbSubgroupOf.setStyle("-fx-font-size:30;");
 		
 		lvGroupmember.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
