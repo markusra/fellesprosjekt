@@ -10,6 +10,8 @@ public class GetRoomsTest {
 	public static void main(String[] args) throws IOException {
 		TCPClient client = new TCPClient();
 		
-		client.customQuery(ServerCodes.GetFilteredRooms, "'25.01.2015 11:59', '25.01.2015 12:00', 16");
+		System.out.println(client.customQuery(ServerCodes.GetFilteredRooms, "250120151245, 250120151415, 12"));
 	}
+	
+	
 }
