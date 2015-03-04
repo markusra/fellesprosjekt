@@ -215,6 +215,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		ObservableList<String> items =FXCollections.observableArrayList (userList);
 		invitedField.setItems(items);
 		
+		////Må finne en måte å sette font size i cellene 
+		
+		
 		//Henter grupper
 		serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
 		answer = serverReply.split("#");
