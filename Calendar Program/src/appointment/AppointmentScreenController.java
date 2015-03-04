@@ -197,7 +197,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private void fetchData() throws IOException {
 		//Henter brukere
 		TCPClient client = new TCPClient();
-		String serverReply = client.customQuery(ServerCodes.GETALLUSERS, "'None'");
+		String serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
 		
 		String[] answer = serverReply.split("#");
 
@@ -215,8 +215,11 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		ObservableList<String> items =FXCollections.observableArrayList (userList);
 		invitedField.setItems(items);
 		
+		////Må finne en måte å sette font size i cellene 
+		
+		
 		//Henter grupper
-		serverReply = client.customQuery(ServerCodes.GETALLGROUPS, "'None'");
+		serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
 		answer = serverReply.split("#");
 		jsonArray = JsonArray.readFrom( answer[1] );
 		groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

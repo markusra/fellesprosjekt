@@ -1,22 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.GroupScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.GroupScreenController">
    <children>
-      <Label layoutX="119.0" layoutY="23.0" text="Create Group">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0">
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="637.0" layoutX="679.0" layoutY="282.0" stroke="BLACK" strokeType="INSIDE" width="565.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <ComboBox fx:id="cmbSubgroupOf" layoutX="972.0" layoutY="400.0" prefHeight="51.0" prefWidth="228.0" />
+      <Button fx:id="createGroup" layoutX="801.0" layoutY="825.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="327.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Button>
+      <ListView fx:id="lvGroupmember" layoutX="716.0" layoutY="547.0" prefHeight="243.0" prefWidth="489.0" />
+      <Label layoutX="716.0" layoutY="315.0" prefHeight="53.0" prefWidth="320.0" text="Name:">
+         <font>
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="txtName" layoutX="38.0" layoutY="70.0" prefHeight="26.0" prefWidth="270.0" text="Group name" />
-      <Label layoutX="37.0" layoutY="150.0" text="Choose members:" />
-      <ListView fx:id="lvGroupmember" layoutX="37.0" layoutY="171.0" prefHeight="167.0" prefWidth="270.0" />
-      <Button layoutX="38.0" layoutY="374.0" mnemonicParsing="false" onAction="#doConfirm" text="Submit" />
-      <ComboBox layoutX="37.0" layoutY="109.0" prefHeight="26.0" prefWidth="270.0" promptText="Subgroup of:" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="744.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="431.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="798.0" layoutY="171.0" text="NEW GROUP" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <Label layoutX="716.0" layoutY="478.0" prefHeight="53.0" prefWidth="344.0" text="Choose members:">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtGroupName" layoutX="877.0" layoutY="316.0" prefHeight="51.0" prefWidth="327.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label layoutX="716.0" layoutY="400.0" prefHeight="53.0" prefWidth="270.0" text="Subgroup of:">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
 </Pane>

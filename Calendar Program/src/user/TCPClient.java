@@ -28,7 +28,7 @@ public class TCPClient {
 	}
 	
 	public boolean validLogin(String username, String password) throws IOException  {
-		String command = ServerCodes.LOGIN;
+		String command = ServerCodes.Login;
 		String raw = command + splitChar + "('" + username + "', '" + password + "')";
 		
 		outToServer.write(raw + "\n");
