@@ -28,6 +28,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -58,6 +59,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private ListView<String> groupField;
 	@FXML
 	private TextField txtSize;
+	@FXML
+	private Label RoomLabel;
 	
 	private String startTime = null;
 	private String endTime = null;
@@ -70,6 +73,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new Appointment();
+		roomField.setVisible(false);
+		RoomLabel.setVisible(false);
 		
 		try {
 			fetchData();
@@ -89,9 +94,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
 				startTime=timeStart.getText();
 				valid = true;
-				System.out.println("kjsdbvbdskv");
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
-					System.out.println("Gikk inn i if");
 					try {
 						addRooms();
 					} catch (Exception e) {
@@ -109,7 +112,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				endTime=timeEnd.getText();
 				valid = true;
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
-					System.out.println("Gikk inn i if");
 					try {
 						addRooms();
 					} catch (Exception e) {
@@ -125,10 +127,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			if (validate(newValue, "[0-9]+", txtSize, null, null)) {
 				if(!newValue.contains("0") && Integer.parseInt(newValue)>0) {
 					size=txtSize.getText();
-					System.out.println(size);
 					valid = true;
 					if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
-						System.out.println("Gikk inn i if");
 						try {
 							addRooms();
 						} catch (Exception e) {
@@ -151,7 +151,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					dpStart.setStyle("-fx-control-inner-background: #FBB;");
 					valid = false;
 					if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
-						System.out.println("Gikk inn i if");
 						try {
 							addRooms();
 						} catch (Exception e) {
@@ -271,6 +270,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private void addRooms() throws IOException {
+		roomField.setVisible(true);
+		RoomLabel.setVisible(true);
 		String end = endTime.substring(0, 2) + endTime.substring(3, 5);
 		String start = startTime.substring(0, 2) + startTime.substring(3, 5);
 		String dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 9);
