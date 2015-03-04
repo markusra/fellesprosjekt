@@ -73,7 +73,7 @@
                   <Font size="24.0" />
                </font>
             </PasswordField>
-            <Button fx:id="registerButton" layoutX="862.0" layoutY="791.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="215.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
+            <Button fx:id="registerButton" layoutX="862.0" layoutY="791.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="59.0" prefWidth="215.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
