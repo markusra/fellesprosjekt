@@ -23,7 +23,9 @@ public class Main extends Application {
 		    Scene scene = new Scene(root,1024,576);
 		    
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		    scene.getStylesheets().add("application.css");
+		    
+		    //TODO: Må endre til bare "application.css" når produktet leveres
+		    scene.getStylesheets().add("//src/application.css");
 			
 		    primaryStage.setScene(scene);
 			primaryStage.setTitle("Appointment");

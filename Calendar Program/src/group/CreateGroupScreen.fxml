@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.GroupScreenController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" layoutX="-38.0" layoutY="24.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0">
          <rotationAxis>
             <Point3D />
          </rotationAxis>
@@ -51,7 +51,7 @@
       </Label>
       <TextField fx:id="txtGroupName" layoutX="849.0" layoutY="307.0" prefHeight="66.0" prefWidth="354.0" promptText="Type a groupname">
          <font>
-            <Font size="35.0" />
+            <Font size="30.0" />
          </font>
       </TextField>
       <Label layoutX="716.0" layoutY="400.0" prefHeight="53.0" prefWidth="195.0" text="Subgroup of:">

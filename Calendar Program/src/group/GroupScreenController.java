@@ -119,6 +119,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		lvGroupmember.setStyle("-fx-font-size:30;");
 		cmbSubgroupOf.setStyle("-fx-font-size:30;");
+		txtGroupName.setStyle("-fx-font-size:30;");
 		
 		lvGroupmember.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
