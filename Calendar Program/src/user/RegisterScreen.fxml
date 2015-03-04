@@ -15,72 +15,72 @@
       <Pane prefHeight="1080.0" prefWidth="1920.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="535.0" layoutX="567.0" layoutY="336.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="565.0" layoutX="567.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="723.0" layoutY="214.0" stroke="BLACK" strokeType="INSIDE" width="474.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="723.0" layoutY="158.0" stroke="BLACK" strokeType="INSIDE" width="474.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label layoutX="845.0" layoutY="219.0" text="REGISTER" textFill="WHITE">
+            <Label layoutX="845.0" layoutY="163.0" text="REGISTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="54.0" />
                </font>
             </Label>
-            <Label layoutX="611.0" layoutY="358.0" prefHeight="53.0" prefWidth="320.0" text="First name:">
+            <Label layoutX="611.0" layoutY="319.0" prefHeight="53.0" prefWidth="320.0" text="First name:">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="611.0" layoutY="430.0" prefHeight="53.0" prefWidth="270.0" text="Last name:">
+            <Label layoutX="611.0" layoutY="391.0" prefHeight="53.0" prefWidth="270.0" text="Last name:">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="firstNameField" layoutX="971.0" layoutY="358.0" prefHeight="53.0" prefWidth="298.0">
+            <TextField fx:id="firstNameField" layoutX="971.0" layoutY="319.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
-            <ImageView fx:id="imgFirstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgFirstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgLastNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgLastNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgEmailInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgEmailInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <Label layoutX="611.0" layoutY="501.0" prefHeight="53.0" prefWidth="270.0" text="Email:">
+            <Label layoutX="611.0" layoutY="462.0" prefHeight="53.0" prefWidth="270.0" text="Email:">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="611.0" layoutY="572.0" prefHeight="53.0" prefWidth="270.0" text="Username:">
+            <Label layoutX="611.0" layoutY="533.0" prefHeight="53.0" prefWidth="270.0" text="Username:">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgPassInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgPassInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="createPasswordField" layoutX="970.0" layoutY="640.0" prefHeight="53.0" prefWidth="298.0">
+            <PasswordField fx:id="createPasswordField" layoutX="970.0" layoutY="601.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -88,41 +88,46 @@
                   <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
                </tooltip>
             </PasswordField>
-            <Label layoutX="611.0" layoutY="642.0" prefHeight="53.0" prefWidth="270.0" text="Password:">
+            <Label layoutX="611.0" layoutY="603.0" prefHeight="53.0" prefWidth="270.0" text="Password:">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="611.0" layoutY="713.0" prefHeight="53.0" prefWidth="335.0" text="Confirm password:">
+            <Label layoutX="611.0" layoutY="674.0" prefHeight="53.0" prefWidth="335.0" text="Confirm password:">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <PasswordField fx:id="confirmPasswordField" layoutX="970.0" layoutY="711.0" prefHeight="53.0" prefWidth="298.0">
+            <PasswordField fx:id="confirmPasswordField" layoutX="970.0" layoutY="672.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
             </PasswordField>
-            <Button fx:id="registerButton" layoutX="862.0" layoutY="791.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="215.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
+            <Button fx:id="registerButton" layoutX="853.0" layoutY="750.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="215.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <TextField fx:id="lastNameField" layoutX="971.0" layoutY="428.0" prefHeight="53.0" prefWidth="298.0">
+            <TextField fx:id="lastNameField" layoutX="971.0" layoutY="389.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
-            <TextField fx:id="emailField" layoutX="971.0" layoutY="500.0" prefHeight="53.0" prefWidth="298.0">
+            <TextField fx:id="emailField" layoutX="971.0" layoutY="461.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
-            <TextField fx:id="createUsernameField" layoutX="971.0" layoutY="570.0" prefHeight="53.0" prefWidth="298.0">
+            <TextField fx:id="createUsernameField" layoutX="971.0" layoutY="531.0" prefHeight="53.0" prefWidth="298.0">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
+            <Button fx:id="back" layoutX="825.0" layoutY="872.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="270.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets top="-1000.0" />
