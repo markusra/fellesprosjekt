@@ -54,7 +54,7 @@
             <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
          </tooltip>
       </PasswordField>
-      <CheckBox fx:id="rememberCheck" layoutX="971.0" layoutY="549.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="241.0" text="Remember me">
+      <CheckBox fx:id="rememberMeCheckBox" layoutX="971.0" layoutY="549.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="241.0" text="Remember me">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -74,7 +74,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" layoutX="563.0" layoutY="710.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
+      <Button fx:id="registerButton" layoutX="563.0" layoutY="710.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

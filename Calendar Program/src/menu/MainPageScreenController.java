@@ -19,8 +19,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	Button createAppointmentButton;
 	
 	
-	private void handleCreateAppointmentButtonAction(ActionEvent event) {
+	public void handleCreateAppointmentButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.appointmentID);
+	}
+	
+	public void handleCreateGroupButtonAction(ActionEvent event) {
+		mainController.setScreen(Main.groupID);
 	}
 	
 	
