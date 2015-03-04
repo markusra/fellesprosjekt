@@ -23,7 +23,7 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label layoutX="737.0" layoutY="347.0" text="REGISTRATION SUCCEEDED" textFill="WHITE">
+            <Label focusTraversable="false" layoutX="737.0" layoutY="347.0" text="REGISTRATION SUCCEEDED" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -43,7 +43,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="backToSignInButton" layoutX="778.0" layoutY="703.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+            <Button fx:id="backToSignInButton" layoutX="778.0" layoutY="703.0" mnemonicParsing="false" onAction="#handleBackToSignInButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
