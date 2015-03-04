@@ -47,7 +47,6 @@ public class ScreensController extends StackPane {
 			e.printStackTrace();
 			System.out.println("ScreensController.loadScreen failed!");
 		}
-		
 	}
 	
 	

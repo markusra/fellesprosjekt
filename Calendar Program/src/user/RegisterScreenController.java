@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import program.ControllerInterface;
+import program.Main;
 import program.ScreensController;
 
 public class RegisterScreenController implements Initializable, ControllerInterface {
@@ -32,11 +33,18 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	PasswordField confirmPasswordField;
 	@FXML
 	Button registerButton;
+	@FXML
+	Button backToSignInButton;
 	
 	
 	@FXML
 	public void handleRegisterButtonAction (ActionEvent event) {
-		
+	}
+	
+	
+	@FXML
+	public void handleBackToSignInButtonAction (ActionEvent event) {
+		mainController.setScreen(Main.loginID);
 	}
 	
 	
@@ -47,5 +55,6 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 	}
 }
