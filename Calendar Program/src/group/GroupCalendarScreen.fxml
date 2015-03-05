@@ -13,53 +13,28 @@
 <Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainPageScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="623.0" layoutX="50.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1564.0" layoutY="441.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1565.0" layoutY="382.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="1565.0" layoutY="225.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1565.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Rectangle>
-      <AnchorPane layoutX="514.0" layoutY="4.0" prefHeight="1068.0" prefWidth="1244.0">
+      <AnchorPane layoutX="103.0" layoutY="6.0" prefHeight="1068.0" prefWidth="1244.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="896.0" layoutX="146.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" width="771.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="896.0" layoutX="146.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" width="979.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <GridPane gridLinesVisible="true" layoutX="146.0" layoutY="133.0" prefHeight="896.0" prefWidth="771.0">
+            <GridPane gridLinesVisible="true" layoutX="146.0" layoutY="133.0" prefHeight="896.0" prefWidth="979.0">
                <children>
                   <GridPane>
                      <children>
-                        <Text fx:id="mondayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="mondayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <Text fx:id="mondayDate" layoutX="10.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="mondayDate" layoutX="10.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
                         </Text>
-                        <Text layoutX="10.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MONDAY" textAlignment="CENTER" wrappingWidth="198.205078125" GridPane.rowIndex="1">
+                        <Text layoutX="10.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MONDAY" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -177,17 +152,17 @@
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
                      <children>
-                        <Text fx:id="tuesdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="tuesdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
                         </Text>
-                        <Text fx:id="tuesdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="tuesdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TUESDAY" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TUESDAY" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -207,17 +182,17 @@
                   </GridPane>
                   <GridPane GridPane.rowIndex="2">
                      <children>
-                        <Text fx:id="wednesdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="wednesdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WEDNESDAY" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WEDNESDAY" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="wednesdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="198.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="wednesdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
@@ -237,17 +212,17 @@
                   </GridPane>
                   <GridPane GridPane.rowIndex="3">
                      <children>
-                        <Text fx:id="thursdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="thursdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <Text fx:id="thursdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="thursdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="242.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THURSDAY" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THURSDAY" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -267,17 +242,17 @@
                   </GridPane>
                   <GridPane layoutX="10.0" layoutY="451.0" GridPane.rowIndex="4">
                      <children>
-                        <Text fx:id="fridayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="fridayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="239.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FRIDAY" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FRIDAY" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="fridayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="fridayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -297,17 +272,17 @@
                   </GridPane>
                   <GridPane layoutX="10.0" layoutY="598.0" GridPane.rowIndex="5">
                      <children>
-                        <Text fx:id="saturdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="197.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="saturdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SATURDAY" textAlignment="CENTER" wrappingWidth="198.205078125" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SATURDAY" textAlignment="CENTER" wrappingWidth="242.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="saturdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="saturdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
@@ -327,17 +302,17 @@
                   </GridPane>
                   <GridPane layoutX="10.0" layoutY="745.0" GridPane.rowIndex="6">
                      <children>
-                        <Text fx:id="sundayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="3">
+                        <Text fx:id="sundayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="54.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SUNDAY" textAlignment="CENTER" wrappingWidth="195.205078125" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SUNDAY" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="sundayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="196.205078125" GridPane.rowIndex="4">
+                        <Text fx:id="sundayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="242.205078125" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -946,8 +921,8 @@
                   </GridPane>
                </children>
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="197.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="10.0" prefWidth="574.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="148.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="10.0" prefWidth="403.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
@@ -961,24 +936,24 @@
             </GridPane>
             <AnchorPane layoutX="146.0" layoutY="-20.0" prefHeight="80.0" prefWidth="429.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="771.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="979.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Text fill="WHITE" layoutX="233.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK" textAlignment="CENTER" wrappingWidth="186.0">
+                  <Text fill="WHITE" layoutX="356.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK" textAlignment="CENTER" wrappingWidth="186.0">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Text>
-                  <Text fx:id="weekNumber" fill="WHITE" layoutX="375.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="139.0">
+                  <Text fx:id="weekNumber" fill="WHITE" layoutX="498.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="139.0">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="925.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="1130.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow />
                </effect>
@@ -996,88 +971,71 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1564.0" layoutY="611.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="1394.0" layoutY="277.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="1575.0" layoutY="615.0" text="APPOINTMENTS" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1393.0" layoutY="493.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1394.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="1503.0" layoutY="221.0" text="ALERTS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="138.0" layoutX="1563.0" layoutY="670.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1394.0" layoutY="434.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Button fx:id="createAppointmentButton" layoutX="1584.0" layoutY="690.0" mnemonicParsing="false" onAction="#handleCreateAppointmentButtonAction" prefHeight="44.0" prefWidth="260.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+      <Label layoutX="1437.0" layoutY="438.0" text="NOTIFICATIONS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1395.0" layoutY="660.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="1433.0" layoutY="664.0" text="APPOINTMENTS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="79.0" layoutX="1394.0" layoutY="719.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Button layoutX="1418.0" layoutY="736.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="VIEW APPOINTMENTS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="1583.0" layoutY="743.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="260.0" style="-fx-background-color: #69696b;" text="VIEW APPOINTMENTS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="1560.0" layoutY="859.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="304.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
+      <Button layoutX="1394.0" layoutY="863.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
       </Button>
-      <Label layoutX="1581.0" layoutY="386.0" text="NOTIFICATIONS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="1647.0" layoutY="169.0" text="ALERTS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Button fx:id="changeGroup" layoutX="76.0" layoutY="831.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="217.0" style="-fx-background-color: #69696b;" text="CHANGE" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Button>
-      <Button fx:id="deleteGroup" layoutX="302.0" layoutY="831.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="198.0" style="-fx-background-color: #69696b;" text="DELETE" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Button>
-      <Label layoutX="73.0" layoutY="412.0" prefHeight="53.0" prefWidth="195.0" text="Subgroup of:">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="74.0" layoutY="478.0" prefHeight="53.0" prefWidth="344.0" text="Choose members:">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="51.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8b8c3" height="60.0" layoutX="1394.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="164.0" layoutY="203.0" text="MANAGE" textFill="WHITE">
+      <Label layoutX="1456.0" layoutY="130.0" text="GROUPNAME" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="54.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="74.0" layoutY="327.0" prefHeight="53.0" prefWidth="128.0" text="Name:">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <ListView fx:id="lvGroupmember" layoutX="76.0" layoutY="533.0" prefHeight="279.0" prefWidth="426.0" />
-      <TextField layoutX="188.0" layoutY="323.0" prefHeight="65.0" prefWidth="312.0" text="Old name">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </TextField>
-      <ComboBox layoutX="270.0" layoutY="410.0" prefHeight="53.0" prefWidth="234.0" promptText="Choose a group" />
    </children>
    <padding>
       <Insets top="-1000.0" />
