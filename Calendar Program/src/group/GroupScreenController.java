@@ -41,7 +41,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 	@FXML
 	private void doConfirm() {
-		
+		System.out.println("CONFIRM");
 	}
 
 	@Override
@@ -61,6 +61,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		groupList = new ArrayList<>();
 		
+		groupList.add("None");
 		for( JsonValue value : jsonArray ) {
 			String gruppeNavn = value.asObject().get( "navn" ).asString();
 			groupList.add(gruppeNavn);
@@ -91,7 +92,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			userList.add(temp);
 		}
 		
-		System.out.println(availableUsers.get("markusra"));
+		System.out.println(availableUsers.get( "markusra" ));
 		
 		myObservableList = FXCollections.observableList(userList);
 	    lvGroupmember.setItems(myObservableList);
