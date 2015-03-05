@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <AnchorPane>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="764.0" layoutX="591.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutX="592.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Text fill="WHITE" layoutX="609.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW APPOINTMENTS" textAlignment="CENTER" wrappingWidth="654.0">
+               <font>
+                  <Font name="System Bold" size="54.0" />
+               </font>
+            </Text>
+            <Button layoutX="752.0" layoutY="936.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="42.0" />
+               </font>
+            </Button>
+            <ListView layoutX="628.0" layoutY="216.0" prefHeight="675.0" prefWidth="607.0" />
+            <Text layoutX="618.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEKDAY DATE" textAlignment="CENTER" wrappingWidth="654.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
