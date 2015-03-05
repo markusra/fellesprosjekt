@@ -22,7 +22,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <ComboBox fx:id="cmbSubgroupOf" layoutX="961.0" layoutY="378.0" prefHeight="51.0" prefWidth="280.0" promptText="Choose a group" />
+      <ComboBox fx:id="cmbSubgroupOf" layoutX="961.0" layoutY="376.0" prefHeight="53.0" prefWidth="280.0" promptText="Choose a group" />
       <Button fx:id="createGroup" layoutX="839.0" layoutY="801.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="327.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -49,7 +49,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtGroupName" layoutX="887.0" layoutY="283.0" prefHeight="66.0" prefWidth="354.0" promptText="Type a groupname">
+      <TextField fx:id="txtGroupName" layoutX="887.0" layoutY="286.0" prefHeight="21.0" prefWidth="354.0" promptText="Type a groupname">
          <font>
             <Font size="30.0" />
          </font>
