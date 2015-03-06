@@ -28,11 +28,13 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	@FXML
 	private PasswordField passwordField;
 	@FXML
+	private CheckBox rememberMeCheckBox;
+	@FXML
 	private Button loginButton;
 	@FXML
-	private Button forgotButton;
+	private Button registerButton;
 	@FXML
-	private CheckBox rememberMeCheckBox;
+	private Button forgotButton;
 	
 	
 	@FXML
