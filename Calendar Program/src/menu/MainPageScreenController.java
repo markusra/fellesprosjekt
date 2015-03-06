@@ -18,6 +18,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	Button createAppointmentButton;
 	
+	@FXML
+	Button viewGroupsButton;
 	
 	public void handleCreateAppointmentButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.appointmentID);
@@ -27,6 +29,13 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		mainController.setScreen(Main.groupID);
 	}
 	
+	public void handleViewGroupsButtonAction(ActionEvent event) {
+		mainController.setScreen(Main.viewGroupsID);
+	}
+	
+	public void handleSignOutButtonAction(ActionEvent event){
+		mainController.setScreen(Main.loginID);
+	}
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
