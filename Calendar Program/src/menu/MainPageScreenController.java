@@ -27,6 +27,9 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		mainController.setScreen(Main.groupID);
 	}
 	
+	public void handleSignOutButtonAction(ActionEvent event){
+		mainController.setScreen(Main.loginID);
+	}
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {

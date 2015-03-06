@@ -1046,7 +1046,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="signOutButton" layoutX="1392.0" layoutY="934.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="SIGN OUT" textFill="WHITE">
+      <Button fx:id="signOutButton" layoutX="1392.0" layoutY="934.0" mnemonicParsing="false" onAction="#handleSignOutButtonAction" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="SIGN OUT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
