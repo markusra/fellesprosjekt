@@ -1036,7 +1036,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="viewGroupsButton1" layoutX="1415.0" layoutY="812.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="VIEW GROUPS" textFill="WHITE">
+      <Button fx:id="viewGroupsButton" layoutX="1415.0" layoutY="812.0" mnemonicParsing="false" onAction="#handleViewGroupsButtonAction" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="VIEW GROUPS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

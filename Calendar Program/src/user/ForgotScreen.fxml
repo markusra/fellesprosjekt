@@ -44,7 +44,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="back" layoutX="810.0" layoutY="651.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="324.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+            <Button fx:id="back" layoutX="810.0" layoutY="651.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="54.0" prefWidth="324.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
