@@ -15,9 +15,9 @@ import java.util.regex.Pattern;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
-import program.ServerCodes;
-import user.TCPClient;
 import appointment.Appointment;
+import client.ServerCodes;
+import client.TCPClient;
 
 import com.sun.org.apache.xml.internal.security.Init;
 

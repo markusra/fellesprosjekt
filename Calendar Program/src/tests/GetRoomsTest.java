@@ -2,8 +2,8 @@ package tests;
 
 import java.io.IOException;
 
-import program.ServerCodes;
-import user.TCPClient;
+import client.ServerCodes;
+import client.TCPClient;
 
 public class GetRoomsTest {
 

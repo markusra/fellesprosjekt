@@ -2,7 +2,7 @@ package tests;
 
 import java.io.IOException;
 
-import user.TCPClient;
+import client.TCPClient;
 
 public class GetAllUsersTest {
 

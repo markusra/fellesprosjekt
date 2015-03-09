@@ -58,7 +58,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private void handleRegisterButtonAction (ActionEvent event) throws UnknownHostException, IOException {
 		if (isValidName(firstNameField.getText()) && isValidName(lastNameField.getText()) && isValidEmail(emailField.getText()) && isValidUsername(usernameField.getText()) && isValidPassword(passwordField.getText()) && isValidPassword(confirmPasswordField.getText()) && confirmPasswordField.getText().equalsIgnoreCase(passwordField.getText())) {
 			TCPClient client = new TCPClient();
-			//TODO add sjekk mot database for å sjekke at brukernavn/epost ikke er opptatt
+			//TODO add sjekk mot database for aa sjekke at brukernavn/epost ikke er opptatt
 			
 			//TODO add registrering av bruker med info
 			

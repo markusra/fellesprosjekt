@@ -1,4 +1,4 @@
-package program;
+package client;
 
 public final class ServerCodes {
 	
