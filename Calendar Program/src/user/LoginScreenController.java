@@ -1,34 +1,38 @@
 package user;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.prefs.Preferences;
 
-import program.ControllerInterface;
-import program.Main;
-import program.ScreensController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import program.ControllerInterface;
+import program.Main;
+import program.ScreensController;
 
 public class LoginScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
+	Preferences prefs = Preferences.userNodeForPackage(getClass());
 		
 	@FXML
 	private TextField usernameField;
 	@FXML
 	private PasswordField passwordField;
 	@FXML
+	private CheckBox rememberMeCheckBox;
+	@FXML
 	private Button loginButton;
+	@FXML
+	private Button registerButton;
 	@FXML
 	private Button forgotButton;
 	
@@ -37,11 +41,29 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
 		TCPClient client = new TCPClient();
 		if (client.validLogin(usernameField.getText(), passwordField.getText())) {
+			if (rememberMeCheckBox.isSelected()) {
+				prefs.put("username", usernameField.getText());
+				//TODO husk aa fjerne linjen under naar vi skal levere inn
+				prefs.put("password", passwordField.getText());
+				prefs.putBoolean("checkBox", true);
+			}
+			else {
+				prefs.put("username", "");
+				//TODO husk aa fjerne linjen under naar vi skal levere inn
+				prefs.put("password", "");
+				prefs.putBoolean("checkBox", false);
+			}
 			System.out.println("Successful login!");
 			mainController.setScreen(Main.mainPageID);
-		} else {
+		}
+		else {
 			mainController.setScreen(Main.loginFailedID);
 		}
+	}
+	
+	@FXML
+	private void handleRegisterButtonAction (ActionEvent event) {
+		mainController.setScreen(Main.registerID);
 	}
 	
 	@FXML
@@ -50,31 +72,34 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	}
 
 	@Override
-	public void setScreenParent(ScreensController screenParent) {
+	public void setScreenParent (ScreensController screenParent) {
 		mainController = screenParent;
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize (URL arg0, ResourceBundle arg1) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 				usernameField.requestFocus();
 			}
 		});
-		InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream("/resources/settings.cfg"));
-		Scanner scanner = new Scanner(in);
-		while (scanner.hasNextLine()) {
-			if (scanner.nextLine().equalsIgnoreCase("true")) {
-				usernameField.setText(scanner.nextLine());
-				Platform.runLater(new Runnable() {
-					@Override
-					public void run() {
-						passwordField.requestFocus();
-					}
-				});
-			}
+		if (prefs.getBoolean("checkBox", false) == true) {
+			usernameField.setText(prefs.get("username", ""));
+			//TODO husk aa fjerne linjen under naar vi skal levere inn
+			passwordField.setText(prefs.get("password", ""));
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					//TODO husk aa endre til passwordField fra loginButton naar vi skal levere inn
+					loginButton.requestFocus();
+				}
+			});
+			rememberMeCheckBox.setSelected(true);
 		}
-		scanner.close();			
+		else {
+			usernameField.requestFocus();
+			rememberMeCheckBox.setSelected(false);
+		}
 	}	
 }

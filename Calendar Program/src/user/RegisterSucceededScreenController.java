@@ -3,22 +3,23 @@ package user;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import program.ControllerInterface;
-import program.Main;
-import program.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import program.ControllerInterface;
+import program.Main;
+import program.ScreensController;
 
-public class LoginFailedScreenController implements Initializable, ControllerInterface {
+public class RegisterSucceededScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
 	
 	@FXML
-	private Button tryAgainButton;
+	Button backToSignInButton;
 	
-	public void handleTryAgainButtonAction(ActionEvent event) {
+	@FXML
+	public void handleBackToSignInButton (ActionEvent event) {
 		mainController.setScreen(Main.loginID);
 	}
 	
@@ -28,9 +29,8 @@ public class LoginFailedScreenController implements Initializable, ControllerInt
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

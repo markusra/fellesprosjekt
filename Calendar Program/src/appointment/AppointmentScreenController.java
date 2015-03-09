@@ -3,6 +3,7 @@ package appointment;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -27,6 +28,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -50,18 +52,20 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@FXML
 	private TextField timeEnd;
 	@FXML
-	private ComboBox roomField;
+	private ComboBox<String> roomField;
 	@FXML
 	private ListView<String> invitedField;
 	@FXML
 	private ListView<String> groupField;
 	@FXML
 	private TextField txtSize;
+	@FXML
+	private Label RoomLabel;
 	
-	private String startTime;
-	private String endTime;
-	private LocalDate date;
-	private String size;
+	private String startTime = null;
+	private String endTime = null;
+	private LocalDate date = null;
+	private String size = null;
 	
 	
 	private boolean valid=true;
@@ -69,8 +73,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new Appointment();
-		model.setStart("00:00");
-		model.setEnd("23:59");
+		roomField.setVisible(false);
+		RoomLabel.setVisible(false);
 		
 		try {
 			fetchData();
@@ -79,8 +83,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			e.printStackTrace();
 		}
 		
-		timeStart.setText(model.getStart());
-		timeEnd.setText(model.getEnd());
+		timeStart.setText("00:00");
+		timeEnd.setText("23:59");
 		createListeners();
 	}
 	
@@ -90,6 +94,14 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
 				startTime=timeStart.getText();
 				valid = true;
+				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
+					try {
+						addRooms();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			} else {
 				valid = false;
 			}
@@ -99,6 +111,14 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
 				valid = true;
+				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
+					try {
+						addRooms();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			} else {
 				valid = false;
 			}
@@ -107,8 +127,15 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			if (validate(newValue, "[0-9]+", txtSize, null, null)) {
 				if(!newValue.contains("0") && Integer.parseInt(newValue)>0) {
 					size=txtSize.getText();
-					System.out.println(size);
 					valid = true;
+					if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
+						try {
+							addRooms();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				} else {
 					valid = false;
 					txtSize.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
@@ -123,6 +150,14 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				if (today.compareTo(t1) > 0){
 					dpStart.setStyle("-fx-control-inner-background: #FBB;");
 					valid = false;
+					if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
+						try {
+							addRooms();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
 				else {
 					dpStart.setStyle("-fx-control-inner-background: white;");
@@ -215,8 +250,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		ObservableList<String> items =FXCollections.observableArrayList (userList);
 		invitedField.setItems(items);
 		
-		////Må finne en måte å sette font size i cellene 
-		
 		
 		//Henter grupper
 		serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
@@ -233,10 +266,33 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		ObservableList<String> myObservableList = FXCollections.observableList(groupList);
 	    groupField.setItems(myObservableList);
+	    
 	}
 	
 	private void addRooms() throws IOException {
+		roomField.setVisible(true);
+		RoomLabel.setVisible(true);
+		String end = endTime.substring(0, 2) + endTime.substring(3, 5);
+		String start = startTime.substring(0, 2) + startTime.substring(3, 5);
+		String dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 9);
 		
+		String ready = dato + start + ", " + dato + end + ", " + size; 
+		
+		TCPClient client = new TCPClient();
+		String serverReply = client.customQuery(ServerCodes.GetFilteredRooms, ready);
+		String[] answer = serverReply.split("#");
+	    answer = serverReply.split("#");
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		List<String> roomList = new ArrayList<>();
+		
+		for( JsonValue value : jsonArray ) {
+			String gruppeNavn = value.asObject().get( "navn" ).asString();
+			roomList.add(gruppeNavn);
+		}
+		
+		ObservableList<String> myObservableList2 = FXCollections.observableList(roomList);
+		roomField.setItems(myObservableList2);
 	}
 
 	@Override

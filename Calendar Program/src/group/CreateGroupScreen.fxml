@@ -17,48 +17,53 @@
             <Point3D />
          </rotationAxis>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="637.0" layoutX="679.0" layoutY="282.0" stroke="BLACK" strokeType="INSIDE" width="565.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="637.0" layoutX="717.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="565.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <ComboBox fx:id="cmbSubgroupOf" layoutX="972.0" layoutY="400.0" prefHeight="51.0" prefWidth="228.0" />
-      <Button fx:id="createGroup" layoutX="801.0" layoutY="825.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="327.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
+      <ComboBox fx:id="cmbSubgroupOf" layoutX="961.0" layoutY="358.0" prefHeight="53.0" prefWidth="280.0" promptText="Choose a group" />
+      <Button fx:id="createGroup" layoutX="839.0" layoutY="783.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="327.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
-      <ListView fx:id="lvGroupmember" layoutX="716.0" layoutY="547.0" prefHeight="243.0" prefWidth="489.0" />
-      <Label layoutX="716.0" layoutY="315.0" prefHeight="53.0" prefWidth="320.0" text="Name:">
+      <ListView fx:id="lvGroupmember" layoutX="754.0" layoutY="505.0" prefHeight="243.0" prefWidth="489.0" />
+      <Label layoutX="754.0" layoutY="273.0" prefHeight="53.0" prefWidth="128.0" text="Name:">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="744.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="431.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="782.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="431.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="798.0" layoutY="171.0" text="NEW GROUP" textFill="WHITE">
+      <Label layoutX="836.0" layoutY="129.0" text="NEW GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="54.0" />
          </font>
       </Label>
-      <Label layoutX="716.0" layoutY="478.0" prefHeight="53.0" prefWidth="344.0" text="Choose members:">
+      <Label layoutX="754.0" layoutY="436.0" prefHeight="53.0" prefWidth="344.0" text="Choose members:">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtGroupName" layoutX="877.0" layoutY="316.0" prefHeight="51.0" prefWidth="327.0">
+      <TextField fx:id="txtGroupName" layoutX="887.0" layoutY="268.0" prefHeight="21.0" prefWidth="354.0" promptText="Type a groupname">
          <font>
-            <Font size="24.0" />
+            <Font size="30.0" />
          </font>
       </TextField>
-      <Label layoutX="716.0" layoutY="400.0" prefHeight="53.0" prefWidth="270.0" text="Subgroup of:">
+      <Label layoutX="754.0" layoutY="358.0" prefHeight="53.0" prefWidth="195.0" text="Subgroup of:">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
+      <Button fx:id="backToSignInButton" layoutX="862.0" layoutY="906.0" mnemonicParsing="false" onAction="#handleBackToSignInButtonAction" prefHeight="59.0" prefWidth="270.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Button>
    </children>
    <rotationAxis>
       <Point3D />

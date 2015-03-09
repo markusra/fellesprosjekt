@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane>
+         <children>
+            <Pane prefHeight="1080.0" prefWidth="1920.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="644.0" layoutX="566.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="813.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="655.0" layoutY="162.0" stroke="BLACK" strokeType="INSIDE" width="615.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label layoutX="691.0" layoutY="167.0" text="VIEW APPOINTMENT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="54.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="318.0" prefHeight="53.0" prefWidth="320.0" text="Title:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="398.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="613.0" layoutY="535.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="updateAppointment" layoutX="852.0" layoutY="817.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="232.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="1008.0" layoutY="535.0" prefHeight="53.0" prefWidth="112.0" text="From:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1196.0" layoutY="535.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="738.0" layoutY="466.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="737.0" layoutY="318.0" prefHeight="53.0" prefWidth="515.0" text="Title of the appointment">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="737.0" layoutY="398.0" prefHeight="53.0" prefWidth="515.0" text="Place of the appointment">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="854.0" layoutY="466.0" prefHeight="53.0" prefWidth="515.0" text="Room of the appointment if chosen">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="737.0" layoutY="535.0" prefHeight="53.0" prefWidth="189.0" text="Date">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1086.0" layoutY="535.0" prefHeight="53.0" prefWidth="121.0" text="From">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1246.0" layoutY="535.0" prefHeight="53.0" prefWidth="121.0" text="To">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="613.0" layoutY="618.0" prefHeight="53.0" prefWidth="402.0" text="Status of participation:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="attendField" layoutX="1118.0" layoutY="618.0" prefHeight="53.0" prefWidth="210.0" promptText="Choose status" />
+                  <Label layoutX="613.0" layoutY="710.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="alertField" layoutX="1118.0" layoutY="710.0" prefHeight="53.0" prefWidth="210.0" promptText="Set alert if desired" />
+               </children>
+               <padding>
+                  <Insets top="-1000.0" />
+               </padding>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</Pane>

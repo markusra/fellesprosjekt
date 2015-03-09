@@ -41,7 +41,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 	@FXML
 	private void doConfirm() {
-		
+		System.out.println("CONFIRM");
 	}
 
 	@Override
@@ -61,6 +61,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		groupList = new ArrayList<>();
 		
+		groupList.add("None");
 		for( JsonValue value : jsonArray ) {
 			String gruppeNavn = value.asObject().get( "navn" ).asString();
 			groupList.add(gruppeNavn);
@@ -91,7 +92,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			userList.add(temp);
 		}
 		
-		System.out.println(availableUsers.get("markusra"));
+		System.out.println(availableUsers.get( "markusra" ));
 		
 		myObservableList = FXCollections.observableList(userList);
 	    lvGroupmember.setItems(myObservableList);
@@ -117,6 +118,10 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
+		lvGroupmember.setStyle("-fx-font-size:30;");
+		cmbSubgroupOf.setStyle("-fx-font-size:30;");
+		txtGroupName.setStyle("-fx-font-size:30;");
+		
 		lvGroupmember.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		try {
@@ -130,6 +135,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		}
 		
 		createListeners();
+		
+		
 
 	}
 }
