@@ -24,7 +24,7 @@ public class Main extends Application {
 		    
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		    
-		    //TODO: Må endre til bare "application.css" når produktet leveres
+		    //TODO: Må endre til bare "application.css" når prosjektet leveres
 		    scene.getStylesheets().add("//src/application.css");
 			
 		    primaryStage.setScene(scene);

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
+import client.ServerCodes;
 import client.TCPClient;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,6 +17,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import json.JsonArray;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
@@ -56,13 +58,24 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	private void handleRegisterButtonAction (ActionEvent event) throws UnknownHostException, IOException {
-		if (isValidName(firstNameField.getText()) && isValidName(lastNameField.getText()) && isValidEmail(emailField.getText()) && isValidUsername(usernameField.getText()) && isValidPassword(passwordField.getText()) && isValidPassword(confirmPasswordField.getText()) && confirmPasswordField.getText().equalsIgnoreCase(passwordField.getText())) {
+		String firstName = firstNameField.getText();
+		String lastName = lastNameField.getText();
+		String email = emailField.getText();
+		String username = usernameField.getText();
+		String password = passwordField.getText();
+		
+		
+		if (isValidName(firstName) && isValidName(lastName) && isValidEmail(email) && isValidUsername(username) && isValidPassword(password) && isValidPassword(confirmPasswordField.getText()) && confirmPasswordField.getText().equalsIgnoreCase(passwordField.getText())) {
 			TCPClient client = new TCPClient();
 			//TODO add sjekk mot database for aa sjekke at brukernavn/epost ikke er opptatt
 			
-			//TODO add registrering av bruker med info
+			String serverReply = client.customQuery(ServerCodes.CreateUser, "'" + username + "', '" + password + "', '" + email + "', '" + firstName + "', '" + lastName + "'");
+			String[] answer= serverReply.split("#");
 			
-			mainController.setScreen(Main.registerSucceededID);
+			if (! answer[1].contains("duplicateEntry")) {
+				mainController.setScreen(Main.registerSucceededID);			
+			}
+			
 		}
 	}
 	
@@ -184,7 +197,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidName (String name) {
 		char[] chars = name.toCharArray();
 	    for (char c : chars) {
-	        if((!Character.isLetter(c) && !Character.isWhitespace(c) && c != '-') || c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
+	        if((!Character.isLetter(c) && !Character.isWhitespace(c) && c != '-') || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || chars.length > 255) {
 	            return false;
 	        }
 	    }
@@ -195,7 +208,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidEmail (String email) {
 		char[] chars = email.toCharArray();
 		for (char c : chars) {
-			if((!Character.isLetterOrDigit(c) && c != '.' && c != '@') || c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
+			if((!Character.isLetterOrDigit(c) && c != '.' && c != '@') || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || chars.length > 255) {
 				return false;
 			}
 		}
@@ -210,7 +223,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidUsername (String username) {
 		char[] chars = username.toCharArray();
 		for (char c : chars) {
-			if(!Character.isLetterOrDigit(c) || c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
+			if(!Character.isLetterOrDigit(c) || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || chars.length > 255) {
 				return false;
 			}
 		}
@@ -226,7 +239,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidPassword (String password) {
 		char[] chars = password.toCharArray();
 		for (char c : chars) {
-			if(c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
+			if(c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || c == 'ï¿½' || chars.length > 255) {
 				return false;
 			}
 		}
