@@ -64,9 +64,6 @@
                <font>
                   <Font size="24.0" />
                </font>
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
-               </tooltip>
             </PasswordField>
             <PasswordField fx:id="confirmPasswordField" layoutX="970.0" layoutY="661.0" prefHeight="53.0" prefWidth="298.0">
                <font>

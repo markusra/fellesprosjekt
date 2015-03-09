@@ -194,7 +194,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidName (String name) {
 		char[] chars = name.toCharArray();
 	    for (char c : chars) {
-	        if((!Character.isLetter(c) && !Character.isWhitespace(c) && c != '-') || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || chars.length > 255) {
+	        if((!Character.isLetter(c) && !Character.isWhitespace(c) && c != '-') || c == '\u00E6' || c == '\u00C6' || c == '\u00F8' || c == '\u00D8' || c == '\u00E5' || c == '\u00C5' || chars.length > 255) {
 	            return false;
 	        }
 	    }
@@ -205,7 +205,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidEmail (String email) {
 		char[] chars = email.toCharArray();
 		for (char c : chars) {
-			if((!Character.isLetterOrDigit(c) && c != '.' && c != '@') || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || chars.length > 255) {
+			if((!Character.isLetterOrDigit(c) && c != '.' && c != '@') || c == '\u00E6' || c == '\u00C6' || c == '\u00F8' || c == '\u00D8' || c == '\u00E5' || c == '\u00C5' || chars.length > 255) {
 				return false;
 			}
 		}
@@ -220,7 +220,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidUsername (String username) {
 		char[] chars = username.toCharArray();
 		for (char c : chars) {
-			if(!Character.isLetterOrDigit(c) || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || chars.length > 255) {
+			if(!Character.isLetterOrDigit(c) || c == '\u00E6' || c == '\u00C6' || c == '\u00F8' || c == '\u00D8' || c == '\u00E5' || c == '\u00C5' || chars.length > 255) {
 				return false;
 			}
 		}
@@ -236,7 +236,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidPassword (String password) {
 		char[] chars = password.toCharArray();
 		for (char c : chars) {
-			if(c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || c == '�' || chars.length > 255) {
+			if(c == '\u00E6' || c == '\u00C6' || c == '\u00F8' || c == '\u00D8' || c == '\u00E5' || c == '\u00C5' || chars.length > 255) {
 				return false;
 			}
 		}
