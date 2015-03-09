@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import json.JsonArray;
 import json.JsonValue;
 
-public class ViewGroupsController implements Initializable, ControllerInterface {
+public class ViewGroupsScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
 	
@@ -49,11 +49,6 @@ public class ViewGroupsController implements Initializable, ControllerInterface 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
-		
-		
-		//lvFilteredUsers.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-			
 		
 	}
 }
