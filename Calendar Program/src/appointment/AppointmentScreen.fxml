@@ -117,6 +117,7 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="txtDescription" layoutX="272.0" layoutY="309.0" text="beskrivelse" />
                </children>
                <padding>
                   <Insets top="-1000.0" />

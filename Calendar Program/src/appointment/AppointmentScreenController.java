@@ -2,6 +2,7 @@ package appointment;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -64,12 +65,19 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@FXML
 	private Label RoomLabel;
 	@FXML
+	private TextField txtDescription;
+	@FXML
+	private Button createAppointment;
 	private Button backtoMainPage;
 	
 	private String startTime = null;
 	private String endTime = null;
 	private LocalDate date = null;
 	private String size = null;
+	private String dato = null;
+	private String sendesStart = null;
+	private String sendesEnd = null;
+	TCPClient client;
 	
 	private boolean valid=true;
 	
@@ -85,6 +93,15 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		model = new Appointment();
 		roomField.setVisible(false);
 		RoomLabel.setVisible(false);
+		try {
+			client = new TCPClient();
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			fetchData();
@@ -210,11 +227,16 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private void doConfirm() {
 		Appointment appointment = new Appointment();
 		if (valid) {
-			appointment.setPlace(txtPlace.getText());
-			appointment.setPurpose(txtPurpose.getText());
-			System.out.println("Riktig");
-			System.out.println(model.getStart());
-			System.out.println(model.getEnd());
+			String rom = roomField.getValue();
+			String[] splited = rom.split("\\s+");
+			String romID = splited[1];
+			try {
+				client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
+				System.out.println("Avtale ble satt");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			System.out.println("feil");
 		}
@@ -241,7 +263,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	private void fetchData() throws IOException {
 		//Henter brukere
-		TCPClient client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
 		
 		String[] answer = serverReply.split("#");
@@ -283,8 +304,13 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		roomField.setVisible(true);
 		RoomLabel.setVisible(true);
 		String end = endTime.substring(0, 2) + endTime.substring(3, 5);
+		System.out.println(end);
 		String start = startTime.substring(0, 2) + startTime.substring(3, 5);
-		String dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 9);
+		dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 10);
+		sendesStart = dato + start;
+		System.out.println(sendesStart);
+		sendesEnd = dato + end;
+		System.out.println(sendesEnd);
 		
 		String ready = dato + start + ", " + dato + end + ", " + size; 
 		
@@ -297,8 +323,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		List<String> roomList = new ArrayList<>();
 		
 		for( JsonValue value : jsonArray ) {
-			String gruppeNavn = value.asObject().get( "navn" ).asString();
-			roomList.add(gruppeNavn);
+			String romNavn = value.asObject().get( "navn").asString();
+			int romID = value.asObject().get( "moteromID").asInt();
+			roomList.add(romNavn + " " + romID );
 		}
 		
 		ObservableList<String> myObservableList2 = FXCollections.observableList(roomList);
