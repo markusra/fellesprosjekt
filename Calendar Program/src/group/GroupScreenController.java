@@ -54,7 +54,6 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		mainController.setScreen(Main.mainPageID);
 	}
 	
-	
 	TCPClient client;
 	List<String> groupList;
 	List<String> chosenMembers = new ArrayList<>();
@@ -90,8 +89,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
-		// TODO Auto-generated method stub
-		
+		mainController = screenParent;
 	}
 	
 	private void fillComboboxWithGroups(TCPClient client) throws IOException {
