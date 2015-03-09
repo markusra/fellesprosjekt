@@ -31,6 +31,6 @@
             <Font name="System Bold" size="42.0" />
          </font>
       </Button>
-      <ListView layoutX="628.0" layoutY="161.0" prefHeight="730.0" prefWidth="607.0" />
+      <ListView fx:id="lvGroups" layoutX="628.0" layoutY="161.0" prefHeight="730.0" prefWidth="607.0" />
    </children>
 </AnchorPane>
