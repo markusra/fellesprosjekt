@@ -34,6 +34,17 @@ public class ForgotScreenController implements Initializable, ControllerInterfac
 	
 	
 	@FXML
+	public void handleForgotUsernameButton(ActionEvent event) {
+		//TODO legge til at en sender en forespørsel til server om aa sende epost til bruker med brukernavn
+	}
+	
+	
+	@FXML
+	public void handleForgotPasswordButton(ActionEvent event) {
+		//TODO legge til at en sender en forespørsel til server om aa sende epost til bruker med passord naar brukernavn har blitt skrevet inn
+	}
+	
+	@FXML
 	public void handleBackButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.loginID);
 	}
