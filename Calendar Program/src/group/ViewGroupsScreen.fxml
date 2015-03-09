@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.ViewGroupsController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="764.0" layoutX="591.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
@@ -27,7 +26,7 @@
             <Font name="System Bold" size="54.0" />
          </font>
       </Text>
-      <Button layoutX="752.0" layoutY="936.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
+      <Button fx:id="backToMainPageButton" layoutX="752.0" layoutY="936.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
