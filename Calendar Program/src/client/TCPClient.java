@@ -1,4 +1,4 @@
-package user;
+package client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,6 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import program.ServerCodes;
 import json.JsonArray;
 import json.JsonValue;
 

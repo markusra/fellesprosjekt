@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import client.ServerCodes;
+import client.TCPClient;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
-import program.ServerCodes;
-import user.TCPClient;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,4 +1,5 @@
-package program;
+package client;
+
 
 public class ServerCodesTest {
 

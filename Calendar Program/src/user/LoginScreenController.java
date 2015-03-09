@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
+import client.TCPClient;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

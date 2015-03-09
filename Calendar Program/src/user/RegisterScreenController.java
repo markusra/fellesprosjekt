@@ -1,8 +1,11 @@
 package user;
 
+import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
+import client.TCPClient;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -52,7 +55,15 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	
 	
 	@FXML
-	public void handleRegisterButtonAction (ActionEvent event) {
+	private void handleRegisterButtonAction (ActionEvent event) throws UnknownHostException, IOException {
+		if (isValidName(firstNameField.getText()) && isValidName(lastNameField.getText()) && isValidEmail(emailField.getText()) && isValidUsername(usernameField.getText()) && isValidPassword(passwordField.getText()) && isValidPassword(confirmPasswordField.getText()) && confirmPasswordField.getText().equalsIgnoreCase(passwordField.getText())) {
+			TCPClient client = new TCPClient();
+			//TODO add sjekk mot database for aa sjekke at brukernavn/epost ikke er opptatt
+			
+			//TODO add registrering av bruker med info
+			
+			mainController.setScreen(Main.registerSucceededID);
+		}
 	}
 	
 	
@@ -173,7 +184,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidName (String name) {
 		char[] chars = name.toCharArray();
 	    for (char c : chars) {
-	        if((!Character.isLetter(c) && !Character.isWhitespace(c) && c != '-') || c == 'æ' || c == 'ø' || c == 'å' || chars.length > 255) {
+	        if((!Character.isLetter(c) && !Character.isWhitespace(c) && c != '-') || c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
 	            return false;
 	        }
 	    }
@@ -184,7 +195,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidEmail (String email) {
 		char[] chars = email.toCharArray();
 		for (char c : chars) {
-			if((!Character.isLetterOrDigit(c) && c != '.' && c != '@') || c == 'æ' || c == 'ø' || c == 'å' || chars.length > 255) {
+			if((!Character.isLetterOrDigit(c) && c != '.' && c != '@') || c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
 				return false;
 			}
 		}
@@ -199,7 +210,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidUsername (String username) {
 		char[] chars = username.toCharArray();
 		for (char c : chars) {
-			if(!Character.isLetterOrDigit(c) || c == 'æ' || c == 'ø' || c == 'å' || chars.length > 255) {
+			if(!Character.isLetterOrDigit(c) || c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
 				return false;
 			}
 		}
@@ -215,7 +226,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	private boolean isValidPassword (String password) {
 		char[] chars = password.toCharArray();
 		for (char c : chars) {
-			if(c == 'æ' || c == 'ø' || c == 'å' || chars.length > 255) {
+			if(c == 'æ' || c == 'Æ' || c == 'ø' || c == 'Ø' || c == 'å' || c == 'Å' || chars.length > 255) {
 				return false;
 			}
 		}
