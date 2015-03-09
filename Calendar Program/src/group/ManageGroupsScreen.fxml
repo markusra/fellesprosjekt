@@ -12,7 +12,7 @@
 
 <Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.ManageGroupsScreenController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="623.0" layoutX="50.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
          <effect>
             <DropShadow />
@@ -23,7 +23,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1565.0" layoutY="382.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="60.0" layoutX="1565.0" layoutY="382.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
          <effect>
             <DropShadow />
          </effect>
@@ -33,7 +33,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1565.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="60.0" layoutX="1565.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
          <effect>
             <DropShadow />
          </effect>
@@ -961,7 +961,7 @@
             </GridPane>
             <AnchorPane layoutX="146.0" layoutY="-20.0" prefHeight="80.0" prefWidth="429.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="89.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="771.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="89.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="771.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -996,7 +996,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="60.0" layoutX="1564.0" layoutY="611.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="60.0" layoutX="1564.0" layoutY="611.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
          <effect>
             <DropShadow />
          </effect>
@@ -1051,7 +1051,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="51.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="51.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
          <effect>
             <DropShadow />
          </effect>
