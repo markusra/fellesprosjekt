@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainPageScreenController">
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.ManageGroupsScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bcbcbc" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="623.0" layoutX="50.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
@@ -1011,7 +1011,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Button fx:id="createAppointmentButton" layoutX="1584.0" layoutY="690.0" mnemonicParsing="false" onAction="#handleCreateAppointmentButtonAction" prefHeight="44.0" prefWidth="260.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+      <Button fx:id="createAppointmentButton" layoutX="1584.0" layoutY="690.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="260.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

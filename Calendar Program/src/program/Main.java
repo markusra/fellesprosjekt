@@ -32,8 +32,8 @@ public class Main extends Application {
 	public final static String viewDayID = "ViewDayScreen";
 	private final static String viewDayScreen = "/appointment/ViewDayAppointmentsScreen.fxml";
 
-	public final static String manageAppointmentID = "ManageAppointmentScreen";
-	private final static String manageAppointmentScreen = "/appointment/ManageAppointmentsScreen.fxml";
+	public final static String manageAppointmentsID = "ManageAppointmentsScreen";
+	private final static String manageAppointmentsScreen = "/appointment/ManageAppointmentsScreen.fxml";
 	
 	public final static String appointmentStatusID = "ManageAppointmentScreen";
 	private final static String appointmentStatusScreen = "/appointment/AppointmentStatusScreen.fxml";
@@ -63,13 +63,13 @@ public class Main extends Application {
 		screensController.loadScreen(loginFailedID, loginFailedScreen);
 		screensController.loadScreen(mainPageID, mainPageScreen);
 		screensController.loadScreen(appointmentID, appointmentScreen);
-		//screensController.loadScreen(viewDayID, viewDayScreen);
-		//screensController.loadScreen(manageAppointmentID, manageAppointmentScreen);
-		//screensController.loadScreen(appointmentStatusID, appointmentStatusScreen);
+		screensController.loadScreen(viewDayID, viewDayScreen);
+		screensController.loadScreen(manageAppointmentsID, manageAppointmentsScreen);
+		screensController.loadScreen(appointmentStatusID, appointmentStatusScreen);
 		screensController.loadScreen(groupID, groupScreen);
 		screensController.loadScreen(viewGroupsID, viewGroupsScreen);
-		//screensController.loadScreen(manageGroupID, manageGroupScreen);
-		//screensController.loadScreen(groupCalendarID, groupCalendarScreen);
+		screensController.loadScreen(manageGroupID, manageGroupScreen);
+		screensController.loadScreen(groupCalendarID, groupCalendarScreen);
 		
 		screensController.setScreen(loginID);
 		
