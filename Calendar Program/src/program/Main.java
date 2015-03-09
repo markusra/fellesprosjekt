@@ -67,7 +67,7 @@ public class Main extends Application {
 		//screensController.loadScreen(manageAppointmentID, manageAppointmentScreen);
 		//screensController.loadScreen(appointmentStatusID, appointmentStatusScreen);
 		screensController.loadScreen(groupID, groupScreen);
-		//screensController.loadScreen(viewGroupsID, viewGroupsScreen);
+		screensController.loadScreen(viewGroupsID, viewGroupsScreen);
 		//screensController.loadScreen(manageGroupID, manageGroupScreen);
 		//screensController.loadScreen(groupCalendarID, groupCalendarScreen);
 		
