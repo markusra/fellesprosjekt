@@ -76,7 +76,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="backToSignInButton" layoutX="835.0" layoutY="1005.0" mnemonicParsing="false" onAction="#handleBackToSignInButtonAction" prefHeight="59.0" prefWidth="270.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+      <Button fx:id="backToMainPageButton" layoutX="835.0" layoutY="1005.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="59.0" prefWidth="270.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

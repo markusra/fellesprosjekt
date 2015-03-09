@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import program.ControllerInterface;
+import program.Main;
 import program.ScreensController;
 import program.ServerCodes;
 import user.TCPClient;
@@ -26,6 +27,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -61,14 +63,22 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private TextField txtSize;
 	@FXML
 	private Label RoomLabel;
+	@FXML
+	private Button backtoMainPage;
 	
 	private String startTime = null;
 	private String endTime = null;
 	private LocalDate date = null;
 	private String size = null;
 	
-	
 	private boolean valid=true;
+	
+	
+	//Metode for backToMainPageButton
+	@FXML
+	public void handleBackToMainPageButton (ActionEvent event) {
+		mainController.setScreen(Main.loginID);
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
