@@ -18,7 +18,7 @@ public class Main extends Application {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 	        fxmlLoader.setController(new AppointmentScreenController());
 			
-	        final Scale scale = new Scale(0.5, 0.5);
+	        final Scale scale = new Scale(0.53333, 0.5333);
 		    root.getTransforms().add(scale);
 		    Scene scene = new Scene(root,1024,576);
 		    
