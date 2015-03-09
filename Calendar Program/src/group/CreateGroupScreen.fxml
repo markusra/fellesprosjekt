@@ -34,7 +34,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="782.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="431.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="782.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="431.0">
          <effect>
             <DropShadow />
          </effect>

@@ -25,7 +25,7 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939397" height="91.0" layoutX="655.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="615.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="655.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="615.0">
                      <effect>
                         <DropShadow />
                      </effect>
