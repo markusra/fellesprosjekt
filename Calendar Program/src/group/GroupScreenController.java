@@ -50,8 +50,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 	//Metode for backToMainPageButton
 	@FXML
-	public void handleBackToMainPageButton (ActionEvent event) {
-		mainController.setScreen(Main.loginID);
+	public void handleBackToMainPageButton(ActionEvent event) {
+		mainController.setScreen(Main.mainPageID);
 	}
 	
 	
