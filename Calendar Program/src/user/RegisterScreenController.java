@@ -97,7 +97,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 		
 		Tooltip.install(firstNameInfo, new Tooltip("First name can only contain english letters and spaces! Is case insensitive and is not required to register."));
 		Tooltip.install(lastNameInfo, new Tooltip("Last name can only contain english letters and spaces! Is case insensitive and is not required to register."));
-		Tooltip.install(emailInfo, new Tooltip("Email can only contain english letters and the characters '.' and '@'! Is case insensitive."));
+		Tooltip.install(emailInfo, new Tooltip("Email has to be on the form \"yourEmail@hostname.domain\" .Email can only contain english letters and the characters '.' and '@'! Is case insensitive."));
 		Tooltip.install(usernameInfo, new Tooltip("Username can only contain english letters and numbers! Is case insensitive."));
 		Tooltip.install(passwordInfo, new Tooltip("Password can only contain english letters, characters and numbers! Is case insensitive."));
 		
