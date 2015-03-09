@@ -75,7 +75,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="registerButton" layoutX="862.0" layoutY="753.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="59.0" prefWidth="215.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
+            <Button fx:id="registerButton" layoutX="611.0" layoutY="755.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="65.0" prefWidth="701.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
