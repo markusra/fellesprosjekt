@@ -83,17 +83,17 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <ImageView fx:id="imgFirstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="firstNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgLastNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lastNameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgEmailInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="emailInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
@@ -108,12 +108,12 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgUserInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="usernameInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgPassInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="passwordInfo" fitHeight="91.0" fitWidth="64.0" layoutX="1270.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/info-sign.png" />
                </image>
