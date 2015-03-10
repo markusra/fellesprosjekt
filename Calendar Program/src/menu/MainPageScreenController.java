@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -65,48 +66,110 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	TableView mondayTable;
+	@FXML
+	TableColumn<String, String> mondayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> mondayEndTableColumn;
+	@FXML
+	TableColumn<String, String> mondayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> mondayPlaceTableColumn;
 	
 	@FXML
-	TableView tuesdayTable; 
+	TableView tuesdayTable;
+	@FXML
+	TableColumn<String, String> tuesdayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> tuesdayEndTableColumn;
+	@FXML
+	TableColumn<String, String> tuesdayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> tuesdayPlaceTableColumn;
 	
 	@FXML
 	TableView wednesdayTable;
+	@FXML
+	TableColumn<String, String> wednesdayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> wednesdayEndTableColumn;
+	@FXML
+	TableColumn<String, String> wednesdayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> wednesdayPlaceTableColumn;
 	
 	@FXML
 	TableView thursdayTable;
+	@FXML
+	TableColumn<String, String> thursdayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> thursdayEndTableColumn;
+	@FXML
+	TableColumn<String, String> thursdayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> thursdayPlaceTableColumn;
 	
 	@FXML
 	TableView fridayTable;
+	@FXML
+	TableColumn<String, String> fridayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> fridayEndTableColumn;
+	@FXML
+	TableColumn<String, String> fridayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> fridayPlaceTableColumn;
 	
 	@FXML
 	TableView saturdayTable;
+	@FXML
+	TableColumn<String, String> saturdayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> saturdayEndTableColumn;
+	@FXML
+	TableColumn<String, String> saturdayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> saturdayPlaceTableColumn;
 	
 	@FXML
 	TableView sundayTable;
+	@FXML
+	TableColumn<String, String> sundayStartsTableColumn;
+	@FXML
+	TableColumn<String, String> sundayEndTableColumn;
+	@FXML
+	TableColumn<String, String> sundayPurposeTableColumn;
+	@FXML
+	TableColumn<String, String> sundayPlaceTableColumn;
+	
+	
 	
 	
 	public void handleCreateAppointmentButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.appointmentID);
 	}
 	
+	
 	public void handleCreateGroupButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.groupID);
 	}
+	
 	
 	public void handleViewGroupsButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.viewGroupsID);
 	}
 	
+	
 	public void handleSignOutButtonAction(ActionEvent event){
 		mainController.setScreen(Main.loginID);
 	}
+	
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;	
 	}
 	
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		weekFiller(calendar, 0);
