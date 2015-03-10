@@ -20,6 +20,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
 	
+	
+	@FXML
+	Button previousWeekButton2;
+	@FXML
+	Button nextWeekButton2;
+	
 	@FXML
 	Text weekNumber;
 	@FXML
@@ -50,13 +56,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	Text sundayDate;
 	@FXML
 	Text sundayMonth;
-
-	
-	@FXML
-	Button nextWeekButton;
-	
-	@FXML
-	Button previousWeekButton;
 	
 	@FXML
 	Button createAppointmentButton;
@@ -123,8 +122,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	public void handleNextWeekButton(ActionEvent event) {
 		weekFiller(calendar, 1);
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 	}
 
 	
@@ -134,21 +131,18 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	public void weekFiller(Calendar calendar, int increment) {
+	private void weekFiller(Calendar calendar, int increment) {
 		int counter = 0;
 		if (increment == 0) {
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 		}
 		else if (increment == 1) {
-			System.out.println(calendar.get(Calendar.WEEK_OF_YEAR));
-			System.out.println("Add one week");
-			System.out.println(calendar.get(Calendar.WEEK_OF_YEAR));
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 		}
 		else if (increment == -1) {
-			calendar.add(Calendar.WEEK_OF_YEAR, increment);
+			calendar.add(Calendar.WEEK_OF_YEAR, increment-1);
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 		}
@@ -190,7 +184,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 					calendar.add(Calendar.MONTH, 1);
 				}
 				calendar.set(Calendar.DATE, 1);
-				System.out.println(calendar.get(Calendar.DATE));
 			}
 			else {
 				calendar.add(Calendar.DATE, 1);
@@ -200,7 +193,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	public static String getMonthFromInt(int month) {
+	private static String getMonthFromInt(int month) {
 	    String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	    return monthNames[month];
 	}

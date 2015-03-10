@@ -322,7 +322,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <ImageView fx:id="nextWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="1130.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="106.0" fitWidth="150.0" layoutX="1130.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow />
                </effect>
@@ -330,7 +330,7 @@
                   <Image url="@../resources/Weektemplate-arrow.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="previousWeekButton" fitHeight="106.0" fitWidth="150.0" layoutX="33.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+            <ImageView fitHeight="106.0" fitWidth="150.0" layoutX="33.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -338,6 +338,8 @@
                   <Image url="@../resources/Weektemplate-arrow.png" />
                </image>
             </ImageView>
+            <Button fx:id="previousWeekButton2" layoutX="39.0" layoutY="540.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
+            <Button fx:id="nextWeekButton2" layoutX="1136.0" layoutY="541.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="1391.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
