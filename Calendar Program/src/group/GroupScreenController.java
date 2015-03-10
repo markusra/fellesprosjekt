@@ -57,11 +57,35 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	TCPClient client;
 	List<String> groupList;
 	List<String> chosenMembers = new ArrayList<>();
+	
+	Map<String, Integer> groups = new HashMap<String, Integer>();
 	Map<String, Integer> availableUsers = new HashMap<String, Integer>();
 	
+	
+	private void createGroup() throws IOException {
+		String chosenSuperGroup = cmbSubgroupOf.getValue();
+		
+		String supergruppeID = "null";
+		
+		System.out.println(chosenSuperGroup);
+		if (! chosenSuperGroup.equals("None")) {
+			supergruppeID = groups.get( chosenSuperGroup ).toString();
+		} 
+		
+		client.customQuery(ServerCodes.CreateGroup, "'" + txtGroupName.getText() + "', '" + supergruppeID + "'");
+	}
+	
+	private void addMembersToGroup() {
+		
+	}
+	
+	
 	@FXML
-	private void doConfirm() {
-		System.out.println("CONFIRM");
+	private void doConfirm() throws IOException {
+		createGroup();
+		
+		System.out.println("GROUP CREATED");
+		//System.out.println(mainController.user.getUserID());
 	}
 
 	@FXML
@@ -103,8 +127,10 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		groupList.add("None");
 		for( JsonValue value : jsonArray ) {
+			int gruppeID = value.asObject().get( "gruppeID" ).asInt();
 			String gruppeNavn = value.asObject().get( "navn" ).asString();
 			groupList.add(gruppeNavn);
+			groups.put(gruppeNavn, gruppeID);
 		}
 		
 		ObservableList<String> myObservableList = FXCollections.observableList(groupList);
@@ -152,7 +178,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		txtGroupName.textProperty().addListener((observable, oldValue, newValue) -> {
 			
-			System.out.println(cmbSubgroupOf.getValue());
+			//System.out.println(cmbSubgroupOf.getValue());
 			
 			if (groupList.contains(newValue.trim())) {
 				txtGroupName.setStyle("-fx-border-color: red; -fx-border-radius: 3; -fx-border-width: 0.5; -fx-background-color: #ffbbbb;");
@@ -185,6 +211,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		cmbSubgroupOf.setStyle("-fx-font-size:30;");
 		txtGroupName.setStyle("-fx-font-size:30;");
 		txtAddUsers.setStyle("-fx-font-size:30;");
+		
+		cmbSubgroupOf.setValue("None");
 		
 		//lvFilteredUsers.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		

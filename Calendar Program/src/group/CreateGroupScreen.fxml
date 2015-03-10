@@ -22,7 +22,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <ComboBox fx:id="cmbSubgroupOf" layoutX="881.0" layoutY="249.0" prefHeight="53.0" prefWidth="421.0" promptText="Choose a group" />
+      <ComboBox fx:id="cmbSubgroupOf" layoutX="881.0" layoutY="249.0" prefHeight="53.0" prefWidth="421.0" promptText="None" />
       <Button layoutX="674.0" layoutY="900.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="627.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />

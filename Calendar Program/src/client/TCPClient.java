@@ -26,38 +26,6 @@ public class TCPClient {
 		inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	}
 	
-	public boolean validLogin(String username, String password) throws IOException  {
-		String command = ServerCodes.Login;
-		String raw = command + splitChar + "('" + username + "', '" + password + "')";
-		
-		outToServer.write(raw + "\n");
-		outToServer.flush();
-		
-		serverReply = inFromServer.readLine();
-		System.out.println("This was recieved from server: " + serverReply);
-		
-		String[] answer = serverReply.split(splitChar);
-		
-		System.out.println(answer[1]);
-		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		
-		String un = "";
-		String pw = "";
-		
-		for( JsonValue value : jsonArray ) {
-			un = value.asObject().get( "brukernavn" ).asString();
-			pw = value.asObject().get( "passord" ).asString();
-		}
-		
-		if (answer[0].contains(command) && un.contains(username) && pw.contains(password)) {
-			//System.out.println("Correct username and password!");
-			return true;
-		} else {
-			//System.out.println("Wrong username or password!");
-			return false;
-		}
-		
-	}
 	
 	public String customQuery(String cmd, String data) throws IOException {
 		String command = cmd;
