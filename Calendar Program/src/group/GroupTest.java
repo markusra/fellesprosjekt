@@ -9,17 +9,10 @@ import client.TCPClient;
 public class GroupTest {
 	
 	public static void main(String[] args) throws IOException {
-		TCPClient client = new TCPClient();
-		
-		String serverReply = client.customQuery(ServerCodes.GetSpecificGroup, "'Test'");
-		
-		String[] answer = serverReply.split("#");
-
-		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-
-		int groupID = jsonArray.get(0).asObject().get( "gruppeID" ).asInt();
-		
-		System.out.println("GruppeID --> " + groupID);
+		String member = "Vebjorn Berg (vebjorn)";
+		String[] memberArray = member.split("\\(");
+		member = memberArray[1].substring(0, memberArray[1].length()-1);
+		System.out.println("Member: " + member);
 	}
 	
 

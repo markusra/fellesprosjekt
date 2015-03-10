@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 import client.ServerCodes;
 import client.TCPClient;
 import program.ControllerInterface;
@@ -75,11 +76,27 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		client.customQuery(ServerCodes.CreateGroup, "'" + txtGroupName.getText() + "', '" + supergruppeID + "'");
 	}
 	
+	private void getAllUsers() throws IOException {
+		String serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
+		String[] answer= serverReply.split("#");
+		
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		availableUsers.clear();
+		for( JsonValue value : jsonArray ) {
+			int  brukerID = value.asObject().get( "brukerID" ).asInt();
+			String brukernavn = value.asObject().get( "brukernavn" ).asString();
+			
+			availableUsers.put(brukernavn, brukerID);
+		}
+		
+		
+	}
+	
 	private void addMembersToGroup() throws IOException {
 		// First things first: Get the groupID of this group
 		
 		String groupName = txtGroupName.getText();
-		String gruppeID;
 		
 		String serverReply = client.customQuery(ServerCodes.GetSpecificGroup, "'" + groupName + "'");
 		
@@ -91,6 +108,16 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		client.customQuery(ServerCodes.CreateGroupMember, mainController.user.getUserID() + ", " + groupID + ", " + "True");
 
+		// Then add all the other members to the group
+		for (String member : chosenMembers) {
+			String[] memberArray = member.split("\\(");
+			member = memberArray[1].substring(0, memberArray[1].length()-1);
+			
+			System.out.println("Member: " + member);
+			
+			client.customQuery(ServerCodes.CreateGroupMember, availableUsers.get(  member ) + ", " + groupID + ", " + "False");
+		}
+		
 	}
 	
 	
@@ -157,7 +184,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		String[] answer= serverReply.split("#");
 		
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		
+
 		List<String> userList = new ArrayList<>();
 		
 		for( JsonValue value : jsonArray ) {
@@ -168,13 +195,12 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
 			
 			
-			//availableUsers.put(brukernavn, brukerID);
 			userList.add(temp);
 			
 			//txtAddUsers.setText(temp);
 		}
 
-		//System.out.println(availableUsers.get( "markusra" ));
+		//System.out.println(availableUsers.get( "(markusra)" ));
 		
 		ObservableList<String> myObservableList = FXCollections.observableList(userList);
 		lvFilteredUsers.setItems(myObservableList);
@@ -233,7 +259,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		try {
 			client = new TCPClient();
-			
+			getAllUsers();
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
