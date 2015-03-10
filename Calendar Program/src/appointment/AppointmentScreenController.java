@@ -70,6 +70,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private TextField txtDescription;
 	@FXML
 	private Button createAppointment;
+	
+	@FXML
 	private Button backtoMainPage;
 	
 	private String startTime = null;

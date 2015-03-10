@@ -54,16 +54,6 @@
                      <font>
                         <Font size="24.0" />
                      </font></TextField>
-                  <Label layoutX="568.0" layoutY="448.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
-                     <font>
-                        <Font name="System Bold" size="36.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="createAppointment" layoutX="566.0" layoutY="896.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="71.0" prefWidth="792.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Button>
                   <TextField fx:id="txtPlace" layoutX="814.0" layoutY="300.0" prefHeight="53.0" prefWidth="544.0">
                      <font>
                         <Font size="24.0" />
@@ -74,11 +64,6 @@
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="567.0" layoutY="370.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
-                     <font>
-                        <Font name="System Bold" size="36.0" />
-                     </font>
-                  </Label>
                   <DatePicker fx:id="dpStart" layoutX="680.0" layoutY="448.0" prefHeight="53.0" prefWidth="258.0" />
                   <TextField fx:id="timeStart" alignment="CENTER" layoutX="1062.0" layoutY="446.0" prefHeight="56.0" prefWidth="112.0" text="00:00">
                      <font>
@@ -88,6 +73,24 @@
                      <font>
                         <Font size="30.0" />
                      </font></TextField>
+                  <ComboBox fx:id="roomField" layoutX="814.0" layoutY="518.0" prefHeight="53.0" prefWidth="544.0" />
+                  <ListView fx:id="invitedField" layoutX="568.0" layoutY="647.0" prefHeight="233.0" prefWidth="391.0" />
+                  <ListView fx:id="groupField" layoutX="992.0" layoutY="647.0" prefHeight="233.0" prefWidth="365.0" />
+                  <Button fx:id="createAppointment" layoutX="566.0" layoutY="896.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="71.0" prefWidth="792.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="568.0" layoutY="448.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="567.0" layoutY="370.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
                   <Label layoutX="950.0" layoutY="447.0" prefHeight="53.0" prefWidth="112.0" text="From:">
                      <font>
                         <Font name="System Bold" size="36.0" />
@@ -103,9 +106,6 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="roomField" layoutX="814.0" layoutY="518.0" prefHeight="53.0" prefWidth="544.0" />
-                  <ListView fx:id="invitedField" layoutX="568.0" layoutY="647.0" prefHeight="233.0" prefWidth="391.0" />
-                  <ListView fx:id="groupField" layoutX="992.0" layoutY="647.0" prefHeight="233.0" prefWidth="365.0" />
                   <Label layoutX="568.0" layoutY="590.0" prefHeight="53.0" prefWidth="112.0" text="Invite:">
                      <font>
                         <Font name="System Bold" size="36.0" />
