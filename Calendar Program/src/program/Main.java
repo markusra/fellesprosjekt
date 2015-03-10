@@ -1,6 +1,5 @@
 package program;
 
-import user.UserModel;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
