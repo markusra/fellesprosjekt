@@ -1,9 +1,7 @@
 package menu;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 import program.ControllerInterface;
@@ -20,18 +18,45 @@ import javafx.scene.text.Text;
 public class MainPageScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
+	Calendar calendar = Calendar.getInstance();
 	
 	@FXML
 	Text weekNumber;
-	
 	@FXML
 	Text mondayDate;
-	
+	@FXML
+	Text mondayMonth;
 	@FXML
 	Text tuesdayDate;
-	
+	@FXML
+	Text tuesdayMonth;
 	@FXML
 	Text wednesdayDate;
+	@FXML
+	Text wednesdayMonth;
+	@FXML
+	Text thursdayDate;
+	@FXML
+	Text thursdayMonth;
+	@FXML
+	Text fridayDate;
+	@FXML
+	Text fridayMonth;
+	@FXML
+	Text saturdayDate;
+	@FXML
+	Text saturdayMonth;
+	@FXML
+	Text sundayDate;
+	@FXML
+	Text sundayMonth;
+
+	
+	@FXML
+	Button nextWeekButton;
+	
+	@FXML
+	Button previousWeekButton;
 	
 	@FXML
 	Button createAppointmentButton;
@@ -85,13 +110,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
-		weekNumber.setText(Integer.toString(calendar.get(calendar.WEEK_OF_YEAR)));
-		mondayDate.setText(Integer.toString(calendar.get(calendar.DATE)));
-		tuesdayDate.setText(Integer.toString(calendar.get(calendar.DATE+1)));
-		wednesdayDate.setText(Integer.toString(calendar.get(calendar.DATE+2)));
-		
+		weekFiller(calendar, 0);
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		thursdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -99,5 +118,90 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 	}
+	
+	
+	@FXML
+	public void handleNextWeekButton(ActionEvent event) {
+		weekFiller(calendar, 1);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+	}
 
+	
+	@FXML
+	public void handlePreviousWeekButton(ActionEvent event) {
+		weekFiller(calendar, -1);
+	}
+	
+	
+	public void weekFiller(Calendar calendar, int increment) {
+		int counter = 0;
+		if (increment == 0) {
+			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+		}
+		else if (increment == 1) {
+			System.out.println(calendar.get(Calendar.WEEK_OF_YEAR));
+			System.out.println("Add one week");
+			System.out.println(calendar.get(Calendar.WEEK_OF_YEAR));
+			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+		}
+		else if (increment == -1) {
+			calendar.add(Calendar.WEEK_OF_YEAR, increment);
+			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
+			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+		}
+		while (counter < 7) {
+			if (counter == 0) {
+				mondayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				mondayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			else if (counter == 1) {
+				tuesdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				tuesdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			else if (counter == 2) {
+				wednesdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				wednesdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			else if (counter == 3) {
+				thursdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				thursdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			else if (counter == 4) {
+				fridayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				fridayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			else if (counter == 5) {
+				saturdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				saturdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			else if (counter == 6) {
+				sundayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
+				sundayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+			}
+			if (calendar.get(Calendar.DATE) == calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
+				if (calendar.get(Calendar.MONTH) == calendar.getActualMaximum(Calendar.MONTH)) {
+					calendar.add(Calendar.YEAR, 1);
+					calendar.set(Calendar.MONTH, 0);
+				}
+				else {
+					calendar.add(Calendar.MONTH, 1);
+				}
+				calendar.set(Calendar.DATE, 1);
+				System.out.println(calendar.get(Calendar.DATE));
+			}
+			else {
+				calendar.add(Calendar.DATE, 1);
+			}
+			counter++;
+		}
+	}
+	
+	
+	public static String getMonthFromInt(int month) {
+	    String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+	    return monthNames[month];
+	}
 }
