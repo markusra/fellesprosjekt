@@ -78,7 +78,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root, 1024, 576);
 		
 		//TODO: Må endre til bare "application.css" når produktet leveres
-	    scene.getStylesheets().add("//src/application.css");
+	    scene.getStylesheets().add("/css/application.css");
 	    
 		primaryStage.setScene(scene);
 		primaryStage.show();

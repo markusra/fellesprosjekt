@@ -14,7 +14,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/group/ManageGroupsScreen.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/group/CreateGroupscreen.fxml"));
 			FXMLLoader fxmlLoader = new FXMLLoader();
 	        fxmlLoader.setController(new AppointmentScreenController());
 			
@@ -25,7 +25,7 @@ public class Main extends Application {
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		    
 		    //TODO: Må endre til bare "application.css" når prosjektet leveres
-		    scene.getStylesheets().add("//src/application.css");
+		    scene.getStylesheets().add("/css/application.css");
 			
 		    primaryStage.setScene(scene);
 			primaryStage.setTitle("Appointment");
