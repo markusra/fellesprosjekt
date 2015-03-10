@@ -30,7 +30,7 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Label layoutX="699.0" layoutY="25.0" text="NEW APPOINTMENT" textFill="WHITE">
+                  <Label layoutX="699.0" layoutY="33.0" text="NEW APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
@@ -50,12 +50,12 @@
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="568.0" layoutY="518.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+                  <Label layoutX="568.0" layoutY="448.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="createAppointment" layoutX="765.0" layoutY="903.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="391.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+                  <Button fx:id="createAppointment" layoutX="566.0" layoutY="896.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="71.0" prefWidth="792.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -65,41 +65,41 @@
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtSize" layoutX="1117.0" layoutY="442.0" prefHeight="53.0" prefWidth="242.0">
+                  <TextField fx:id="txtSize" layoutX="1117.0" layoutY="372.0" prefHeight="53.0" prefWidth="242.0">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="567.0" layoutY="440.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
+                  <Label layoutX="567.0" layoutY="370.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpStart" layoutX="737.0" layoutY="518.0" prefHeight="53.0" prefWidth="211.0" />
-                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1116.0" layoutY="518.0" prefHeight="53.0" prefWidth="85.0" text="00:00">
+                  <DatePicker fx:id="dpStart" layoutX="680.0" layoutY="448.0" prefHeight="53.0" prefWidth="258.0" />
+                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1062.0" layoutY="446.0" prefHeight="56.0" prefWidth="112.0" text="00:00">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="30.0" />
                      </font></TextField>
-                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1273.0" layoutY="518.0" prefHeight="53.0" prefWidth="85.0" text="23:59">
+                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1246.0" layoutY="447.0" prefHeight="56.0" prefWidth="112.0" text="23:59">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="30.0" />
                      </font></TextField>
-                  <Label layoutX="1036.0" layoutY="518.0" prefHeight="53.0" prefWidth="112.0" text="From:">
+                  <Label layoutX="950.0" layoutY="447.0" prefHeight="53.0" prefWidth="112.0" text="From:">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1224.0" layoutY="518.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+                  <Label layoutX="1185.0" layoutY="447.0" prefHeight="53.0" prefWidth="63.0" text="To:">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="RoomLabel" layoutX="813.0" layoutY="369.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
+                  <Label fx:id="RoomLabel" layoutX="566.0" layoutY="518.0" prefHeight="53.0" prefWidth="148.0" text="Room:">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="roomField" layoutX="931.0" layoutY="367.0" prefHeight="53.0" prefWidth="427.0" />
+                  <ComboBox fx:id="roomField" layoutX="814.0" layoutY="518.0" prefHeight="53.0" prefWidth="544.0" />
                   <ListView fx:id="invitedField" layoutX="568.0" layoutY="647.0" prefHeight="233.0" prefWidth="391.0" />
                   <ListView fx:id="groupField" layoutX="992.0" layoutY="647.0" prefHeight="233.0" prefWidth="365.0" />
                   <Label layoutX="568.0" layoutY="590.0" prefHeight="53.0" prefWidth="112.0" text="Invite:">

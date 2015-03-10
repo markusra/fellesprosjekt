@@ -95,6 +95,12 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		model = new Appointment();
 		roomField.setVisible(false);
 		RoomLabel.setVisible(false);
+		
+		invitedField.setStyle("-fx-font-size:30;");
+		groupField.setStyle("-fx-font-size:30;");
+		roomField.setStyle("-fx-font-size:30;");
+		dpStart.setStyle("-fx-font-size:30;");
+		
 		try {
 			client = new TCPClient();
 		} catch (UnknownHostException e1) {
