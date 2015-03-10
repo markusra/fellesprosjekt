@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import json.JsonArray;
@@ -32,6 +33,27 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 	
 	ScreensController mainController;
 	
+	@FXML
+	TableView mondayTable;
+	
+	@FXML
+	TableView tuesdayTable; 
+	
+	@FXML
+	TableView wednesdayTable;
+	
+	@FXML
+	TableView thursdayTable;
+	
+	@FXML
+	TableView fridayTable;
+	
+	@FXML
+	TableView saturdayTable;
+	
+	@FXML
+	TableView sundayTable;
+	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;
@@ -39,8 +61,12 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		thursdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		fridayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 	}
 }
 
