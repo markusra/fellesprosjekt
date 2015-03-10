@@ -43,6 +43,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private Appointment model;
 	private ScreensController mainController;
 	
+	//Maa lage en metode som legger til de valgte brukerne i avtalebruker og alle som er medlem i en gruppe
+	
 	
 	@FXML
 	private TextField txtPurpose;
@@ -304,15 +306,13 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		roomField.setVisible(true);
 		RoomLabel.setVisible(true);
 		String end = endTime.substring(0, 2) + endTime.substring(3, 5);
-		System.out.println(end);
 		String start = startTime.substring(0, 2) + startTime.substring(3, 5);
 		dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 10);
 		sendesStart = dato + start;
-		System.out.println(sendesStart);
 		sendesEnd = dato + end;
-		System.out.println(sendesEnd);
 		
 		String ready = dato + start + ", " + dato + end + ", " + size; 
+		System.out.println(ready);
 		
 		client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.GetFilteredRooms, ready);
