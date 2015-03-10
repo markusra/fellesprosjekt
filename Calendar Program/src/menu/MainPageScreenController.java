@@ -138,12 +138,10 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 		}
 		else if (increment == 1) {
-			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 		}
 		else if (increment == -1) {
 			calendar.add(Calendar.WEEK_OF_YEAR, increment-1);
-			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 		}
 		while (counter < 7) {
