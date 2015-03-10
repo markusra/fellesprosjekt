@@ -314,7 +314,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		String ready = dato + start + ", " + dato + end + ", " + size; 
 		
-		TCPClient client = new TCPClient();
+		client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.GetFilteredRooms, ready);
 		String[] answer = serverReply.split("#");
 	    answer = serverReply.split("#");
