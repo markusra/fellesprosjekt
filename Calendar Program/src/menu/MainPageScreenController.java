@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class MainPageScreenController implements Initializable, ControllerInterface {
@@ -36,6 +38,28 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	Button viewGroupsButton;
+	
+	@FXML
+	TableView mondayTable;
+	
+	@FXML
+	TableView tuesdayTable; 
+	
+	@FXML
+	TableView wednesdayTable;
+	
+	@FXML
+	TableView thursdayTable;
+	
+	@FXML
+	TableView fridayTable;
+	
+	@FXML
+	TableView saturdayTable;
+	
+	@FXML
+	TableView sundayTable;
+	
 	
 	public void handleCreateAppointmentButtonAction(ActionEvent event) {
 		mainController.setScreen(Main.appointmentID);
@@ -67,6 +91,13 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		mondayDate.setText(Integer.toString(calendar.get(calendar.DATE)));
 		tuesdayDate.setText(Integer.toString(calendar.get(calendar.DATE+1)));
 		wednesdayDate.setText(Integer.toString(calendar.get(calendar.DATE+2)));
+		
+		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		thursdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		fridayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 	}
 
 }
