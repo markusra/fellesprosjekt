@@ -51,10 +51,7 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;
 	}
-	
-	private void setTCPClient() throws UnknownHostException, IOException {
-		client = new TCPClient();
-	}
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -65,7 +62,7 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		lvGroups.setFocusTraversable( false );
 		
 		try {
-			setTCPClient();
+			client = new TCPClient();
 			String serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
 			String[] answer= serverReply.split("#");
 			

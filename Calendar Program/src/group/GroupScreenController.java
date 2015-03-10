@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import client.ServerCodes;
 import client.TCPClient;
 import program.ControllerInterface;
@@ -29,6 +28,7 @@ import json.JsonValue;
 public class GroupScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
+	
 	
 	@FXML
 	private TextField txtGroupName;
@@ -75,14 +75,29 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		client.customQuery(ServerCodes.CreateGroup, "'" + txtGroupName.getText() + "', '" + supergruppeID + "'");
 	}
 	
-	private void addMembersToGroup() {
+	private void addMembersToGroup() throws IOException {
+		// First things first: Get the groupID of this group
 		
+		String groupName = txtGroupName.getText();
+		String gruppeID;
+		
+		String serverReply = client.customQuery(ServerCodes.GetSpecificGroup, "'" + groupName + "'");
+		
+		String[] answer = serverReply.split("#");
+
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+	
+		int groupID = jsonArray.get(0).asObject().get( "gruppeID" ).asInt();
+		
+		client.customQuery(ServerCodes.CreateGroupMember, mainController.user.getUserID() + ", " + groupID + ", " + "True");
+
 	}
 	
 	
 	@FXML
 	private void doConfirm() throws IOException {
 		createGroup();
+		addMembersToGroup();
 		
 		System.out.println("GROUP CREATED");
 		//System.out.println(mainController.user.getUserID());
