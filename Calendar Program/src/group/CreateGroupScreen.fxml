@@ -70,7 +70,6 @@
          </font>
       </Button>
       <ListView fx:id="lvChosenMembers" layoutX="675.0" layoutY="637.0" prefHeight="253.0" prefWidth="538.0" />
-      <Line endX="625.0" layoutX="678.0" layoutY="621.0" stroke="#69696b" strokeWidth="2.0" />
       <Button layoutX="1221.0" layoutY="637.0" mnemonicParsing="false" onAction="#doDeleteMember" prefHeight="253.0" prefWidth="78.0" style="-fx-background-color: #ff3000;" text="-" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -81,6 +80,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
+      <Separator layoutX="672.0" layoutY="611.0" prefHeight="17.0" prefWidth="625.0" />
    </children>
    <rotationAxis>
       <Point3D />
