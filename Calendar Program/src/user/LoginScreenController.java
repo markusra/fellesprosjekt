@@ -55,7 +55,11 @@ public class LoginScreenController implements Initializable, ControllerInterface
 				prefs.putBoolean("checkBox", false);
 			}
 			System.out.println("Successful login!");
+			
+			
+			mainController.user = new UserModel(userID, username, firstName, lastName, email)
 			mainController.setScreen(Main.mainPageID);
+			
 		}
 		else {
 			mainController.setScreen(Main.loginFailedID);

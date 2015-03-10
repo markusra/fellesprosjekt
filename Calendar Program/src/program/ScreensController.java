@@ -3,6 +3,7 @@ package program;
 import java.io.IOException;
 import java.util.HashMap;
 
+import user.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,6 +12,7 @@ import javafx.scene.transform.Scale;
 
 public class ScreensController extends StackPane {
 	
+	public UserModel user;
 	
 	private HashMap<String, Node> screens = new HashMap<String, Node>();
 	
@@ -50,7 +52,7 @@ public class ScreensController extends StackPane {
 	}
 	
 	
-	//Brukes for å fjerne grensesnitt fra HashMappet, generelt sett unødvendig.
+	//Brukes for ï¿½ fjerne grensesnitt fra HashMappet, generelt sett unï¿½dvendig.
 	public void unloadScreen(String name) {
 		if (getScreen(name) != null) {
 			screens.remove(name);			
