@@ -57,7 +57,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			System.out.println("Successful login!");
 			
 			
-			mainController.user = new UserModel(userID, username, firstName, lastName, email)
+			//mainController.user = new UserModel(userID, username, firstName, lastName, email)
 			mainController.setScreen(Main.mainPageID);
 			
 		}
