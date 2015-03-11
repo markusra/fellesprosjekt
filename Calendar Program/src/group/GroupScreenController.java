@@ -134,29 +134,32 @@ public class GroupScreenController implements Initializable, ControllerInterface
 
 	@FXML
 	private void doAddMember() {
-		String chosenFilteredMember = lvFilteredUsers.getSelectionModel().getSelectedItem();
+		String chosenFilteredMember = lvFilteredUsers.getSelectionModel().getSelectedItem().toString();
 		
 		if (! chosenMembers.contains(chosenFilteredMember) && chosenFilteredMember != null) {
-			System.out.println("ChosenMember lagt til.");
 			chosenMembers.add(chosenFilteredMember);
+			
+			ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
+			lvChosenMembers.setItems(myObservableList);
 		}
 		
-		ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
-		lvChosenMembers.setItems(myObservableList);
+		
 	}
 	
 	@FXML
 	private void doDeleteMember() {
-		String chosenMember = lvChosenMembers.getSelectionModel().getSelectedItem();
+		String chosenMember = lvChosenMembers.getSelectionModel().getSelectedItem().toString();
+
 		
-		System.out.println(chosenMember);
 		if (chosenMember != null) {
 			System.out.println(chosenMembers.indexOf(chosenMember));
 			chosenMembers.remove(chosenMembers.indexOf(chosenMember));
+			System.out.println(chosenMembers);
+			
+			ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
+			lvChosenMembers.setItems(myObservableList);
 		}
 		
-		ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
-		lvChosenMembers.setItems(myObservableList);
 	}
 	
 	@Override
@@ -285,8 +288,6 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+	
 	}
 }
