@@ -1,5 +1,7 @@
 package menu;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -15,10 +17,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class MainPageScreenController implements Initializable, ControllerInterface {
+public class MainPageScreenController implements Initializable, ControllerInterface, KeyListener {
 	
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
@@ -189,11 +192,22 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		weekFiller(calendar, 1);
 	}
 	
-	@FXML 
-	public void nextWeekButton2OnSwipeLeft(ObservableValue<? extends Boolean> property, Boolean oldValue, Boolean newValue) {
-		weekFiller(calendar, 1);
+	@FXML
+	public void handleKeyPressed(KeyEvent event){
+		int keyCode = event.getKeyCode();
+		if(keyCode == KeyEvent.VK_LEFT){
+			weekFiller(calendar, -1);	
+		}
+		else if(keyCode == KeyEvent.VK_RIGHT){
+			weekFiller(calendar, -1);
+		}
+		else{
+			System.out.println("Pressed: " + KeyEvent.getKeyText(keyCode));
+			event.consume();
+		}
+		
 	}
-
+	
 	
 	@FXML
 	public void handlePreviousWeekButton(ActionEvent event) {

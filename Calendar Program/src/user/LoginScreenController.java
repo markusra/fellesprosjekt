@@ -1,10 +1,12 @@
 package user;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
+
 import client.ServerCodes;
 import client.TCPClient;
 import javafx.application.Platform;
@@ -84,6 +86,66 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 		}
 	}
+	
+	@FXML
+	public void handleKeyPressed(KeyEvent event) throws UnknownHostException, IOException{
+		try{
+			int keyCode = event.getKeyCode();
+			if(keyCode == KeyEvent.VK_ENTER){
+				String username =  usernameField.getText();
+				String password = passwordField.getText();
+				
+				TCPClient client = new TCPClient();
+				String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
+				String[] answer= serverReply.split("#");
+				
+				JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+				
+				int  brukerID = jsonArray.get(0).asObject().get( "brukerID" ).asInt();
+				String brukernavn = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
+				String passord = jsonArray.get(0).asObject().get( "passord" ).asString();
+				String fornavn = jsonArray.get(0).asObject().get( "fornavn" ).asString();
+				String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
+				String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
+				
+				
+				if (username.contains(brukernavn) && password.contains(passord)) {
+					if (rememberMeCheckBox.isSelected()) {
+						prefs.put("username", usernameField.getText());
+						//TODO husk aa fjerne linjen under naar vi skal levere inn
+						prefs.put("password", passwordField.getText());
+						prefs.putBoolean("checkBox", true);
+					}
+					else {
+						prefs.put("username", "");
+						//TODO husk aa fjerne linjen under naar vi skal levere inn
+						prefs.put("password", "");
+						prefs.putBoolean("checkBox", false);
+					}
+					System.out.println("Successful login!");
+					
+					mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
+					
+					mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+					
+				}
+				else {
+					mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
+				}
+			}
+			else{
+				System.out.println("Pressed: " + KeyEvent.getKeyText(keyCode));
+				event.consume();
+			}
+			
+		}finally{
+			System.out.println("Noe galt skjedde");
+		}
+			
+			
+		
+	}
+	
 	
 	@FXML
 	private void handleRegisterButtonAction (ActionEvent event) throws IOException {
