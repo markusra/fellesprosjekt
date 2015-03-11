@@ -1,4 +1,4 @@
-package appointment;
+ package appointment;
 
 import java.io.IOException;
 import java.net.URL;
@@ -120,15 +120,16 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			e.printStackTrace();
 		}
 		
+		timeStart.setText("00:00");
+		timeEnd.setText("23:59");
 		createListeners();
 	}
 	
 	private void createListeners() {
 		timeStart.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(newValue, "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
+			if (validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
 				startTime=timeStart.getText();
-				endTime=timeEnd.getText();
 				valid = true;
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
 					try {
@@ -143,10 +144,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			}
 		});
 		timeEnd.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(newValue, "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
+			if (validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
-				startTime=timeStart.getText();
 				valid = true;
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
 					try {
@@ -162,7 +162,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
  		});
 		txtSize.textProperty().addListener((observable, oldValue, newValue) -> {
 			if (validate(newValue, "[0-9]+", txtSize, null, null)) {
-				if(!newValue.equals("0") && Integer.parseInt(newValue)>0) {
+				if(!newValue.contains("0") && Integer.parseInt(newValue)>0) {
 					size=txtSize.getText();
 					valid = true;
 					if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
@@ -211,7 +211,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
     			Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         		Matcher m = p.matcher(value);
         		boolean doesMatch = m.matches();
-        		String style = doesMatch ? "" : "-fx-border-color: red; -fx-border-width: 2; "
+        		String style = doesMatch ? "-fx-border-width: 0; -fx-background-color: WHITE" : "-fx-border-color: red; -fx-border-width: 2; "
         				+ "-fx-background-color: #ffbbbb";
         		textField.setStyle(style);
         		return doesMatch;
@@ -247,7 +247,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		} else {
 			System.out.println("feil");
 		}
@@ -323,6 +322,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		String ready = dato + start + ", " + dato + end + ", " + size; 
 		System.out.println(ready);
 		
+		client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.GetFilteredRooms, ready);
 		String[] answer = serverReply.split("#");
 	    answer = serverReply.split("#");
