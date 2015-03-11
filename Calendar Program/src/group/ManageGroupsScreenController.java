@@ -42,6 +42,8 @@ public class ManageGroupsScreenController implements Initializable, ControllerIn
 	Button nextWeekButton2;
 	
 	@FXML
+	Text year;
+	@FXML
 	Text weekNumber;
 	@FXML
 	Text mondayDate;
@@ -127,13 +129,16 @@ public class ManageGroupsScreenController implements Initializable, ControllerIn
 		if (increment == 0) {
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == 1) {
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == -1) {
 			calendar.add(Calendar.WEEK_OF_YEAR, increment-1);
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		while (counter < 7) {
 			if (counter == 0) {

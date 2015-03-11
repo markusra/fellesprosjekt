@@ -335,12 +335,17 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Text fill="WHITE" layoutX="233.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK" textAlignment="CENTER" wrappingWidth="186.0">
+                  <Text fx:id="weekNumber" fill="WHITE" layoutX="295.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="139.0">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Text>
-                  <Text fx:id="weekNumber" fill="WHITE" layoutX="375.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" wrappingWidth="139.0">
+                  <Text fill="WHITE" layoutX="158.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK       (         )" textAlignment="CENTER" wrappingWidth="455.0">
+                     <font>
+                        <Font name="System Bold" size="54.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="year" fill="WHITE" layoutX="442.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="????" textAlignment="CENTER" wrappingWidth="139.0">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>

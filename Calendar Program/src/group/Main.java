@@ -14,9 +14,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/group/CreateGroupScreen.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/group/GroupCalendarScreen.fxml"));
 			FXMLLoader fxmlLoader = new FXMLLoader();
-	        fxmlLoader.setController(new GroupScreenController());
+	        fxmlLoader.setController(new GroupCalendarScreenController());
 			
 	        final Scale scale = new Scale(0.53333, 0.5333);
 		    root.getTransforms().add(scale);
@@ -25,7 +25,7 @@ public class Main extends Application {
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		    
 		    //TODO: Må endre til bare "application.css" når prosjektet leveres
-		    scene.getStylesheets().add("/css/application.css");
+		    //scene.getStylesheets().add("/css/application.css");
 			
 		    primaryStage.setScene(scene);
 			primaryStage.setTitle("Appointment");
