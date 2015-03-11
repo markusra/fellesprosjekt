@@ -235,9 +235,13 @@
                   <TableView fx:id="mondayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1">
                     <columns>
                       <TableColumn fx:id="mondayStartsTableColumn" prefWidth="75.0" text="Starts" />
+                      	<cellValueFactory><PropertyValueFactory property="starts" /></cellValueFactory>
                       <TableColumn fx:id="mondayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="mondayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="mondayPlaceTableColumn" prefWidth="178.0" text="Place" />
+                      	<cellValueFactory><PropertyValueFactory property="ends" /></cellValueFactory>
+                      <TableColumn fx:id="mondayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
+                      	<cellValueFactory><PropertyValueFactory property="purpose" /></cellValueFactory>
+                      <TableColumn fx:id="mondayPlaceTableColumn" prefWidth="178.0" text="Place" />
+                      	<cellValueFactory><PropertyValueFactory property="place" /></cellValueFactory>
                     </columns>
                   </TableView>
                   <TableView fx:id="tuesdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
