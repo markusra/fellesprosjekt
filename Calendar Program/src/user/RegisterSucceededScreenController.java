@@ -1,5 +1,6 @@
 package user;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,8 +20,8 @@ public class RegisterSucceededScreenController implements Initializable, Control
 	Button backToSignInButton;
 	
 	@FXML
-	public void handleBackToSignInButton (ActionEvent event) {
-		mainController.setScreen(Main.loginID);
+	public void handleBackToSignInButton (ActionEvent event) throws IOException {
+		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
 	
 	@Override

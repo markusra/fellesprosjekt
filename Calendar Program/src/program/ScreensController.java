@@ -3,7 +3,6 @@ package program;
 import java.io.IOException;
 import java.util.HashMap;
 
-import client.TCPClient;
 import user.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,9 +14,7 @@ public class ScreensController extends StackPane {
 	
 	public UserModel user;
 	
-	public TCPClient client;
-	
-	private HashMap<String, Node> screens = new HashMap<String, Node>();
+	private HashMap<String, String> screens = new HashMap<String, String>();
 	
 	final Scale scale = new Scale(0.53333, 0.53333);
 	
@@ -28,34 +25,26 @@ public class ScreensController extends StackPane {
 	
 	
 	//Legger til et grensesnitt i HashMappet
-	private void addScreen(String name, Node screen) {
-		screens.put(name, screen);
+	public void addScreen(String name, String resource) {
+		screens.put(name, resource);
 	}
 	
 	
 	//Henter et grensesnitt fra HashMappet
-	private Node getScreen(String name) {
+	private String getScreen(String name) {
 		return screens.get(name);
 	}
 	
 	
 	//Laster inn FXML grensesnittet og har det klart i screens HashMappet
-	public void loadScreen(String name, String resource) {
-		try {
-			client = new TCPClient();
-			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
-			Parent screen = (Parent) loader.load();
-			screen.getTransforms().add(scale);
-			ControllerInterface controller = ((ControllerInterface) loader.getController());
-			controller.setScreenParent(this);
-			addScreen(name, screen);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("ScreensController.loadScreen failed!");
-		}
-	}
-	
+	private Parent loadScreen(String name) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(getScreen(name)));
+		Parent screen = (Parent) loader.load();
+		screen.getTransforms().add(scale);
+		ControllerInterface controller = ((ControllerInterface) loader.getController());
+		controller.setScreenParent(this);
+		return screen;
+	}	
 	
 	//Brukes for � fjerne grensesnitt fra HashMappet, generelt sett un�dvendig.
 	public void unloadScreen(String name) {
@@ -69,14 +58,15 @@ public class ScreensController extends StackPane {
 	
 	
 	//Setter viewet til grensesnittet med navnet name, som eksisterer i screens HashMappet
-	public void setScreen(String name) {
+	public void setScreen(String name, String resource) throws IOException {
+		Node node = loadScreen(name);
 		if (getScreen(name) != null) {
 			if (!getChildren().isEmpty()) {
 				getChildren().remove(0);
-				getChildren().add(0, getScreen(name));
+				getChildren().add(0, node);
 			}
 			else {
-				getChildren().add(getScreen(name));
+				getChildren().add(node);
 			}
 		}
 		else {

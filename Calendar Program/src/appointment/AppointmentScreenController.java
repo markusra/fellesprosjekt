@@ -88,8 +88,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	//Metode for backToMainPageButton
 	@FXML
-	public void handleBackToMainPageButton (ActionEvent event) {
-		mainController.setScreen(Main.mainPageID);
+	public void handleBackToMainPageButton (ActionEvent event) throws IOException {
+		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 	}
 	
 	@Override

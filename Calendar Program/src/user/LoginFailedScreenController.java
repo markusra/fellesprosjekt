@@ -1,5 +1,6 @@
 package user;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,8 +19,8 @@ public class LoginFailedScreenController implements Initializable, ControllerInt
 	@FXML
 	private Button tryAgainButton;
 	
-	public void handleTryAgainButtonAction(ActionEvent event) {
-		mainController.setScreen(Main.loginID);
+	public void handleTryAgainButtonAction(ActionEvent event) throws IOException {
+		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
 	
 	@Override
