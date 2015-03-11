@@ -39,7 +39,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label layoutX="832.0" layoutY="20.0" text="NEW GROUP" textFill="WHITE">
+      <Label layoutX="832.0" layoutY="28.0" text="NEW GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="54.0" />
          </font>
