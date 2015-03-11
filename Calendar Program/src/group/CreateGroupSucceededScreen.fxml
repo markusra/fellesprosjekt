@@ -14,12 +14,12 @@
       <AnchorPane>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="308.0" layoutX="720.0" layoutY="453.0" stroke="BLACK" strokeType="INSIDE" width="500.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="308.0" layoutX="677.0" layoutY="453.0" stroke="BLACK" strokeType="INSIDE" width="581.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="707.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" width="525.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="698.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" width="542.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -46,7 +46,7 @@
             </Button>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="771.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/funny-animation-4.gif" />
+                  <Image url="@../resources/funny-animation-4.gif" />
                </image>
             </ImageView>
          </children>
