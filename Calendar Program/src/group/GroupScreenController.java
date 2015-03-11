@@ -129,6 +129,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 		client.disconnect();
 		System.out.println("GROUP CREATED");
+		mainController.setScreen(Main.groupSucceededID, Main.groupSucceededScreen);
 		//System.out.println(mainController.user.getUserID());
 	}
 
