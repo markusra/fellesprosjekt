@@ -79,11 +79,11 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	TableColumn<Appointment, String> mondayStartsTableColumn;
 	@FXML
-	TableColumn<Appointment, String> mondayEndsTableColumn;
+	TableColumn mondayEndsTableColumn;
 	@FXML
-	TableColumn<Appointment, String> mondayPurposeTableColumn;
+	TableColumn mondayPurposeTableColumn;
 	@FXML
-	TableColumn<Appointment, String> mondayPlaceTableColumn;
+	TableColumn mondayPlaceTableColumn;
 	
 	@FXML
 	TableView<Appointment> tuesdayTable;
