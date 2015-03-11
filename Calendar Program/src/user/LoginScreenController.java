@@ -1,6 +1,5 @@
 package user;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -17,6 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import json.JsonArray;
 import program.ControllerInterface;
 import program.Main;
@@ -27,6 +29,8 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	ScreensController mainController;
 	Preferences prefs = Preferences.userNodeForPackage(getClass());
 		
+	@FXML
+	Pane mainPane;
 	@FXML
 	private TextField usernameField;
 	@FXML
@@ -88,64 +92,54 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	}
 	
 	@FXML
-	public void handleKeyPressed(KeyEvent event) throws UnknownHostException, IOException{
-		try{
-			int keyCode = event.getKeyCode();
-			if(keyCode == KeyEvent.VK_ENTER){
-				String username =  usernameField.getText();
-				String password = passwordField.getText();
-				
-				TCPClient client = new TCPClient();
-				String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
-				String[] answer= serverReply.split("#");
-				
-				JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-				
-				int  brukerID = jsonArray.get(0).asObject().get( "brukerID" ).asInt();
-				String brukernavn = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
-				String passord = jsonArray.get(0).asObject().get( "passord" ).asString();
-				String fornavn = jsonArray.get(0).asObject().get( "fornavn" ).asString();
-				String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
-				String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
-				
-				
-				if (username.contains(brukernavn) && password.contains(passord)) {
-					if (rememberMeCheckBox.isSelected()) {
-						prefs.put("username", usernameField.getText());
-						//TODO husk aa fjerne linjen under naar vi skal levere inn
-						prefs.put("password", passwordField.getText());
-						prefs.putBoolean("checkBox", true);
-					}
-					else {
-						prefs.put("username", "");
-						//TODO husk aa fjerne linjen under naar vi skal levere inn
-						prefs.put("password", "");
-						prefs.putBoolean("checkBox", false);
-					}
-					System.out.println("Successful login!");
-					
-					mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
-					
-					mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
-					
+	public void keyHandler(KeyEvent event) throws IOException {
+		KeyCode code = event.getCode();
+        if(code.toString() == "ENTER"){
+        	String username =  usernameField.getText();
+			String password = passwordField.getText();
+			
+			TCPClient client = new TCPClient();
+			String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
+			String[] answer= serverReply.split("#");
+			
+			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			
+			int  brukerID = jsonArray.get(0).asObject().get( "brukerID" ).asInt();
+			String brukernavn = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
+			String passord = jsonArray.get(0).asObject().get( "passord" ).asString();
+			String fornavn = jsonArray.get(0).asObject().get( "fornavn" ).asString();
+			String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
+			String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
+			
+			
+			if (username.contains(brukernavn) && password.contains(passord)) {
+				if (rememberMeCheckBox.isSelected()) {
+					prefs.put("username", usernameField.getText());
+					//TODO husk aa fjerne linjen under naar vi skal levere inn
+					prefs.put("password", passwordField.getText());
+					prefs.putBoolean("checkBox", true);
 				}
 				else {
-					mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
+					prefs.put("username", "");
+					//TODO husk aa fjerne linjen under naar vi skal levere inn
+					prefs.put("password", "");
+					prefs.putBoolean("checkBox", false);
 				}
+				System.out.println("Successful login!");
+				
+				mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
+				
+				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+				
 			}
-			else{
-				System.out.println("Pressed: " + KeyEvent.getKeyText(keyCode));
-				event.consume();
+			else {
+				mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 			}
-			
-		}finally{
-			System.out.println("Noe galt skjedde");
+		}else{
+			event.consume();
 		}
-			
-			
-		
 	}
-	
+		
 	
 	@FXML
 	private void handleRegisterButtonAction (ActionEvent event) throws IOException {
@@ -164,6 +158,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 
 	@Override
 	public void initialize (URL arg0, ResourceBundle arg1) {
+		mainPane.setFocusTraversable(true);
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {

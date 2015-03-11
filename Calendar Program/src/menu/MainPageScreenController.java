@@ -165,6 +165,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		mainPane.setFocusTraversable(true);
 		weekFiller(calendar, 0);
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -240,7 +241,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		}
 	}
 	
-	
 	private static String getMonthFromInt(int month) {
 		String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		return monthNames[month];
@@ -264,13 +264,18 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	@FXML
-	public void keyHandler(KeyEvent event) {
+	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
         if(code.toString() == "LEFT"){
         	weekFiller(calendar, -1);
 		}else if(code.toString() == "RIGHT"){
 			weekFiller(calendar, 1);
-		}event.consume();
+		}else if(code.toString() == "ESCAPE"){
+			System.out.println("Typed escape");
+			mainController.setScreen(Main.loginID, Main.loginScreen);
+		}else{
+			event.consume();
+		}
 	}
 
 	@FXML

@@ -347,8 +347,6 @@
                   <Image url="@../resources/Weektemplate-arrow.png" />
                </image>
             </ImageView>
-            <Button fx:id="previousWeekButton2" layoutX="39.0" layoutY="540.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
-            <Button fx:id="nextWeekButton2" layoutX="1136.0" layoutY="541.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="1391.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
@@ -431,6 +429,8 @@
             <Font name="System Bold" size="42.0" />
          </font>
       </Button>
+      <Button fx:id="previousWeekButton2" layoutX="143.0" layoutY="545.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
+      <Button fx:id="nextWeekButton2" layoutX="1240.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
    </children>
    <padding>
       <Insets top="-1000.0" />
