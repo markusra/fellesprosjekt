@@ -26,6 +26,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import json.JsonArray;
@@ -37,10 +38,14 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 	Calendar calendar = Calendar.getInstance();
 	
 	@FXML
+	Pane mainPane;
+	@FXML
 	Button previousWeekButton2;
 	@FXML
 	Button nextWeekButton2;
 	
+	@FXML
+	Text year;
 	@FXML
 	Text weekNumber;
 	@FXML
@@ -121,13 +126,16 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 		if (increment == 0) {
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == 1) {
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == -1) {
 			calendar.add(Calendar.WEEK_OF_YEAR, increment-1);
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		while (counter < 7) {
 			if (counter == 0) {

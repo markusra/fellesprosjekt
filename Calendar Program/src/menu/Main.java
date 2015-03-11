@@ -28,6 +28,8 @@ public class Main extends Application {
 		    primaryStage.setScene(scene);
 			primaryStage.setTitle("MainPage");
 			primaryStage.show();
+			
+			MainPageScreenController controller = fxmlLoader.<MainPageScreenController>getController();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

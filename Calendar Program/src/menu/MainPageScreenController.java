@@ -1,7 +1,5 @@
 package menu;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,21 +20,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class MainPageScreenController implements Initializable, ControllerInterface, KeyListener {
+public class MainPageScreenController implements Initializable, ControllerInterface {
 	
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
 	
 	private ObservableList<Appointment> observableAppointments;
 	
+	@FXML
+	Pane mainPane;
 	
 	@FXML
 	Button previousWeekButton2;
 	@FXML
 	Button nextWeekButton2;
 	
+	@FXML
+	Text year;
 	@FXML
 	Text weekNumber;
 	@FXML
@@ -178,13 +183,16 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		if (increment == 0) {
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == 1) {
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == -1) {
 			calendar.add(Calendar.WEEK_OF_YEAR, increment-1);
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
+			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		while (counter < 7) {
 			if (counter == 0) {
@@ -255,27 +263,20 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		tableView.getColumns().addAll(start, end, purpose, place);
 	}
 	
-	
+	@FXML
+	public void keyHandler(KeyEvent event) {
+		KeyCode code = event.getCode();
+        if(code.toString() == "LEFT"){
+        	weekFiller(calendar, -1);
+		}else if(code.toString() == "RIGHT"){
+			weekFiller(calendar, 1);
+		}event.consume();
+	}
+
 	@FXML
 	public void handleNextWeekButton(ActionEvent event) {
 		weekFiller(calendar, 1);
 	}
-	
-	
-	@FXML
-	public void handleKeyPressed(KeyEvent event){
-		int keyCode = event.getKeyCode();
-		if(keyCode == KeyEvent.VK_LEFT){
-			weekFiller(calendar, -1);
-		}
-		else if(keyCode == KeyEvent.VK_RIGHT){
-			weekFiller(calendar, -1);
-		}
-		else{
-			System.out.println("Pressed: " + KeyEvent.getKeyText(keyCode));
-			event.consume();
-		}
-	}	
 	
 	
 	@FXML
@@ -308,23 +309,4 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }
