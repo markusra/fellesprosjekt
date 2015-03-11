@@ -20,7 +20,7 @@ public class TCPClient {
 	private String splitChar = "#";
 	
 	
-	public TCPClient () throws UnknownHostException, IOException {
+	public TCPClient() throws UnknownHostException, IOException {
 		clientSocket = new Socket("rauhut.no", 9998);
 		outToServer = new OutputStreamWriter(clientSocket.getOutputStream());
 		inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -28,13 +28,13 @@ public class TCPClient {
 	
 	
 	public String customQuery(String cmd, String data) throws IOException {
-		String command = cmd;
-		String raw = command + splitChar + "(" + data + ")";
+		String raw = cmd + splitChar + "(" + data + ")";
 		
 		System.out.println(raw);
 		outToServer.write(raw + "\n");
 		outToServer.flush();
 		serverReply = inFromServer.readLine();
+		
 		return serverReply;
 	}
 	

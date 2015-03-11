@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 	
 	//Husk aa adde alle grensesnitt (.fxml filer) under screens, og lag et navn for den under ID.

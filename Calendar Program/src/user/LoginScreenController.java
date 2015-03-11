@@ -38,13 +38,14 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	@FXML
 	private Button forgotButton;
 	
+	TCPClient client;
 	
 	@FXML
 	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
 		String username =  usernameField.getText();
 		String password = passwordField.getText();
 		
-		TCPClient client = new TCPClient();
+		client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
 		String[] answer= serverReply.split("#");
 		
@@ -57,7 +58,6 @@ public class LoginScreenController implements Initializable, ControllerInterface
 		String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
 		String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
 	
-		
 		if (username.contains(brukernavn) && password.contains(passord)) {
 			if (rememberMeCheckBox.isSelected()) {
 				prefs.put("username", usernameField.getText());

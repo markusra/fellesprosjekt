@@ -188,16 +188,16 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		List<String> userList = new ArrayList<>();
 		
 		for( JsonValue value : jsonArray ) {
-			//int  brukerID = value.asObject().get( "brukerID" ).asInt();
+			int  brukerID = value.asObject().get( "brukerID" ).asInt();
 			String brukernavn = value.asObject().get( "brukernavn" ).asString();
 			String fornavn = value.asObject().get( "fornavn" ).asString();
 			String etternavn = value.asObject().get( "etternavn" ).asString();
 			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
 			
+			if (brukerID != mainController.user.getUserID()) {
+				userList.add(temp);
+			}
 			
-			userList.add(temp);
-			
-			//txtAddUsers.setText(temp);
 		}
 
 		//System.out.println(availableUsers.get( "(markusra)" ));

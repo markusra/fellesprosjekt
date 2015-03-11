@@ -3,6 +3,7 @@ package program;
 import java.io.IOException;
 import java.util.HashMap;
 
+import client.TCPClient;
 import user.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +14,8 @@ import javafx.scene.transform.Scale;
 public class ScreensController extends StackPane {
 	
 	public UserModel user;
+	
+	public TCPClient client;
 	
 	private HashMap<String, Node> screens = new HashMap<String, Node>();
 	
@@ -39,6 +42,8 @@ public class ScreensController extends StackPane {
 	//Laster inn FXML grensesnittet og har det klart i screens HashMappet
 	public void loadScreen(String name, String resource) {
 		try {
+			client = new TCPClient();
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
 			Parent screen = (Parent) loader.load();
 			screen.getTransforms().add(scale);

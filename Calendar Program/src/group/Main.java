@@ -14,9 +14,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/group/ManageGroupsScreen.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/group/CreateGroupScreen.fxml"));
 			FXMLLoader fxmlLoader = new FXMLLoader();
-	        fxmlLoader.setController(new ManageGroupsScreenController());
+	        fxmlLoader.setController(new GroupScreenController());
 			
 	        final Scale scale = new Scale(0.53333, 0.5333);
 		    root.getTransforms().add(scale);
