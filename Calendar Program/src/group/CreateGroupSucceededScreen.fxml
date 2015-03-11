@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -28,12 +29,12 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Text layoutX="794.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The group was successfully created" textAlignment="CENTER" wrappingWidth="364.0">
+            <Text layoutX="873.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The group was successfully created" textAlignment="CENTER" wrappingWidth="364.0">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="754.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="833.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
@@ -43,6 +44,11 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="771.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/funny-animation-4.gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
