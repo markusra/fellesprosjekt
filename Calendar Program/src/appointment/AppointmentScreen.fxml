@@ -65,11 +65,11 @@
                      </font>
                   </TextField>
                   <DatePicker fx:id="dpStart" layoutX="680.0" layoutY="448.0" prefHeight="53.0" prefWidth="258.0" />
-                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1062.0" layoutY="446.0" prefHeight="56.0" prefWidth="112.0" text="00:00">
+                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1062.0" layoutY="446.0" prefHeight="56.0" prefWidth="112.0">
                      <font>
                         <Font size="30.0" />
                      </font></TextField>
-                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1246.0" layoutY="447.0" prefHeight="56.0" prefWidth="112.0" text="23:59">
+                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1246.0" layoutY="447.0" prefHeight="56.0" prefWidth="112.0">
                      <font>
                         <Font size="30.0" />
                      </font></TextField>
