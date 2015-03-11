@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -185,6 +186,11 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	public void handleNextWeekButton(ActionEvent event) {
+		weekFiller(calendar, 1);
+	}
+	
+	@FXML 
+	public void nextWeekButton2OnSwipeLeft(ObservableValue<? extends Boolean> property, Boolean oldValue, Boolean newValue) {
 		weekFiller(calendar, 1);
 	}
 
