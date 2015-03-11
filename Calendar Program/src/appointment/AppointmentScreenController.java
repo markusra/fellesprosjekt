@@ -236,7 +236,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	@FXML
 	private void doConfirm() {
-		Appointment appointment = new Appointment();
 		if (valid) {
 			String rom = roomField.getValue();
 			String[] splited = rom.split("\\s+");
