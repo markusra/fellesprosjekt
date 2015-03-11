@@ -130,6 +130,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			if (validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
 				startTime=timeStart.getText();
+				endTime=timeEnd.getText();
 				valid = true;
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
 					try {
@@ -147,6 +148,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			if (validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
+				startTime=timeStart.getText();
 				valid = true;
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
 					try {
@@ -162,7 +164,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
  		});
 		txtSize.textProperty().addListener((observable, oldValue, newValue) -> {
 			if (validate(newValue, "[0-9]+", txtSize, null, null)) {
-				if(!newValue.contains("0") && Integer.parseInt(newValue)>0) {
+				if(!newValue.equals("0") && Integer.parseInt(newValue)>0) {
 					size=txtSize.getText();
 					valid = true;
 					if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
@@ -211,7 +213,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
     			Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         		Matcher m = p.matcher(value);
         		boolean doesMatch = m.matches();
-        		String style = doesMatch ? "-fx-border-width: 0; -fx-background-color: WHITE" : "-fx-border-color: red; -fx-border-width: 2; "
+        		String style = doesMatch ? "" : "-fx-border-color: red; -fx-border-width: 2; "
         				+ "-fx-background-color: #ffbbbb";
         		textField.setStyle(style);
         		return doesMatch;
@@ -241,8 +243,15 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			String[] splited = rom.split("\\s+");
 			String romID = splited[1];
 			try {
-				client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
-				System.out.println("Avtale ble satt");
+				String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
+				
+				String[] answer = serverReply.split("#");
+
+				JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			
+				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
+				
+				getMembers(avtaleID);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -322,7 +331,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		String ready = dato + start + ", " + dato + end + ", " + size; 
 		System.out.println(ready);
 		
-		client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.GetFilteredRooms, ready);
 		String[] answer = serverReply.split("#");
 	    answer = serverReply.split("#");
@@ -343,6 +351,16 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		mainController = screenParent;
+	}
+	
+	private void getMembers(int avtaleID) {
+		int brukerID = mainController.user.getUserID();
+		
+		brukerID avtaleID deltar admin
+		
+		invitedField.getSelectionModel().getSelectedItems();
+		
+		
 	}
 	
 
