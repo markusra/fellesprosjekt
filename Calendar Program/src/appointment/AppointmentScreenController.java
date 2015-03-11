@@ -85,6 +85,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private String sendesEnd = null;
 	TCPClient client;
 	Map<String, Integer> availableUsers = new HashMap<String, Integer>();
+	Map<String, Integer> availableRooms = new HashMap<String, Integer>();
 	
 	private boolean valid=true;
 	
@@ -97,7 +98,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		model = new Appointment();
 		
 		roomField.setVisible(false);
 		RoomLabel.setVisible(false);
@@ -329,7 +329,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		sendesEnd = dato + end;
 		
 		String ready = dato + start + ", " + dato + end + ", " + size; 
-		System.out.println(ready);
 		
 		String serverReply = client.customQuery(ServerCodes.GetFilteredRooms, ready);
 		String[] answer = serverReply.split("#");
