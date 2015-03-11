@@ -6,7 +6,9 @@ import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -82,6 +84,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private String sendesStart = null;
 	private String sendesEnd = null;
 	TCPClient client;
+	Map<String, Integer> availableUsers = new HashMap<String, Integer>();
 	
 	private boolean valid=true;
 	
@@ -95,6 +98,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new Appointment();
+		
 		roomField.setVisible(false);
 		RoomLabel.setVisible(false);
 		
@@ -105,19 +109,14 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		try {
 			client = new TCPClient();
+			getAllUsers();
+			fetchData();
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
-		
-		try {
-			fetchData();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		timeStart.setText("00:00");
@@ -294,7 +293,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		for( JsonValue value : jsonArray ) {
 			String fornavn = value.asObject().get( "fornavn" ).asString();
 			String etternavn = value.asObject().get( "etternavn" ).asString();
-			String temp = fornavn + " " + etternavn;
+			String brukernavn = value.asObject().get( "brukernavn" ).asString();
+			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
 			userList.add(temp);
 		}
 		ObservableList<String> items =FXCollections.observableArrayList (userList);
@@ -355,11 +355,40 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	private void getMembers(int avtaleID) {
 		int brukerID = mainController.user.getUserID();
+		try {
+			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ObservableList<String> brukerListe = invitedField.getSelectionModel().getSelectedItems();
 		
-		brukerID avtaleID deltar admin
+		for (String member : brukerListe) {
+			String[] memberArray = member.split("\\(");
+			member = memberArray[1].substring(0, memberArray[1].length()-1);
+			
+			try {
+				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private void getAllUsers() throws IOException {
+		String serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
+		String[] answer= serverReply.split("#");
 		
-		invitedField.getSelectionModel().getSelectedItems();
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 		
+		availableUsers.clear();
+		for( JsonValue value : jsonArray ) {
+			int  brukerID = value.asObject().get( "brukerID" ).asInt();
+			String brukernavn = value.asObject().get( "brukernavn" ).asString();
+			
+			availableUsers.put(brukernavn, brukerID);
+		}
 		
 	}
 	
