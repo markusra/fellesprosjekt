@@ -29,7 +29,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
 	
-	private ArrayList<Appointment> appointments;
 	private ObservableList<Appointment> observableAppointments;
 	
 	
@@ -78,13 +77,13 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	TableView<Appointment> mondayTable;
 	@FXML
-	TableColumn<String, String> mondayStartsTableColumn;
+	TableColumn<Appointment, String> mondayStartsTableColumn;
 	@FXML
-	TableColumn<String, String> mondayEndsTableColumn;
+	TableColumn<Appointment, String> mondayEndsTableColumn;
 	@FXML
-	TableColumn<String, String> mondayPurposeTableColumn;
+	TableColumn<Appointment, String> mondayPurposeTableColumn;
 	@FXML
-	TableColumn<String, String> mondayPlaceTableColumn;
+	TableColumn<Appointment, String> mondayPlaceTableColumn;
 	
 	@FXML
 	TableView<Appointment> tuesdayTable;
@@ -161,7 +160,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		appointments = new ArrayList<Appointment>();
 		weekFiller(calendar, 0);
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -169,15 +167,9 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		fridayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
-		appointmentListFiller("Legetime", "Sykehus", "8:30", "9:00");
-		appointmentListFiller("Jobb", "Arbeidsplassen min", "9:30", "14:00");
-		appointmentListFiller("Jobb mÃ¸te", "Arbeidsplassen min", "10:00", "10:30");
-		ObservableList<Appointment> observableAppointments = FXCollections.observableArrayList(appointments);
-		tableColumnFiller(mondayStartsTableColumn, "Start", "start");
-		tableColumnFiller(mondayEndsTableColumn, "End", "end");
-		tableColumnFiller(mondayPurposeTableColumn, "Purpose", "purpose");
-		tableColumnFiller(mondayPlaceTableColumn, "Place", "place");
-		tableViewFiller(mondayTable, mondayStartsTableColumn, mondayEndsTableColumn, mondayPurposeTableColumn, mondayPlaceTableColumn);
+		appointmentListFiller(mondayTable, observableAppointments, "Legetime", "Sykehus", "8:30", "9:00");
+		appointmentListFiller(mondayTable, observableAppointments, "Jobb", "Arbeidsplassen min", "9:30", "14:00");
+		appointmentListFiller(mondayTable, observableAppointments, "Jobb møte", "Arbeidsplassen min", "10:00", "10:30");
 	}
 	
 	
@@ -246,13 +238,14 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		return monthNames[month];
 	}
 	
-	private void appointmentListFiller(String purpose, String place, String start, String end) {
-		Appointment appointment = new Appointment(purpose, place, start, end);
-		appointments.add(appointment);
+	private void appointmentListFiller(TableView<Appointment> tableView, ObservableList<Appointment> observableList, String purpose, String place, String start, String end) {
+		observableList = tableView.getItems();
+		observableList.add(new Appointment(purpose, place, start, end));
 	}
 	
 	
-	private void tableColumnFiller(TableColumn tableColumn, String name, String variable) {
+	private void tableColumnFiller(TableColumn<Appointment, String>tableColumn, String name, String variable) {
+		tableColumn = new TableColumn(name);
 		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, String>(variable));
 	}
 	
