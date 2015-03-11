@@ -49,15 +49,16 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	@FXML
 	Button backToMainPageButton;
 	
-	//Metode for backToMainPageButton
-	@FXML
-	public void handleBackToMainPageButton(ActionEvent event) throws IOException {
-		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
-	}
-	
 	TCPClient client;
 	List<String> groupList;
 	List<String> chosenMembers = new ArrayList<>();
+	
+	//Metode for backToMainPageButton
+	@FXML
+	public void handleBackToMainPageButton(ActionEvent event) throws IOException {
+		client.disconnect();
+		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+	}
 	
 	Map<String, Integer> groups = new HashMap<String, Integer>();
 	Map<String, Integer> availableUsers = new HashMap<String, Integer>();
@@ -126,15 +127,18 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		createGroup();
 		addMembersToGroup();
 		
+		client.disconnect();
 		System.out.println("GROUP CREATED");
 		//System.out.println(mainController.user.getUserID());
 	}
 
 	@FXML
 	private void doAddMember() {
-		String chosenMember = lvFilteredUsers.getSelectionModel().getSelectedItem();
-		if (! chosenMembers.contains(chosenMember) && chosenMember != null) {
-			chosenMembers.add(chosenMember);
+		String chosenFilteredMember = lvFilteredUsers.getSelectionModel().getSelectedItem();
+		
+		if (! chosenMembers.contains(chosenFilteredMember) && chosenFilteredMember != null) {
+			System.out.println("ChosenMember lagt til.");
+			chosenMembers.add(chosenFilteredMember);
 		}
 		
 		ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
@@ -144,8 +148,10 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	@FXML
 	private void doDeleteMember() {
 		String chosenMember = lvChosenMembers.getSelectionModel().getSelectedItem();
+		
+		System.out.println(chosenMember);
 		if (chosenMember != null) {
-			System.out.println("test");
+			System.out.println(chosenMembers.indexOf(chosenMember));
 			chosenMembers.remove(chosenMembers.indexOf(chosenMember));
 		}
 		
