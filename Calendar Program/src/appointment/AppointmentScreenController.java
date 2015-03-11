@@ -252,10 +252,12 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
 				
 				getMembers(avtaleID);
+				mainController.setScreen(Main.appointmentSucceededID, Main.appointmentSucceededScreen);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
 		} else {
 			System.out.println("feil");
 		}
