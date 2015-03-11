@@ -136,7 +136,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	private void doAddMember() {
 		String chosenFilteredMember = lvFilteredUsers.getSelectionModel().getSelectedItem().toString();
 		
-		if (! chosenMembers.contains(chosenFilteredMember) && chosenFilteredMember != null) {
+		if (! chosenMembers.equals(chosenFilteredMember) && chosenFilteredMember != null) {
 			chosenMembers.add(chosenFilteredMember);
 			
 			ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
@@ -148,13 +148,11 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 	@FXML
 	private void doDeleteMember() {
-		String chosenMember = lvChosenMembers.getSelectionModel().getSelectedItem().toString();
+		String chosenMember = lvChosenMembers.selectionModelProperty().get().getSelectedItem().toString();
 
-		
-		if (chosenMember != null) {
-			System.out.println(chosenMembers.indexOf(chosenMember));
+		System.out.println(chosenMember);
+		if (chosenMember != null) {			
 			chosenMembers.remove(chosenMembers.indexOf(chosenMember));
-			System.out.println(chosenMembers);
 			
 			ObservableList<String> myObservableList = FXCollections.observableList(chosenMembers);
 			lvChosenMembers.setItems(myObservableList);
