@@ -77,6 +77,8 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			
 			mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
 			
+			
+			client.disconnect();
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 			
 		}
