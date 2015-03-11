@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -13,36 +14,41 @@
       <AnchorPane>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="308.0" layoutX="685.0" layoutY="453.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="347.0" layoutX="685.0" layoutY="436.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="646.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" width="649.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="646.0" layoutY="323.0" stroke="BLACK" strokeType="INSIDE" width="649.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label focusTraversable="false" layoutX="664.0" layoutY="359.0" text="CREATE APPOINTMENT SUCCEEDED" textFill="WHITE">
+            <Label focusTraversable="false" layoutX="664.0" layoutY="342.0" text="CREATE APPOINTMENT SUCCEEDED" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Text layoutX="737.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The appointment was successfully created" textAlignment="CENTER" wrappingWidth="470.0">
+            <Text layoutX="737.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The appointment was successfully created" textAlignment="CENTER" wrappingWidth="470.0">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="754.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="748.0" layoutY="565.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="backToMainPageButton" layoutX="778.0" layoutY="674.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO MAIN PAGE" textFill="WHITE">
+            <Button fx:id="backToMainPageButton" layoutX="778.0" layoutY="696.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO MAIN PAGE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
+            <ImageView fitHeight="59.0" fitWidth="77.0" layoutX="937.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Check%20Green.gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

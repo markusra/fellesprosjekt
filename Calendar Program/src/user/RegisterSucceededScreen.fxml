@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -13,7 +14,7 @@
       <AnchorPane>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="341.0" layoutX="685.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="411.0" layoutX="685.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -28,26 +29,31 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Text layoutX="744.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The registration was successful. " textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="744.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The registration was successful. " textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="754.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="754.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="748.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to sign in with your username and password." textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="748.0" layoutY="692.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to sign in with your username and password." textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="backToSignInButton" layoutX="778.0" layoutY="703.0" mnemonicParsing="false" onAction="#handleBackToSignInButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+            <Button fx:id="backToSignInButton" layoutX="778.0" layoutY="772.0" mnemonicParsing="false" onAction="#handleBackToSignInButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
+            <ImageView fitHeight="59.0" fitWidth="77.0" layoutX="937.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Check%20Green.gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
