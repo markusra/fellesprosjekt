@@ -29,6 +29,9 @@ public class Main extends Application {
 	public final static String appointmentID = "AppointmentScreen";
 	public final static String appointmentScreen = "/appointment/AppointmentScreen.fxml";
 
+	public final static String appointmentSucceededID = "AppointmentSucceededScreen";
+	public final static String appointmentSucceededScreen = "/appointment/AppointmentSucceededScreen.fxml";
+	
 	public final static String viewDayID = "ViewDayScreen";
 	public final static String viewDayScreen = "/appointment/ViewDayAppointmentsScreen.fxml";
 
@@ -40,6 +43,9 @@ public class Main extends Application {
 	
 	public final static String groupID = "GroupScreen";
 	public final static String groupScreen = "/group/CreateGroupScreen.fxml";
+	
+	public final static String groupSucceededID = "GroupSucceededScreen";
+	public final static String groupSucceededScreen = "/group/CreateGroupSucceededScreen.fxml";
 	
 	public final static String viewGroupsID = "ViewGroupsScreen";
 	public final static String viewGroupsScreen = "/group/ViewGroupsScreen.fxml";
@@ -63,10 +69,12 @@ public class Main extends Application {
 		screensController.addScreen(loginFailedID, loginFailedScreen);
 		screensController.addScreen(mainPageID, mainPageScreen);
 		screensController.addScreen(appointmentID, appointmentScreen);
+		screensController.addScreen(appointmentSucceededID, appointmentSucceededScreen);
 		screensController.addScreen(viewDayID, viewDayScreen);
 		screensController.addScreen(manageAppointmentsID, manageAppointmentsScreen);
 		screensController.addScreen(appointmentStatusID, appointmentStatusScreen);
 		screensController.addScreen(groupID, groupScreen);
+		screensController.addScreen(groupSucceededID, groupSucceededScreen);
 		screensController.addScreen(viewGroupsID, viewGroupsScreen);
 		screensController.addScreen(manageGroupID, manageGroupScreen);
 		screensController.addScreen(groupCalendarID, groupCalendarScreen);
@@ -83,6 +91,7 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		scene.getRoot().requestFocus();
 	}
 	
 	

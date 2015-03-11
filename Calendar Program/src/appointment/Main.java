@@ -15,7 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/appointment/AppointmentScreen.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/group/AppointmentScreen.fxml"));
 			FXMLLoader fxmlLoader = new FXMLLoader();
 	        fxmlLoader.setController(new AppointmentScreenController());
 			
