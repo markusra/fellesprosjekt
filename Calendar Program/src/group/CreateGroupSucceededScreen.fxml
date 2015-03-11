@@ -14,39 +14,39 @@
       <AnchorPane>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="308.0" layoutX="677.0" layoutY="453.0" stroke="BLACK" strokeType="INSIDE" width="581.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="335.0" layoutX="677.0" layoutY="437.0" stroke="BLACK" strokeType="INSIDE" width="581.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="698.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" width="542.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="698.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" width="542.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label focusTraversable="false" layoutX="731.0" layoutY="359.0" text="CREATE GROUP SUCCEEDED" textFill="WHITE">
+            <Label focusTraversable="false" layoutX="731.0" layoutY="343.0" text="CREATE GROUP SUCCEEDED" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Text layoutX="873.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The group was successfully created" textAlignment="CENTER" wrappingWidth="364.0">
+            <Text layoutX="788.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" The group was successfully created" textAlignment="CENTER" wrappingWidth="364.0">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="833.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
+            <Text layoutX="739.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!" textAlignment="CENTER" wrappingWidth="454.07421875">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="backToMainPageButton" layoutX="778.0" layoutY="674.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO MAIN PAGE" textFill="WHITE">
+            <Button fx:id="backToMainPageButton" layoutX="778.0" layoutY="688.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="59.0" prefWidth="379.0" style="-fx-background-color: #69696b;" text="BACK TO MAIN PAGE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="771.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="77.0" layoutX="927.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/funny-animation-4.gif" />
+                  <Image url="@../resources/Check%20Green.gif" />
                </image>
             </ImageView>
          </children>
