@@ -238,6 +238,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private void doConfirm() {
 		if (valid) {
 			String rom = roomField.getValue();
+			
+			
 			String[] splited = rom.split("\\s+");
 			String romID = splited[1];
 			try {
@@ -249,7 +251,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			
 				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
 				
-				getMembers(avtaleID);
+				setMembers(avtaleID);
 				mainController.setScreen(Main.appointmentSucceededID, Main.appointmentSucceededScreen);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -340,8 +342,16 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		for( JsonValue value : jsonArray ) {
 			String romNavn = value.asObject().get( "navn").asString();
-			int romID = value.asObject().get( "moteromID").asInt();
-			roomList.add(romNavn + " " + romID );
+			//int romID = value.asObject().get( "moteromID").asInt();
+			roomList.add(romNavn);
+		}
+		
+		availableUsers.clear();
+		for( JsonValue value : jsonArray ) {
+			int  roomID = value.asObject().get( "navn" ).asInt();
+			String navn = value.asObject().get( "moteromID" ).asString();
+			
+			availableUsers.put(navn, roomID);
 		}
 		
 		ObservableList<String> myObservableList2 = FXCollections.observableList(roomList);
@@ -353,7 +363,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		mainController = screenParent;
 	}
 	
-	private void getMembers(int avtaleID) {
+	private void setMembers(int avtaleID) {
 		int brukerID = mainController.user.getUserID();
 		try {
 			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
