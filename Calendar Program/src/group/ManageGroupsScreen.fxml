@@ -10,8 +10,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.ManageGroupsScreenController">
+<Pane fx:id="mainPane" onKeyPressed="#keyHandler" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.ManageGroupsScreenController">
    <children>
+      <Button fx:id="previousWeekButton2" layoutX="552.0" layoutY="544.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
+      <Button fx:id="nextWeekButton2" layoutX="1449.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="84.0" text="Button" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="623.0" layoutX="50.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" width="475.0">
          <effect>
@@ -368,7 +370,6 @@
                   <Image url="@../resources/Weektemplate-arrow.png" />
                </image>
             </ImageView>
-            <Button fx:id="previousWeekButton2" layoutX="39.0" layoutY="537.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="60.0" layoutX="1564.0" layoutY="611.0" stroke="BLACK" strokeType="INSIDE" width="304.0">
@@ -448,7 +449,6 @@
          </font>
       </TextField>
       <ComboBox layoutX="270.0" layoutY="410.0" prefHeight="53.0" prefWidth="234.0" promptText="Choose a group" />
-      <Button fx:id="nextWeekButton2" layoutX="1449.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="84.0" text="Button" />
    </children>
    <padding>
       <Insets top="-1000.0" />

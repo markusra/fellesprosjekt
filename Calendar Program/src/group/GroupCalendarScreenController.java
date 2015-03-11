@@ -26,6 +26,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -100,6 +102,7 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		mainPane.setFocusTraversable(true);
 		weekFiller(calendar, 0);
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -118,6 +121,16 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 	@FXML
 	public void handlePreviousWeekButton(ActionEvent event) {
 		weekFiller(calendar, -1);
+	}
+	
+	@FXML
+	public void keyHandler(KeyEvent event) {
+		KeyCode code = event.getCode();
+        if(code.toString() == "LEFT"){
+        	weekFiller(calendar, -1);
+		}else if(code.toString() == "RIGHT"){
+			weekFiller(calendar, 1);
+		}event.consume();
 	}
 	
 	

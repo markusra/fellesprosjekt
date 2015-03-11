@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginScreenController">
+<Pane fx:id="mainPane" onKeyPressed="#keyHandler" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1920.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="299.0" layoutX="567.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
