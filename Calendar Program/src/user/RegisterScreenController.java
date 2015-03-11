@@ -73,7 +73,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 			String[] answer= serverReply.split("#");
 			
 			if (! answer[1].contains("duplicateEntry")) {
-				mainController.setScreen(Main.registerSucceededID);			
+				mainController.setScreen(Main.registerSucceededID, Main.registerSucceededScreen);			
 			}
 			
 		}
@@ -81,8 +81,8 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	
 	
 	@FXML
-	public void handleBackToSignInButtonAction (ActionEvent event) {
-		mainController.setScreen(Main.loginID);
+	public void handleBackToSignInButtonAction (ActionEvent event) throws IOException {
+		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
 	
 	

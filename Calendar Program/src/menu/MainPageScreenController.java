@@ -1,5 +1,6 @@
 package menu;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -144,23 +145,23 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	
 	
-	public void handleCreateAppointmentButtonAction(ActionEvent event) {
-		mainController.setScreen(Main.appointmentID);
+	public void handleCreateAppointmentButtonAction(ActionEvent event) throws IOException {
+		mainController.setScreen(Main.appointmentID, Main.appointmentScreen);
 	}
 	
 	
-	public void handleCreateGroupButtonAction(ActionEvent event) {
-		mainController.setScreen(Main.groupID);
+	public void handleCreateGroupButtonAction(ActionEvent event) throws IOException {
+		mainController.setScreen(Main.groupID, Main.groupScreen);
 	}
 	
 	
-	public void handleViewGroupsButtonAction(ActionEvent event) {
-		mainController.setScreen(Main.viewGroupsID);
+	public void handleViewGroupsButtonAction(ActionEvent event) throws IOException {
+		mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
 	}
 	
 	
-	public void handleSignOutButtonAction(ActionEvent event){
-		mainController.setScreen(Main.loginID);
+	public void handleSignOutButtonAction(ActionEvent event) throws IOException{
+		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
 	
 	

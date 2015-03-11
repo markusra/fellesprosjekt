@@ -1,5 +1,6 @@
 package user;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +46,7 @@ public class ForgotScreenController implements Initializable, ControllerInterfac
 	}
 	
 	@FXML
-	public void handleBackButtonAction(ActionEvent event) {
-		mainController.setScreen(Main.loginID);
+	public void handleBackButtonAction(ActionEvent event) throws IOException {
+		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
 }

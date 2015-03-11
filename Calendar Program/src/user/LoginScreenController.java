@@ -38,14 +38,13 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	@FXML
 	private Button forgotButton;
 	
-	TCPClient client;
 	
 	@FXML
 	private void handleLoginButtonAction (ActionEvent event) throws UnknownHostException, IOException {
 		String username =  usernameField.getText();
 		String password = passwordField.getText();
 		
-		client = new TCPClient();
+		TCPClient client = new TCPClient();
 		String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
 		String[] answer= serverReply.split("#");
 		
@@ -58,6 +57,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 		String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
 		String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
 	
+		
 		if (username.contains(brukernavn) && password.contains(passord)) {
 			if (rememberMeCheckBox.isSelected()) {
 				prefs.put("username", usernameField.getText());
@@ -75,22 +75,22 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			
 			mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
 			
-			mainController.setScreen(Main.mainPageID);
+			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 			
 		}
 		else {
-			mainController.setScreen(Main.loginFailedID);
+			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 		}
 	}
 	
 	@FXML
-	private void handleRegisterButtonAction (ActionEvent event) {
-		mainController.setScreen(Main.registerID);
+	private void handleRegisterButtonAction (ActionEvent event) throws IOException {
+		mainController.setScreen(Main.registerID, Main.registerScreen);
 	}
 	
 	@FXML
-	private void handleForgotButtonAction (ActionEvent event) {
-		mainController.setScreen(Main.forgotID);
+	private void handleForgotButtonAction (ActionEvent event) throws IOException {
+		mainController.setScreen(Main.forgotID, Main.forgotScreen);
 	}
 
 	@Override
