@@ -271,7 +271,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		}else if(code.toString() == "RIGHT"){
 			weekFiller(calendar, 1);
 		}else if(code.toString() == "ESCAPE"){
-			System.out.println("Typed escape");
 			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else{
 			event.consume();
