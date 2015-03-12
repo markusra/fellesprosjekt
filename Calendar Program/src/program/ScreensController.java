@@ -16,7 +16,7 @@ public class ScreensController extends StackPane {
 	
 	private HashMap<String, String> screens = new HashMap<String, String>();
 	
-	final Scale scale = new Scale(0.53333, 0.53333);
+	final Scale scale = new Scale(0.839, 0.843);
 	
 	
 	public ScreensController() {

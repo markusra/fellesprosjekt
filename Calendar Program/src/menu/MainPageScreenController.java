@@ -2,7 +2,6 @@ package menu;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -10,7 +9,6 @@ import appointment.Appointment;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +28,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
 	
-	private ObservableList<Appointment> observableAppointments;
+	private ObservableList<Appointment> observableAppointments = FXCollections.observableArrayList();
 	
 	@FXML
 	Pane mainPane;
@@ -82,79 +80,17 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	TableView<Appointment> mondayTable;
 	@FXML
-	TableColumn<Appointment, String> mondayStartsTableColumn;
-	@FXML
-	TableColumn mondayEndsTableColumn;
-	@FXML
-	TableColumn mondayPurposeTableColumn;
-	@FXML
-	TableColumn mondayPlaceTableColumn;
-	
-	@FXML
 	TableView<Appointment> tuesdayTable;
-	@FXML
-	TableColumn<String, String> tuesdayStartsTableColumn;
-	@FXML
-	TableColumn<String, String> tuesdayEndsTableColumn;
-	@FXML
-	TableColumn<String, String> tuesdayPurposeTableColumn;
-	@FXML
-	TableColumn<String, String> tuesdayPlaceTableColumn;
-	
 	@FXML
 	TableView<Appointment> wednesdayTable;
 	@FXML
-	TableColumn<String, String> wednesdayStartsTableColumn;
-	@FXML
-	TableColumn<String, String> wednesdayEndsTableColumn;
-	@FXML
-	TableColumn<String, String> wednesdayPurposeTableColumn;
-	@FXML
-	TableColumn<String, String> wednesdayPlaceTableColumn;
-	
-	@FXML
 	TableView<Appointment> thursdayTable;
-	@FXML
-	TableColumn<String, String> thursdayStartsTableColumn;
-	@FXML
-	TableColumn<String, String> thursdayEndsTableColumn;
-	@FXML
-	TableColumn<String, String> thursdayPurposeTableColumn;
-	@FXML
-	TableColumn<String, String> thursdayPlaceTableColumn;
-	
 	@FXML
 	TableView<Appointment> fridayTable;
 	@FXML
-	TableColumn<String, String> fridayStartsTableColumn;
-	@FXML
-	TableColumn<String, String> fridayEndsTableColumn;
-	@FXML
-	TableColumn<String, String> fridayPurposeTableColumn;
-	@FXML
-	TableColumn<String, String> fridayPlaceTableColumn;
-	
-	@FXML
 	TableView<Appointment> saturdayTable;
 	@FXML
-	TableColumn<String, String> saturdayStartsTableColumn;
-	@FXML
-	TableColumn<String, String> saturdayEndsTableColumn;
-	@FXML
-	TableColumn<String, String> saturdayPurposeTableColumn;
-	@FXML
-	TableColumn<String, String> saturdayPlaceTableColumn;
-	
-	@FXML
 	TableView<Appointment> sundayTable;
-	@FXML
-	TableColumn<String, String> sundayStartsTableColumn;
-	@FXML
-	TableColumn<String, String> sundayEndsTableColumn;
-	@FXML
-	TableColumn<String, String> sundayPurposeTableColumn;
-	@FXML
-	TableColumn<String, String> sundayPlaceTableColumn;
 	
 	
 	@Override
@@ -166,16 +102,19 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
+		appointmentCreator("Jobbmøte", "Gløshaugen", 201503120930L, 201503121030L);
+		appointmentCreator("Pause", "Kantine", 201503121030L, 201503121145L);
+		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
+		appointmentCreator("Intervju", "Møterom", 201503121200L, 201503121230L);
+		appointmentCreator("Intervju", "Møterom", 201503161200L, 201503161230L);
+		appointmentCreator("Familie gjenforening", "Hjemme", 201601040900L, 201601041000L);
 		weekFiller(calendar, 0);
-		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		/*tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		thursdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		fridayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
-		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
-		appointmentListFiller(mondayTable, observableAppointments, "Legetime", "Sykehus", "8:30", "9:00");
-		appointmentListFiller(mondayTable, observableAppointments, "Jobb", "Arbeidsplassen min", "9:30", "14:00");
-		appointmentListFiller(mondayTable, observableAppointments, "Jobb møte", "Arbeidsplassen min", "10:00", "10:30");
+		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());*/
 	}
 	
 	
@@ -199,30 +138,37 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			if (counter == 0) {
 				mondayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				mondayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(mondayTable);
 			}
 			else if (counter == 1) {
 				tuesdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				tuesdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(tuesdayTable);
 			}
 			else if (counter == 2) {
 				wednesdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				wednesdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(wednesdayTable);
 			}
 			else if (counter == 3) {
 				thursdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				thursdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(thursdayTable);
 			}
 			else if (counter == 4) {
 				fridayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				fridayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(fridayTable);
 			}
 			else if (counter == 5) {
 				saturdayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				saturdayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(saturdayTable);
 			}
 			else if (counter == 6) {
 				sundayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
 				sundayMonth.setText(getMonthFromInt(calendar.get(Calendar.MONTH)));
+				tableViewFiller(sundayTable);
 			}
 			if (calendar.get(Calendar.DATE) == calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
 				if (calendar.get(Calendar.MONTH) == calendar.getActualMaximum(Calendar.MONTH)) {
@@ -241,27 +187,58 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		}
 	}
 	
+	
 	private static String getMonthFromInt(int month) {
 		String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		return monthNames[month];
 	}
 	
-	private void appointmentListFiller(TableView<Appointment> tableView, ObservableList<Appointment> observableList, String purpose, String place, String start, String end) {
-		observableList = tableView.getItems();
-		observableList.add(new Appointment(purpose, place, start, end));
+	
+	private void appointmentCreator(String purpose, String place, Long startDate, Long endDate) {
+		observableAppointments.add(new Appointment(purpose, place, startDate, endDate));
 	}
 	
 	
-	private void tableColumnFiller(TableColumn<Appointment, String>tableColumn, String name, String variable) {
-		tableColumn = new TableColumn(name);
+	private ObservableList<Appointment> dayAppointmentFiller(ObservableList<Appointment> observableAppointments, Calendar calendar) {
+		ObservableList<Appointment> dayAppointments = FXCollections.observableArrayList();
+		for (Appointment appointment : observableAppointments) {
+			if (appointment.getYear() == calendar.get(Calendar.YEAR) && appointment.getMonth()-1 == calendar.get(Calendar.MONTH) && appointment.getDay() == calendar.get(Calendar.DATE)) {
+				dayAppointments.add(appointment);
+			}
+		}
+		return dayAppointments;
+	}
+	
+	
+	private TableColumn<Appointment, String> tableColumnStringSpecifier(String name, String variable) {
+		TableColumn<Appointment, String> tableColumn = new TableColumn<Appointment, String>(name);
 		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, String>(variable));
+		return tableColumn;
 	}
 	
 	
-	private void tableViewFiller(TableView tableView, TableColumn start, TableColumn end, TableColumn purpose, TableColumn place) {
-		tableView.setItems(observableAppointments);
-		tableView.getColumns().addAll(start, end, purpose, place);
+	@SuppressWarnings("unchecked")
+	private TableColumn<Appointment, Integer> tableColumnIntegerSpecifier(String name, String variableName, String hourVariableName, String minuteVariableName) {
+		TableColumn<Appointment, Integer> tableColumn = new TableColumn<Appointment, Integer>(name);
+		TableColumn<Appointment, Integer> hourColumn = new TableColumn<Appointment, Integer>("Hour");
+		TableColumn<Appointment, Integer> minuteColumn = new TableColumn<Appointment, Integer>("Minute");
+		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(variableName));
+		hourColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(hourVariableName));
+		minuteColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(minuteVariableName));
+		tableColumn.getColumns().addAll(hourColumn, minuteColumn);
+		return tableColumn;
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	private void tableViewFiller(TableView<Appointment> tableView) {
+		tableView.getColumns().clear();
+		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
+		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Start", "start", "startHour", "startMinute"), tableColumnIntegerSpecifier("End", "end", "endHour", "endMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
+		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(0));
+		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(1));
+	}
+	
 	
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
@@ -276,6 +253,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			event.consume();
 		}
 	}
+	
 
 	@FXML
 	public void handleNextWeekButton(ActionEvent event) {
@@ -311,6 +289,4 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	public void handleSignOutButtonAction(ActionEvent event) throws IOException{
 		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
-
-
 }
