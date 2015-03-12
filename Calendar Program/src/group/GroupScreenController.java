@@ -23,6 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import json.JsonArray;
 import json.JsonValue;
 
@@ -30,6 +33,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 	ScreensController mainController;
 	
+	@FXML
+	Pane mainPane;
 	
 	@FXML
 	private TextField txtGroupName;
@@ -121,6 +126,23 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		
 	}
 	
+	@FXML
+	public void keyHandler(KeyEvent event) throws IOException {
+		KeyCode code = event.getCode();
+        if(code.toString() == "BACK_SPACE"){
+        	mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+		}else if(code.toString() == "ENTER"){
+			createGroup();
+			addMembersToGroup();
+			
+			client.disconnect();
+			System.out.println("GROUP CREATED");
+			mainController.setScreen(Main.groupSucceededID, Main.groupSucceededScreen);
+			//System.out.println(mainController.user.getUserID());
+		}else{
+			event.consume();
+		}
+	}
 	
 	@FXML
 	private void doConfirm() throws IOException {
@@ -160,6 +182,9 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		}
 		
 	}
+	
+
+
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
@@ -254,6 +279,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		mainPane.setFocusTraversable(true);
 		
 		lvFilteredUsers.setStyle("-fx-font-size:30;");
 		lvChosenMembers.setStyle("-fx-font-size:30;");

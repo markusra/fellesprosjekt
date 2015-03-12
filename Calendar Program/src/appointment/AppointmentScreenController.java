@@ -37,6 +37,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import json.JsonArray;
 import json.JsonValue;
 
@@ -47,6 +50,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	//Maa lage en metode som legger til de valgte brukerne i avtalebruker og alle som er medlem i en gruppe
 	
+	@FXML
+	Pane mainPane;
 	
 	@FXML
 	private TextField txtPurpose;
@@ -98,6 +103,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		mainPane.setFocusTraversable(true);
 		
 		roomField.setVisible(false);
 		RoomLabel.setVisible(false);
@@ -233,6 +239,42 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		}
     	return false;
     }
+	
+	@FXML
+	public void keyHandler(KeyEvent event) throws IOException {
+		KeyCode code = event.getCode();
+        if(code.toString() == "ENTER"){
+        	if (valid) {
+    			String rom = roomField.getValue();
+    			
+    			
+    			String[] splited = rom.split("\\s+");
+    			String romID = splited[1];
+    			try {
+    				String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
+    				
+    				String[] answer = serverReply.split("#");
+
+    				JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+    			
+    				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
+    				
+    				setMembers(avtaleID);
+    				mainController.setScreen(Main.appointmentSucceededID, Main.appointmentSucceededScreen);
+    			} catch (IOException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    		
+    		} else {
+    			System.out.println("feil");
+    		}
+		}else if(code.toString() == "BACK_SPACE"){
+			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+		}else{
+			event.consume();
+		}
+	}
 	
 	@FXML
 	private void doConfirm() {
