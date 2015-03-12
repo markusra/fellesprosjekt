@@ -232,66 +232,13 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <TableView fx:id="mondayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1">
-                    <columns>
-                      <TableColumn fx:id="mondayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        
-                      <TableColumn fx:id="mondayEndsTableColumn" prefWidth="75.0" text="Ends" />
-
-                      <TableColumn fx:id="mondayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-
-                      <TableColumn fx:id="mondayPlaceTableColumn" prefWidth="178.0" text="Place" />
-
-                    </columns>
-                  </TableView>
-                  <TableView fx:id="tuesdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <columns>
-                        <TableColumn fx:id="tuesdayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        <TableColumn fx:id="tuesdayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="tuesdayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="tuesdayPlaceTableColumn" prefWidth="178.0" text="Place" />
-                     </columns>
-                  </TableView>
-                  <TableView fx:id="wednesdayTable" layoutX="270.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <columns>
-                        <TableColumn fx:id="wednesdayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        <TableColumn fx:id="wednesdayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="wednesdayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="wednesdayPlaceTableColumn" prefWidth="178.0" text="Place" />
-                     </columns>
-                  </TableView>
-                  <TableView fx:id="thursdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <columns>
-                        <TableColumn fx:id="thursdayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        <TableColumn fx:id="thursdayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="thursdayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="thursdayPlaceTableColumn" prefWidth="178.0" text="Place" />
-                     </columns>
-                  </TableView>
-                  <TableView fx:id="fridayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <columns>
-                        <TableColumn fx:id="fridayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        <TableColumn fx:id="fridayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="fridayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="fridayPlaceTableColumn" prefWidth="178.0" text="Place" />
-                     </columns>
-                  </TableView>
-                  <TableView fx:id="saturdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <columns>
-                        <TableColumn fx:id="saturdayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        <TableColumn fx:id="saturdayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="saturdayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="saturdayPlaceTableColumn" prefWidth="178.0" text="Place" />
-                     </columns>
-                  </TableView>
-                  <TableView fx:id="sundayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <columns>
-                        <TableColumn fx:id="sundayStartsTableColumn" prefWidth="75.0" text="Starts" />
-                        <TableColumn fx:id="sundayEndsTableColumn" prefWidth="75.0" text="Ends" />
-                        <TableColumn fx:id="sundayPurposeTableColumn" prefWidth="178.0" text="Purpose" />
-                        <TableColumn fx:id="sundayPlaceTableColumn" prefWidth="178.0" text="Place" />
-                     </columns>
-                  </TableView>
+                  <TableView fx:id="mondayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" />
+                  <TableView fx:id="tuesdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TableView fx:id="wednesdayTable" layoutX="270.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TableView fx:id="thursdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TableView fx:id="fridayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TableView fx:id="saturdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TableView fx:id="sundayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="148.0" />
