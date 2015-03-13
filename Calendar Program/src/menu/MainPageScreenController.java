@@ -78,6 +78,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	Button viewGroupsButton;
 	
 	@FXML
+	TableView<Appointment> headerRow;
+	@FXML
 	TableView<Appointment> mondayTable;
 	@FXML
 	TableView<Appointment> tuesdayTable;
@@ -109,12 +111,14 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		appointmentCreator("Intervju", "Møterom", 201503161200L, 201503161230L);
 		appointmentCreator("Familie gjenforening", "Hjemme", 201601040900L, 201601041000L);
 		weekFiller(calendar, 0);
-		/*tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		headerRow.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
+		mondayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		wednesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		thursdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		fridayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
-		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());*/
+		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 	}
 	
 	

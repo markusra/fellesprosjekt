@@ -22,7 +22,7 @@
             </Rectangle>
             <GridPane gridLinesVisible="true" layoutX="146.0" layoutY="133.0" prefHeight="896.0" prefWidth="979.0">
                <children>
-                  <GridPane>
+                  <GridPane GridPane.rowIndex="1">
                      <children>
                         <Text fx:id="mondayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="4">
                            <font>
@@ -52,7 +52,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane GridPane.rowIndex="1">
+                  <GridPane GridPane.rowIndex="2">
                      <children>
                         <Text fx:id="tuesdayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="3">
                            <font>
@@ -82,7 +82,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane GridPane.rowIndex="2">
+                  <GridPane GridPane.rowIndex="3">
                      <children>
                         <Text fx:id="wednesdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="4">
                            <font>
@@ -112,7 +112,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane GridPane.rowIndex="3">
+                  <GridPane GridPane.rowIndex="4">
                      <children>
                         <Text fx:id="thursdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="4">
                            <font>
@@ -142,7 +142,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane layoutX="10.0" layoutY="451.0" GridPane.rowIndex="4">
+                  <GridPane layoutX="10.0" layoutY="451.0" GridPane.rowIndex="5">
                      <children>
                         <Text fx:id="fridayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="239.205078125" GridPane.rowIndex="3">
                            <font>
@@ -172,7 +172,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane layoutX="10.0" layoutY="598.0" GridPane.rowIndex="5">
+                  <GridPane layoutX="10.0" layoutY="598.0" GridPane.rowIndex="6">
                      <children>
                         <Text fx:id="saturdayMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="MONTH" textAlignment="CENTER" wrappingWidth="241.205078125" GridPane.rowIndex="4">
                            <font>
@@ -202,7 +202,7 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane layoutX="10.0" layoutY="745.0" GridPane.rowIndex="6">
+                  <GridPane layoutX="10.0" layoutY="745.0" GridPane.rowIndex="7">
                      <children>
                         <Text fx:id="sundayDate" strokeType="OUTSIDE" strokeWidth="0.0" text="??" textAlignment="CENTER" wrappingWidth="240.205078125" GridPane.rowIndex="3">
                            <font>
@@ -232,26 +232,28 @@
                         <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <TableView fx:id="mondayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" />
-                  <TableView fx:id="tuesdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TableView fx:id="wednesdayTable" layoutX="270.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TableView fx:id="thursdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TableView fx:id="fridayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TableView fx:id="saturdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TableView fx:id="sundayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TableView fx:id="headerRow" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" />
+                  <TableView fx:id="mondayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TableView fx:id="tuesdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TableView fx:id="wednesdayTable" layoutX="270.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TableView fx:id="thursdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TableView fx:id="fridayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TableView fx:id="saturdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TableView fx:id="sundayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="148.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="10.0" prefWidth="403.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="117.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
             <AnchorPane layoutX="146.0" layoutY="-20.0" prefHeight="80.0" prefWidth="429.0">
@@ -366,7 +368,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="createGroupButton" layoutX="1416.0" layoutY="759.0" mnemonicParsing="false" onAction="#handleCreateGroupButtonAction" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
+      <Button fx:id="createGroupButton" layoutX="1640.0" layoutY="846.0" mnemonicParsing="false" onAction="#handleCreateGroupButtonAction" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
