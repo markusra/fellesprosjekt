@@ -243,7 +243,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER"){
+        if(code.toString() == "ENTER" || code.toString() == "A" || code.toString() == "C" || code.toString() == ""){
         	if (valid) {
     			String rom = roomField.getValue();
     			
@@ -269,7 +269,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
     		} else {
     			System.out.println("feil");
     		}
-		}else if(code.toString() == "BACK_SPACE"){
+		}else if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "LEFT" || code.toString() == "B"){
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 		}else{
 			event.consume();
