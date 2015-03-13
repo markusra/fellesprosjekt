@@ -237,6 +237,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Start", "start", "startHour", "startMinute"), tableColumnIntegerSpecifier("End", "end", "endHour", "endMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
 		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(0));
  		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(1));
+ 		tableView.getColumns().get(0).getColumns().get(1).setSortable(false);
+ 		tableView.getColumns().get(1).getColumns().get(1).setSortable(false);
 	}
 	
 	
