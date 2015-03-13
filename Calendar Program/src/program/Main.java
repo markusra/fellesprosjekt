@@ -1,5 +1,6 @@
 package program;
 
+import client.TCPClient;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -59,7 +60,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		ScreensController screensController = new ScreensController();
+		ScreensController screensController = new ScreensController(new TCPClient());
 		
 		//Husk aa laste inn grensesnitt med navn her.
 		screensController.addScreen(loginID, loginScreen);

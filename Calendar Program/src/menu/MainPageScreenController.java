@@ -104,13 +104,17 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
+		tableViewFiller(headerRow);
 		appointmentCreator("Jobbmøte", "Gløshaugen", 201503120930L, 201503121030L);
 		appointmentCreator("Pause", "Kantine", 201503121030L, 201503121145L);
+		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
+		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
 		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
 		appointmentCreator("Intervju", "Møterom", 201503121200L, 201503121230L);
 		appointmentCreator("Intervju", "Møterom", 201503161200L, 201503161230L);
 		appointmentCreator("Familie gjenforening", "Hjemme", 201601040900L, 201601041000L);
 		weekFiller(calendar, 0);
+		System.out.println(dateForAWeekMaker());
 		headerRow.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		mondayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -124,19 +128,20 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	private void weekFiller(Calendar calendar, int increment) {
 		int counter = 0;
+		System.out.println(dateForAWeekMaker());
 		if (increment == 0) {
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
-			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
+			this.year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == 1) {
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
-			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
+			this.year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		else if (increment == -1) {
 			calendar.add(Calendar.WEEK_OF_YEAR, increment-1);
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
-			year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
+			this.year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
 		while (counter < 7) {
 			if (counter == 0) {
@@ -198,6 +203,81 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
+	//TODO Add ServerCodes part of method and add results to observableAppointments through appointmentCreator
+	private void getAppointmentData() throws IOException {
+		mainController.getClient().customQuery("insertServerCodesHere","'" + mainController.getUser().getUserID() + "', '" + dateForAWeekMaker());
+	}
+	
+	
+	private String dateForAWeekMaker() {
+		calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR)-7);
+		System.out.println(calendar.getTime());
+		String startDate = "";
+		String endDate = "";
+		startDate += calendar.get(Calendar.YEAR);
+		if (calendar.get(Calendar.MONTH)+1 < 10) {
+			startDate += 0;
+			startDate += calendar.get(Calendar.MONTH)+1;
+		}
+		else {
+			startDate+= calendar.get(Calendar.MONTH)+1;
+		}
+		if (calendar.get(Calendar.DATE) < 10) {
+			startDate += 0;
+			startDate += calendar.get(Calendar.DATE);
+		}
+		else {
+			startDate += calendar.get(Calendar.DATE);
+		}
+		for (int i = 0; i < 4; i++) {
+			startDate += 0;
+		}
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH);
+		int date = calendar.get(Calendar.DATE);
+		int counter = 0;
+		while (counter < 6) {
+			if (calendar.get(Calendar.DATE) == calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
+				if (calendar.get(Calendar.MONTH) == calendar.getActualMaximum(Calendar.MONTH)) {
+					calendar.add(Calendar.YEAR, 1);
+					calendar.set(Calendar.MONTH, 0);
+				}
+				else {
+					calendar.add(Calendar.MONTH, 1);
+				}
+				calendar.set(Calendar.DATE, 1);
+			}
+			else {
+				calendar.add(Calendar.DATE, 1);
+			}
+			counter++;
+		}
+		endDate += calendar.get(Calendar.YEAR);
+		if (calendar.get(Calendar.MONTH)+1 < 10) {
+			endDate += 0;
+			endDate += calendar.get(Calendar.MONTH)+1;
+		}
+		else {
+			endDate+= calendar.get(Calendar.MONTH)+1;
+		}
+		if (calendar.get(Calendar.DATE) < 10) {
+			endDate += 0;
+			endDate += calendar.get(Calendar.DATE);
+		}
+		else {
+			endDate += calendar.get(Calendar.DATE);
+		}
+		endDate += 23;
+		endDate += 59;
+		
+		calendar.set(Calendar.YEAR, year);
+		calendar.set(Calendar.MONTH, month);
+		calendar.set(Calendar.DATE, date);
+		
+		return startDate + "', '" + endDate + "'";
+	}
+	
+	
 	private void appointmentCreator(String purpose, String place, Long startDate, Long endDate) {
 		observableAppointments.add(new Appointment(purpose, place, startDate, endDate));
 	}
@@ -217,6 +297,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	private TableColumn<Appointment, String> tableColumnStringSpecifier(String name, String variable) {
 		TableColumn<Appointment, String> tableColumn = new TableColumn<Appointment, String>(name);
 		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, String>(variable));
+		tableColumn.setSortable(false);
 		return tableColumn;
 	}
 	
@@ -229,7 +310,14 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(variableName));
 		hourColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(hourVariableName));
 		minuteColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(minuteVariableName));
+		hourColumn.setPrefWidth(50);
+		minuteColumn.setPrefWidth(50);
+		hourColumn.setResizable(false);
+		minuteColumn.setResizable(false);
+		tableColumn.setResizable(false);
 		tableColumn.getColumns().addAll(hourColumn, minuteColumn);
+		hourColumn.setSortable(false);
+		minuteColumn.setSortable(false);
 		return tableColumn;
 	}
 	
@@ -239,10 +327,16 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		tableView.getColumns().clear();
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
 		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Start", "start", "startHour", "startMinute"), tableColumnIntegerSpecifier("End", "end", "endHour", "endMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
+		tableView.getColumns().get(0).getColumns().get(0).setSortable(true);
+		tableView.getColumns().get(0).getColumns().get(1).setSortable(true);
 		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(0));
  		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(1));
+ 		tableView.getColumns().get(2).setPrefWidth(350);
+ 		tableView.getColumns().get(3).setPrefWidth(167);
+ 		tableView.getColumns().get(2).setResizable(false);
+ 		tableView.getColumns().get(3).setResizable(false);
  		tableView.getColumns().get(0).getColumns().get(1).setSortable(false);
- 		tableView.getColumns().get(1).getColumns().get(1).setSortable(false);
+ 		tableView.getColumns().get(0).getColumns().get(0).setSortable(false);
 	}
 	
 	

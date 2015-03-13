@@ -8,9 +8,6 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import json.JsonArray;
-import json.JsonValue;
-
 public class TCPClient {
 	
 	private String serverReply;
