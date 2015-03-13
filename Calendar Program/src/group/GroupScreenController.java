@@ -129,9 +129,9 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "BACK_SPACE"){
-        	mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
-		}else if(code.toString() == "ENTER"){
+		if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+		}else if(code.toString() == "ENTER" || code.toString() == "G" || code.toString() == "G"){
 			createGroup();
 			addMembersToGroup();
 			

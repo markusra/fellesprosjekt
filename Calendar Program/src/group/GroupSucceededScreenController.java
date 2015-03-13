@@ -24,6 +24,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import json.JsonArray;
 import json.JsonValue;
@@ -32,10 +35,23 @@ public class GroupSucceededScreenController implements Initializable, Controller
 	
 	ScreensController mainController;
 	
+	@FXML
+	AnchorPane mainPane;
+	
 	//Metode for backToMainPageButton
 	@FXML
 	public void handleBackToMainPageButton(ActionEvent event) throws IOException {
 		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+	}
+	
+	@FXML
+	public void keyHandler(KeyEvent event) throws IOException {
+		KeyCode code = event.getCode();
+        if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);	
+		}else{
+			event.consume();
+		}
 	}
 	
 	@Override
@@ -46,6 +62,7 @@ public class GroupSucceededScreenController implements Initializable, Controller
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		mainPane.setFocusTraversable(true);
 		
 	}
 }
