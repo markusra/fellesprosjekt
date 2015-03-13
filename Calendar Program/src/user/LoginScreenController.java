@@ -86,6 +86,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 			
 		}
+		//Må få denne til å fungere (ikke kaste exception);
 		else {
 			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 		}
@@ -94,7 +95,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER"){
+        if(code.toString() == "ENTER" || code.toString() == "S"){
         	String username =  usernameField.getText();
 			String password = passwordField.getText();
 			
@@ -132,9 +133,15 @@ public class LoginScreenController implements Initializable, ControllerInterface
 				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 				
 			}
+			
+			//Må få denne til å fungere (ikke kaste exception);
 			else {
 				mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 			}
+        }else if(code.toString() == "R"){
+        	mainController.setScreen(Main.registerID, Main.registerScreen);
+        }else if(code.toString() == "F"){
+        	mainController.setScreen(Main.forgotID, Main.forgotScreen);	
 		}else{
 			event.consume();
 		}

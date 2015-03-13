@@ -17,6 +17,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import json.JsonArray;
 import program.ControllerInterface;
 import program.Main;
@@ -27,7 +30,8 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	
 	ScreensController mainController;
 	
-	
+	@FXML
+	AnchorPane mainPane;
 	@FXML
 	TextField firstNameField;
 	@FXML
@@ -79,6 +83,39 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 		}
 	}
 	
+	@FXML
+	public void keyHandler(KeyEvent event) throws UnknownHostException, IOException {
+		KeyCode code = event.getCode();
+        if(code.toString() == "BACK_SPACE"){
+        	mainController.setScreen(Main.loginID, Main.loginScreen);
+		}else if(code.toString() == "B"){
+			mainController.setScreen(Main.loginID, Main.loginScreen);
+		}else if(code.toString() == "ESCAPE"){
+			mainController.setScreen(Main.loginID, Main.loginScreen);
+		}else if(code.toString() == "ENTER" || code.toString() == "R"){
+			String firstName = firstNameField.getText();
+			String lastName = lastNameField.getText();
+			String email = emailField.getText();
+			String username = usernameField.getText();
+			String password = passwordField.getText();
+			
+			
+			if (isValidName(firstName) && isValidName(lastName) && isValidEmail(email) && isValidUsername(username) && isValidPassword(password) && isValidPassword(confirmPasswordField.getText()) && confirmPasswordField.getText().equalsIgnoreCase(passwordField.getText())) {
+				TCPClient client = new TCPClient();
+				//TODO add sjekk mot database for aa sjekke at brukernavn/epost ikke er opptatt
+				
+				String serverReply = client.customQuery(ServerCodes.CreateUser, "'" + username + "', '" + password + "', '" + email + "', '" + firstName + "', '" + lastName + "'");
+				String[] answer= serverReply.split("#");
+				
+				if (! answer[1].contains("duplicateEntry")) {
+					mainController.setScreen(Main.registerSucceededID, Main.registerSucceededScreen);			
+				}
+				
+			}
+		}else{
+			event.consume();
+		}
+	}
 	
 	@FXML
 	public void handleBackToSignInButtonAction (ActionEvent event) throws IOException {
@@ -94,6 +131,7 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		mainPane.setFocusTraversable(true);
 		
 		Tooltip.install(firstNameInfo, new Tooltip("First name can only contain english letters and spaces! Is case insensitive and is not required to register."));
 		Tooltip.install(lastNameInfo, new Tooltip("Last name can only contain english letters and spaces! Is case insensitive and is not required to register."));

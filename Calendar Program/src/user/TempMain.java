@@ -10,7 +10,7 @@ public class TempMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterSucceededScreen.fxml"));
 			Pane login = (Pane) loader.load();
 			primaryStage.setScene(new Scene(login));
 			

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.GroupSucceededScreenController">
+<AnchorPane fx:id="mainPane" onKeyPressed="#keyHandler" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.GroupSucceededScreenController">
    <children>
       <AnchorPane>
          <children>

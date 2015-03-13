@@ -236,19 +236,25 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
 		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Start", "start", "startHour", "startMinute"), tableColumnIntegerSpecifier("End", "end", "endHour", "endMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
 		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(0));
-		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(1));
+ 		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(1));
 	}
 	
 	
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "LEFT"){
+        if(code.toString() == "LEFT" || code.toString() == "DOWN"){
         	weekFiller(calendar, -1);
-		}else if(code.toString() == "RIGHT"){
+		}else if(code.toString() == "RIGHT" || code.toString() == "UP"){
 			weekFiller(calendar, 1);
 		}else if(code.toString() == "ESCAPE"){
 			mainController.setScreen(Main.loginID, Main.loginScreen);
+		}else if(code.toString() == "A"){
+			mainController.setScreen(Main.appointmentID, Main.appointmentScreen);
+		}else if(code.toString() == "G"){
+			mainController.setScreen(Main.groupID, Main.groupScreen);
+		}else if(code.toString() == "V"){
+			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
 		}else{
 			event.consume();
 		}

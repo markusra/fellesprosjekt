@@ -124,12 +124,14 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
 	}
 	
 	@FXML
-	public void keyHandler(KeyEvent event) {
+	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "LEFT"){
+        if(code.toString() == "LEFT" || code.toString() == "DOWN"){
         	weekFiller(calendar, -1);
-		}else if(code.toString() == "RIGHT"){
+		}else if(code.toString() == "RIGHT" || code.toString() == "UP"){
 			weekFiller(calendar, 1);
+		}else if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);	
 		}event.consume();
 	}
 	
