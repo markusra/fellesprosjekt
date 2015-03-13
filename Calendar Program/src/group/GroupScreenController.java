@@ -112,7 +112,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 		int groupID = jsonArray.get(0).asObject().get( "gruppeID" ).asInt();
 		
-		client.customQuery(ServerCodes.CreateGroupMember, mainController.user.getUserID() + ", " + groupID + ", " + "True");
+		client.customQuery(ServerCodes.CreateGroupMember, mainController.getUser().getUserID() + ", " + groupID + ", " + "True");
 
 		// Then add all the other members to the group
 		for (String member : chosenMembers) {
@@ -227,7 +227,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			String etternavn = value.asObject().get( "etternavn" ).asString();
 			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
 			
-			if (brukerID != mainController.user.getUserID()) {
+			if (brukerID != mainController.getUser().getUserID()) {
 				userList.add(temp);
 			}
 			

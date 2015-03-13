@@ -406,7 +406,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private void setMembers(int avtaleID) {
-		int brukerID = mainController.user.getUserID();
+		int brukerID = mainController.getUser().getUserID();
 		try {
 			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
 		} catch (IOException e) {

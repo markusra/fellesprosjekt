@@ -3,6 +3,7 @@ package program;
 import java.io.IOException;
 import java.util.HashMap;
 
+import client.TCPClient;
 import user.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,15 +13,17 @@ import javafx.scene.transform.Scale;
 
 public class ScreensController extends StackPane {
 	
-	public UserModel user;
+	private UserModel user;
 	
 	private HashMap<String, String> screens = new HashMap<String, String>();
 	
-	final Scale scale = new Scale(0.839, 0.843);
+	final private Scale scale = new Scale(0.839, 0.843);
+	
+	private TCPClient client;
 	
 	
-	public ScreensController() {
-		super();
+	public ScreensController(TCPClient client) {
+		this.client = client;
 	}
 	
 	
@@ -45,6 +48,7 @@ public class ScreensController extends StackPane {
 		controller.setScreenParent(this);
 		return screen;
 	}	
+	
 	
 	//Brukes for � fjerne grensesnitt fra HashMappet, generelt sett un�dvendig.
 	public void unloadScreen(String name) {
@@ -72,5 +76,20 @@ public class ScreensController extends StackPane {
 		else {
 			System.out.println("ScreensController.setScreen failed!");
 		}
+	}
+	
+	
+	public TCPClient getClient() {
+		return client;
+	}
+	
+	
+	public UserModel getUser() {
+		return user;
+	}
+	
+	
+	public void setUser(UserModel user) {
+		this.user = user;
 	}
 }

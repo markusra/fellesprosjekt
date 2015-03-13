@@ -79,7 +79,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			}
 			System.out.println("Successful login!");
 			
-			mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
+			mainController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
 			
 			
 			client.disconnect();
@@ -128,7 +128,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 				}
 				System.out.println("Successful login!");
 				
-				mainController.user = new UserModel(brukerID, brukernavn, fornavn, etternavn, epost);
+				mainController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
 				
 				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 				
