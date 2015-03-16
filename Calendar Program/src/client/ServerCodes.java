@@ -13,8 +13,12 @@ public final class ServerCodes {
  	public static final String CreateGroup		    	= "g2z8fvj39s3mo899asd3";
  	public static final String CreateGroupMember    	= "z9sh38fjka5hj79mvgh1";
  	public static final String CreateAppointmentMember  = "t37zhenk58slro38za7q";
+<<<<<<< HEAD
  	public static final String GetAppointments  		= "f2ks94lfurb68z52k9ah";
  	public static final String GetSpecificAppointment 	= "s8cj2jak602lfun4h6z8";
  		
+=======
+
+>>>>>>> parent of 0d3ca40... MainPageScreen: TableView --> ListView
 }
 

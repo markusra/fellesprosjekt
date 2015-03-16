@@ -233,20 +233,20 @@
                      </rowConstraints>
                   </GridPane>
                   <TableView fx:id="headerRow" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" />
-                  <ListView fx:id="mondayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ListView fx:id="tuesdayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ListView fx:id="wednesdayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ListView fx:id="thursdayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ListView fx:id="fridayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ListView fx:id="saturdayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <ListView fx:id="sundayView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TableView fx:id="mondayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TableView fx:id="tuesdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TableView fx:id="wednesdayTable" layoutX="270.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TableView fx:id="thursdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TableView fx:id="fridayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TableView fx:id="saturdayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TableView fx:id="sundayTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="148.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="10.0" prefWidth="403.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="147.0" minHeight="15.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="117.0" vgrow="SOMETIMES" />
