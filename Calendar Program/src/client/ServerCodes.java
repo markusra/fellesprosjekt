@@ -13,6 +13,8 @@ public final class ServerCodes {
  	public static final String CreateGroup		    	= "g2z8fvj39s3mo899asd3";
  	public static final String CreateGroupMember    	= "z9sh38fjka5hj79mvgh1";
  	public static final String CreateAppointmentMember  = "t37zhenk58slro38za7q";
+ 	public static final String GetAppointments  		= "f2ks94lfurb68z52k9ah";
+ 	
 
 }
 
