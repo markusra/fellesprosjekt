@@ -84,7 +84,7 @@ public class Main extends Application {
 		
 		Group root = new Group();
 		root.getChildren().addAll(screensController);
-		Scene scene = new Scene(root, 1600, 900);
+		Scene scene = new Scene(root, 1024, 576);
 		
 		//TODO: Må endre til bare "application.css" når produktet leveres
 	    scene.getStylesheets().add("/css/application.css");

@@ -17,7 +17,7 @@ public class ScreensController extends StackPane {
 	
 	private HashMap<String, String> screens = new HashMap<String, String>();
 	
-	final private Scale scale = new Scale(0.839, 0.843);
+	final private Scale scale = new Scale(0.5333, 0.5333);
 	
 	private TCPClient client;
 	
