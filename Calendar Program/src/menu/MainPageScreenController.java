@@ -5,10 +5,9 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import client.ServerCodes;
+import client.TCPClient;
 import appointment.Appointment;
-import program.ControllerInterface;
-import program.Main;
-import program.ScreensController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +21,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import program.ControllerInterface;
+import program.Main;
+import program.ScreensController;
+
 
 public class MainPageScreenController implements Initializable, ControllerInterface {
 	
@@ -105,16 +108,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
 		tableViewFiller(headerRow);
-		appointmentCreator("Jobbmøte", "Gløshaugen", 201503120930L, 201503121030L);
-		appointmentCreator("Pause", "Kantine", 201503121030L, 201503121145L);
-		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
-		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
-		appointmentCreator("Legetime", "Sykehus", 201503120900L, 201503120930L);
-		appointmentCreator("Intervju", "Møterom", 201503121200L, 201503121230L);
-		appointmentCreator("Intervju", "Møterom", 201503161200L, 201503161230L);
-		appointmentCreator("Familie gjenforening", "Hjemme", 201601040900L, 201601041000L);
-		weekFiller(calendar, 0);
-		System.out.println(dateForAWeekMaker());
+		try {
+			weekFiller(calendar, 0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		headerRow.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		mondayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -126,9 +125,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private void weekFiller(Calendar calendar, int increment) {
+	private void weekFiller(Calendar calendar, int increment) throws IOException {
 		int counter = 0;
-		System.out.println(dateForAWeekMaker());
 		if (increment == 0) {
 			calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
@@ -203,15 +201,15 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	//TODO Add ServerCodes part of method and add results to observableAppointments through appointmentCreator
 	private void getAppointmentData() throws IOException {
-		mainController.getClient().customQuery("insertServerCodesHere","'" + mainController.getUser().getUserID() + "', '" + dateForAWeekMaker());
+		TCPClient client = new TCPClient();
+		System.out.println();
+		//System.out.println(client.customQuery(ServerCodes.GetAppointments, mainController.getUser().getUserID() + ", " + dateForAWeekMaker()));
+		System.out.println(client.customQuery(ServerCodes.GetAppointments, "1, 201503160000, 20150323000"));
 	}
 	
 	
 	private String dateForAWeekMaker() {
-		calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR)-7);
-		System.out.println(calendar.getTime());
 		String startDate = "";
 		String endDate = "";
 		startDate += calendar.get(Calendar.YEAR);
@@ -236,7 +234,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		int month = calendar.get(Calendar.MONTH);
 		int date = calendar.get(Calendar.DATE);
 		int counter = 0;
-		while (counter < 6) {
+		while (counter < 7) {
 			if (calendar.get(Calendar.DATE) == calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
 				if (calendar.get(Calendar.MONTH) == calendar.getActualMaximum(Calendar.MONTH)) {
 					calendar.add(Calendar.YEAR, 1);
@@ -267,14 +265,14 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		else {
 			endDate += calendar.get(Calendar.DATE);
 		}
-		endDate += 23;
-		endDate += 59;
-		
+		for (int i = 0; i < 4; i++) {
+			endDate += 0;
+		}
 		calendar.set(Calendar.YEAR, year);
 		calendar.set(Calendar.MONTH, month);
 		calendar.set(Calendar.DATE, date);
 		
-		return startDate + "', '" + endDate + "'";
+		return startDate + ", " + endDate;
 	}
 	
 	
@@ -302,22 +300,11 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	@SuppressWarnings("unchecked")
-	private TableColumn<Appointment, Integer> tableColumnIntegerSpecifier(String name, String variableName, String hourVariableName, String minuteVariableName) {
+	private TableColumn<Appointment, Integer> tableColumnIntegerSpecifier(String name, String variableName) {
 		TableColumn<Appointment, Integer> tableColumn = new TableColumn<Appointment, Integer>(name);
-		TableColumn<Appointment, Integer> hourColumn = new TableColumn<Appointment, Integer>("Hour");
-		TableColumn<Appointment, Integer> minuteColumn = new TableColumn<Appointment, Integer>("Minute");
 		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(variableName));
-		hourColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(hourVariableName));
-		minuteColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(minuteVariableName));
-		hourColumn.setPrefWidth(50);
-		minuteColumn.setPrefWidth(50);
-		hourColumn.setResizable(false);
-		minuteColumn.setResizable(false);
+		tableColumn.setPrefWidth(100);
 		tableColumn.setResizable(false);
-		tableColumn.getColumns().addAll(hourColumn, minuteColumn);
-		hourColumn.setSortable(false);
-		minuteColumn.setSortable(false);
 		return tableColumn;
 	}
 	
@@ -326,17 +313,17 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	private void tableViewFiller(TableView<Appointment> tableView) {
 		tableView.getColumns().clear();
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
-		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Start", "start", "startHour", "startMinute"), tableColumnIntegerSpecifier("End", "end", "endHour", "endMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
-		tableView.getColumns().get(0).getColumns().get(0).setSortable(true);
-		tableView.getColumns().get(0).getColumns().get(1).setSortable(true);
-		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(0));
- 		tableView.getSortOrder().add(tableView.getColumns().get(0).getColumns().get(1));
+		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Hour", "startHour"), tableColumnIntegerSpecifier("Minute", "startMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
+		tableView.getColumns().get(0).setSortable(true);
+		tableView.getColumns().get(1).setSortable(true);
+		tableView.getSortOrder().add(tableView.getColumns().get(0));
+		tableView.getSortOrder().add(tableView.getColumns().get(1));
  		tableView.getColumns().get(2).setPrefWidth(350);
  		tableView.getColumns().get(3).setPrefWidth(167);
  		tableView.getColumns().get(2).setResizable(false);
  		tableView.getColumns().get(3).setResizable(false);
- 		tableView.getColumns().get(0).getColumns().get(1).setSortable(false);
- 		tableView.getColumns().get(0).getColumns().get(0).setSortable(false);
+ 		tableView.getColumns().get(0).setSortable(false);
+ 		tableView.getColumns().get(1).setSortable(false);
 	}
 	
 	
@@ -362,20 +349,20 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 
 	@FXML
-	public void handleNextWeekButton(ActionEvent event) {
+	public void handleNextWeekButton(ActionEvent event) throws IOException {
 		weekFiller(calendar, 1);
 	}
 	
 	
 	@FXML
-	public void handlePreviousWeekButton(ActionEvent event) {
+	public void handlePreviousWeekButton(ActionEvent event) throws IOException {
 		weekFiller(calendar, -1);
 	}
 	
 	
 	@FXML
 	public void handleCreateAppointmentButtonAction(ActionEvent event) throws IOException {
-		mainController.setScreen(Main.appointmentID, Main.appointmentScreen);
+		mainController.setScreen(program.Main.appointmentID, Main.appointmentScreen);
 	}
 	
 	

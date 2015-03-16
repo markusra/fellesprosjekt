@@ -19,12 +19,6 @@ public class ScreensController extends StackPane {
 	
 	final private Scale scale = new Scale(0.5333, 0.5333);
 	
-	private TCPClient client;
-	
-	
-	public ScreensController(TCPClient client) {
-		this.client = client;
-	}
 	
 	
 	//Legger til et grensesnitt i HashMappet
@@ -76,11 +70,6 @@ public class ScreensController extends StackPane {
 		else {
 			System.out.println("ScreensController.setScreen failed!");
 		}
-	}
-	
-	
-	public TCPClient getClient() {
-		return client;
 	}
 	
 	

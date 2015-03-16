@@ -60,7 +60,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		ScreensController screensController = new ScreensController(new TCPClient());
+		ScreensController screensController = new ScreensController();
 		
 		//Husk aa laste inn grensesnitt med navn her.
 		screensController.addScreen(loginID, loginScreen);
