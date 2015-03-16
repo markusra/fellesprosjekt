@@ -1,3 +1,7 @@
-.column-header-background { 
-	-fx-padding: +2em; 
+.column-header-background {
+	-fx-padding: +2em;
+}
+
+.table-view {
+    -fx-font-size : 16pt;
 }
