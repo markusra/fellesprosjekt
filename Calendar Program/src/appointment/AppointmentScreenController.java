@@ -384,17 +384,10 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		for( JsonValue value : jsonArray ) {
 			String romNavn = value.asObject().get( "navn").asString();
-			//int romID = value.asObject().get( "moteromID").asInt();
-			roomList.add(romNavn);
+			int romID = value.asObject().get( "moteromID").asInt();
+			roomList.add(romNavn + " " + romID);
 		}
 		
-		availableUsers.clear();
-		for( JsonValue value : jsonArray ) {
-			int  roomID = value.asObject().get( "navn" ).asInt();
-			String navn = value.asObject().get( "moteromID" ).asString();
-			
-			availableUsers.put(navn, roomID);
-		}
 		
 		ObservableList<String> myObservableList2 = FXCollections.observableList(roomList);
 		roomField.setItems(myObservableList2);
