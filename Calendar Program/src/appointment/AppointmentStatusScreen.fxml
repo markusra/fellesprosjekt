@@ -23,7 +23,11 @@
                         <Point3D />
                      </rotationAxis>
                   </Rectangle>
+<<<<<<< HEAD
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="786.0" layoutX="566.0" layoutY="158.0" stroke="BLACK" strokeType="INSIDE" width="813.0">
+=======
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="876.0" layoutX="326.0" layoutY="158.0" stroke="BLACK" strokeType="INSIDE" width="813.0">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <effect>
                         <DropShadow />
                      </effect>
@@ -48,57 +52,101 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label layoutX="613.0" layoutY="559.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+=======
                   <Label layoutX="373.0" layoutY="616.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Button fx:id="updateButton" layoutX="787.0" layoutY="838.0" mnemonicParsing="false" onAction="#handleUpdateButtonAction" prefHeight="59.0" prefWidth="351.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
+=======
                   <Button fx:id="updateButton" layoutX="886.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleUpdateButtonAction" prefHeight="59.0" prefWidth="210.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
+<<<<<<< HEAD
+                  <Label layoutX="968.0" layoutY="559.0" prefHeight="53.0" prefWidth="112.0" text="From:">
+=======
                   <Label layoutX="708.0" layoutY="616.0" prefHeight="53.0" prefWidth="71.0" text="From:">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label layoutX="1156.0" layoutY="559.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+=======
                   <Label layoutX="916.0" layoutY="616.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label fx:id="title" layoutX="737.0" layoutY="199.0" prefHeight="53.0" prefWidth="592.0" text="Title of the appointment">
+=======
                   <Label fx:id="title" layoutX="612.0" layoutY="199.0" prefHeight="53.0" prefWidth="476.0" text="Title of the appointment">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label fx:id="place" layoutX="737.0" layoutY="476.0" prefHeight="53.0" prefWidth="592.0" text="Place of the appointment">
+=======
                   <Label fx:id="place" layoutX="612.0" layoutY="476.0" prefHeight="53.0" prefWidth="476.0" text="Place of the appointment">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label fx:id="date" layoutX="737.0" layoutY="559.0" prefHeight="53.0" prefWidth="251.0" text="Date">
+=======
                   <Label fx:id="date" layoutX="477.0" layoutY="616.0" prefHeight="53.0" prefWidth="251.0" text="Date">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label fx:id="from" layoutX="1046.0" layoutY="559.0" prefHeight="53.0" prefWidth="121.0" text="From">
+=======
                   <Label fx:id="from" layoutX="786.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="From">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="34.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label fx:id="to" layoutX="1206.0" layoutY="559.0" prefHeight="53.0" prefWidth="121.0" text="To">
+=======
                   <Label fx:id="to" layoutX="966.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="To">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="34.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <Label layoutX="613.0" layoutY="657.0" prefHeight="53.0" prefWidth="402.0" text="Status of participation:">
+=======
                   <Label layoutX="373.0" layoutY="726.0" prefHeight="53.0" prefWidth="402.0" text="Status of participation:">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <ComboBox fx:id="attendField" layoutX="1118.0" layoutY="657.0" prefHeight="53.0" prefWidth="210.0">
+=======
                   <ComboBox fx:id="attendField" layoutX="878.0" layoutY="726.0" prefHeight="53.0" prefWidth="210.0">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="Yes" />
@@ -106,15 +154,26 @@
                   		</FXCollections>
                   	</items>
                   	<value>
+<<<<<<< HEAD
+                  		<String fx:value="Yes" />
+                  	</value>
+                  </ComboBox>
+                  <Label layoutX="613.0" layoutY="743.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
+=======
                   		<String fx:value="No" />
                   	</value>
                   </ComboBox>
                   <Label layoutX="373.0" layoutY="812.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
+<<<<<<< HEAD
+                  <ComboBox fx:id="alertField" layoutX="1118.0" layoutY="743.0" prefHeight="53.0" prefWidth="210.0">
+=======
                   <ComboBox fx:id="alertField" layoutX="878.0" layoutY="812.0" prefHeight="53.0" prefWidth="210.0">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="Yes" />
@@ -122,10 +181,17 @@
                   		</FXCollections>
                   	</items>
                   	<value>
+<<<<<<< HEAD
+                  		<String fx:value="Yes" />
+                  	</value>
+                  </ComboBox>
+                  <Label layoutX="611.0" layoutY="273.0" prefHeight="53.0" prefWidth="320.0" text="Purpose:">
+=======
                   		<String fx:value="No" />
                   	</value>
                   </ComboBox>
                   <Label layoutX="371.0" layoutY="273.0" prefHeight="53.0" prefWidth="320.0" text="Purpose:">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
@@ -137,10 +203,16 @@
                   </Label>
                   <Button fx:id="back" layoutX="371.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #69696b;" text="CANCEL" textFill="WHITE">
                      <font>
+<<<<<<< HEAD
+                        <Font size="24.0" />
+                     </font></TextArea>
+                  <Button fx:id="back" layoutX="787.0" layoutY="966.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="351.0" style="-fx-background-color: #69696b;" text="BACK TO MAINPAGE" textFill="WHITE">
+=======
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
                   <Button fx:id="editButton" layoutX="680.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleEditButtonAction" prefHeight="59.0" prefWidth="190.0" style="-fx-background-color: #69696b;" text="EDIT" textFill="WHITE">
+>>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
