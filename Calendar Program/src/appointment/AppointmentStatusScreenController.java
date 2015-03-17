@@ -2,8 +2,11 @@ package appointment;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import client.ServerCodes;
+import client.TCPClient;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
@@ -17,6 +20,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import json.JsonArray;
+import json.JsonValue;
 
 public class AppointmentStatusScreenController implements Initializable, ControllerInterface {
 	
@@ -48,6 +53,7 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	@FXML
 	ComboBox<String> alertField;
 	
+	TCPClient client;
 	
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
@@ -63,6 +69,20 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	
 	@FXML
 	public void handleUpdateButtonAction(ActionEvent event) throws IOException {
+		String deltar = "False";
+		String varsel = "False";
+		
+		if (attendField.getValue().equals("Yes")) {
+			deltar = "True";
+		}
+		
+		if (alertField.getValue().equals("Yes")) {
+			varsel = "True";
+		}
+		
+		client.customQuery(ServerCodes.UpdateAppointmentMember, ScreensController.getUser().getUserID() + ", " + ScreensController.getAppointment().getAppointmentID() + ", " + deltar + ", " + varsel);
+		
+		client.disconnect();
 		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 	}
 	
@@ -86,6 +106,31 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		String serverReply = "";
+		
+		try {
+			client = new TCPClient();
+			serverReply = client.customQuery(ServerCodes.GetAttendanceAlert, ScreensController.getUser().getUserID() + ", " + ScreensController.getAppointment().getAppointmentID());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String[] answer = serverReply.split("#");
+
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		int deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
+		int varsel = jsonArray.get(0).asObject().get( "varsel" ).asInt();
+		
+		if (deltar == 1) {
+			attendField.setValue("Yes");
+		}
+		
+		if (varsel == 1) {
+			alertField.setValue("Yes");
+		}
+		
 		mainPane.setFocusTraversable(true);
 		alertField.setStyle("-fx-font-size:30;");
 		attendField.setStyle("-fx-font-size:30;");
