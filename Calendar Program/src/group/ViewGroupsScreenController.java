@@ -84,13 +84,19 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 			
 			List<String> groupList = new ArrayList<>();
 			
-			for( JsonValue value : jsonArray ) {
-				String gruppeNavn = value.asObject().get( "navn" ).asString();
-				groupList.add(gruppeNavn);
-			}
+			
+			try {
+				for( JsonValue value : jsonArray ) {
+					String gruppeNavn = value.asObject().get( "navn" ).asString();
+					groupList.add(gruppeNavn);
+				}
 
-			ObservableList<String> myObservableList = FXCollections.observableList(groupList);
-			lvGroups.setItems(myObservableList);
+				ObservableList<String> myObservableList = FXCollections.observableList(groupList);
+				lvGroups.setItems(myObservableList);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
 			
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
