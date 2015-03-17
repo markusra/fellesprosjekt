@@ -122,6 +122,7 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		
 		int deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
 		int varsel = jsonArray.get(0).asObject().get( "varsel" ).asInt();
+		int admin = jsonArray.get(0).asObject().get( "admin" ).asInt();
 		
 		if (deltar == 1) {
 			attendField.setValue("Yes");
@@ -129,6 +130,10 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		
 		if (varsel == 1) {
 			alertField.setValue("Yes");
+		}
+		
+		if (admin == 1) {
+			attendField.setDisable(true);;
 		}
 		
 		mainPane.setFocusTraversable(true);
