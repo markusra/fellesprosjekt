@@ -11,15 +11,19 @@ import appointment.AppointmentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import json.JsonArray;
@@ -114,7 +118,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		try {
 			weekFiller(calendar, 0);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		headerRow.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
@@ -144,7 +147,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 			this.year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
-		//TODO her maa appointment data lastes inn.
 		getAppointmentData();
 		while (counter < 7) {
 			if (counter == 0) {
@@ -220,15 +222,14 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 				int appointmentID = value.asObject().get( "avtaleID" ).asInt();
 				String title = value.asObject().get( "navn" ).asString();
 				String purpose = value.asObject().get( "beskrivelse" ).asString();
-				String roomName = value.asObject().get( "sted" ).asString();
+				String place = value.asObject().get( "sted" ).asString();
 				int roomID = value.asObject().get( "moteromID" ).asInt();
 				long startDate = value.asObject().get( "start" ).asLong();
 				long endDate = value.asObject().get( "slutt" ).asLong();
 				
-				appointmentCreator(appointmentID, title, purpose, roomName, roomID, startDate, endDate);
+				appointmentCreator(appointmentID, title, purpose, place, roomID, startDate, endDate);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		
 	}
@@ -340,7 +341,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		Label emptyLabel = new Label("There are no appointments on this day!");
 		tableView.setPlaceholder(emptyLabel);
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
-		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Hour", "startHour"), tableColumnIntegerSpecifier("Minute", "startMinute"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Room Name", "roomName"));
+		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Hour", "startHour"), tableColumnIntegerSpecifier("Minute", "startMinute"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Place", "place"));
 		tableView.getColumns().get(0).setSortable(true);
 		tableView.getColumns().get(1).setSortable(true);
 		tableView.getSortOrder().add(tableView.getColumns().get(0));
@@ -351,6 +352,26 @@ public class MainPageScreenController implements Initializable, ControllerInterf
  		tableView.getColumns().get(3).setResizable(false);
  		tableView.getColumns().get(0).setSortable(false);
  		tableView.getColumns().get(1).setSortable(false);
+ 		tableView.setOnMousePressed(new EventHandler<MouseEvent>() {
+ 		    @Override 
+ 		    public void handle(MouseEvent event) {
+ 		        if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+ 		            Node node = ((Node) event.getTarget()).getParent();
+ 		            TableRow<AppointmentModel> row;
+ 		            if (node instanceof TableRow) {
+ 		                row = (TableRow<AppointmentModel>) node;
+ 		            } else {
+ 		                row = (TableRow<AppointmentModel>) node.getParent();
+ 		            }
+ 		            ScreensController.setAppointment(row.getItem());
+ 		            try {
+						mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+ 		        }
+ 		    }
+ 		});
 	}
 	
 	

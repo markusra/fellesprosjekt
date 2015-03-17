@@ -3,6 +3,7 @@ package program;
 import java.io.IOException;
 import java.util.HashMap;
 
+import appointment.AppointmentModel;
 import user.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +14,7 @@ import javafx.scene.transform.Scale;
 public class ScreensController extends StackPane {
 	
 	public static UserModel user;
+	public static AppointmentModel appointment;
 	
 	private HashMap<String, String> screens = new HashMap<String, String>();
 	
@@ -81,4 +83,13 @@ public class ScreensController extends StackPane {
 		ScreensController.user = user;
 	}
 	
+	
+	public static AppointmentModel getAppointment() {
+		return appointment;
+	}
+	
+	
+	public static void setAppointment(AppointmentModel appointment) {
+		ScreensController.appointment = appointment;
+	}
 }
