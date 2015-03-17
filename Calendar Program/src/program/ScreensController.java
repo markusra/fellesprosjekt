@@ -3,7 +3,6 @@ package program;
 import java.io.IOException;
 import java.util.HashMap;
 
-import client.TCPClient;
 import user.UserModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,7 +12,7 @@ import javafx.scene.transform.Scale;
 
 public class ScreensController extends StackPane {
 	
-	private UserModel user;
+	public static UserModel user;
 	
 	private HashMap<String, String> screens = new HashMap<String, String>();
 	
@@ -71,14 +70,15 @@ public class ScreensController extends StackPane {
 			System.out.println("ScreensController.setScreen failed!");
 		}
 	}
-	
-	
-	public UserModel getUser() {
+
+
+	public static UserModel getUser() {
 		return user;
 	}
-	
-	
-	public void setUser(UserModel user) {
-		this.user = user;
+
+
+	public static void setUser(UserModel user) {
+		ScreensController.user = user;
 	}
+	
 }

@@ -228,7 +228,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			String etternavn = value.asObject().get( "etternavn" ).asString();
 			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
 			
-			if (brukerID != mainController.getUser().getUserID()) {
+			if (brukerID != ScreensController.getUser().getUserID()) {
 				userList.add(temp);
 			}
 			
