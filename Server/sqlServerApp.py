@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import SocketServer
+from socket import error as SocketError
+
+import errno
 
 from sqlMethods import *
 
@@ -40,28 +43,36 @@ class ClientHandler(SocketServer.BaseRequestHandler):
         # Loop that listens for messages from the client
         counter = 0
         while True:
-            received_string = self.connection.recv(4096)
+            try:
+                received_string = self.connection.recv(4096)
 
-            # All actions here
-            if received_string:
-                colorPrint(line, bcolors.YELLOW)
+                # All actions here
+                if received_string:
+                    colorPrint(line, bcolors.YELLOW)
 
-                colorPrint('Message[' + str(counter) + '] from ' \
-                + str(self.ip) + ':' + str(self.port), bcolors.OKBLUE)
+                    colorPrint('Message[' + str(counter) + '] from ' \
+                    + str(self.ip) + ':' + str(self.port), bcolors.OKBLUE)
 
-                colorPrint('REQUEST -->' + received_string, bcolors.RED)
-                counter += 1
+                    colorPrint('REQUEST -->' + received_string, bcolors.RED)
+                    counter += 1
 
-                svar = interpreter(received_string)
+                    svar = interpreter(received_string)
 
-                self.connection.sendall(svar + "\n")
-                colorPrint('REPLY --> ' + svar, bcolors.RED)
+                    self.connection.sendall(svar + "\n")
+                    colorPrint('REPLY --> ' + svar, bcolors.RED)
 
-                colorPrint(line, bcolors.YELLOW)
-            else:
-                colorPrint('Client disconnected @ ' + self.ip + ':' + str(self.port), bcolors.YELLOW)
-                colorPrint(line, bcolors.YELLOW)
-                break
+                    colorPrint(line, bcolors.YELLOW)
+                else:
+                    colorPrint('Client disconnected @ ' + self.ip + ':' + str(self.port), bcolors.YELLOW)
+                    colorPrint(line, bcolors.YELLOW)
+                    break
+
+            except SocketError as e:
+                if e.errno != errno.ECONNRESET:
+                    print '!!! ERROR !!!'
+                colorPrint('Connection reset by client @ ' + self.ip, bcolors.OKBLUE)
+
+
 
 
 class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):

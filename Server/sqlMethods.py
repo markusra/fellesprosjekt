@@ -105,6 +105,18 @@ def interpreter (data):
 
         reply = createAppointmentMember(brukerID, avtaleID, deltar, admin)
 
+    elif (command == 'f2ks94lfurb68z52k9ah'): # GET APPOINTMENTS
+        brukerID = str(data[0])
+        start = str(data[1])
+        slutt = str(data[2])
+
+        reply = getAppointments(brukerID, start, slutt)
+
+    elif (command == 's8cj2jak602lfun4h6z8'): # GET SPECIFIC APPOINTMENT
+        avtaleID = str(data)
+
+        reply = getSpecificAppointment(avtaleID)
+
     print reply
     return command + splitChar + reply
 
@@ -175,6 +187,18 @@ def createAppointment(navn, start, slutt, beskrivelse, sted, moteromID):
 def createAppointmentMember(brukerID, avtaleID, deltar, admin):
     data = executeSQL( "INSERT INTO AVTALEBRUKER (brukerID, avtaleID, deltar, admin) VALUES (" \
                          + brukerID + ", " + avtaleID + ", " + deltar +  ", " + admin + ")")
+    return data
+
+
+def getAppointments(brukerID, start, slutt):
+    data = executeSQL(  "SELECT * FROM AVTALE " \
+                        "WHERE (start >= " + start + " AND slutt < " + slutt + ") AND avtaleID IN (" \
+                        "SELECT avtaleID FROM AVTALEBRUKER WHERE brukerID = " + brukerID + ")")
+    return data
+
+def getSpecificAppointment(avtaleID):
+    data = executeSQL(  "SELECT * FROM AVTALE WHERE avtaleID = " + avtaleID)
+
     return data
 
 
