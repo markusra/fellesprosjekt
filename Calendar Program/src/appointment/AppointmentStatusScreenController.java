@@ -20,7 +20,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -61,6 +60,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	
 	@FXML
 	ListView<String> lvAttending;
+	
+	@FXML
+	ListView<String> lvNotAttending;
 	
 	TCPClient client;
 	
@@ -159,7 +161,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 
 		JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
 		
-		List<String> userList = new ArrayList<>();
+		List<String> attendUserList = new ArrayList<>();
+		List<String> notAttendUserList = new ArrayList<>();
+		
 		for( JsonValue value : jsonArray2 ) {
 			String brukernavn = value.asObject().get( "brukernavn" ).asString();
 			String fornavn = value.asObject().get( "fornavn" ).asString();
@@ -168,18 +172,24 @@ public class AppointmentStatusScreenController implements Initializable, Control
 			int deltar2 = value.asObject().get( "deltar" ).asInt();
 			
 			if (deltar2 == 1) {
-				userList.add(temp);
+				attendUserList.add(temp);
+			} else {
+				notAttendUserList.add(temp);
 			}
 			
 		}
 		
-		ObservableList<String> myObservableList = FXCollections.observableList(userList);
+		ObservableList<String> myObservableList = FXCollections.observableList(attendUserList);
 		lvAttending.setItems(myObservableList);
+		
+		ObservableList<String> myObservableList2 = FXCollections.observableList(notAttendUserList);
+		lvNotAttending.setItems(myObservableList2);
 		
 		mainPane.setFocusTraversable(true);
 		alertField.setStyle("-fx-font-size:30;");
 		attendField.setStyle("-fx-font-size:30;");
 		lvAttending.setStyle("-fx-font-size:30;");
+		lvNotAttending.setStyle("-fx-font-size:30;");
 		
 		attendField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		alertField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
