@@ -96,12 +96,6 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	
 	@FXML
-	public void handleChangeButtonAction(ActionEvent event) throws IOException {
-		mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
-	}
-	
-	
-	@FXML
 	public void handleDeleteButtonAction(ActionEvent event) throws IOException {
 		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 	}
@@ -165,18 +159,8 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 		}
 		year += ScreensController.getAppointment().getYear();
 		dpStart.setValue(LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day)));
-		if (ScreensController.getAppointment().getStartMinute() < 10) {
-			timeStart.setText((ScreensController.getAppointment().getStartHour()) + ":0" + (ScreensController.getAppointment().getStartMinute()));			
-		}
-		else {
-			timeStart.setText((ScreensController.getAppointment().getStartHour()) + ":" + (ScreensController.getAppointment().getStartMinute()));
-		}
-		if (ScreensController.getAppointment().getEndMinute() < 10) {
-			timeEnd.setText((ScreensController.getAppointment().getEndHour()) + ":0" + (ScreensController.getAppointment().getEndMinute()));			
-		}
-		else {
-			timeEnd.setText((ScreensController.getAppointment().getEndHour()) + ":" + (ScreensController.getAppointment().getEndMinute()));
-		}
+		timeStart.setText(ScreensController.getAppointment().getStartTime());
+		timeEnd.setText(ScreensController.getAppointment().getEndTime());
 		createListeners();
 	}
 	
@@ -303,6 +287,15 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 			String romID = splited[1];
 			try {
 				String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
+				ScreensController.getAppointment().setTitle(txtPurpose.getText());
+				ScreensController.getAppointment().setPurpose(txtDescription.getText());
+				ScreensController.getAppointment().setPlace(txtPlace.getText());				
+				ScreensController.getAppointment().setStartTime(timeStart.getText());
+				ScreensController.getAppointment().setEndTime(timeEnd.getText());
+				ScreensController.getAppointment().setDay(dpStart.getValue().getDayOfMonth());					
+				ScreensController.getAppointment().setMonth(dpStart.getValue().getMonthValue());
+				ScreensController.getAppointment().setYear(dpStart.getValue().getYear());
+				ScreensController.getAppointment().setDay(dpStart.getValue().getDayOfMonth());
 				
 				String[] answer = serverReply.split("#");
 
@@ -311,7 +304,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
 				
 				setMembers(avtaleID);
-				mainController.setScreen(Main.appointmentSucceededID, Main.appointmentSucceededScreen);
+				mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
