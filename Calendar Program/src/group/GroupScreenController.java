@@ -112,7 +112,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	
 		int groupID = jsonArray.get(0).asObject().get( "gruppeID" ).asInt();
 		
-		client.customQuery(ServerCodes.CreateGroupMember, mainController.getUser().getUserID() + ", " + groupID + ", " + "True");
+		System.out.println("UserID: " + ScreensController.getUser().getUserID());
+		client.customQuery(ServerCodes.CreateGroupMember, ScreensController.getUser().getUserID() + ", " + groupID + ", " + "True");
 
 		// Then add all the other members to the group
 		for (String member : chosenMembers) {
@@ -129,9 +130,9 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-		if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+		if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE"){
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
-		}else if(code.toString() == "ENTER" || code.toString() == "G" || code.toString() == "G"){
+		}else if(code.toString() == "ENTER"){
 			createGroup();
 			addMembersToGroup();
 			

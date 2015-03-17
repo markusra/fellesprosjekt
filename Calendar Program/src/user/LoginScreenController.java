@@ -81,12 +81,11 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			
 			mainController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
 			
-			
 			client.disconnect();
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 			
 		}
-		//Må få denne til å fungere (ikke kaste exception);
+		//Mï¿½ fï¿½ denne til ï¿½ fungere (ikke kaste exception);
 		else {
 			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 		}
@@ -129,12 +128,11 @@ public class LoginScreenController implements Initializable, ControllerInterface
 				System.out.println("Successful login!");
 				
 				mainController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
-				
 				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 				
 			}
 			
-			//Må få denne til å fungere (ikke kaste exception);
+			//Mï¿½ fï¿½ denne til ï¿½ fungere (ikke kaste exception);
 			else {
 				mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 			}
@@ -164,7 +162,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	}
 
 	@Override
-	public void initialize (URL arg0, ResourceBundle arg1) {
+	public void initialize (URL arg0, ResourceBundle arg1) {		
 		mainPane.setFocusTraversable(true);
 		Platform.runLater(new Runnable() {
 			@Override

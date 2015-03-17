@@ -88,6 +88,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private String dato = null;
 	private String sendesStart = null;
 	private String sendesEnd = null;
+	
 	TCPClient client;
 	Map<String, Integer> availableUsers = new HashMap<String, Integer>();
 	Map<String, Integer> availableRooms = new HashMap<String, Integer>();
