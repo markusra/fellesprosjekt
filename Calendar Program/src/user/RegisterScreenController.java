@@ -87,11 +87,9 @@ public class RegisterScreenController implements Initializable, ControllerInterf
 		KeyCode code = event.getCode();
         if(code.toString() == "BACK_SPACE"){
         	mainController.setScreen(Main.loginID, Main.loginScreen);
-		}else if(code.toString() == "B"){
-			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else if(code.toString() == "ESCAPE"){
 			mainController.setScreen(Main.loginID, Main.loginScreen);
-		}else if(code.toString() == "ENTER" || code.toString() == "R"){
+		}else if(code.toString() == "ENTER"){
 			String firstName = firstNameField.getText();
 			String lastName = lastNameField.getText();
 			String email = emailField.getText();

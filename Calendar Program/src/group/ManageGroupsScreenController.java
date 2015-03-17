@@ -121,17 +121,11 @@ public class ManageGroupsScreenController implements Initializable, ControllerIn
         	weekFiller(calendar, -1);
 		}else if(code.toString() == "RIGHT" || code.toString() == "UP"){
 			weekFiller(calendar, 1);
-		}else if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+		}else if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT"){
 			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
-		}else if(code.toString() == "A"){
-			mainController.setScreen(Main.appointmentID, Main.appointmentScreen);
-		}else if(code.toString() == "C"){
-			//Oppdater gruppe
-			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
-		}else if(code.toString() == "D"){
-			//Slett gruppe
-			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);	
-		}event.consume();
+		}else{
+			event.consume();
+		}
 	}
 	
 	

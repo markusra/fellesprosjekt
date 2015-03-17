@@ -23,12 +23,9 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "C" || code.toString() == "ENTER" || code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "LEFT" ){
+        if(code.toString() == "ENTER" || code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "LEFT" ){
    			//Oppdater appointment
         	mainController.setScreen(Main.viewDayID, Main.viewDayScreen);
-		}else if(code.toString() == "D"){
-			//Slett appointment
-			mainController.setScreen(Main.viewDayID, Main.viewDayScreen);
 		}else{
 			event.consume();
 		}

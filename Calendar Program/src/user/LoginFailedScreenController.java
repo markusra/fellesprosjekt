@@ -28,7 +28,7 @@ public class LoginFailedScreenController implements Initializable, ControllerInt
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER" || code.toString() == "BACK_SPACE" || code.toString() == "ESCAPEE" || code.toString() == "T" || code.toString() == "LEFT" ){
+        if(code.toString() == "ENTER" || code.toString() == "BACK_SPACE" || code.toString() == "ESCAPEE" || code.toString() == "LEFT" ){
 			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else{
 			event.consume();

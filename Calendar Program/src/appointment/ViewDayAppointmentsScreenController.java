@@ -23,7 +23,7 @@ public class ViewDayAppointmentsScreenController implements Initializable, Contr
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-		if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+		if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT"){
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);	
 		}else{
 			event.consume();

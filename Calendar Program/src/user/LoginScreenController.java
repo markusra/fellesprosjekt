@@ -94,7 +94,7 @@ public class LoginScreenController implements Initializable, ControllerInterface
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER" || code.toString() == "S"){
+        if(code.toString() == "ENTER"){
         	String username =  usernameField.getText();
 			String password = passwordField.getText();
 			
@@ -136,10 +136,6 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			else {
 				mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
 			}
-        }else if(code.toString() == "R"){
-        	mainController.setScreen(Main.registerID, Main.registerScreen);
-        }else if(code.toString() == "F"){
-        	mainController.setScreen(Main.forgotID, Main.forgotScreen);	
 		}else{
 			event.consume();
 		}
