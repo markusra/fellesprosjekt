@@ -33,6 +33,8 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	@FXML
 	Button updateButton;
 	@FXML
+	Button editButton;
+	@FXML
 	Button back;
 	
 	@FXML
