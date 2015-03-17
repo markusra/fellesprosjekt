@@ -430,13 +430,15 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			for( JsonValue value : jsonArray ) {
 				int fetched_brukerID = value.asObject().get( "brukerID").asInt();
 
-				String serverReply2 = client.customQuery(ServerCodes.GetAppointmentMember, ScreensController.getUser().getUserID() + ", " + fetched_brukerID);
+				String serverReply2 = client.customQuery(ServerCodes.GetAppointmentMember, fetched_brukerID + ", " + avtaleID);
 				String[] answer2 = serverReply2.split("#");
 			    answer = serverReply2.split("#");
 				JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
 				
-				
-				System.out.println(jsonArray2);
+				if (! jsonArray2.toString().contains("admin")) {
+					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False");
+				}
+
 				
 			}
 			
