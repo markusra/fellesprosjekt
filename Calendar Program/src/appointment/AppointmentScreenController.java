@@ -439,7 +439,6 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False");
 				}
 
-				
 			}
 			
 		}
