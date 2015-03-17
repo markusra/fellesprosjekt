@@ -3,6 +3,7 @@ package appointment;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import client.ServerCodes;
@@ -10,12 +11,15 @@ import client.TCPClient;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -54,6 +58,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	ComboBox<String> attendField;
 	@FXML
 	ComboBox<String> alertField;
+	
+	@FXML
+	ListView<String> lvAttending;
 	
 	TCPClient client;
 	
@@ -140,9 +147,40 @@ public class AppointmentStatusScreenController implements Initializable, Control
 			editButton.setDisable(true);
 		}
 		
+		String serverReply2 = "";
+		try {
+			serverReply2 = client.customQuery(ServerCodes.GetAttendingUsers, "" + ScreensController.getAppointment().getAppointmentID());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		String[] answer2 = serverReply2.split("#");
+
+		JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
+		
+		List<String> userList = new ArrayList<>();
+		for( JsonValue value : jsonArray2 ) {
+			String brukernavn = value.asObject().get( "brukernavn" ).asString();
+			String fornavn = value.asObject().get( "fornavn" ).asString();
+			String etternavn = value.asObject().get( "etternavn" ).asString();
+			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
+			int deltar2 = value.asObject().get( "deltar" ).asInt();
+			
+			if (deltar2 == 1) {
+				userList.add(temp);
+			}
+			
+		}
+		
+		ObservableList<String> myObservableList = FXCollections.observableList(userList);
+		lvAttending.setItems(myObservableList);
+		
 		mainPane.setFocusTraversable(true);
 		alertField.setStyle("-fx-font-size:30;");
 		attendField.setStyle("-fx-font-size:30;");
+		lvAttending.setStyle("-fx-font-size:30;");
+		
 		attendField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		alertField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		title.setText(ScreensController.getAppointment().getTitle());

@@ -28,11 +28,7 @@ public final class ServerCodes {
  	public static final String GetAppointmentMember  	= "p7sg3bzv32jtuhf7k6nr";
  	public static final String UpdateAppointmentMember 	= "q8sh3nd8vhe0hit43kxh";
  	public static final String GetAttendanceAlert 		= "x82m4jf7ch4dk7h6fn4k";
- 	
- 	
- 	
- 	
- 	
+ 	public static final String GetAttendingUsers 		= "p7sg3nj86sk64hn2loc5";
  	
 }
 
