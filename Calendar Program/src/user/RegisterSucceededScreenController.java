@@ -41,8 +41,6 @@ public class RegisterSucceededScreenController implements Initializable, Control
         	mainController.setScreen(Main.loginID, Main.loginScreen);
         }else if(code.toString() == "ENTER"){
         	mainController.setScreen(Main.loginID, Main.loginScreen);
-		}else if(code.toString() == "B"){
-			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else if(code.toString() == "ESCAPE"){
 			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else if(code.toString() == "LEFT"){

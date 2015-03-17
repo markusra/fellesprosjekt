@@ -114,7 +114,7 @@ public class GroupCalendarScreenController implements Initializable, ControllerI
         	weekFiller(calendar, -1);
 		}else if(code.toString() == "RIGHT" || code.toString() == "UP"){
 			weekFiller(calendar, 1);
-		}else if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT" || code.toString() == "B"){
+		}else if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE" || code.toString() == "ENTER" || code.toString() == "LEFT"){
 			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);	
 		}event.consume();
 	}

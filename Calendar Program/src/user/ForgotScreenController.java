@@ -30,7 +30,7 @@ public class ForgotScreenController implements Initializable, ControllerInterfac
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER" || code.toString() == "ESCAPE" || code.toString() == "BACK_SPACE" || code.toString() == "B" || code.toString() == "LEFT"){
+        if(code.toString() == "ENTER" || code.toString() == "ESCAPE" || code.toString() == "BACK_SPACE" || code.toString() == "LEFT"){
         	mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else{
 			event.consume();

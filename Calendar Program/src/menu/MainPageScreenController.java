@@ -384,12 +384,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			weekFiller(calendar, 1);
 		}else if(code.toString() == "ESCAPE"){
 			mainController.setScreen(Main.loginID, Main.loginScreen);
-		}else if(code.toString() == "A"){
-			mainController.setScreen(Main.appointmentID, Main.appointmentScreen);
-		}else if(code.toString() == "G"){
-			mainController.setScreen(Main.groupID, Main.groupScreen);
-		}else if(code.toString() == "V"){
-			mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
 		}else{
 			event.consume();
 		}
