@@ -286,7 +286,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 			String[] splited = rom.split("\\s+");
 			String romID = splited[1];
 			try {
-				//String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
+				String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
 				ScreensController.getAppointment().setTitle(txtPurpose.getText());
 				ScreensController.getAppointment().setPurpose(txtDescription.getText());
 				ScreensController.getAppointment().setPlace(txtPlace.getText());				
@@ -297,13 +297,13 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				ScreensController.getAppointment().setYear(dpStart.getValue().getYear());
 				ScreensController.getAppointment().setDay(dpStart.getValue().getDayOfMonth());
 				
-				/*String[] answer = serverReply.split("#");
+				String[] answer = serverReply.split("#");
 
 				JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 			
 				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
 				
-				setMembers(avtaleID);*/
+				setMembers(avtaleID);
 				mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
 			} catch (IOException e) {
 				e.printStackTrace();
