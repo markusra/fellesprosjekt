@@ -7,6 +7,7 @@ public final class ServerCodes {
  	public static final String GetAllUsers    			= "u4sl29fjanz680slla0p";
  	public static final String GetSpecificUser    		= "o35n2b1hsk1oa901jsnt";
  	public static final String GetAllGroups     		= "j2az937ls9mey36z2h0l";
+ 	public static final String GetAllMemberGroups     	= "p7zf26a5hem79gul4hy7";
  	public static final String GetSpecificGroup	    	= "g7sj34nd8xjake4hr8nf";
  	public static final String GetFilteredRooms     	= "h4ks827db5kz791ke2n5";
  	public static final String CreateAppointment    	= "a92mfdy37sk9senc7smw";

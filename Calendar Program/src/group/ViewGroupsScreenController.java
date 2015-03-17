@@ -15,12 +15,15 @@ import program.ScreensController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import json.JsonArray;
 import json.JsonValue;
@@ -68,12 +71,13 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		mainPane.setFocusTraversable(true);
 		
 		lvGroups.setStyle("-fx-font-size:30;");
-		lvGroups.setMouseTransparent( true );
-		lvGroups.setFocusTraversable( false );
+		
+		//lvGroups.setMouseTransparent( true );
+		//lvGroups.setFocusTraversable( false );
 		
 		try {
 			client = new TCPClient();
-			String serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
+			String serverReply = client.customQuery(ServerCodes.GetAllMemberGroups, "" + ScreensController.getUser().getUserID());
 			String[] answer= serverReply.split("#");
 			
 			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
@@ -95,7 +99,28 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 		
+		lvGroups.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			public void handle(MouseEvent mouseEvent) {
+		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+		            if(mouseEvent.getClickCount() == 2){
+		            	
+		            	System.out.println("clicked on " + lvGroups.getSelectionModel().getSelectedItem());
+		            
+		            	try {
+							mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		            
+		            }
+		        }
+		    }
+	    });
 	}
+	
 }
 
