@@ -32,7 +32,7 @@
          </font>
       </Button>
       <ListView fx:id="lvGroups" layoutX="628.0" layoutY="161.0" prefHeight="646.0" prefWidth="607.0" />
-      <Text layoutX="629.0" layoutY="846.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på en gruppe for å se tilsvarende gruppekalender." textAlignment="CENTER" wrappingWidth="607.0">
+      <Text layoutX="675.0" layoutY="845.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på en gruppe for å se tilsvarende gruppekalender." textAlignment="CENTER" wrappingWidth="509.0">
          <font>
             <Font size="30.0" />
          </font>
