@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
@@ -41,6 +42,11 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	Label from;
 	@FXML
 	Label to;
+	
+	@FXML
+	ComboBox<String> attendField;
+	@FXML
+	ComboBox<String> alertField;
 	
 	
 	@FXML
@@ -75,6 +81,8 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
+		attendField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
+		alertField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		title.setText(ScreensController.getAppointment().getTitle());
 		purpose.setText(ScreensController.getAppointment().getPurpose());
 		place.setText(ScreensController.getAppointment().getPlace());

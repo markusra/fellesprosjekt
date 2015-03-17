@@ -9,6 +9,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.ComboBox?>
 
 <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyHandler" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentStatusScreenController">
    <children>
@@ -96,13 +98,33 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="attendField" layoutX="1118.0" layoutY="726.0" prefHeight="53.0" prefWidth="210.0" promptText="Choose status" />
+                  <ComboBox fx:id="attendField" layoutX="1118.0" layoutY="726.0" prefHeight="53.0" prefWidth="210.0">
+                  	<items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  			<String fx:value="Yes" />
+                  			<String fx:value="No" />
+                  		</FXCollections>
+                  	</items>
+                  	<value>
+                  		<String fx:value="Yes" />
+                  	</value>
+                  </ComboBox>
                   <Label layoutX="613.0" layoutY="812.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="alertField" layoutX="1118.0" layoutY="812.0" prefHeight="53.0" prefWidth="210.0" promptText="Set alert if desired" />
+                  <ComboBox fx:id="alertField" layoutX="1118.0" layoutY="812.0" prefHeight="53.0" prefWidth="210.0">
+                  	<items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  			<String fx:value="Yes" />
+                  			<String fx:value="No" />
+                  		</FXCollections>
+                  	</items>
+                  	<value>
+                  		<String fx:value="Yes" />
+                  	</value>
+                  </ComboBox>
                   <Label layoutX="611.0" layoutY="273.0" prefHeight="53.0" prefWidth="320.0" text="Purpose:">
                      <font>
                         <Font name="System Bold" size="36.0" />
