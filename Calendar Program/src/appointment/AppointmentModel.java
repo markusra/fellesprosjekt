@@ -4,23 +4,28 @@ package appointment;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Appointment {
+public class AppointmentModel {
 	
+	private SimpleIntegerProperty ID;
+	private SimpleStringProperty title;
 	private SimpleStringProperty purpose;
-	private SimpleStringProperty place;
+	private SimpleStringProperty roomName;
+	private SimpleIntegerProperty roomID;
 	private SimpleIntegerProperty startHour;
 	private SimpleIntegerProperty startMinute;
 	private SimpleIntegerProperty endHour;
 	private SimpleIntegerProperty endMinute;
-	private SimpleIntegerProperty day;
-	private SimpleIntegerProperty month;
 	private SimpleIntegerProperty year;
-	private int roomID;
+	private SimpleIntegerProperty month;
+	private SimpleIntegerProperty day;
 	
 	
-	public Appointment(String purpose, String place, Long startDate, Long endDate) {
+	public AppointmentModel(int ID, String title, String purpose, String roomName, int roomID, Long startDate, Long endDate) {
+		this.ID = new SimpleIntegerProperty(ID);
+		this.title = new SimpleStringProperty(title);
 		this.purpose = new SimpleStringProperty(purpose);
-		this.place = new SimpleStringProperty(place);
+		this.roomName = new SimpleStringProperty(roomName);
+		this.roomID = new SimpleIntegerProperty(roomID);
 		this.startHour = new SimpleIntegerProperty(hourParser(startDate));
 		this.startMinute = new SimpleIntegerProperty(minuteParser(startDate));
 		this.endHour = new SimpleIntegerProperty(hourParser(endDate));
@@ -61,6 +66,26 @@ public class Appointment {
 	}
 	
 	
+	public int getAppointmentID() {
+		return ID.get();
+	}
+	
+	
+	public void setAppointmentID(int appointmentID) {
+		this.ID.set(appointmentID);
+	}
+	
+	
+	public String getTitle() {
+		return title.get();
+	}
+	
+	
+	public void setTitle(String title) {
+		this.title.set(title);
+	}
+	
+	
 	public String getPurpose() {
 		return purpose.get();
 	}
@@ -71,13 +96,23 @@ public class Appointment {
 	}
 	
 	
-	public String getPlace() {
-		return place.get();
+	public String getRoomName() {
+		return roomName.get();
 	}
 	
 	
-	public void setPlace(String place) {
-		this.place.set(place);;
+	public void setRoomName(String roomName) {
+		this.roomName.set(roomName);;
+	}
+	
+	
+	public int getRoomID() {
+		return roomID.get();
+	}
+	
+	
+	public void setRoomID(int roomID) {
+		this.roomID.set(roomID);
 	}
 	
 	
@@ -120,13 +155,13 @@ public class Appointment {
 	}
 	
 	
-	public int getDay() {
-		return day.get();
+	public int getYear() {
+		return year.get();
 	}
 	
 	
-	public void setDay(int day) {
-		this.day.set(day);
+	public void setYear(int year) {
+		this.year.set(year);
 	}
 	
 	
@@ -138,24 +173,15 @@ public class Appointment {
 	public void setMonth(int month) {
 		this.month.set(month);
 	}
+		
 	
-	
-	public int getYear() {
-		return year.get();
+	public int getDay() {
+		return day.get();
 	}
 	
 	
-	public void setYear(int year) {
-		this.year.set(year);
+	public void setDay(int day) {
+		this.day.set(day);
 	}
 	
-	
-	public int getRoomID() {
-		return roomID;
-	}
-	
-	
-	public void setRoomID(int roomID) {
-		this.roomID = roomID;
-	}
 }

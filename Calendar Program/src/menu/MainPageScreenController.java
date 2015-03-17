@@ -2,19 +2,19 @@ package menu;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import client.ServerCodes;
 import client.TCPClient;
-import appointment.Appointment;
+import appointment.AppointmentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,7 +34,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
 	
-	private ObservableList<Appointment> observableAppointments = FXCollections.observableArrayList();
+	private ObservableList<AppointmentModel> observableAppointments = FXCollections.observableArrayList();
 	
 	@FXML
 	Pane mainPane;
@@ -84,21 +84,21 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	Button viewGroupsButton;
 	
 	@FXML
-	TableView<Appointment> headerRow;
+	TableView<AppointmentModel> headerRow;
 	@FXML
-	TableView<Appointment> mondayTable;
+	TableView<AppointmentModel> mondayTable;
 	@FXML
-	TableView<Appointment> tuesdayTable;
+	TableView<AppointmentModel> tuesdayTable;
 	@FXML
-	TableView<Appointment> wednesdayTable;
+	TableView<AppointmentModel> wednesdayTable;
 	@FXML
-	TableView<Appointment> thursdayTable;
+	TableView<AppointmentModel> thursdayTable;
 	@FXML
-	TableView<Appointment> fridayTable;
+	TableView<AppointmentModel> fridayTable;
 	@FXML
-	TableView<Appointment> saturdayTable;
+	TableView<AppointmentModel> saturdayTable;
 	@FXML
-	TableView<Appointment> sundayTable;
+	TableView<AppointmentModel> sundayTable;
 	
 	
 	@Override
@@ -211,19 +211,21 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		observableAppointments.clear();
 		
 		String serverReply = client.customQuery(ServerCodes.GetAppointments, ScreensController.getUser().getUserID() + ", " + dateForAWeekMaker());
-		
 		String[] answer = serverReply.split("#");
 
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 
 		try {
 			for( JsonValue value : jsonArray ) {
-				String purpose = value.asObject().get( "navn" ).asString();
-				String place = value.asObject().get( "sted" ).asString();
+				int appointmentID = value.asObject().get( "avtaleID" ).asInt();
+				String title = value.asObject().get( "navn" ).asString();
+				String purpose = value.asObject().get( "beskrivelse" ).asString();
+				String roomName = value.asObject().get( "sted" ).asString();
+				int roomID = value.asObject().get( "moteromID" ).asInt();
 				long startDate = value.asObject().get( "start" ).asLong();
 				long endDate = value.asObject().get( "slutt" ).asLong();
 				
-				appointmentCreator(purpose, place, startDate, endDate);
+				appointmentCreator(appointmentID, title, purpose, roomName, roomID, startDate, endDate);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -299,14 +301,14 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private void appointmentCreator(String purpose, String place, Long startDate, Long endDate) {
-		observableAppointments.add(new Appointment(purpose, place, startDate, endDate));
+	private void appointmentCreator(int appointmentID, String title, String purpose, String roomName, int roomID, Long startDate, Long endDate) {
+		observableAppointments.add(new AppointmentModel(appointmentID, title, purpose, roomName, roomID, startDate, endDate));
 	}
 	
 	
-	private ObservableList<Appointment> dayAppointmentFiller(ObservableList<Appointment> observableAppointments, Calendar calendar) {
-		ObservableList<Appointment> dayAppointments = FXCollections.observableArrayList();
-		for (Appointment appointment : observableAppointments) {
+	private ObservableList<AppointmentModel> dayAppointmentFiller(ObservableList<AppointmentModel> observableAppointments, Calendar calendar) {
+		ObservableList<AppointmentModel> dayAppointments = FXCollections.observableArrayList();
+		for (AppointmentModel appointment : observableAppointments) {
 			if (appointment.getYear() == calendar.get(Calendar.YEAR) && appointment.getMonth()-1 == calendar.get(Calendar.MONTH) && appointment.getDay() == calendar.get(Calendar.DATE)) {
 				dayAppointments.add(appointment);
 			}
@@ -315,17 +317,17 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private TableColumn<Appointment, String> tableColumnStringSpecifier(String name, String variable) {
-		TableColumn<Appointment, String> tableColumn = new TableColumn<Appointment, String>(name);
-		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, String>(variable));
+	private TableColumn<AppointmentModel, String> tableColumnStringSpecifier(String name, String variable) {
+		TableColumn<AppointmentModel, String> tableColumn = new TableColumn<AppointmentModel, String>(name);
+		tableColumn.setCellValueFactory(new PropertyValueFactory<AppointmentModel, String>(variable));
 		tableColumn.setSortable(false);
 		return tableColumn;
 	}
 	
 	
-	private TableColumn<Appointment, Integer> tableColumnIntegerSpecifier(String name, String variableName) {
-		TableColumn<Appointment, Integer> tableColumn = new TableColumn<Appointment, Integer>(name);
-		tableColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>(variableName));
+	private TableColumn<AppointmentModel, Integer> tableColumnIntegerSpecifier(String name, String variableName) {
+		TableColumn<AppointmentModel, Integer> tableColumn = new TableColumn<AppointmentModel, Integer>(name);
+		tableColumn.setCellValueFactory(new PropertyValueFactory<AppointmentModel, Integer>(variableName));
 		tableColumn.setPrefWidth(100);
 		tableColumn.setResizable(false);
 		return tableColumn;
@@ -333,15 +335,17 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	
 	@SuppressWarnings("unchecked")
-	private void tableViewFiller(TableView<Appointment> tableView) {
+	private void tableViewFiller(TableView<AppointmentModel> tableView) {
 		tableView.getColumns().clear();
+		Label emptyLabel = new Label("There are no appointments on this day!");
+		tableView.setPlaceholder(emptyLabel);
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
-		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Hour", "startHour"), tableColumnIntegerSpecifier("Minute", "startMinute"), tableColumnStringSpecifier("Purpose", "purpose"), tableColumnStringSpecifier("Place", "place"));
+		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Hour", "startHour"), tableColumnIntegerSpecifier("Minute", "startMinute"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Room Name", "roomName"));
 		tableView.getColumns().get(0).setSortable(true);
 		tableView.getColumns().get(1).setSortable(true);
 		tableView.getSortOrder().add(tableView.getColumns().get(0));
 		tableView.getSortOrder().add(tableView.getColumns().get(1));
- 		tableView.getColumns().get(2).setPrefWidth(350);
+ 		tableView.getColumns().get(2).setPrefWidth(340);
  		tableView.getColumns().get(3).setPrefWidth(167);
  		tableView.getColumns().get(2).setResizable(false);
  		tableView.getColumns().get(3).setResizable(false);
