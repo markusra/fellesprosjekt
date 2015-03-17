@@ -40,7 +40,7 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	@FXML
 	Label title;
 	@FXML
-	TextArea purpose;
+	Label purpose;
 	@FXML
 	Label place;
 	@FXML
@@ -135,7 +135,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		}
 		
 		if (admin == 1) {
-			attendField.setDisable(true);;
+			attendField.setDisable(true);
+		} else {
+			editButton.setDisable(true);
 		}
 		
 		mainPane.setFocusTraversable(true);

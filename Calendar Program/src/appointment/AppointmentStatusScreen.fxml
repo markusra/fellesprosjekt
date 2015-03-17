@@ -58,17 +58,17 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Label layoutX="1008.0" layoutY="616.0" prefHeight="53.0" prefWidth="112.0" text="From:">
+                  <Label layoutX="948.0" layoutY="616.0" prefHeight="53.0" prefWidth="71.0" text="From:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1196.0" layoutY="616.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+                  <Label layoutX="1156.0" layoutY="616.0" prefHeight="53.0" prefWidth="48.0" text="To:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="title" layoutX="852.0" layoutY="199.0" prefHeight="53.0" prefWidth="518.0" text="Title of the appointment">
+                  <Label fx:id="title" layoutX="852.0" layoutY="199.0" prefHeight="53.0" prefWidth="476.0" text="Title of the appointment">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -78,19 +78,19 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="date" layoutX="737.0" layoutY="616.0" prefHeight="53.0" prefWidth="251.0" text="Date">
+                  <Label fx:id="date" layoutX="717.0" layoutY="616.0" prefHeight="53.0" prefWidth="251.0" text="Date">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="from" layoutX="1086.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="From">
+                  <Label fx:id="from" layoutX="1026.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="From">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="34.0" />
                      </font>
                   </Label>
-                  <Label fx:id="to" layoutX="1246.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="To">
+                  <Label fx:id="to" layoutX="1206.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="To">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="34.0" />
                      </font>
                   </Label>
                   <Label layoutX="613.0" layoutY="726.0" prefHeight="53.0" prefWidth="402.0" text="Status of participation:">
@@ -135,11 +135,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="purpose" editable="false" layoutX="612.0" layoutY="338.0" prefHeight="103.0" prefWidth="718.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font></TextArea>
-                  <Button fx:id="back" layoutX="611.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #69696b;" text="BACK TO MAINPAGE" textFill="WHITE">
+                  <Button fx:id="back" layoutX="611.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #69696b;" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -149,6 +145,11 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
+                  <Label fx:id="purpose" alignment="TOP_LEFT" layoutX="852.0" layoutY="280.0" prefHeight="180.0" prefWidth="482.0" text="Purpose" wrapText="true">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
                </children>
                <padding>
                   <Insets top="-1000.0" />

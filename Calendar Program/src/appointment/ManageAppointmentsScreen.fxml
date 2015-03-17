@@ -75,21 +75,21 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dpStart" layoutX="737.0" layoutY="592.0" prefHeight="53.0" prefWidth="211.0" promptText="Old date" />
-                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1132.0" layoutY="592.0" prefHeight="53.0" prefWidth="85.0" text="Old from time">
+                  <DatePicker fx:id="dpStart" layoutX="670.0" layoutY="592.0" prefHeight="53.0" prefWidth="309.0" promptText="Old date" />
+                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1082.0" layoutY="592.0" prefHeight="53.0" prefWidth="120.0" text="Old from time">
                      <font>
                         <Font size="24.0" />
                      </font></TextField>
-                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1289.0" layoutY="592.0" prefHeight="53.0" prefWidth="85.0" text="Old to time">
+                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1254.0" layoutY="592.0" prefHeight="53.0" prefWidth="120.0" text="Old to time">
                      <font>
                         <Font size="24.0" />
                      </font></TextField>
-                  <Label layoutX="1052.0" layoutY="592.0" prefHeight="53.0" prefWidth="70.0" text="From:">
+                  <Label layoutX="1002.0" layoutY="592.0" prefHeight="53.0" prefWidth="70.0" text="From:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1240.0" layoutY="592.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+                  <Label layoutX="1210.0" layoutY="592.0" prefHeight="53.0" prefWidth="48.0" text="To:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -127,7 +127,7 @@
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="429.0" style="-fx-background-color: #69696b;" text="BACK TO APPOINTMENT STATUS" textFill="WHITE">
+                  <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="429.0" style="-fx-background-color: #69696b;" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
