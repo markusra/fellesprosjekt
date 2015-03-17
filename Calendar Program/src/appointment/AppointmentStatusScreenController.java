@@ -165,18 +165,8 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		}
 		year += ScreensController.getAppointment().getYear();
 		date.setText(day + "." + month + "." + year);
-		if (ScreensController.getAppointment().getStartMinute() < 10) {
-			from.setText((ScreensController.getAppointment().getStartHour()) + ":0" + (ScreensController.getAppointment().getStartMinute()));			
-		}
-		else {
-			from.setText((ScreensController.getAppointment().getStartHour()) + ":" + (ScreensController.getAppointment().getStartMinute()));
-		}
-		if (ScreensController.getAppointment().getEndMinute() < 10) {
-			to.setText((ScreensController.getAppointment().getEndHour()) + ":0" + (ScreensController.getAppointment().getEndMinute()));			
-		}
-		else {
-			to.setText((ScreensController.getAppointment().getEndHour()) + ":" + (ScreensController.getAppointment().getEndMinute()));
-		}
+		from.setText(ScreensController.getAppointment().getStartTime());
+		to.setText(ScreensController.getAppointment().getEndTime());
 	}
 }
 

@@ -326,32 +326,20 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private TableColumn<AppointmentModel, Integer> tableColumnIntegerSpecifier(String name, String variableName) {
-		TableColumn<AppointmentModel, Integer> tableColumn = new TableColumn<AppointmentModel, Integer>(name);
-		tableColumn.setCellValueFactory(new PropertyValueFactory<AppointmentModel, Integer>(variableName));
-		tableColumn.setPrefWidth(100);
-		tableColumn.setResizable(false);
-		return tableColumn;
-	}
-	
-	
 	@SuppressWarnings("unchecked")
 	private void tableViewFiller(TableView<AppointmentModel> tableView) {
 		tableView.getColumns().clear();
 		Label emptyLabel = new Label("There are no appointments on this day!");
 		tableView.setPlaceholder(emptyLabel);
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
-		tableView.getColumns().addAll(tableColumnIntegerSpecifier("Hour", "startHour"), tableColumnIntegerSpecifier("Minute", "startMinute"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Place", "place"));
+		tableView.getColumns().addAll(tableColumnStringSpecifier("Start", "startTime"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Place", "place"));
 		tableView.getColumns().get(0).setSortable(true);
-		tableView.getColumns().get(1).setSortable(true);
 		tableView.getSortOrder().add(tableView.getColumns().get(0));
-		tableView.getSortOrder().add(tableView.getColumns().get(1));
- 		tableView.getColumns().get(2).setPrefWidth(340);
- 		tableView.getColumns().get(3).setPrefWidth(167);
+ 		tableView.getColumns().get(1).setPrefWidth(340);
+ 		tableView.getColumns().get(2).setPrefWidth(167);
+ 		tableView.getColumns().get(1).setResizable(false);
  		tableView.getColumns().get(2).setResizable(false);
- 		tableView.getColumns().get(3).setResizable(false);
  		tableView.getColumns().get(0).setSortable(false);
- 		tableView.getColumns().get(1).setSortable(false);
  		tableView.setOnMousePressed(new EventHandler<MouseEvent>() {
  		    @Override 
  		    public void handle(MouseEvent event) {
