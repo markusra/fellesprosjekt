@@ -2,6 +2,7 @@ package menu;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -21,6 +22,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import json.JsonArray;
+import json.JsonValue;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
@@ -205,12 +208,27 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	private void getAppointmentData() throws IOException {
 		TCPClient client = new TCPClient();
-		System.out.println(client.customQuery(ServerCodes.GetAppointments, ScreensController.getUser().getUserID() + ", " + dateForAWeekMaker()));
 		observableAppointments.clear();
-		/*while () {
-			appointmentCreator(purpose, place, startDate, endDate);
-		}*/
-		//TODO her må appointment creator kalles og observableAppointments list må cleares før du fyller inn.
+		
+		String serverReply = client.customQuery(ServerCodes.GetAppointments, ScreensController.getUser().getUserID() + ", " + dateForAWeekMaker());
+		
+		String[] answer = serverReply.split("#");
+
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+
+		try {
+			for( JsonValue value : jsonArray ) {
+				String purpose = value.asObject().get( "navn" ).asString();
+				String place = value.asObject().get( "sted" ).asString();
+				long startDate = value.asObject().get( "start" ).asLong();
+				long endDate = value.asObject().get( "slutt" ).asLong();
+				
+				appointmentCreator(purpose, place, startDate, endDate);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 	

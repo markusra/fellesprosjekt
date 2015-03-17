@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
-import appointment.Appointment;
 import client.ServerCodes;
 import client.TCPClient;
 
@@ -41,7 +40,6 @@ import json.JsonValue;
 
 public class AppointmentScreenController implements Initializable, ControllerInterface{
 	
-	private Appointment model;
 	private ScreensController mainController;
 	
 	//Maa lage en metode som legger til de valgte brukerne i avtalebruker og alle som er medlem i en gruppe
@@ -275,9 +273,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	
 	@FXML
 	private void doConfirm() {
-		if (valid) {
-			String rom = roomField.getValue();
-			
+		String rom = roomField.getValue();
+		System.out.println(rom);
+		if (valid && rom != null ) {
 			
 			String[] splited = rom.split("\\s+");
 			String romID = splited[1];
@@ -396,7 +394,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private void setMembers(int avtaleID) {
-		int brukerID = mainController.getUser().getUserID();
+		int brukerID = ScreensController.getUser().getUserID();
 		try {
 			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
 		} catch (IOException e) {
