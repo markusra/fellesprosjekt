@@ -18,10 +18,9 @@ public class AppointmentModel {
 	private SimpleIntegerProperty year;
 	private SimpleIntegerProperty month;
 	private SimpleIntegerProperty day;
-	private SimpleIntegerProperty adminID;
 	
 	
-	public AppointmentModel(int ID, String title, String purpose, String place, int roomID, Long startDate, Long endDate, int adminID) {
+	public AppointmentModel(int ID, String title, String purpose, String place, int roomID, Long startDate, Long endDate) {
 		this.ID = new SimpleIntegerProperty(ID);
 		this.title = new SimpleStringProperty(title);
 		this.purpose = new SimpleStringProperty(purpose);
@@ -34,7 +33,6 @@ public class AppointmentModel {
 		this.year = new SimpleIntegerProperty(yearParser(startDate));
 		this.month = new SimpleIntegerProperty(monthParser(startDate));
 		this.day = new SimpleIntegerProperty(dayParser(startDate));
-		this.adminID = new SimpleIntegerProperty(adminID);
 	}
 	
 	
@@ -184,15 +182,5 @@ public class AppointmentModel {
 	
 	public void setDay(int day) {
 		this.day.set(day);
-	}
-	
-	
-	public int getAdminID() {
-		return adminID.get();
-	}
-	
-	
-	public void setAdminID(int adminID) {
-		this.adminID.set(adminID);
 	}
 }
