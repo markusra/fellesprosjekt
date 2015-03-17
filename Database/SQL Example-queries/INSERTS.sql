@@ -25,3 +25,6 @@ VALUES ('H5', 'Idda', 100);
 
 INSERT INTO MOTEROM (sted, navn, storrelse)
 VALUES ('K7', 'Olsa', 10);
+
+INSERT INTO GRUPPE (navn)
+VALUES ('Fellesprosjekt');

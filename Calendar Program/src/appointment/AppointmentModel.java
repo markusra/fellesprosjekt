@@ -11,10 +11,8 @@ public class AppointmentModel {
 	private SimpleStringProperty purpose;
 	private SimpleStringProperty place;
 	private SimpleIntegerProperty roomID;
-	private SimpleIntegerProperty startHour;
-	private SimpleIntegerProperty startMinute;
-	private SimpleIntegerProperty endHour;
-	private SimpleIntegerProperty endMinute;
+	private SimpleStringProperty startTime;
+	private SimpleStringProperty endTime;
 	private SimpleIntegerProperty year;
 	private SimpleIntegerProperty month;
 	private SimpleIntegerProperty day;
@@ -26,10 +24,8 @@ public class AppointmentModel {
 		this.purpose = new SimpleStringProperty(purpose);
 		this.place = new SimpleStringProperty(place);
 		this.roomID = new SimpleIntegerProperty(roomID);
-		this.startHour = new SimpleIntegerProperty(hourParser(startDate));
-		this.startMinute = new SimpleIntegerProperty(minuteParser(startDate));
-		this.endHour = new SimpleIntegerProperty(hourParser(endDate));
-		this.endMinute = new SimpleIntegerProperty(minuteParser(endDate));
+		this.startTime = new SimpleStringProperty(timeParser(startDate));
+		this.endTime = new SimpleStringProperty(timeParser(endDate));
 		this.year = new SimpleIntegerProperty(yearParser(startDate));
 		this.month = new SimpleIntegerProperty(monthParser(startDate));
 		this.day = new SimpleIntegerProperty(dayParser(startDate));
@@ -56,13 +52,8 @@ public class AppointmentModel {
 	}
 	
 	
-	private int hourParser(Long date) {
-		return dateParser(date, 8, 10);
-	}
-	
-	
-	private int minuteParser(Long date) {
-		return dateParser(date, 10, 12);
+	private String timeParser(Long date) {
+		return date.toString().substring(8, 10) + ":" + date.toString().substring(10, 12);
 	}
 	
 	
@@ -116,42 +107,23 @@ public class AppointmentModel {
 	}
 	
 	
-	public int getStartHour() {
-		return startHour.get();
+	public String getStartTime() {
+		return startTime.get();
 	}
 	
 	
-	public void setStartHour(int startHour) {
-		this.startHour.set(startHour);
+	public void setStartTime(String startTime) {
+		this.startTime.set(startTime);
 	}
 	
 	
-	public int getStartMinute() {
-		return startMinute.get();
-	}
-	
-	public void setStartMinute(int startMinute) {
-		this.startMinute.set(startMinute);
+	public String getEndTime() {
+		return endTime.get();
 	}
 	
 	
-	public int getEndHour() {
-		return endHour.get();
-	}
-	
-	
-	public void setEndHour(int endHour) {
-		this.endHour.set(endHour);
-	}
-	
-	
-	public int getEndMinute() {
-		return endMinute.get();
-	}
-	
-	
-	public void setEndMinute(int endMinute) {
-		this.endMinute.set(endMinute);
+	public void setEndTime(String endTime) {
+		this.endTime.set(endTime);
 	}
 	
 	
@@ -183,5 +155,4 @@ public class AppointmentModel {
 	public void setDay(int day) {
 		this.day.set(day);
 	}
-	
 }

@@ -203,6 +203,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					date = dpStart.getValue();
 					valid = true;
 				}
+				
+				dpStart.setStyle("-fx-font-size:30;");
 			};
 		});
 	}
@@ -272,7 +274,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	@FXML
-	private void doConfirm() {
+	private void doConfirm() throws IOException {
 		String rom = roomField.getValue();
 		System.out.println(rom);
 		if (valid && rom != null ) {
@@ -296,8 +298,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			}
 		
 		} else {
-			System.out.println("feil");
 		}
+		client.disconnect();
+		
 	}
 	
 	private boolean isCorrectTimeSpan() {
@@ -342,7 +345,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		
 		//Henter grupper
-		serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
+		serverReply = client.customQuery(ServerCodes.GetMemberGroups, "" + ScreensController.getUser().getUserID());
 		answer = serverReply.split("#");
 		jsonArray = JsonArray.readFrom( answer[1] );
 		groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -393,10 +396,11 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		mainController = screenParent;
 	}
 	
-	private void setMembers(int avtaleID) {
+	private void setMembers(int avtaleID) throws IOException {
 		int brukerID = ScreensController.getUser().getUserID();
+		
 		try {
-			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
+			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True" + ", " + "False");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -408,12 +412,41 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			member = memberArray[1].substring(0, memberArray[1].length()-1);
 			
 			try {
-				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False");
+				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False"+ ", " + "False");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		
 		}
+		
+		ObservableList<String> gruppeListe = groupField.getSelectionModel().getSelectedItems();
+		
+		for (String gruppe : gruppeListe) {
+			
+			String serverReply = client.customQuery(ServerCodes.GetAllGroupMembers, "'" + gruppe + "'");
+			String[] answer = serverReply.split("#");
+		    answer = serverReply.split("#");
+			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			
+			for( JsonValue value : jsonArray ) {
+				int fetched_brukerID = value.asObject().get( "brukerID").asInt();
+
+				String serverReply2 = client.customQuery(ServerCodes.GetAppointmentMember, fetched_brukerID + ", " + avtaleID);
+				String[] answer2 = serverReply2.split("#");
+			    answer = serverReply2.split("#");
+				JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
+				
+				if (! jsonArray2.toString().contains("admin")) {
+					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False" + ", " + "False");
+				}
+
+			}
+			
+		}
+		
+		
 	}
 	
 	private void getAllUsers() throws IOException {

@@ -91,6 +91,7 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 		
 		availableUsers.clear();
+		
 		for( JsonValue value : jsonArray ) {
 			int  brukerID = value.asObject().get( "brukerID" ).asInt();
 			String brukernavn = value.asObject().get( "brukernavn" ).asString();
