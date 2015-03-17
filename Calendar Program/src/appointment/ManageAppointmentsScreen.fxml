@@ -20,89 +20,61 @@
                      <rotationAxis>
                         <Point3D />
                      </rotationAxis></Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="857.0" layoutX="514.0" layoutY="129.0" stroke="BLACK" strokeType="INSIDE" width="907.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="903.0" layoutX="514.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="907.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="587.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="765.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="587.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="765.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Label layoutX="638.0" layoutY="18.0" text="MANAGE APPOINTMENT" textFill="WHITE">
+                  <Label layoutX="650.0" layoutY="35.0" text="MANAGE APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Label>
-                  <Label layoutX="561.0" layoutY="161.0" prefHeight="53.0" prefWidth="320.0" text="Title:">
+                  <Label layoutX="561.0" layoutY="186.0" prefHeight="53.0" prefWidth="320.0" text="Title:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="561.0" layoutY="325.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
+                  <Label layoutX="561.0" layoutY="350.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <TextField layoutX="741.0" layoutY="163.0" prefHeight="53.0" prefWidth="635.0" text="Here should the old title be stored">
-=======
                   <TextField fx:id="txtPurpose" layoutX="844.0" layoutY="186.0" prefHeight="53.0" prefWidth="529.0" text="Here should the old title be stored">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="563.0" layoutY="563.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+                  <Label layoutX="563.0" layoutY="592.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <Button fx:id="changeAppointment" layoutX="717.0" layoutY="895.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="236.0" style="-fx-background-color: #69696b;" text="CHANGE" textFill="WHITE">
-=======
                   <Button fx:id="changeButton" layoutX="1007.0" layoutY="955.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="172.0" style="-fx-background-color: #69696b;" text="CHANGE" textFill="WHITE">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-<<<<<<< HEAD
-                  <TextField layoutX="740.0" layoutY="326.0" prefHeight="53.0" prefWidth="635.0" text="Here should the old place be stored">
-=======
                   <TextField fx:id="txtPlace" layoutX="843.0" layoutY="349.0" prefHeight="53.0" prefWidth="529.0" text="Here should the old place be stored">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-<<<<<<< HEAD
-                  <TextField layoutX="1132.0" layoutY="478.0" prefHeight="53.0" prefWidth="242.0" promptText="Old number">
-=======
                   <TextField fx:id="txtSize" layoutX="1132.0" layoutY="505.0" prefHeight="53.0" prefWidth="242.0" promptText="Please specify again">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="562.0" layoutY="478.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
+                  <Label layoutX="562.0" layoutY="505.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <DatePicker layoutX="737.0" layoutY="563.0" prefHeight="53.0" prefWidth="211.0" promptText="Old date" />
-                  <TextField alignment="CENTER" layoutX="1132.0" layoutY="563.0" prefHeight="53.0" prefWidth="85.0" text="Old from time">
-                     <font>
-                        <Font size="24.0" />
-                     </font></TextField>
-                  <TextField alignment="CENTER" layoutX="1289.0" layoutY="563.0" prefHeight="53.0" prefWidth="85.0" text="Old to time">
-                     <font>
-                        <Font size="24.0" />
-                     </font></TextField>
-                  <Label layoutX="1052.0" layoutY="563.0" prefHeight="53.0" prefWidth="70.0" text="From:">
-=======
                   <DatePicker fx:id="dpStart" layoutX="670.0" layoutY="592.0" prefHeight="53.0" prefWidth="309.0" promptText="Old date" />
                   <TextField fx:id="timeStart" alignment="CENTER" layoutX="1082.0" layoutY="592.0" prefHeight="53.0" prefWidth="120.0" text="Old from time">
                      <font>
@@ -113,81 +85,49 @@
                         <Font size="24.0" />
                      </font></TextField>
                   <Label layoutX="1002.0" layoutY="592.0" prefHeight="53.0" prefWidth="70.0" text="From:">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <Label layoutX="1240.0" layoutY="563.0" prefHeight="53.0" prefWidth="48.0" text="To:">
-=======
                   <Label layoutX="1210.0" layoutY="592.0" prefHeight="53.0" prefWidth="48.0" text="To:">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <Label fx:id="RoomLabel" layoutX="741.0" layoutY="393.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
-=======
                   <Label fx:id="roomLabel" layoutX="844.0" layoutY="418.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <ComboBox layoutX="925.0" layoutY="393.0" prefHeight="53.0" prefWidth="447.0" />
-                  <ListView layoutX="563.0" layoutY="690.0" prefHeight="185.0" prefWidth="388.0" />
-                  <ListView layoutX="964.0" layoutY="690.0" prefHeight="185.0" prefWidth="409.0" />
-                  <Label layoutX="563.0" layoutY="635.0" prefHeight="53.0" prefWidth="112.0" text="Invite:">
-=======
                   <ComboBox fx:id="roomField" layoutX="1007.0" layoutY="418.0" prefHeight="53.0" prefWidth="365.0" promptText="Pick a room" />
                   <ListView fx:id="invitedField" layoutX="563.0" layoutY="719.0" prefHeight="203.0" prefWidth="388.0" />
                   <ListView fx:id="groupField" layoutX="964.0" layoutY="719.0" prefHeight="203.0" prefWidth="409.0" />
                   <Label layoutX="563.0" layoutY="664.0" prefHeight="53.0" prefWidth="112.0" text="Invite:">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="963.0" layoutY="635.0" prefHeight="53.0" prefWidth="148.0" text="Group:">
+                  <Label layoutX="963.0" layoutY="664.0" prefHeight="53.0" prefWidth="148.0" text="Group:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <Button fx:id="deleteAppointment" layoutX="965.0" layoutY="895.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="248.0" style="-fx-background-color: #69696b;" text="DELETE" textFill="WHITE">
-=======
                   <Button fx:id="deleteButton" layoutX="1196.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="59.0" prefWidth="172.0" style="-fx-background-color: #69696b;" text="DELETE" textFill="WHITE">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-<<<<<<< HEAD
-                  <Label layoutX="561.0" layoutY="244.0" prefHeight="53.0" prefWidth="320.0" text="Purpose:">
-=======
                   <Label layoutX="561.0" layoutY="269.0" prefHeight="53.0" prefWidth="320.0" text="Purpose:">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-                  <TextField layoutX="740.0" layoutY="247.0" prefHeight="51.0" prefWidth="635.0" text="Here should the old description be stored">
-=======
                   <TextField fx:id="txtDescription" layoutX="843.0" layoutY="270.0" prefHeight="51.0" prefWidth="529.0" text="Here should the old description be stored">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-<<<<<<< HEAD
-                  <Button fx:id="back" layoutX="797.0" layoutY="1007.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="351.0" style="-fx-background-color: #69696b;" text="BACK TO MAIN PAGE" textFill="WHITE">
-=======
                   <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="429.0" style="-fx-background-color: #69696b;" text="CANCEL" textFill="WHITE">
->>>>>>> 62d458908547360714713381089b54507bdd6726
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>

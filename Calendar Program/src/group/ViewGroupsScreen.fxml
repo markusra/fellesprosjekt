@@ -31,15 +31,6 @@
             <Font name="System Bold" size="42.0" />
          </font>
       </Button>
-<<<<<<< HEAD
-      <ListView fx:id="lvGroups" layoutX="628.0" layoutY="161.0" prefHeight="646.0" prefWidth="607.0" />
-      <Text layoutX="675.0" layoutY="845.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dobbelklikk på en gruppe for å se tilsvarende gruppekalender." textAlignment="CENTER" wrappingWidth="509.0">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-=======
       <ListView fx:id="lvGroups" layoutX="628.0" layoutY="161.0" prefHeight="714.0" prefWidth="607.0" />
->>>>>>> 62d458908547360714713381089b54507bdd6726
    </children>
 </AnchorPane>
