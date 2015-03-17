@@ -20,7 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import json.JsonArray;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;

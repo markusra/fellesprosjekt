@@ -3,10 +3,6 @@ package group;
 import java.io.IOException;
 
 import program.ScreensController;
-import json.JsonArray;
-import json.JsonValue;
-import client.ServerCodes;
-import client.TCPClient;
 
 public class GroupTest {
 	

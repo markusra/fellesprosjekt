@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
-import appointment.AppointmentScreenController;
 
 public class Main extends Application {
 	@Override

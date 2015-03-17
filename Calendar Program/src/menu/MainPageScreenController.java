@@ -141,6 +141,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			weekNumber.setText(Integer.toString(calendar.get(Calendar.WEEK_OF_YEAR)));
 			this.year.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 		}
+		//TODO her maa appointment data lastes inn.
+		getAppointmentData();
 		while (counter < 7) {
 			if (counter == 0) {
 				mondayDate.setText(Integer.toString(calendar.get(Calendar.DATE)));
@@ -203,9 +205,9 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	private void getAppointmentData() throws IOException {
 		TCPClient client = new TCPClient();
-		System.out.println();
-		//System.out.println(client.customQuery(ServerCodes.GetAppointments, mainController.getUser().getUserID() + ", " + dateForAWeekMaker()));
-		System.out.println(client.customQuery(ServerCodes.GetAppointments, "1, 201503160000, 20150323000"));
+		System.out.println(client.customQuery(ServerCodes.GetAppointments, ScreensController.getUser().getUserID() + ", " + dateForAWeekMaker()));
+		
+		//TODO her må appointment creator kalles og observableAppointments list må cleares før du fyller inn.
 	}
 	
 	
