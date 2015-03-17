@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,8 +18,6 @@ import program.ScreensController;
 import appointment.Appointment;
 import client.ServerCodes;
 import client.TCPClient;
-
-import com.sun.org.apache.xml.internal.security.Init;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
