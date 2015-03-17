@@ -66,6 +66,12 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 	}
 	
+
+	@FXML
+	public void handleEditButtonAction(ActionEvent event) throws IOException {
+		mainController.setScreen(Main.manageAppointmentsID, Main.manageAppointmentsScreen);
+	}
+	
 	
 	@FXML
 	public void handleBackButtonAction(ActionEvent event) throws IOException {
@@ -81,6 +87,8 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
+		alertField.setStyle("-fx-font-size:30;");
+		attendField.setStyle("-fx-font-size:30;");
 		attendField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		alertField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		title.setText(ScreensController.getAppointment().getTitle());
