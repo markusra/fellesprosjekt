@@ -58,6 +58,8 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	List<String> groupList;
 	List<String> chosenMembers = new ArrayList<>();
 	
+	boolean validInput = false;
+	
 	//Metode for backToMainPageButton
 	@FXML
 	public void handleBackToMainPageButton(ActionEvent event) throws IOException {
@@ -133,27 +135,26 @@ public class GroupScreenController implements Initializable, ControllerInterface
 		if(code.toString() == "BACK_SPACE" || code.toString() == "ESCAPE"){
 			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 		}else if(code.toString() == "ENTER"){
-			createGroup();
-			addMembersToGroup();
-			
-			client.disconnect();
-			System.out.println("GROUP CREATED");
-			mainController.setScreen(Main.groupSucceededID, Main.groupSucceededScreen);
-			//System.out.println(mainController.user.getUserID());
+			doConfirm();
 		}else{
 			event.consume();
 		}
 	}
 	
+	
 	@FXML
 	private void doConfirm() throws IOException {
-		createGroup();
-		addMembersToGroup();
+		if (validInput) {
+			createGroup();
+			addMembersToGroup();
 		
-		client.disconnect();
-		System.out.println("GROUP CREATED");
-		mainController.setScreen(Main.groupSucceededID, Main.groupSucceededScreen);
-		//System.out.println(mainController.user.getUserID());
+			client.disconnect();
+			System.out.println("GROUP CREATED");
+			mainController.setScreen(Main.groupSucceededID, Main.groupSucceededScreen);
+			//System.out.println(mainController.user.getUserID());
+		}
+		
+		
 	}
 
 	@FXML
@@ -257,8 +258,10 @@ public class GroupScreenController implements Initializable, ControllerInterface
 			
 			if (groupList.contains(newValue.trim())) {
 				txtGroupName.setStyle("-fx-border-color: red; -fx-border-radius: 3; -fx-border-width: 0.5; -fx-background-color: #ffbbbb;");
+				validInput = false;
 			} else {
 				txtGroupName.setStyle("");
+				validInput = true;
 			}
 			
 		});
