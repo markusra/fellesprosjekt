@@ -206,7 +206,10 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	private void getAppointmentData() throws IOException {
 		TCPClient client = new TCPClient();
 		System.out.println(client.customQuery(ServerCodes.GetAppointments, ScreensController.getUser().getUserID() + ", " + dateForAWeekMaker()));
-		
+		observableAppointments.clear();
+		/*while () {
+			appointmentCreator(purpose, place, startDate, endDate);
+		}*/
 		//TODO her må appointment creator kalles og observableAppointments list må cleares før du fyller inn.
 	}
 	
