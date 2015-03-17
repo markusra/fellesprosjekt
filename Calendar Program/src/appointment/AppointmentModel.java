@@ -9,7 +9,7 @@ public class AppointmentModel {
 	private SimpleIntegerProperty ID;
 	private SimpleStringProperty title;
 	private SimpleStringProperty purpose;
-	private SimpleStringProperty roomName;
+	private SimpleStringProperty place;
 	private SimpleIntegerProperty roomID;
 	private SimpleIntegerProperty startHour;
 	private SimpleIntegerProperty startMinute;
@@ -20,11 +20,11 @@ public class AppointmentModel {
 	private SimpleIntegerProperty day;
 	
 	
-	public AppointmentModel(int ID, String title, String purpose, String roomName, int roomID, Long startDate, Long endDate) {
+	public AppointmentModel(int ID, String title, String purpose, String place, int roomID, Long startDate, Long endDate) {
 		this.ID = new SimpleIntegerProperty(ID);
 		this.title = new SimpleStringProperty(title);
 		this.purpose = new SimpleStringProperty(purpose);
-		this.roomName = new SimpleStringProperty(roomName);
+		this.place = new SimpleStringProperty(place);
 		this.roomID = new SimpleIntegerProperty(roomID);
 		this.startHour = new SimpleIntegerProperty(hourParser(startDate));
 		this.startMinute = new SimpleIntegerProperty(minuteParser(startDate));
@@ -96,13 +96,13 @@ public class AppointmentModel {
 	}
 	
 	
-	public String getRoomName() {
-		return roomName.get();
+	public String getPlace() {
+		return place.get();
 	}
 	
 	
-	public void setRoomName(String roomName) {
-		this.roomName.set(roomName);;
+	public void setPlace(String roomName) {
+		this.place.set(roomName);
 	}
 	
 	
