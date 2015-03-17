@@ -272,7 +272,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	@FXML
-	private void doConfirm() {
+	private void doConfirm() throws IOException {
 		String rom = roomField.getValue();
 		System.out.println(rom);
 		if (valid && rom != null ) {
@@ -296,8 +296,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			}
 		
 		} else {
-			System.out.println("feil");
 		}
+		client.disconnect();
+		
 	}
 	
 	private boolean isCorrectTimeSpan() {
