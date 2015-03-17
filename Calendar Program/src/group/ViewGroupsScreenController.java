@@ -77,7 +77,7 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		
 		try {
 			client = new TCPClient();
-			String serverReply = client.customQuery(ServerCodes.GetAllMemberGroups, "" + ScreensController.getUser().getUserID());
+			String serverReply = client.customQuery(ServerCodes.GetMemberGroups, "" + ScreensController.getUser().getUserID());
 			String[] answer= serverReply.split("#");
 			
 			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
@@ -114,13 +114,6 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		            if(mouseEvent.getClickCount() == 2){
 		            	
 		            	System.out.println("clicked on " + lvGroups.getSelectionModel().getSelectedItem());
-		            
-		            	try {
-							mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 		            
 		            }
 		        }

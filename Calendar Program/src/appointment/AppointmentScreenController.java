@@ -342,7 +342,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		
 		
 		//Henter grupper
-		serverReply = client.customQuery(ServerCodes.GetAllGroups, "'None'");
+		serverReply = client.customQuery(ServerCodes.GetMemberGroups, "" + ScreensController.getUser().getUserID());
 		answer = serverReply.split("#");
 		jsonArray = JsonArray.readFrom( answer[1] );
 		groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -393,8 +393,9 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		mainController = screenParent;
 	}
 	
-	private void setMembers(int avtaleID) {
+	private void setMembers(int avtaleID) throws IOException {
 		int brukerID = ScreensController.getUser().getUserID();
+		
 		try {
 			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
 		} catch (IOException e) {
@@ -413,7 +414,35 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		
 		}
+		
+		ObservableList<String> gruppeListe = groupField.getSelectionModel().getSelectedItems();
+		
+		for (String gruppe : gruppeListe) {
+			
+			String serverReply = client.customQuery(ServerCodes.GetAllGroupMembers, "'" + gruppe + "'");
+			String[] answer = serverReply.split("#");
+		    answer = serverReply.split("#");
+			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			
+			for( JsonValue value : jsonArray ) {
+				int fetched_brukerID = value.asObject().get( "brukerID").asInt();
+
+				String serverReply2 = client.customQuery(ServerCodes.GetAppointmentMember, ScreensController.getUser().getUserID() + ", " + fetched_brukerID);
+				String[] answer2 = serverReply2.split("#");
+			    answer = serverReply2.split("#");
+				JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
+				
+				
+				System.out.println(jsonArray2);
+				
+			}
+			
+		}
+		
+		
 	}
 	
 	private void getAllUsers() throws IOException {
