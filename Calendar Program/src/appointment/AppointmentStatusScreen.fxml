@@ -21,98 +21,109 @@
                         <Point3D />
                      </rotationAxis>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="644.0" layoutX="566.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="813.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="876.0" layoutX="566.0" layoutY="158.0" stroke="BLACK" strokeType="INSIDE" width="813.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="655.0" layoutY="162.0" stroke="BLACK" strokeType="INSIDE" width="615.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="655.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="615.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Label layoutX="691.0" layoutY="174.0" text="VIEW APPOINTMENT" textFill="WHITE">
+                  <Label layoutX="691.0" layoutY="48.0" text="VIEW APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Label>
-                  <Label layoutX="611.0" layoutY="318.0" prefHeight="53.0" prefWidth="320.0" text="Title:">
+                  <Label layoutX="611.0" layoutY="199.0" prefHeight="53.0" prefWidth="320.0" text="Title:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="611.0" layoutY="398.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
+                  <Label layoutX="611.0" layoutY="476.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="613.0" layoutY="535.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+                  <Label layoutX="613.0" layoutY="616.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="updateAppointment" layoutX="852.0" layoutY="817.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="232.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
+                  <Button fx:id="updateAppointment" layoutX="852.0" layoutY="925.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="232.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Label layoutX="1008.0" layoutY="535.0" prefHeight="53.0" prefWidth="112.0" text="From:">
+                  <Label layoutX="1008.0" layoutY="616.0" prefHeight="53.0" prefWidth="112.0" text="From:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1196.0" layoutY="535.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+                  <Label layoutX="1196.0" layoutY="616.0" prefHeight="53.0" prefWidth="48.0" text="To:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="738.0" layoutY="466.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
+                  <Label layoutX="738.0" layoutY="540.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="737.0" layoutY="318.0" prefHeight="53.0" prefWidth="515.0" text="Title of the appointment">
+                  <Label layoutX="852.0" layoutY="199.0" prefHeight="53.0" prefWidth="476.0" text="Title of the appointment">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="737.0" layoutY="398.0" prefHeight="53.0" prefWidth="515.0" text="Place of the appointment">
+                  <Label layoutX="852.0" layoutY="476.0" prefHeight="53.0" prefWidth="476.0" text="Place of the appointment">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="854.0" layoutY="466.0" prefHeight="53.0" prefWidth="515.0" text="Room of the appointment if chosen">
+                  <Label layoutX="854.0" layoutY="540.0" prefHeight="53.0" prefWidth="515.0" text="Room of the appointment if chosen">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="737.0" layoutY="535.0" prefHeight="53.0" prefWidth="189.0" text="Date">
+                  <Label layoutX="737.0" layoutY="616.0" prefHeight="53.0" prefWidth="189.0" text="Date">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1086.0" layoutY="535.0" prefHeight="53.0" prefWidth="121.0" text="From">
+                  <Label layoutX="1086.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="From">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1246.0" layoutY="535.0" prefHeight="53.0" prefWidth="121.0" text="To">
+                  <Label layoutX="1246.0" layoutY="616.0" prefHeight="53.0" prefWidth="121.0" text="To">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="613.0" layoutY="618.0" prefHeight="53.0" prefWidth="402.0" text="Status of participation:">
+                  <Label layoutX="613.0" layoutY="726.0" prefHeight="53.0" prefWidth="402.0" text="Status of participation:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="attendField" layoutX="1118.0" layoutY="618.0" prefHeight="53.0" prefWidth="210.0" promptText="Choose status" />
-                  <Label layoutX="613.0" layoutY="710.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
+                  <ComboBox fx:id="attendField" layoutX="1118.0" layoutY="726.0" prefHeight="53.0" prefWidth="210.0" promptText="Choose status" />
+                  <Label layoutX="613.0" layoutY="812.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="alertField" layoutX="1118.0" layoutY="710.0" prefHeight="53.0" prefWidth="210.0" promptText="Set alert if desired" />
+                  <ComboBox fx:id="alertField" layoutX="1118.0" layoutY="812.0" prefHeight="53.0" prefWidth="210.0" promptText="Set alert if desired" />
+                  <Label layoutX="611.0" layoutY="273.0" prefHeight="53.0" prefWidth="320.0" text="Description:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="330.0" prefHeight="124.0" prefWidth="724.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <TextArea layoutX="612.0" layoutY="338.0" prefHeight="103.0" prefWidth="718.0" />
                </children>
                <padding>
                   <Insets top="-1000.0" />
