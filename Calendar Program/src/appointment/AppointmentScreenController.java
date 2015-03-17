@@ -203,6 +203,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 					date = dpStart.getValue();
 					valid = true;
 				}
+				
+				dpStart.setStyle("-fx-font-size:30;");
 			};
 		});
 	}
@@ -437,7 +439,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
 				
 				if (! jsonArray2.toString().contains("admin")) {
-					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False" + "False");
+					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False" + ", " + "False");
 				}
 
 			}
