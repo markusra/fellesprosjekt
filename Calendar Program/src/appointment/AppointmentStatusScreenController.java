@@ -135,16 +135,16 @@ public class AppointmentStatusScreenController implements Initializable, Control
 
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 		
-		Integer deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
+		int deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
 		int varsel = jsonArray.get(0).asObject().get( "varsel" ).asInt();
 		int admin = jsonArray.get(0).asObject().get( "admin" ).asInt();
 		
-		if (deltar == null) {
+		if (deltar == 0) {
 			attendField.setValue("-");
-		} else if (deltar == 0) {
-			attendField.setValue("No");
-		} else {
+		} else if (deltar == 1) {
 			attendField.setValue("Yes");
+		} else {
+			attendField.setValue("No");
 		}
 		
 		if (varsel == 1) {
@@ -179,11 +179,11 @@ public class AppointmentStatusScreenController implements Initializable, Control
 			String etternavn = value.asObject().get( "etternavn" ).asString();
 			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
 			
-			JsonObject deltar2 = value.asObject().get( "deltar" ).asObject();
+			int deltar2 = value.asObject().get( "deltar" ).asInt();
 			
 			System.out.println("Føkk: " + deltar2);
 			
-			if (deltar2 == null) {
+			if (deltar2 == 0) {
 				notYetAnswered.add(temp);
 			} else if (deltar == 1) {
 				attendUserList.add(temp);
@@ -203,10 +203,12 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		lvNotAnswered.setItems(myObservableList3);
 		
 		mainPane.setFocusTraversable(true);
+		
 		alertField.setStyle("-fx-font-size:30;");
 		attendField.setStyle("-fx-font-size:30;");
 		lvAttending.setStyle("-fx-font-size:30;");
 		lvNotAttending.setStyle("-fx-font-size:30;");
+		lvNotAnswered.setStyle("-fx-font-size:30;");
 		
 		attendField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		alertField.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
