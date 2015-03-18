@@ -74,6 +74,7 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		mainPane.setFocusTraversable(true);
 		
 		lvGroups.setStyle("-fx-font-size:30;");
+		lvMembers.setStyle("-fx-font-size:30;");
 		
 		//lvGroups.setMouseTransparent( true );
 		//lvGroups.setFocusTraversable( false );
@@ -110,7 +111,36 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		}
 	
 		
-		lvGroups.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		lvGroups.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			String serverReply = "";
+			try {
+				serverReply = client.customQuery(ServerCodes.GetJoinedGroupMembers, "'" + newValue.toString() + "'");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String[] answer = serverReply.split("#");
+		    answer = serverReply.split("#");
+			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			
+			List<String> memberList = new ArrayList<>();
+			
+			for( JsonValue value : jsonArray ) {
+				//String brukernavn = value.asObject().get( "brukernavn" ).asString();
+				String fornavn = value.asObject().get( "fornavn" ).asString();
+				String etternavn = value.asObject().get( "etternavn" ).asString();
+				String temp = fornavn + " " + etternavn;
+				
+				memberList.add(temp);
+				
+			}
+			
+			ObservableList<String> myObservableList = FXCollections.observableList(memberList);
+			lvMembers.setItems(myObservableList);
+			
+		});
+		
+		/*lvGroups.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			public void handle(MouseEvent mouseEvent) {
 		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
@@ -119,35 +149,13 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		            	System.out.println("clicked on " + lvGroups.getSelectionModel().getSelectedItem());
 			            
 		            	
-		            	String serverReply = "";
-						try {
-							serverReply = client.customQuery(ServerCodes.GetJoinedGroupMembers, "'" +  lvGroups.getSelectionModel().getSelectedItem() + "'");
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-		    			String[] answer = serverReply.split("#");
-		    		    answer = serverReply.split("#");
-		    			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		    			
-		    			List<String> memberList = new ArrayList<>();
-		    			
-		    			for( JsonValue value : jsonArray ) {
-		    				String brukernavn = value.asObject().get( "brukernavn" ).asString();
-		    				String fornavn = value.asObject().get( "fornavn" ).asString();
-		    				String etternavn = value.asObject().get( "etternavn" ).asString();
-		    				String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
-		    				
-		    				memberList.add(temp);
-		    				
-		    			}
-		    			
-		    			ObservableList<String> myObservableList = FXCollections.observableList(memberList);
-	    				lvMembers.setItems(myObservableList);
+		            	
 		            }
 		        }
 		    }
 	    });
+		
+		*/
 	}
 	
 }
