@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `kalenderdatabase`.`AVTALEBRUKER` (
   `brukerID` INT NOT NULL,
   `avtaleID` INT NOT NULL,
   `admin` TINYINT(1) NULL,
-  `varsel`TINYINT(1) NULL,
+  `varsel`INT NOT NULL,
   PRIMARY KEY (`brukerID`, `avtaleID`),
   INDEX `fk_AVTALEBRUKER_BRUKER1_idx` (`brukerID` ASC),
   INDEX `fk_AVTALEBRUKER_AVTALE1_idx` (`avtaleID` ASC),
