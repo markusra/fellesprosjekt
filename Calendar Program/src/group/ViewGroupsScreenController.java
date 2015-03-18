@@ -147,8 +147,6 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 		            if(mouseEvent.getClickCount() == 1){
 		            	
 		            	System.out.println("clicked on " + lvGroups.getSelectionModel().getSelectedItem());
-			            
-		            	
 		            	
 		            }
 		        }

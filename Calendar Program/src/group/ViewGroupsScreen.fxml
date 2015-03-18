@@ -31,7 +31,7 @@
             <Font name="System Bold" size="42.0" />
          </font>
       </Button>
-      <ListView fx:id="lvGroups" layoutX="418.0" layoutY="182.0" prefHeight="693.0" prefWidth="607.0" />
+      <ListView fx:id="lvGroups" layoutX="418.0" layoutY="182.0" prefHeight="645.0" prefWidth="607.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="759.0" layoutX="1093.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" width="450.0">
          <effect>
             <DropShadow />
@@ -43,5 +43,10 @@
          </font>
       </Label>
       <ListView fx:id="lvMembers" layoutX="1115.0" layoutY="226.0" prefHeight="645.0" prefWidth="404.0" />
+      <Label alignment="CENTER" layoutX="418.0" layoutY="832.0" prefHeight="53.0" prefWidth="607.0" text="Velg for å se medlemmer">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
