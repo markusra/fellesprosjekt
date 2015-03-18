@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
@@ -303,12 +304,12 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff4747" height="60.0" layoutX="1391.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#868686" height="60.0" layoutX="1390.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="1395.0" layoutY="54.0" prefHeight="44.0" prefWidth="349.0" text="Markus Rauhut" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="1394.0" layoutY="58.0" prefHeight="44.0" prefWidth="349.0" text="Markus Rauhut" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -333,12 +334,12 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="83.0" layoutX="1391.0" layoutY="568.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="83.0" layoutX="1392.0" layoutY="568.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="171.0" layoutX="1391.0" layoutY="738.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="171.0" layoutX="1392.0" layoutY="738.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow />
          </effect>
@@ -353,7 +354,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="createAppointmentButton" layoutX="1416.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleCreateAppointmentButtonAction" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+      <Button fx:id="createAppointmentButton" layoutX="1416.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleCreateAppointmentButtonAction" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #00b903;" text="CREATE APPOINTMENT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -363,12 +364,12 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="createGroupButton" layoutX="1416.0" layoutY="759.0" mnemonicParsing="false" onAction="#handleCreateGroupButtonAction" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="CREATE GROUP" textFill="WHITE">
+      <Button fx:id="createGroupButton" layoutX="1416.0" layoutY="759.0" mnemonicParsing="false" onAction="#handleCreateGroupButtonAction" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #00b903;" text="CREATE GROUP" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="signOutButton" layoutX="1392.0" layoutY="934.0" mnemonicParsing="false" onAction="#handleSignOutButtonAction" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="SIGN OUT" textFill="WHITE">
+      <Button fx:id="signOutButton" layoutX="1392.0" layoutY="934.0" mnemonicParsing="false" onAction="#handleSignOutButtonAction" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #ef0000;" text="SIGN OUT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
