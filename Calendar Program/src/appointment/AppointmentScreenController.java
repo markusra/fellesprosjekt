@@ -323,42 +323,48 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private void fetchData() throws IOException {
-		//Henter brukere
-		String serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
 		
-		String[] answer = serverReply.split("#");
+		try {
+			//Henter brukere
+			String serverReply = client.customQuery(ServerCodes.GetAllUsers, "'None'");
+			
+			String[] answer = serverReply.split("#");
 
-		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		invitedField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		List<String> userList = new ArrayList<>();
-		
-		for( JsonValue value : jsonArray ) {
-			String fornavn = value.asObject().get( "fornavn" ).asString();
-			String etternavn = value.asObject().get( "etternavn" ).asString();
-			String brukernavn = value.asObject().get( "brukernavn" ).asString();
-			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
-			userList.add(temp);
+			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			invitedField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			
+			List<String> userList = new ArrayList<>();
+			
+			for( JsonValue value : jsonArray ) {
+				String fornavn = value.asObject().get( "fornavn" ).asString();
+				String etternavn = value.asObject().get( "etternavn" ).asString();
+				String brukernavn = value.asObject().get( "brukernavn" ).asString();
+				String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
+				userList.add(temp);
+			}
+			ObservableList<String> items =FXCollections.observableArrayList (userList);
+			invitedField.setItems(items);
+			
+			
+			//Henter grupper
+			serverReply = client.customQuery(ServerCodes.GetMemberGroups, "" + ScreensController.getUser().getUserID());
+			answer = serverReply.split("#");
+			jsonArray = JsonArray.readFrom( answer[1] );
+			groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			
+			List<String> groupList = new ArrayList<>();
+			
+			for( JsonValue value : jsonArray ) {
+				String gruppeNavn = value.asObject().get( "navn" ).asString();
+				groupList.add(gruppeNavn);
+			}
+			
+			ObservableList<String> myObservableList = FXCollections.observableList(groupList);
+		    groupField.setItems(myObservableList);
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-		ObservableList<String> items =FXCollections.observableArrayList (userList);
-		invitedField.setItems(items);
 		
-		
-		//Henter grupper
-		serverReply = client.customQuery(ServerCodes.GetMemberGroups, "" + ScreensController.getUser().getUserID());
-		answer = serverReply.split("#");
-		jsonArray = JsonArray.readFrom( answer[1] );
-		groupField.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		List<String> groupList = new ArrayList<>();
-		
-		for( JsonValue value : jsonArray ) {
-			String gruppeNavn = value.asObject().get( "navn" ).asString();
-			groupList.add(gruppeNavn);
-		}
-		
-		ObservableList<String> myObservableList = FXCollections.observableList(groupList);
-	    groupField.setItems(myObservableList);
 	    
 	}
 	
