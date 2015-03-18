@@ -54,7 +54,7 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="updateButton" layoutX="886.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleUpdateButtonAction" prefHeight="59.0" prefWidth="210.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
+                  <Button fx:id="updateButton" layoutX="886.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleUpdateButtonAction" prefHeight="59.0" prefWidth="210.0" style="-fx-background-color: #00b903;" text="UPDATE" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -136,12 +136,12 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="back" layoutX="371.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #69696b;" text="CANCEL" textFill="WHITE">
+                  <Button fx:id="back" layoutX="371.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #fffc00;" text="BACK">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="editButton" layoutX="680.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleEditButtonAction" prefHeight="59.0" prefWidth="190.0" style="-fx-background-color: #69696b;" text="EDIT" textFill="WHITE">
+                  <Button fx:id="editButton" layoutX="680.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleEditButtonAction" prefHeight="59.0" prefWidth="190.0" style="-fx-background-color: #ef0000;" text="EDIT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
