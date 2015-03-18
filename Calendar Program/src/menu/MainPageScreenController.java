@@ -26,6 +26,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 import json.JsonArray;
 import json.JsonValue;
 import program.ControllerInterface;
@@ -114,12 +115,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
-		tableViewFiller(headerRow);
-		try {
-			weekFiller(calendar, 0);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		headerRow.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		mondayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		tuesdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -128,6 +123,13 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		fridayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		saturdayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
 		sundayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
+		try {
+			tableViewFiller(headerRow);
+			weekFiller(calendar, 0);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	
@@ -318,6 +320,41 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
+	private TableView<AppointmentModel> rowStyleSetter(TableView<AppointmentModel> tableView) throws IOException {
+		TCPClient client = new TCPClient();
+		TableView<AppointmentModel> table = tableView;
+		int i = 0;
+		for (Node n : tableView.lookupAll("TableRow")) {
+			if (n instanceof TableRow) {
+				if (!((TableRow<AppointmentModel>) n).isEmpty()) {
+					TableRow<AppointmentModel> row = (TableRow<AppointmentModel>) n;
+					String serverReply = client.customQuery(ServerCodes.GetAttendanceAlert, ScreensController.getUser().getUserID() + ", " + row.getItem().getAppointmentID());
+					
+					String[] answer = serverReply.split("#");
+
+					JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+					
+					int deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
+					int admin = jsonArray.get(0).asObject().get( "admin" ).asInt();
+					if (admin == 1) {
+						row.setStyle("-fx-background-color: skyblue; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
+					}
+					else if (deltar == 0) {
+						row.setStyle("");						
+					}
+					else if (deltar == 1) {
+						row.setStyle("-fx-background-color: palegreen; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
+					}
+					else if (deltar == 2) {
+						row.setStyle("-fx-background-color: #ffbbbb; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
+					}
+				}
+			}
+		}
+		return table;
+	}
+	
+	
 	private TableColumn<AppointmentModel, String> tableColumnStringSpecifier(String name, String variable) {
 		TableColumn<AppointmentModel, String> tableColumn = new TableColumn<AppointmentModel, String>(name);
 		tableColumn.setCellValueFactory(new PropertyValueFactory<AppointmentModel, String>(variable));
@@ -327,7 +364,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	
 	@SuppressWarnings("unchecked")
-	private void tableViewFiller(TableView<AppointmentModel> tableView) {
+	private void tableViewFiller(TableView<AppointmentModel> tableView) throws IOException {
 		tableView.getColumns().clear();
 		Label emptyLabel = new Label("There are no appointments on this day!");
 		tableView.setPlaceholder(emptyLabel);
@@ -340,7 +377,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
  		tableView.getColumns().get(1).setResizable(false);
  		tableView.getColumns().get(2).setResizable(false);
  		tableView.getColumns().get(0).setSortable(false);
- 		tableView.setOnMousePressed(new EventHandler<MouseEvent>() {
+ 		TableView<AppointmentModel> table = rowStyleSetter(tableView);
+ 		table.setOnMousePressed(new EventHandler<MouseEvent>() {
  		    @Override 
  		    public void handle(MouseEvent event) {
  		        if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
