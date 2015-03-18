@@ -76,7 +76,7 @@
                   <ComboBox fx:id="roomField" layoutX="814.0" layoutY="518.0" prefHeight="53.0" prefWidth="544.0" />
                   <ListView fx:id="invitedField" layoutX="568.0" layoutY="647.0" prefHeight="233.0" prefWidth="391.0" />
                   <ListView fx:id="groupField" layoutX="992.0" layoutY="647.0" prefHeight="233.0" prefWidth="365.0" />
-                  <Button fx:id="createAppointment" layoutX="566.0" layoutY="896.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="71.0" prefWidth="792.0" style="-fx-background-color: #69696b;" text="CREATE APPOINTMENT" textFill="WHITE">
+                  <Button fx:id="createAppointment" layoutX="566.0" layoutY="896.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="71.0" prefWidth="792.0" style="-fx-background-color: #00b903;" text="CREATE APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
