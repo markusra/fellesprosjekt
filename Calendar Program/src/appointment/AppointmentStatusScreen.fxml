@@ -34,7 +34,7 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Label layoutX="691.0" layoutY="48.0" text="VIEW APPOINTMENT" textFill="WHITE">
+                  <Label layoutX="691.0" layoutY="55.0" text="VIEW APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
@@ -71,7 +71,7 @@
                   </Label>
                   <Label fx:id="title" layoutX="612.0" layoutY="199.0" prefHeight="53.0" prefWidth="476.0" text="Title of the appointment">
                      <font>
-                        <Font size="36.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
                   <Label fx:id="place" layoutX="612.0" layoutY="476.0" prefHeight="53.0" prefWidth="476.0" text="Place of the appointment">

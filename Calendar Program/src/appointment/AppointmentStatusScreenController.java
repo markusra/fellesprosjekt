@@ -73,9 +73,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER" || code.toString() == "ESCAPE" || code.toString() == "LEFT"){
+        if(code.toString() == "ESCAPE"){
         	//Oppdater appointment
-        	mainController.setScreen(Main.viewDayID, Main.viewDayScreen);
+        	mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 		}else{
 			event.consume();
 		}
