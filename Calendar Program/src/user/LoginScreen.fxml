@@ -13,7 +13,7 @@
 <Pane fx:id="mainPane" onKeyPressed="#keyHandler" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.LoginScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="1920.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="324.0" layoutX="567.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="343.0" layoutX="567.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" width="802.0">
          <effect>
             <DropShadow />
          </effect>
@@ -28,17 +28,17 @@
             <Font name="System Bold" size="54.0" />
          </font>
       </Label>
-      <Label focusTraversable="false" layoutX="611.0" layoutY="416.0" prefHeight="53.0" prefWidth="320.0" text="Username/Email: ">
+      <Label focusTraversable="false" layoutX="611.0" layoutY="426.0" prefHeight="53.0" prefWidth="320.0" text="Username/Email: ">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label focusTraversable="false" layoutX="611.0" layoutY="488.0" prefHeight="53.0" prefWidth="270.0" text="Password: ">
+      <Label focusTraversable="false" layoutX="611.0" layoutY="498.0" prefHeight="53.0" prefWidth="270.0" text="Password: ">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameField" layoutX="971.0" layoutY="416.0" prefHeight="53.0" prefWidth="336.0">
+      <TextField fx:id="usernameField" layoutX="971.0" layoutY="426.0" prefHeight="53.0" prefWidth="336.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -46,7 +46,7 @@
             <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
          </tooltip>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="970.0" layoutY="486.0" prefHeight="53.0" prefWidth="336.0">
+      <PasswordField fx:id="passwordField" layoutX="970.0" layoutY="496.0" prefHeight="53.0" prefWidth="336.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -54,22 +54,22 @@
             <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; special letters @&amp;-.,'\?+=/%&quot;" />
          </tooltip>
       </PasswordField>
-      <CheckBox fx:id="rememberMeCheckBox" layoutX="971.0" layoutY="559.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="241.0" text="Remember me">
+      <CheckBox fx:id="rememberMeCheckBox" layoutX="971.0" layoutY="569.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="241.0" text="Remember me">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </CheckBox>
-      <Button fx:id="loginButton" layoutX="606.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="76.0" prefWidth="703.0" style="-fx-background-color: #69696b;" text="SIGN IN" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="606.0" layoutY="623.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="76.0" prefWidth="703.0" style="-fx-background-color: #69696b;" text="SIGN IN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" layoutX="567.0" layoutY="728.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
+      <Button fx:id="registerButton" layoutX="567.0" layoutY="748.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #69696b;" text="REGISTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="forgotButton" layoutX="781.0" layoutY="728.0" mnemonicParsing="false" onAction="#handleForgotButtonAction" prefHeight="29.0" prefWidth="588.0" style="-fx-background-color: #69696b;" text="FORGOT USERNAME/PASSWORD?" textFill="WHITE">
+      <Button fx:id="forgotButton" layoutX="781.0" layoutY="748.0" mnemonicParsing="false" onAction="#handleForgotButtonAction" prefHeight="29.0" prefWidth="588.0" style="-fx-background-color: #69696b;" text="FORGOT USERNAME/PASSWORD?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

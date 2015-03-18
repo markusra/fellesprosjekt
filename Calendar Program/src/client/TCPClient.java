@@ -19,7 +19,7 @@ public class TCPClient {
 	
 	public TCPClient() throws UnknownHostException, IOException {
 		clientSocket = new Socket("rauhut.no", 9998);
-		outToServer = new OutputStreamWriter(clientSocket.getOutputStream());
+		outToServer = new OutputStreamWriter(clientSocket.getOutputStream(), "UTF8");
 		inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	}
 	
