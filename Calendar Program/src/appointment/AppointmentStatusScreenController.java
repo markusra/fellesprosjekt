@@ -84,11 +84,13 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	
 	@FXML
 	public void handleUpdateButtonAction(ActionEvent event) throws IOException {
-		String deltar = "False";
+		String deltar = "0";
 		String varsel = "False";
 		
 		if (attendField.getValue().equals("Yes")) {
-			deltar = "True";
+			deltar = "1";
+		} else if (attendField.getValue().equals("No")) {
+			deltar = "2";
 		}
 		
 		if (alertField.getValue().equals("Yes")) {
