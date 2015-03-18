@@ -7,7 +7,7 @@ public class MilliSecondTest {
 	public static void main(String[] args) throws ParseException {
 		Date date = new Date();
 
-	      long timeMilli = date.getTime();
-	      System.out.println("Time in milliseconds using Date class: " + timeMilli);
+	    long timeMilli = date.getTime();
+	    System.out.println("Time in milliseconds using Date class: " + timeMilli);
 	}
 }

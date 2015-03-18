@@ -2,8 +2,10 @@ package menu;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -12,6 +14,8 @@ import java.util.TimerTask;
 import client.ServerCodes;
 import client.TCPClient;
 import appointment.AppointmentModel;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,8 +33,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import json.JsonArray;
 import json.JsonValue;
 import program.ControllerInterface;
@@ -42,7 +48,10 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
-	Timer timer = new Timer();
+	Timeline fiveSecondsWonder;
+	Date date = new Date();
+	
+	TCPClient client;
 	
 	private ObservableList<AppointmentModel> observableAppointments = FXCollections.observableArrayList();
 	private ArrayList<ArrayList<Integer>> attendingAndAdminList;
@@ -111,21 +120,65 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	TableView<AppointmentModel> sundayTable;
 	
+	@FXML
+	Label lblStatus;
+	
+	@FXML
+	Label lblUser;
+	
+	@FXML
+	Button btnUpdate;
+	
+	long lastUpdatedTime = 0;
+	
 	private void startTimer() {
 
-		timer.scheduleAtFixedRate(new TimerTask() {
-			  @Override
-			  public void run() {
-				  System.out.println("30 secs went... Fetch data again");
+		fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
+
+		    @Override
+		    public void handle(ActionEvent event) {
+		    	long timeMilli = date.getTime();
 				  
+				String serverReply = "";
+				
+				try {
+					serverReply = client.customQuery(ServerCodes.GetUpdateStatus, "" + timeMilli);
+				
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				String[] answer= serverReply.split("#");
+				
+				JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+				
+				String didChange = jsonArray.get(0).asObject().get( "didChange" ).asString();
 				  
+				if (didChange.equals("Yes")) {
+					System.out.println("Data har blitt oppdatert!");
+					
+					lblStatus.setTextFill(Color.RED);
+					lblStatus.setText("changed");
+					
+				}
+		    }
+		}));
+		fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
+		fiveSecondsWonder.play();
+		
+		
+		/*timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				  
+				
 			    
-			  }
-			}, 30000, 30000);
+			}
+		}, 5000, 5000);*/
 	}
 	
 	private void endTimer() {
-		timer.cancel();
+		fiveSecondsWonder.stop();
 	}
 	
 	
@@ -136,7 +189,17 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) {		
+		try {
+			client = new TCPClient();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		mainPane.setFocusTraversable(true);
 		headerRow.getStylesheets().addAll(getClass().getResource("/css/show-tableview-header.css").toExternalForm());
 		mondayTable.getStylesheets().addAll(getClass().getResource("/css/hide-tableview-header.css").toExternalForm());
@@ -154,6 +217,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			e1.printStackTrace();
 		}
 		
+		lblUser.setText(ScreensController.getUser().getName());
 		startTimer();
 	}
 	
@@ -236,7 +300,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	
 	private void getAppointmentData() throws IOException {
-		TCPClient client = new TCPClient();
 		observableAppointments.clear();
 		
 		String serverReply = client.customQuery(ServerCodes.GetAppointments, ScreensController.getUser().getUserID() + ", " + dateForAWeekMaker());
