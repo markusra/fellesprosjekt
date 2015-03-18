@@ -11,26 +11,37 @@
 <AnchorPane fx:id="mainPane" onKeyPressed="#keyHandler" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.ViewGroupsScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="764.0" layoutX="591.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="764.0" layoutX="381.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="89.0" layoutX="592.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="89.0" layoutX="382.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="684.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Text fill="WHITE" layoutX="714.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW GROUPS" textAlignment="CENTER" wrappingWidth="435.0">
+      <Text fill="WHITE" layoutX="504.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW GROUPS" textAlignment="CENTER" wrappingWidth="435.0">
          <font>
             <Font name="System Bold" size="54.0" />
          </font>
       </Text>
-      <Button fx:id="backToMainPageButton" layoutX="752.0" layoutY="936.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="91.0" prefWidth="359.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
+      <Button fx:id="backToMainPageButton" layoutX="611.0" layoutY="946.0" mnemonicParsing="false" onAction="#handleBackToMainPageButton" prefHeight="91.0" prefWidth="689.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
       </Button>
-      <ListView fx:id="lvGroups" layoutX="628.0" layoutY="161.0" prefHeight="714.0" prefWidth="607.0" />
+      <ListView fx:id="lvGroups" layoutX="418.0" layoutY="182.0" prefHeight="693.0" prefWidth="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="759.0" layoutX="1093.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" width="450.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label layoutX="1115.0" layoutY="169.0" prefHeight="53.0" prefWidth="381.0" text="Groupmembers:">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <ListView fx:id="lvMembers" layoutX="1115.0" layoutY="226.0" prefHeight="645.0" prefWidth="404.0" />
    </children>
 </AnchorPane>

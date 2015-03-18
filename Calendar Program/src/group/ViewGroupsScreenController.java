@@ -41,6 +41,9 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 	@FXML
 	ListView<String> lvGroups;
 	
+	@FXML
+	ListView<String> lvMembers;
+	
 	TCPClient client;
 	
 	//Metode for backToMainPageButton
@@ -66,7 +69,7 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources){
 		// TODO Auto-generated method stub
 		mainPane.setFocusTraversable(true);
 		
@@ -111,10 +114,36 @@ public class ViewGroupsScreenController implements Initializable, ControllerInte
 
 			public void handle(MouseEvent mouseEvent) {
 		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-		            if(mouseEvent.getClickCount() == 2){
+		            if(mouseEvent.getClickCount() == 1){
 		            	
 		            	System.out.println("clicked on " + lvGroups.getSelectionModel().getSelectedItem());
-		            
+			            
+		            	
+		            	String serverReply = "";
+						try {
+							serverReply = client.customQuery(ServerCodes.GetJoinedGroupMembers, "'" +  lvGroups.getSelectionModel().getSelectedItem() + "'");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    			String[] answer = serverReply.split("#");
+		    		    answer = serverReply.split("#");
+		    			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		    			
+		    			List<String> memberList = new ArrayList<>();
+		    			
+		    			for( JsonValue value : jsonArray ) {
+		    				String brukernavn = value.asObject().get( "brukernavn" ).asString();
+		    				String fornavn = value.asObject().get( "fornavn" ).asString();
+		    				String etternavn = value.asObject().get( "etternavn" ).asString();
+		    				String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
+		    				
+		    				memberList.add(temp);
+		    				
+		    			}
+		    			
+		    			ObservableList<String> myObservableList = FXCollections.observableList(memberList);
+	    				lvMembers.setItems(myObservableList);
 		            }
 		        }
 		    }

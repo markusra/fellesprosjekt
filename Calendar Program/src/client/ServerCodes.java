@@ -17,6 +17,8 @@ public final class ServerCodes {
  	public static final String CreateGroupMember    	= "z9sh38fjka5hj79mvgh1";
  	public static final String GetAllGroupMembers		= "a74hn9kl2k4lxn57cgh3";
  	
+ 	public static final String GetJoinedGroupMembers 	= "q83j5c8m3k0s3fie8d2h";
+ 	
  	// Rooms
  	public static final String GetFilteredRooms     	= "h4ks827db5kz791ke2n5";
  	
@@ -30,6 +32,7 @@ public final class ServerCodes {
  	public static final String GetAttendanceAlert 		= "x82m4jf7ch4dk7h6fn4k";
  	public static final String GetAttendingUsers 		= "p7sg3nj86sk64hn2loc5";
  	public static final String DeleteAppointment 		= "z83mdk48dhw7sn51koel";
+ 	
  	
  	
 }
