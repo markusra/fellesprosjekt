@@ -386,7 +386,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Button fx:id="btnUpdate" layoutX="1414.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleViewGroupsButtonAction" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="1414.0" layoutY="407.0" mnemonicParsing="false" onAction="#updateButtonPressed" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

@@ -159,7 +159,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 					
 					lblStatus.setTextFill(Color.RED);
 					lblStatus.setText("changed");
+					btnUpdate.setVisible(true);
 					
+				} else {
+					lblStatus.setTextFill(Color.GREEN);
+					lblStatus.setText("up-to-date");
+					btnUpdate.setVisible(false);
 				}
 		    }
 		}));
@@ -187,9 +192,19 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		mainController = screenParent;	
 	}
 	
+	@FXML
+	public void updateButtonPressed(ActionEvent event) throws IOException {
+		lastUpdatedTime = date.getTime();
+		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+	}
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {		
+		btnUpdate.setVisible(false);
+		lblStatus.setTextFill(Color.GREEN);
+		
 		try {
 			client = new TCPClient();
 		} catch (UnknownHostException e) {
@@ -513,9 +528,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		KeyCode code = event.getCode();
         if(code.toString() == "LEFT" || code.toString() == "DOWN"){
         	weekFiller(calendar, -1);
+        	lastUpdatedTime = date.getTime();
 		}else if(code.toString() == "RIGHT" || code.toString() == "UP"){
 			weekFiller(calendar, 1);
+			lastUpdatedTime = date.getTime();
 		}else if(code.toString() == "ESCAPE"){
+			lastUpdatedTime = date.getTime();
 			endTimer();
 			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else{
@@ -526,18 +544,21 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 
 	@FXML
 	public void handleNextWeekButton(ActionEvent event) throws IOException {
+		lastUpdatedTime = date.getTime();
 		weekFiller(calendar, 1);
 	}
 	
 	
 	@FXML
 	public void handlePreviousWeekButton(ActionEvent event) throws IOException {
+		lastUpdatedTime = date.getTime();
 		weekFiller(calendar, -1);
 	}
 	
 	
 	@FXML
 	public void handleCreateAppointmentButtonAction(ActionEvent event) throws IOException {
+		lastUpdatedTime = date.getTime();
 		endTimer();
 		mainController.setScreen(program.Main.appointmentID, Main.appointmentScreen);
 	}
@@ -545,6 +566,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	public void handleCreateGroupButtonAction(ActionEvent event) throws IOException {
+		lastUpdatedTime = date.getTime();
 		endTimer();
 		mainController.setScreen(Main.groupID, Main.groupScreen);
 	}
@@ -552,6 +574,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	public void handleViewGroupsButtonAction(ActionEvent event) throws IOException {
+		lastUpdatedTime = date.getTime();
 		endTimer();
 		mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
 	}
@@ -559,6 +582,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	public void handleSignOutButtonAction(ActionEvent event) throws IOException{
+		lastUpdatedTime = date.getTime();
 		endTimer();
 		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
