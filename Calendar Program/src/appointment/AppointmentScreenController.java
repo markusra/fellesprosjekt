@@ -406,7 +406,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		int brukerID = ScreensController.getUser().getUserID();
 		
 		try {
-			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True" + ", " + "False");
+			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -445,7 +445,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
 				
 				if (! jsonArray2.toString().contains("admin")) {
-					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False" + ", " + "False");
+					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False");
 				}
 
 			}

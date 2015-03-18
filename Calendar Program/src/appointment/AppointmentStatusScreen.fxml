@@ -160,13 +160,19 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="lvAttending" layoutX="1195.0" layoutY="249.0" prefHeight="330.0" prefWidth="395.0" />
-                  <Label layoutX="1195.0" layoutY="595.0" prefHeight="53.0" prefWidth="395.0" text="Not attending users:">
+                  <ListView fx:id="lvAttending" layoutX="1195.0" layoutY="249.0" prefHeight="200.0" prefWidth="395.0" />
+                  <Label layoutX="1195.0" layoutY="457.0" prefHeight="53.0" prefWidth="395.0" text="Not attending users:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="lvNotAttending" layoutX="1195.0" layoutY="653.0" prefHeight="330.0" prefWidth="395.0" />
+                  <ListView fx:id="lvNotAttending" layoutX="1194.0" layoutY="518.0" prefHeight="200.0" prefWidth="395.0" />
+                  <ListView fx:id="lvNotAnswered" layoutX="1194.0" layoutY="788.0" prefHeight="200.0" prefWidth="395.0" />
+                  <Label layoutX="1195.0" layoutY="727.0" prefHeight="53.0" prefWidth="395.0" text="Not answered yet:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
                </children>
                <padding>
                   <Insets top="-1000.0" />

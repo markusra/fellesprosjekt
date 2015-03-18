@@ -24,6 +24,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import json.JsonArray;
+import json.JsonObject;
 import json.JsonValue;
 
 public class AppointmentStatusScreenController implements Initializable, ControllerInterface {
@@ -63,6 +64,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	
 	@FXML
 	ListView<String> lvNotAttending;
+	
+	@FXML
+	ListView<String> lvNotAnswered;
 	
 	TCPClient client;
 	
@@ -131,11 +135,15 @@ public class AppointmentStatusScreenController implements Initializable, Control
 
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
 		
-		int deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
+		Integer deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
 		int varsel = jsonArray.get(0).asObject().get( "varsel" ).asInt();
 		int admin = jsonArray.get(0).asObject().get( "admin" ).asInt();
 		
-		if (deltar == 1) {
+		if (deltar == null) {
+			attendField.setValue("-");
+		} else if (deltar == 0) {
+			attendField.setValue("No");
+		} else {
 			attendField.setValue("Yes");
 		}
 		
@@ -163,15 +171,21 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		
 		List<String> attendUserList = new ArrayList<>();
 		List<String> notAttendUserList = new ArrayList<>();
+		List<String> notYetAnswered = new ArrayList<>();
 		
 		for( JsonValue value : jsonArray2 ) {
 			String brukernavn = value.asObject().get( "brukernavn" ).asString();
 			String fornavn = value.asObject().get( "fornavn" ).asString();
 			String etternavn = value.asObject().get( "etternavn" ).asString();
 			String temp = fornavn + " " + etternavn + " (" + brukernavn + ")";
-			int deltar2 = value.asObject().get( "deltar" ).asInt();
 			
-			if (deltar2 == 1) {
+			JsonObject deltar2 = value.asObject().get( "deltar" ).asObject();
+			
+			System.out.println("Føkk: " + deltar2);
+			
+			if (deltar2 == null) {
+				notYetAnswered.add(temp);
+			} else if (deltar == 1) {
 				attendUserList.add(temp);
 			} else {
 				notAttendUserList.add(temp);
@@ -184,6 +198,9 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		
 		ObservableList<String> myObservableList2 = FXCollections.observableList(notAttendUserList);
 		lvNotAttending.setItems(myObservableList2);
+		
+		ObservableList<String> myObservableList3 = FXCollections.observableList(notYetAnswered);
+		lvNotAnswered.setItems(myObservableList3);
 		
 		mainPane.setFocusTraversable(true);
 		alertField.setStyle("-fx-font-size:30;");
