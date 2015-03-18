@@ -97,6 +97,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	@FXML
 	public void handleDeleteButtonAction(ActionEvent event) throws IOException {
+		client.customQuery(ServerCodes.DeleteAppointment, "" + ScreensController.getAppointment().getAppointmentID());
 		mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 	}
 	
