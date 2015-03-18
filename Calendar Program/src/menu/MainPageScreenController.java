@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import client.ServerCodes;
 import client.TCPClient;
@@ -38,6 +40,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	ScreensController mainController;
 	Calendar calendar = Calendar.getInstance();
+	Timer timer = new Timer();
 	
 	private ObservableList<AppointmentModel> observableAppointments = FXCollections.observableArrayList();
 	
@@ -105,6 +108,23 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	TableView<AppointmentModel> sundayTable;
 	
+	private void startTimer() {
+
+		timer.scheduleAtFixedRate(new TimerTask() {
+			  @Override
+			  public void run() {
+				  System.out.println("30 secs went... Fetch data again");
+				  
+				  
+			    
+			  }
+			}, 30000, 30000);
+	}
+	
+	private void endTimer() {
+		timer.cancel();
+	}
+	
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
@@ -130,6 +150,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		startTimer();
 	}
 	
 	
@@ -391,7 +413,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
  		            }
  		            ScreensController.setAppointment(row.getItem());
  		            try {
-						mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
+ 		            	endTimer();
+ 		            	mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -409,6 +432,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		}else if(code.toString() == "RIGHT" || code.toString() == "UP"){
 			weekFiller(calendar, 1);
 		}else if(code.toString() == "ESCAPE"){
+			endTimer();
 			mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else{
 			event.consume();
@@ -430,24 +454,28 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	
 	@FXML
 	public void handleCreateAppointmentButtonAction(ActionEvent event) throws IOException {
+		endTimer();
 		mainController.setScreen(program.Main.appointmentID, Main.appointmentScreen);
 	}
 	
 	
 	@FXML
 	public void handleCreateGroupButtonAction(ActionEvent event) throws IOException {
+		endTimer();
 		mainController.setScreen(Main.groupID, Main.groupScreen);
 	}
 	
 	
 	@FXML
 	public void handleViewGroupsButtonAction(ActionEvent event) throws IOException {
+		endTimer();
 		mainController.setScreen(Main.viewGroupsID, Main.viewGroupsScreen);
 	}
 	
 	
 	@FXML
 	public void handleSignOutButtonAction(ActionEvent event) throws IOException{
+		endTimer();
 		mainController.setScreen(Main.loginID, Main.loginScreen);
 	}
 }
