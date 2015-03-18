@@ -2,7 +2,9 @@ package menu;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,6 +45,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	Timer timer = new Timer();
 	
 	private ObservableList<AppointmentModel> observableAppointments = FXCollections.observableArrayList();
+	private ArrayList<ArrayList<Integer>> attendingAndAdminList;
 	
 	@FXML
 	Pane mainPane;
@@ -254,8 +257,30 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 				appointmentCreator(appointmentID, title, purpose, place, roomID, startDate, endDate);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
+		attendingAndAdminList = new ArrayList<ArrayList<Integer>>();
+		
+		String serverReply2 = client.customQuery(ServerCodes.GetAllAppointmentsForAdmin, Integer.toString(ScreensController.getUser().getUserID()));
+		String[] answer2 = serverReply2.split("#");
+		
+		JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
+		
+		try {
+			for (JsonValue value : jsonArray2) {
+				int appointmentID = value.asObject().get( "avtaleID" ).asInt();
+				int admin = value.asObject().get( "admin" ).asInt();
+				int deltar = value.asObject().get( "deltar" ).asInt();
+				ArrayList<Integer> list = new ArrayList<Integer>();
+				list.add(appointmentID);
+				list.add(admin);
+				list.add(deltar);
+				attendingAndAdminList.add(list);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -342,33 +367,29 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private TableView<AppointmentModel> rowStyleSetter(TableView<AppointmentModel> tableView) throws IOException {
-		TCPClient client = new TCPClient();
+	private TableView<AppointmentModel> rowStyleSetter(TableView<AppointmentModel> tableView) {
 		TableView<AppointmentModel> table = tableView;
-		int i = 0;
 		for (Node n : tableView.lookupAll("TableRow")) {
 			if (n instanceof TableRow) {
 				if (!((TableRow<AppointmentModel>) n).isEmpty()) {
 					TableRow<AppointmentModel> row = (TableRow<AppointmentModel>) n;
-					String serverReply = client.customQuery(ServerCodes.GetAttendanceAlert, ScreensController.getUser().getUserID() + ", " + row.getItem().getAppointmentID());
-					
-					String[] answer = serverReply.split("#");
-
-					JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-					
-					int deltar = jsonArray.get(0).asObject().get( "deltar" ).asInt();
-					int admin = jsonArray.get(0).asObject().get( "admin" ).asInt();
-					if (admin == 1) {
-						row.setStyle("-fx-background-color: skyblue; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
-					}
-					else if (deltar == 0) {
-						row.setStyle("");						
-					}
-					else if (deltar == 1) {
-						row.setStyle("-fx-background-color: palegreen; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
-					}
-					else if (deltar == 2) {
-						row.setStyle("-fx-background-color: #ffbbbb; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
+					for (int i = 0; i < attendingAndAdminList.size(); i++) {
+						if (row.getItem().getAppointmentID() == attendingAndAdminList.get(i).get(0)) {
+							if (attendingAndAdminList.get(i).get(1) == 1) {								
+								row.setStyle("-fx-background-color: skyblue; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
+							}
+							else {
+								if (attendingAndAdminList.get(i).get(2) == 0) {
+									row.setStyle("");
+								}
+								else if (attendingAndAdminList.get(i).get(2) == 2) {
+									row.setStyle("-fx-background-color: #ffbbbb; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");						
+								}
+								else if (attendingAndAdminList.get(i).get(2) == 1) {
+									row.setStyle("-fx-background-color: palegreen; -fx-accent: derive(-fx-control-inner-background, -40%); -fx-cell-hover-color: derive(-fx-control-inner-background, -40%);");														
+								}								
+							}
+						}
 					}
 				}
 			}
