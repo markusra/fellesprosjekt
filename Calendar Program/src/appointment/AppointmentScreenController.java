@@ -406,6 +406,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		int brukerID = ScreensController.getUser().getUserID();
 		
 		try {
+			// Set admin
 			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True" + ", " + "1");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -418,7 +419,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			member = memberArray[1].substring(0, memberArray[1].length()-1);
 			
 			try {
-				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False"+ ", " + "False" + ", " + "0");
+				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False"+ ", " + "0");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

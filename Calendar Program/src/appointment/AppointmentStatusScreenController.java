@@ -185,7 +185,7 @@ public class AppointmentStatusScreenController implements Initializable, Control
 			
 			if (deltar2 == 0) {
 				notYetAnswered.add(temp);
-			} else if (deltar == 1) {
+			} else if (deltar2 == 1) {
 				attendUserList.add(temp);
 			} else {
 				notAttendUserList.add(temp);
