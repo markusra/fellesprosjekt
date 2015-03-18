@@ -6,10 +6,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import client.ServerCodes;
 import client.TCPClient;
@@ -35,7 +32,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.util.Callback;
 import javafx.util.Duration;
 import json.JsonArray;
 import json.JsonValue;
@@ -430,8 +426,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private TableView<AppointmentModel> rowStyleSetter(TableView<AppointmentModel> tableView) {
-		TableView<AppointmentModel> table = tableView;
+	@SuppressWarnings("unchecked")
+	private void rowStyleSetter(TableView<AppointmentModel> tableView) {
 		for (Node n : tableView.lookupAll("TableRow")) {
 			if (n instanceof TableRow) {
 				if (!((TableRow<AppointmentModel>) n).isEmpty()) {
@@ -457,7 +453,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 				}
 			}
 		}
-		return table;
 	}
 	
 	
@@ -483,8 +478,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
  		tableView.getColumns().get(1).setResizable(false);
  		tableView.getColumns().get(2).setResizable(false);
  		tableView.getColumns().get(0).setSortable(false);
- 		TableView<AppointmentModel> table = rowStyleSetter(tableView);
- 		table.setOnMousePressed(new EventHandler<MouseEvent>() {
+ 		rowStyleSetter(tableView);
+ 		tableView.setOnMousePressed(new EventHandler<MouseEvent>() {
  		    @Override 
  		    public void handle(MouseEvent event) {
  		        if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {

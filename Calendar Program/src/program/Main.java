@@ -85,6 +85,8 @@ public class Main extends Application {
 		root.getChildren().addAll(screensController);
 		Scene scene = new Scene(root, 1024, 576);
 		
+		primaryStage.setTitle("Calendar Program");
+		
 		//TODO: Må endre til bare "application.css" når produktet leveres
 	    scene.getStylesheets().add("/css/application.css");
 	    
