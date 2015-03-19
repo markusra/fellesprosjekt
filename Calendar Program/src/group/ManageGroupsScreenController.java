@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import appointment.AppointmentModel;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
@@ -65,25 +66,25 @@ public class ManageGroupsScreenController implements Initializable, ControllerIn
 	Text sundayMonth;
 	
 	@FXML
-	TableView mondayTable;
+	TableView<AppointmentModel> mondayTable;
 	
 	@FXML
-	TableView tuesdayTable; 
+	TableView<AppointmentModel> tuesdayTable; 
 	
 	@FXML
-	TableView wednesdayTable;
+	TableView<AppointmentModel> wednesdayTable;
 	
 	@FXML
-	TableView thursdayTable;
+	TableView<AppointmentModel> thursdayTable;
 	
 	@FXML
-	TableView fridayTable;
+	TableView<AppointmentModel> fridayTable;
 	
 	@FXML
-	TableView saturdayTable;
+	TableView<AppointmentModel> saturdayTable;
 	
 	@FXML
-	TableView sundayTable;
+	TableView<AppointmentModel> sundayTable;
 	
 	
 	@Override
