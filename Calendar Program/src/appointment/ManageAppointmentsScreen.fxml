@@ -127,7 +127,7 @@
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="192.0" style="-fx-background-color: #fffc00;" text="CANCEL">
+                  <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="192.0" style="-fx-background-color: #a5a5a5;" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
