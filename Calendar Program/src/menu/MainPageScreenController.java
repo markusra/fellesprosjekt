@@ -13,6 +13,7 @@ import client.TCPClient;
 import appointment.AppointmentModel;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -601,7 +602,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
  		tableView.getColumns().get(1).setResizable(false);
  		tableView.getColumns().get(2).setResizable(false);
  		tableView.getColumns().get(0).setSortable(false);
- 		rowStyleSetter(tableView);
+	    Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                rowStyleSetter(tableView);
+            }
+	    });
  		tableView.setOnMousePressed(new EventHandler<MouseEvent>() {
  		    @Override 
  		    public void handle(MouseEvent event) {
