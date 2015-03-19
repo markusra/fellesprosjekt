@@ -2,14 +2,17 @@
 import MySQLdb
 import itertools
 import json
+import time
 
 debug = False
 reply = ''
 splitChar = '#'
 
+curMilliTime = lambda: int(round(time.time() * 1000))
+
+lastChangedTime = 0
 
 def interpreter (data):
-
     raw = data.split(splitChar)
     command = raw[0]
     data = eval(raw[1])
@@ -74,6 +77,7 @@ def interpreter (data):
         else:
             moteromID = data[5]
 
+        lastChangedTime = curMilliTime
         reply = createAppointment(navn, start, slutt, beskrivelse, sted, moteromID)
 
     elif (command == 'g2z8fvj39s3mo899asd3'): # CREATE GROUP
@@ -102,8 +106,9 @@ def interpreter (data):
         avtaleID = str(data[1])
         deltar = str(data[2])
         admin = str(data[3])
+        varsel = str(data[4])
 
-        reply = createAppointmentMember(brukerID, avtaleID, deltar, admin)
+        reply = createAppointmentMember(brukerID, avtaleID, deltar, admin, varsel)
 
     elif (command == 'f2ks94lfurb68z52k9ah'): # GET APPOINTMENTS
         brukerID = str(data[0])
@@ -116,6 +121,84 @@ def interpreter (data):
         avtaleID = str(data)
 
         reply = getSpecificAppointment(avtaleID)
+
+    elif (command == 'p7zf26a5hem79gul4hy7'): # GET ALL MEMBER GROUPS
+        brukerID = str(data)
+
+        reply = getAllMemberGroups(brukerID)
+
+    elif (command == 'a74hn9kl2k4lxn57cgh3'): # GET GROUP MEMBERS
+        navn = "'" + str(data) + "'"
+
+        reply = getGroupMembers(navn)
+
+    elif (command == 'p7sg3bzv32jtuhf7k6nr'):  # GET APPOINTMENT MEMBER
+        brukerID = str(data[0])
+        avtaleID = str(data[1])
+
+        reply = getAppointmentMember(brukerID, avtaleID)
+
+    elif (command == 'q8sh3nd8vhe0hit43kxh'): # UPDATE AVTALEBRUKER
+        brukerID = str(data[0])
+        avtaleID = str(data[1])
+        deltar = str(data[2])
+        varsel = str(data[3])
+
+        reply = updateAppointmentUser(brukerID, avtaleID, deltar, varsel)
+
+    elif (command == 'x82m4jf7ch4dk7h6fn4k'): # GET ATTENDANCE AND ALERT
+        brukerID = str(data[0])
+        avtaleID = str(data[1])
+
+        reply = getAttendanceAlert(brukerID, avtaleID)
+
+    elif (command == 'p7sg3nj86sk64hn2loc5'): # GET ATTENDING USERS
+        avtaleID = str(data)
+
+        reply = getAttendingUsers(avtaleID)
+
+    elif (command == 'z83mdk48dhw7sn51koel'): # DELE APPOINTMENT
+        avtaleID = str(data)
+
+        reply = deleteAppointment(avtaleID)
+
+
+    elif (command == 'q83j5c8m3k0s3fie8d2h'): # GET JOINED MEMBERS
+        gruppeNavn = str(data)
+
+        reply = getJoinedMembers(gruppeNavn)
+
+
+    elif (command == 't3js947ch4n57ak92lem'): # GET ALL APPOINTMENTS FOR ADMIN
+        brukerID = str(data)
+
+        reply = getAllAppointmentsForAdmin(brukerID)
+
+    elif (command == 'k39sh21sk97dhek8usya'): # GET ROOM WITH ID
+        moteromID = str(data)
+
+        reply = getRoomWithID(moteromID)
+
+
+    elif (command == 'v4nsk2jd8ut67xmf8ke3'): # GET CHANGE STATUS
+        lastUpdatedTime = long(data)
+
+        global lastChangedTime
+
+        if (lastUpdatedTime < lastChangedTime):
+            reply = '[{"didChange": ' + "\"Yes\"" + '}]'
+        else:
+            reply = '[{"didChange": ' + "\"No\"" + '}]'
+
+
+    elif (command == 'a83kdu8dbe5lg7c39qu3'): # GET APPOINTMENTS COUNT
+        reply = getAppointmentsCount()
+
+    elif (command == 'b37chw89sk3gy2nfy7i6'): # GET GROUPS COUNT
+        reply = getGroupsCount()
+
+    elif (command == 'c3b8kam28duh3j7cg4n7'): # GET MEMBERS COUNT
+        reply = getMembersCount()
 
     print reply
     return command + splitChar + reply
@@ -138,6 +221,11 @@ def createUser(username, password, email, firstname, lastname):
 def getSpecificUser(streng):
     data = executeSQL("SELECT brukerID, brukernavn, fornavn, etternavn FROM BRUKER " \
     "WHERE brukernavn LIKE '%" + streng + "%' OR fornavn LIKE '%" + streng + "%' OR etternavn LIKE '%" + streng + "%'")
+    return data
+
+def getAppointmentMember(brukerID, avtaleID):
+    data = executeSQL("SELECT * FROM AVTALEBRUKER WHERE avtaleID = " + avtaleID + " AND brukerID = " + brukerID)
+
     return data
 
 def getAllUsers():
@@ -163,6 +251,21 @@ def getAllGroups():
     data = executeSQL("SELECT gruppeID, navn FROM GRUPPE")
     return data
 
+def getAllMemberGroups(brukerID):
+    print  "SELECT gruppeID, navn FROM GRUPPE " \
+                        "WHERE gruppeID IN (" \
+                        "SELECT gruppeID FROM GRUPPEBRUKER WHERE brukerID = " + brukerID + ")"
+    data = executeSQL(  "SELECT gruppeID, navn FROM GRUPPE " \
+                        "WHERE gruppeID IN (" \
+                        "SELECT gruppeID FROM GRUPPEBRUKER WHERE brukerID = " + brukerID + ")")
+    return data
+
+def getGroupMembers(navn):
+    data = executeSQL(  "SELECT * FROM GRUPPEBRUKER " \
+                        "WHERE gruppeID IN (" \
+                        "SELECT gruppeID FROM GRUPPE WHERE navn = " + navn + ")")
+    return data
+
 def getSpecificGroup(navn):
     data = executeSQL("SELECT gruppeID FROM GRUPPE WHERE navn = " + navn)
     return data
@@ -184,20 +287,86 @@ def createAppointment(navn, start, slutt, beskrivelse, sted, moteromID):
                         + navn + ", " + start + ", " + slutt + ", " + beskrivelse + ", " + sted + ", " + moteromID + ")")
     return data
 
-def createAppointmentMember(brukerID, avtaleID, deltar, admin):
-    data = executeSQL( "INSERT INTO AVTALEBRUKER (brukerID, avtaleID, deltar, admin) VALUES (" \
-                         + brukerID + ", " + avtaleID + ", " + deltar +  ", " + admin + ")")
+def createAppointmentMember(brukerID, avtaleID, deltar, admin, varsel):
+    data = executeSQL( "INSERT INTO AVTALEBRUKER (brukerID, avtaleID, deltar, admin, varsel) VALUES (" \
+                         + brukerID + ", " + avtaleID + ", " + deltar +  ", " + admin +  ", " + varsel + ")")
     return data
 
 
 def getAppointments(brukerID, start, slutt):
-    data = executeSQL(  "SELECT * FROM AVTALE " \
+    data = executeSQL(  "SELECT *, AVTALE.navn AS avtaleNavn, MOTEROM.navn AS moterom FROM AVTALE " \
+                        "INNER JOIN MOTEROM " \
+                        "ON AVTALE.moteromID = MOTEROM.moteromID " \
                         "WHERE (start >= " + start + " AND slutt < " + slutt + ") AND avtaleID IN (" \
                         "SELECT avtaleID FROM AVTALEBRUKER WHERE brukerID = " + brukerID + ")")
     return data
 
-def getSpecificAppointment(avtaleID):
-    data = executeSQL(  "SELECT * FROM AVTALE WHERE avtaleID = " + avtaleID)
+def updateAppointmentUser(brukerID, avtaleID, deltar, varsel):
+    data = executeSQL(  "UPDATE AVTALEBRUKER" \
+                        " SET deltar = " + deltar + ", varsel = " + varsel + \
+                        " WHERE avtaleID = " + avtaleID + " AND brukerID =" + brukerID)
+    return data
+
+def getAttendanceAlert(brukerID, avtaleID):
+    data = executeSQL(  "SELECT deltar, varsel, admin FROM AVTALEBRUKER WHERE brukerID = " \
+                        + brukerID + " AND avtaleID = " + avtaleID)
+
+    return data
+
+def getAttendingUsers(avtaleID):
+    data = executeSQL(  "SELECT * " \
+                        "FROM AVTALEBRUKER " \
+                        "INNER JOIN BRUKER " \
+                        "ON AVTALEBRUKER.brukerID = BRUKER.brukerID " \
+                        "WHERE avtaleID = " + avtaleID )
+
+    return data
+
+def getJoinedMembers(gruppeNavn):
+    data = executeSQL(  "SELECT * " \
+                        "FROM GRUPPEBRUKER " \
+                        "INNER JOIN BRUKER " \
+                        "ON GRUPPEBRUKER.brukerID = BRUKER.brukerID " \
+                        "INNER JOIN GRUPPE " \
+                        "ON GRUPPE.gruppeID = GRUPPEBRUKER.gruppeID " \
+                        "WHERE GRUPPE.navn = '" + gruppeNavn + "'")
+
+    return data
+
+
+def getAllAppointmentsForAdmin(brukerID):
+    data = executeSQL(  "SELECT AVTALE.avtaleID, AVTALE.navn, admin, deltar " \
+                        "FROM AVTALE " \
+                        "INNER JOIN AVTALEBRUKER " \
+                        "ON AVTALE.avtaleID = AVTALEBRUKER.avtaleID " \
+                        "INNER JOIN BRUKER " \
+                        "ON BRUKER.brukerID = AVTALEBRUKER.brukerID " \
+                        "WHERE BRUKER.brukerID = " + brukerID)
+
+    return data
+
+def deleteAppointment(avtaleID):
+    data = executeSQL(  "DELETE FROM AVTALE WHERE avtaleID = " + avtaleID )
+
+    return data
+
+def getRoomWithID(moteromID):
+    data = executeSQL(  "SELECT navn FROM MOTEROM WHERE moteromID = " + moteromID )
+
+    return data
+
+def getAppointmentsCount():
+    data = executeSQL("SELECT count(avtaleID) FROM AVTALE")
+
+    return data
+
+def getGroupsCount():
+    data = executeSQL("SELECT count(gruppeID) FROM GRUPPE")
+
+    return data
+
+def getMembersCount():
+    data = executeSQL("SELECT count(brukerID) FROM BRUKER")
 
     return data
 
@@ -221,8 +390,6 @@ def executeSQL(sqlq):
         errorcode = message[0]	# get MySQL error code
         if errorcode == 1062 :	# if duplicate
             return "duplicateEntry"
-
-
 
 
     # Parse query-results to json-dump
