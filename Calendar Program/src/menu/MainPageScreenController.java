@@ -375,7 +375,7 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			e1.printStackTrace();
 		}
 		
-		lblUser.setText(ScreensController.getUser().getName());
+		lblUser.setText(ScreensController.getUser().getName().toUpperCase());
 		
 		
 		appointmentsCount = getAppointmentsCount();
