@@ -331,19 +331,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 			e1.printStackTrace();
 		}
 		
-	    Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                rowStyleSetter(mondayTable);
-                rowStyleSetter(tuesdayTable);
-                rowStyleSetter(wednesdayTable);
-                rowStyleSetter(thursdayTable);
-                rowStyleSetter(fridayTable);
-                rowStyleSetter(saturdayTable);
-                rowStyleSetter(sundayTable);
-            }
-    });
-		
 		lblUser.setText(ScreensController.getUser().getName());
 		
 		
