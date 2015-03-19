@@ -136,7 +136,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="back" layoutX="371.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #fffc00;" text="BACK">
+                  <Button fx:id="back" layoutX="371.0" layoutY="926.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="292.0" style="-fx-background-color: #a5a5a5;" text="BACK" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
