@@ -183,7 +183,6 @@ public class AppointmentStatusScreenController implements Initializable, Control
 			
 			int deltar2 = value.asObject().get( "deltar" ).asInt();
 			
-			System.out.println("Føkk: " + deltar2);
 			
 			if (deltar2 == 0) {
 				notYetAnswered.add(temp);
