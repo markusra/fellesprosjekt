@@ -44,7 +44,7 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="371.0" layoutY="476.0" prefHeight="53.0" prefWidth="270.0" text="Place:">
+                  <Label layoutX="371.0" layoutY="456.0" prefHeight="53.0" prefWidth="210.0" text="Place:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="place" layoutX="612.0" layoutY="476.0" prefHeight="53.0" prefWidth="476.0" text="Place of the appointment">
+                  <Label fx:id="place" layoutX="612.0" layoutY="456.0" prefHeight="53.0" prefWidth="476.0" text="Place of the appointment">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -146,7 +146,7 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Label fx:id="purpose" alignment="TOP_LEFT" layoutX="612.0" layoutY="280.0" prefHeight="180.0" prefWidth="482.0" text="Purpose" wrapText="true">
+                  <Label fx:id="purpose" alignment="TOP_LEFT" layoutX="612.0" layoutY="280.0" prefHeight="150.0" prefWidth="482.0" text="Purpose" wrapText="true">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -170,6 +170,16 @@
                   <ListView fx:id="lvNotAttending" layoutX="1194.0" layoutY="518.0" prefHeight="200.0" prefWidth="395.0" />
                   <ListView fx:id="lvNotAnswered" layoutX="1194.0" layoutY="788.0" prefHeight="200.0" prefWidth="395.0" />
                   <Label layoutX="1195.0" layoutY="727.0" prefHeight="53.0" prefWidth="395.0" text="Not answered yet:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomField" layoutX="611.0" layoutY="531.0" prefHeight="53.0" prefWidth="476.0" text="Room of the appointment">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="370.0" layoutY="531.0" prefHeight="53.0" prefWidth="223.0" text="Room:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>

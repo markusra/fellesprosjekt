@@ -34,7 +34,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import json.JsonArray;
@@ -472,14 +471,15 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		try {
 			for( JsonValue value : jsonArray ) {
 				int appointmentID = value.asObject().get( "avtaleID" ).asInt();
-				String title = value.asObject().get( "navn" ).asString();
+				String title = value.asObject().get( "avtaleNavn" ).asString();
 				String purpose = value.asObject().get( "beskrivelse" ).asString();
 				String place = value.asObject().get( "sted" ).asString();
 				int roomID = value.asObject().get( "moteromID" ).asInt();
 				long startDate = value.asObject().get( "start" ).asLong();
 				long endDate = value.asObject().get( "slutt" ).asLong();
+				String room = value.asObject().get( "moterom" ).asString();
 				
-				appointmentCreator(appointmentID, title, purpose, place, roomID, startDate, endDate);
+				appointmentCreator(appointmentID, title, purpose, place, roomID, startDate, endDate, room);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -576,8 +576,8 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	}
 	
 	
-	private void appointmentCreator(int appointmentID, String title, String purpose, String roomName, int roomID, Long startDate, Long endDate) {
-		observableAppointments.add(new AppointmentModel(appointmentID, title, purpose, roomName, roomID, startDate, endDate));
+	private void appointmentCreator(int appointmentID, String title, String purpose, String roomName, int roomID, Long startDate, Long endDate, String room) {
+		observableAppointments.add(new AppointmentModel(appointmentID, title, purpose, roomName, roomID, startDate, endDate, room));
 	}
 	
 	
@@ -636,11 +636,13 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		Label emptyLabel = new Label("There are no appointments on this day!");
 		tableView.setPlaceholder(emptyLabel);
 		tableView.setItems(dayAppointmentFiller(observableAppointments, calendar));
-		tableView.getColumns().addAll(tableColumnStringSpecifier("Start", "startTime"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Place", "place"));
+		tableView.getColumns().addAll(tableColumnStringSpecifier("Start", "startTime"), tableColumnStringSpecifier("Title", "title"), tableColumnStringSpecifier("Room", "room"));
 		tableView.getColumns().get(0).setSortable(true);
 		tableView.getSortOrder().add(tableView.getColumns().get(0));
+		tableView.getColumns().get(0).setPrefWidth(100);
  		tableView.getColumns().get(1).setPrefWidth(340);
  		tableView.getColumns().get(2).setPrefWidth(167);
+ 		tableView.getColumns().get(0).setResizable(false);
  		tableView.getColumns().get(1).setResizable(false);
  		tableView.getColumns().get(2).setResizable(false);
  		tableView.getColumns().get(0).setSortable(false);

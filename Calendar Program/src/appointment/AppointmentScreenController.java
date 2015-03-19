@@ -17,7 +17,7 @@ import program.Main;
 import program.ScreensController;
 import client.ServerCodes;
 import client.TCPClient;
-
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -78,6 +78,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	private String startTime = null;
 	private String endTime = null;
 	private LocalDate date = null;
+	
 	private String size = null;
 	private String dato = null;
 	private String sendesStart = null;
@@ -100,8 +101,14 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	public void initialize(URL location, ResourceBundle resources) {
 		mainPane.setFocusTraversable(true);
 		
-		roomField.setVisible(false);
-		RoomLabel.setVisible(false);
+		roomField.setDisable(true);
+		
+		//roomField.setVisible(false);
+		//RoomLabel.setVisible(false);
+		
+		dpStart.setValue(LocalDate.now());
+		date = dpStart.getValue();
+		size = "1";
 		
 		invitedField.setStyle("-fx-font-size:30;");
 		groupField.setStyle("-fx-font-size:30;");
@@ -120,18 +127,25 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 			e1.printStackTrace();
 		}
 		
-		timeStart.setText("00:00");
-		timeEnd.setText("23:59");
 		createListeners();
+		
+		Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	txtPurpose.requestFocus();
+	        }
+	    });
 	}
 	
 	private void createListeners() {
 		timeStart.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
+			if (!(newValue.equals("")) && !(timeEnd.getText().equals("")) && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
+				
 				startTime=timeStart.getText();
 				endTime=timeEnd.getText();
 				valid = true;
+				
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
 					try {
 						addRooms();
@@ -142,10 +156,11 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				}
 			} else {
 				valid = false;
+				startTime = null;
 			}
 		});
 		timeEnd.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
+			if (!(newValue.equals("")) && !(timeStart.getText().equals("")) && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
 				startTime=timeStart.getText();
@@ -160,6 +175,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				}
 			} else {
 				valid = false;
+				endTime = null;
 			}
  		});
 		txtSize.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -181,6 +197,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 				}
 			} else {
 				valid = false;
+				size = null;
 			}
 		});
 		dpStart.valueProperty().addListener(new ChangeListener <LocalDate>(){
@@ -279,8 +296,7 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		System.out.println(rom);
 		if (valid && rom != null ) {
 			
-			String[] splited = rom.split("\\s+");
-			String romID = splited[1];
+			int romID = availableRooms.get(  rom );
 			try {
 				String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
 				
@@ -304,16 +320,21 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private boolean isCorrectTimeSpan() {
-		if (Integer.parseInt(timeEnd.getText().replace(":", "")) > Integer.parseInt(timeStart.getText().replace(":", ""))) {
+		System.out.println("EndTime: " + Integer.parseInt(timeEnd.getText().replace(":", "")));
+		System.out.println("StartTime: " + Integer.parseInt(timeStart.getText().replace(":", "")));
+		
+		if (Integer.parseInt(timeEnd.getText().replace(":", "")) > Integer.parseInt(timeStart.getText().replace(":", "")) && (Integer.parseInt(timeStart.getText().replace(":", "")) < 2400) && (Integer.parseInt(timeEnd.getText().replace(":", "")) < 2400)) {
+			System.out.println("isCorrectTimeSpan!");
 			return true;
 		}
+		
 		timeStart.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		return false;
 	}
 	
 	private boolean validTime() {
-		if (!timeStart.getText().matches("[0-2][0-3]:[0-5][0-9]") && !timeEnd.getText().matches("[0-1][0-9]:[0-5][0-9]")) {
+		if (!timeStart.getText().matches("[0-2][0-9]:[0-5][0-9]") && !timeEnd.getText().matches("[0-2][0-9]:[0-5][0-9]")) {
 			timeStart.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 			timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 			return false;
@@ -369,8 +390,8 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 	}
 	
 	private void addRooms() throws IOException {
-		roomField.setVisible(true);
-		RoomLabel.setVisible(true);
+		roomField.setDisable(false);
+		
 		String end = endTime.substring(0, 2) + endTime.substring(3, 5);
 		String start = startTime.substring(0, 2) + startTime.substring(3, 5);
 		dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 10);
@@ -383,15 +404,24 @@ public class AppointmentScreenController implements Initializable, ControllerInt
 		String[] answer = serverReply.split("#");
 	    answer = serverReply.split("#");
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		
+
 		List<String> roomList = new ArrayList<>();
 		
-		for( JsonValue value : jsonArray ) {
-			String romNavn = value.asObject().get( "navn").asString();
-			int romID = value.asObject().get( "moteromID").asInt();
-			roomList.add(romNavn + " " + romID);
+		try {
+			for( JsonValue value : jsonArray ) {
+				String romNavn = value.asObject().get( "navn").asString();
+				int romID = value.asObject().get( "moteromID").asInt();
+				roomList.add(romNavn);
+				
+				availableRooms.put(romNavn, romID);
+			}
+			
+		} catch (Exception e) {
+			roomList.clear();
 		}
 		
+		System.out.println("CountRooms:" + roomList.size());
+	
 		
 		ObservableList<String> myObservableList2 = FXCollections.observableList(roomList);
 		roomField.setItems(myObservableList2);

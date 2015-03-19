@@ -21,7 +21,8 @@ public final class ServerCodes {
  	
  	// Rooms
  	public static final String GetFilteredRooms     		= "h4ks827db5kz791ke2n5";
- 	
+	public static final String GetRoomWithID     			= "k39sh21sk97dhek8usya";
+	
  	// Appointments
  	public static final String CreateAppointment    		= "a92mfdy37sk9senc7smw";
  	public static final String GetAppointments  			= "f2ks94lfurb68z52k9ah";

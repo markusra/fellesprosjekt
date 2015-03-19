@@ -17,6 +17,7 @@ import client.TCPClient;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -105,9 +106,9 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER" || code.toString() == "ESCAPE" || code.toString() == "LEFT" ){
+        if(code.toString() == "ESCAPE" ){
    			//Oppdater appointment
-        	mainController.setScreen(Main.viewDayID, Main.viewDayScreen);
+        	mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 		}else{
 			event.consume();
 		}
@@ -120,10 +121,16 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		mainPane.setFocusTraversable(true);
+mainPane.setFocusTraversable(true);
 		
-		roomField.setVisible(false);
-		roomLabel.setVisible(false);
+		roomField.setDisable(true);
+		
+		//roomField.setVisible(false);
+		//RoomLabel.setVisible(false);
+		
+		dpStart.setValue(LocalDate.now());
+		date = dpStart.getValue();
+		size = "1";
 		
 		invitedField.setStyle("-fx-font-size:30;");
 		groupField.setStyle("-fx-font-size:30;");
@@ -135,10 +142,19 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 			getAllUsers();
 			fetchData();
 		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		Platform.runLater(new Runnable() {
+	        @Override
+	        public void run() {
+	        	txtPurpose.requestFocus();
+	        }
+	    });
 		
 		txtPurpose.setText(ScreensController.getAppointment().getTitle());
 		txtDescription.setText(ScreensController.getAppointment().getPurpose());
@@ -168,11 +184,13 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	private void createListeners() {
 		timeStart.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
+			if (!(newValue.equals("")) && !(timeEnd.getText().equals("")) && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null)) {
+				
 				startTime=timeStart.getText();
 				endTime=timeEnd.getText();
 				valid = true;
+				
 				if ( (startTime!=null) && (endTime!=null) && (date!=null) && (size!=null)) {
 					try {
 						addRooms();
@@ -183,10 +201,11 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				}
 			} else {
 				valid = false;
+				startTime = null;
 			}
 		});
 		timeEnd.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
+			if (!(newValue.equals("")) && !(timeStart.getText().equals("")) && validate(timeEnd.getText(), "(\\d){2}(:)(\\d){2}", timeEnd, null, null) && isCorrectTimeSpan() 
 					&& validTime() && validate(timeStart.getText(), "(\\d){2}(:)(\\d){2}", timeStart, null, null)) {
 				endTime=timeEnd.getText();
 				startTime=timeStart.getText();
@@ -201,6 +220,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				}
 			} else {
 				valid = false;
+				endTime = null;
 			}
  		});
 		txtSize.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -222,6 +242,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				}
 			} else {
 				valid = false;
+				size = null;
 			}
 		});
 		dpStart.valueProperty().addListener(new ChangeListener <LocalDate>(){
@@ -244,6 +265,8 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 					date = dpStart.getValue();
 					valid = true;
 				}
+				
+				dpStart.setStyle("-fx-font-size:30;");
 			};
 		});
 	}
@@ -277,17 +300,16 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
     	return false;
     }
 	
-	
 	@FXML
 	private void doConfirm() throws IOException {
 		String rom = roomField.getValue();
-		System.out.println(rom);
 		if (valid && rom != null ) {
 			client.customQuery(ServerCodes.DeleteAppointment, "" + ScreensController.getAppointment().getAppointmentID());
 			
-			String[] splited = rom.split("\\s+");
-			String romID = splited[1];
+			int romID = availableRooms.get(  rom );
 			try {
+				client.customQuery(ServerCodes.DeleteAppointment, "" + ScreensController.getAppointment().getAppointmentID());
+
 				String serverReply = client.customQuery(ServerCodes.CreateAppointment, "'" + txtPurpose.getText() + "', '" + sendesStart + "', '" + sendesEnd + "', '" + txtDescription.getText() + "', '" + txtPlace.getText() + "', '" + romID + "'");
 				ScreensController.getAppointment().setTitle(txtPurpose.getText());
 				ScreensController.getAppointment().setPurpose(txtDescription.getText());
@@ -306,7 +328,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				int avtaleID = jsonArray.get(0).asObject().get( "lastInsertID" ).asInt();
 				
 				setMembers(avtaleID);
-				mainController.setScreen(Main.appointmentStatusID, Main.appointmentStatusScreen);
+				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -318,17 +340,21 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	
 	private boolean isCorrectTimeSpan() {
-		if (Integer.parseInt(timeEnd.getText().replace(":", "")) > Integer.parseInt(timeStart.getText().replace(":", ""))) {
+		System.out.println("EndTime: " + Integer.parseInt(timeEnd.getText().replace(":", "")));
+		System.out.println("StartTime: " + Integer.parseInt(timeStart.getText().replace(":", "")));
+		
+		if (Integer.parseInt(timeEnd.getText().replace(":", "")) > Integer.parseInt(timeStart.getText().replace(":", "")) && (Integer.parseInt(timeStart.getText().replace(":", "")) < 2400) && (Integer.parseInt(timeEnd.getText().replace(":", "")) < 2400)) {
+			System.out.println("isCorrectTimeSpan!");
 			return true;
 		}
+		
 		timeStart.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 		return false;
 	}
 	
-	
 	private boolean validTime() {
-		if (!timeStart.getText().matches("[0-2][0-3]:[0-5][0-9]") && !timeEnd.getText().matches("[0-1][0-9]:[0-5][0-9]")) {
+		if (!timeStart.getText().matches("[0-2][0-9]:[0-5][0-9]") && !timeEnd.getText().matches("[0-2][0-9]:[0-5][0-9]")) {
 			timeStart.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 			timeEnd.setStyle("-fx-border-color: red; -fx-border-width: 2; -fx-background-color: #ffbbbb; -fx-prompt-text-fill: #555555");
 			return false;
@@ -379,8 +405,8 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	
 	private void addRooms() throws IOException {
-		roomField.setVisible(true);
-		roomLabel.setVisible(true);
+		roomField.setDisable(false);
+		
 		String end = endTime.substring(0, 2) + endTime.substring(3, 5);
 		String start = startTime.substring(0, 2) + startTime.substring(3, 5);
 		dato = date.toString().substring(0, 4) + date.toString().substring(5, 7) + date.toString().substring(8, 10);
@@ -393,15 +419,24 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 		String[] answer = serverReply.split("#");
 	    answer = serverReply.split("#");
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		
+
 		List<String> roomList = new ArrayList<>();
 		
-		for( JsonValue value : jsonArray ) {
-			String romNavn = value.asObject().get( "navn").asString();
-			int romID = value.asObject().get( "moteromID").asInt();
-			roomList.add(romNavn + " " + romID);
+		try {
+			for( JsonValue value : jsonArray ) {
+				String romNavn = value.asObject().get( "navn").asString();
+				int romID = value.asObject().get( "moteromID").asInt();
+				roomList.add(romNavn);
+				
+				availableRooms.put(romNavn, romID);
+			}
+			
+		} catch (Exception e) {
+			roomList.clear();
 		}
 		
+		System.out.println("CountRooms:" + roomList.size());
+	
 		
 		ObservableList<String> myObservableList2 = FXCollections.observableList(roomList);
 		roomField.setItems(myObservableList2);
@@ -412,7 +447,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 		int brukerID = ScreensController.getUser().getUserID();
 		
 		try {
-			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True");
+			client.customQuery(ServerCodes.CreateAppointmentMember, "'" + brukerID + "', '" + avtaleID + "', " + "True" + ", " + "True" + ", " + 1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -424,7 +459,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 			member = memberArray[1].substring(0, memberArray[1].length()-1);
 			
 			try {
-				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False");
+				client.customQuery(ServerCodes.CreateAppointmentMember, "" + availableUsers.get(  member ) + ", " + avtaleID + ", " + "False" + ", " + "False" + ", " + 0);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -448,7 +483,7 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 				JsonArray jsonArray2 = JsonArray.readFrom( answer2[1] );
 				
 				if (! jsonArray2.toString().contains("admin")) {
-					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False");
+					client.customQuery(ServerCodes.CreateAppointmentMember, "" + fetched_brukerID + ", " + avtaleID + ", " + "False" + ", " + "False"  + ", " + 0);
 				}	
 			}	
 		}	

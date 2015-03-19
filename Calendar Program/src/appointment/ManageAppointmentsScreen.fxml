@@ -30,7 +30,7 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <Label layoutX="650.0" layoutY="35.0" text="MANAGE APPOINTMENT" textFill="WHITE">
+                  <Label layoutX="650.0" layoutY="45.0" text="MANAGE APPOINTMENT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
@@ -50,69 +50,74 @@
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="563.0" layoutY="592.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
+                  <TextField fx:id="txtDescription" layoutX="843.0" layoutY="270.0" prefHeight="51.0" prefWidth="529.0" text="Here should the old description be stored">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font size="24.0" />
                      </font>
-                  </Label>
-                  <Button fx:id="changeButton" layoutX="770.0" layoutY="955.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="409.0" style="-fx-background-color: #00b903;" text="CHANGE" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Button>
+                  </TextField>
                   <TextField fx:id="txtPlace" layoutX="843.0" layoutY="349.0" prefHeight="53.0" prefWidth="529.0" text="Here should the old place be stored">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtSize" layoutX="1132.0" layoutY="505.0" prefHeight="53.0" prefWidth="242.0" promptText="Please specify again">
+                  <TextField fx:id="txtSize" alignment="CENTER_RIGHT" layoutX="1089.0" layoutY="425.0" prefHeight="53.0" prefWidth="285.0" promptText="Type a number">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="562.0" layoutY="505.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
+                  <DatePicker fx:id="dpStart" layoutX="670.0" layoutY="502.0" prefHeight="53.0" prefWidth="309.0" promptText="Old date" />
+                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1074.0" layoutY="502.0" prefHeight="53.0" prefWidth="120.0">
                      <font>
-                        <Font name="System Bold" size="36.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="dpStart" layoutX="670.0" layoutY="592.0" prefHeight="53.0" prefWidth="309.0" promptText="Old date" />
-                  <TextField fx:id="timeStart" alignment="CENTER" layoutX="1082.0" layoutY="592.0" prefHeight="53.0" prefWidth="120.0" text="Old from time">
-                     <font>
-                        <Font size="24.0" />
+                        <Font size="30.0" />
                      </font></TextField>
-                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1254.0" layoutY="592.0" prefHeight="53.0" prefWidth="120.0" text="Old to time">
+                  <TextField fx:id="timeEnd" alignment="CENTER" layoutX="1254.0" layoutY="502.0" prefHeight="53.0" prefWidth="120.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="30.0" />
                      </font></TextField>
-                  <Label layoutX="1002.0" layoutY="592.0" prefHeight="53.0" prefWidth="70.0" text="From:">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="1210.0" layoutY="592.0" prefHeight="53.0" prefWidth="48.0" text="To:">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomLabel" layoutX="844.0" layoutY="418.0" prefHeight="53.0" prefWidth="85.0" text="Room:">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="roomField" layoutX="1007.0" layoutY="418.0" prefHeight="53.0" prefWidth="365.0" promptText="Pick a room" />
+                  <ComboBox fx:id="roomField" layoutX="837.0" layoutY="578.0" prefHeight="53.0" prefWidth="542.0" promptText="Pick a room" />
                   <ListView fx:id="invitedField" layoutX="563.0" layoutY="719.0" prefHeight="203.0" prefWidth="388.0" />
                   <ListView fx:id="groupField" layoutX="964.0" layoutY="719.0" prefHeight="203.0" prefWidth="409.0" />
-                  <Label layoutX="563.0" layoutY="664.0" prefHeight="53.0" prefWidth="112.0" text="Invite:">
+                  <Label layoutX="563.0" layoutY="502.0" prefHeight="53.0" prefWidth="112.0" text="Date:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="963.0" layoutY="664.0" prefHeight="53.0" prefWidth="148.0" text="Group:">
+                  <Button fx:id="changeButton" layoutX="964.0" layoutY="955.0" mnemonicParsing="false" onAction="#doConfirm" prefHeight="59.0" prefWidth="409.0" style="-fx-background-color: #00b903;" text="CHANGE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="562.0" layoutY="425.0" prefHeight="53.0" prefWidth="365.0" text="Number of persons:">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="deleteButton" layoutX="1196.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="59.0" prefWidth="172.0" style="-fx-background-color: #ef0000;" text="DELETE" textFill="WHITE">
+                  <Label layoutX="1002.0" layoutY="502.0" prefHeight="53.0" prefWidth="70.0" text="From:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1210.0" layoutY="502.0" prefHeight="53.0" prefWidth="48.0" text="To:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomLabel" layoutX="561.0" layoutY="578.0" prefHeight="53.0" prefWidth="172.0" text="Room:">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="563.0" layoutY="664.0" prefHeight="53.0" prefWidth="330.0" text="Invite member(s):">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="963.0" layoutY="664.0" prefHeight="53.0" prefWidth="276.0" text="Invite group(s):">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="deleteButton" layoutX="796.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="59.0" prefWidth="137.0" style="-fx-background-color: #ef0000;" text="DELETE" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -122,12 +127,7 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtDescription" layoutX="843.0" layoutY="270.0" prefHeight="51.0" prefWidth="529.0" text="Here should the old description be stored">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="192.0" style="-fx-background-color: #a5a5a5;" text="CANCEL" textFill="WHITE">
+                  <Button fx:id="backButton" layoutX="563.0" layoutY="955.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="59.0" prefWidth="204.0" style="-fx-background-color: #a5a5a5;" text="CANCEL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>

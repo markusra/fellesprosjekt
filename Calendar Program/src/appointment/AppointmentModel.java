@@ -1,6 +1,5 @@
 package appointment;
 
-
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -16,9 +15,10 @@ public class AppointmentModel {
 	private SimpleIntegerProperty year;
 	private SimpleIntegerProperty month;
 	private SimpleIntegerProperty day;
+	private SimpleStringProperty room;
 	
 	
-	public AppointmentModel(int ID, String title, String purpose, String place, int roomID, Long startDate, Long endDate) {
+	public AppointmentModel(int ID, String title, String purpose, String place, int roomID, Long startDate, Long endDate, String room) {
 		this.ID = new SimpleIntegerProperty(ID);
 		this.title = new SimpleStringProperty(title);
 		this.purpose = new SimpleStringProperty(purpose);
@@ -29,6 +29,7 @@ public class AppointmentModel {
 		this.year = new SimpleIntegerProperty(yearParser(startDate));
 		this.month = new SimpleIntegerProperty(monthParser(startDate));
 		this.day = new SimpleIntegerProperty(dayParser(startDate));
+		this.room = new SimpleStringProperty(room);
 	}
 	
 	
@@ -99,6 +100,14 @@ public class AppointmentModel {
 	
 	public int getRoomID() {
 		return roomID.get();
+	}
+	
+	public void setRoom(String room) {
+		this.room.set(room);
+	}
+	
+	public String getRoom() {
+		return room.get();
 	}
 	
 	

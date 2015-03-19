@@ -70,7 +70,6 @@ public class GroupScreenController implements Initializable, ControllerInterface
 	Map<String, Integer> groups = new HashMap<String, Integer>();
 	Map<String, Integer> availableUsers = new HashMap<String, Integer>();
 	
-	
 	private void createGroup() throws IOException {
 		String chosenSuperGroup = cmbSubgroupOf.getValue();
 		

@@ -24,7 +24,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import json.JsonArray;
-import json.JsonObject;
 import json.JsonValue;
 
 public class AppointmentStatusScreenController implements Initializable, ControllerInterface {
@@ -47,6 +46,8 @@ public class AppointmentStatusScreenController implements Initializable, Control
 	Label purpose;
 	@FXML
 	Label place;
+	@FXML
+	Label roomField;
 	@FXML
 	Label date;
 	@FXML
@@ -216,6 +217,10 @@ public class AppointmentStatusScreenController implements Initializable, Control
 		title.setText(ScreensController.getAppointment().getTitle());
 		purpose.setText(ScreensController.getAppointment().getPurpose());
 		place.setText(ScreensController.getAppointment().getPlace());
+		roomField.setText(ScreensController.getAppointment().getRoom());
+		
+		
+		
 		String day = "";
 		String month = "";
 		String year = "";
