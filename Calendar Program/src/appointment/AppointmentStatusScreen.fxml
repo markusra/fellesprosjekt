@@ -110,12 +110,12 @@
                   		<String fx:value="No" />
                   	</value>
                   </ComboBox>
-                  <Label layoutX="373.0" layoutY="812.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:">
+                  <Label layoutX="373.0" layoutY="812.0" prefHeight="53.0" prefWidth="489.0" text="Alert ahead of appointment:" visible="false">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="alertField" layoutX="878.0" layoutY="812.0" prefHeight="53.0" prefWidth="210.0">
+                  <ComboBox fx:id="alertField" layoutX="878.0" layoutY="812.0" prefHeight="53.0" prefWidth="210.0" visible="false">
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="Yes" />
