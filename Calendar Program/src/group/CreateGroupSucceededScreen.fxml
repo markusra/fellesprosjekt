@@ -19,12 +19,12 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="698.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" width="542.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="91.0" layoutX="678.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="581.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label focusTraversable="false" layoutX="731.0" layoutY="343.0" text="CREATE GROUP SUCCEEDED" textFill="WHITE">
+            <Label focusTraversable="false" layoutX="702.0" layoutY="345.0" text="CREATE GROUP SUCCEEDED" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

@@ -203,6 +203,10 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 					btnUpdate.setVisible(true);
 					
 				} else {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 192258b2aad02c25bc52b288d1bba93dc3d629eb
 					btnUpdate.setVisible(false);
 				}*/
 		    }
