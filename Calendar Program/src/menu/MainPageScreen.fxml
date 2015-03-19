@@ -319,7 +319,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="1392.0" layoutY="137.0" prefHeight="44.0" prefWidth="359.0" text="INFO" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="1392.0" layoutY="137.0" prefHeight="44.0" prefWidth="359.0" text="SYSTEM INFO" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -376,14 +376,9 @@
       </Button>
       <Button fx:id="previousWeekButton2" layoutX="143.0" layoutY="545.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
       <Button fx:id="nextWeekButton2" layoutX="1240.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
-      <Label layoutX="1415.0" layoutY="211.0" text="Status:">
+      <Label layoutX="1465.0" layoutY="213.0" prefHeight="36.0" prefWidth="277.0" text="new appointment(s)">
          <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblStatus" alignment="CENTER_RIGHT" layoutX="1526.0" layoutY="211.0" prefHeight="36.0" prefWidth="194.0" text="up-to-date" textFill="LIME">
-         <font>
-            <Font size="30.0" />
+            <Font name="System Bold" size="28.0" />
          </font>
       </Label>
       <Button fx:id="btnUpdate" layoutX="1414.0" layoutY="407.0" mnemonicParsing="false" onAction="#updateButtonPressed" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #69696b;" text="UPDATE" textFill="WHITE">
@@ -391,6 +386,31 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <Label fx:id="lblAppointmentsCount" alignment="CENTER_RIGHT" layoutX="1401.0" layoutY="213.0" prefHeight="36.0" prefWidth="52.0" text="0">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblGroupsCount" alignment="CENTER_RIGHT" layoutX="1401.0" layoutY="272.0" prefHeight="36.0" prefWidth="52.0" text="0">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="1465.0" layoutY="272.0" prefHeight="36.0" prefWidth="277.0" text="new group(s)">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="1465.0" layoutY="334.0" prefHeight="36.0" prefWidth="277.0" text="new member(s)">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblMembersCount" alignment="CENTER_RIGHT" layoutX="1401.0" layoutY="334.0" prefHeight="36.0" prefWidth="52.0" text="0">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
    </children>
    <padding>
       <Insets top="-1000.0" />

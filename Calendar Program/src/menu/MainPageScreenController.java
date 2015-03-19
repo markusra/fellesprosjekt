@@ -116,8 +116,21 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@FXML
 	TableView<AppointmentModel> sundayTable;
 	
+	
 	@FXML
-	Label lblStatus;
+	Label lblAppointmentsCount;
+	
+	int appointmentsCount = 0;
+	
+	@FXML
+	Label lblGroupsCount;
+	
+	int groupsCount = 0;
+	
+	@FXML
+	Label lblMembersCount;
+	
+	int membersCount = 0;
 	
 	@FXML
 	Label lblUser;
@@ -133,7 +146,40 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 
 		    @Override
 		    public void handle(ActionEvent event) {
-		    	long timeMilli = date.getTime();
+		    	
+		    	int newAppointmentsCount = getAppointmentsCount();
+		    	
+		    	if (appointmentsCount < newAppointmentsCount) {
+		    		int countDiff = (newAppointmentsCount - appointmentsCount);
+		    		
+		    		lblAppointmentsCount.setText(Integer.toString(countDiff));
+		    		
+		    		//appointmentsCount = newAppointmentsCount;
+		    	}
+		    	
+		    	int newGroupsCount = getGroupsCount();
+		    	System.out.println("groupsCount: " + groupsCount + ", newGroupsCount: " + newGroupsCount);
+		    	if (groupsCount < newGroupsCount) {
+		    		int countDiff2 = (newGroupsCount - groupsCount);
+		    		
+		    		lblGroupsCount.setText(Integer.toString(countDiff2));
+		    		
+		    		//groupsCount = newGroupsCount;
+		    	}
+		    	
+		    	
+		    	int newMembersCount = getMembersCount();
+		    	
+		    	if (membersCount < newMembersCount) {
+		    		int countDiff3 = (newMembersCount - membersCount);
+		    		
+		    		lblMembersCount.setText(Integer.toString(countDiff3));
+		    		
+		    		//membersCount = newMembersCount;
+		    	}
+		    	
+		    	 
+		    	/*long timeMilli = date.getTime();
 				  
 				String serverReply = "";
 				
@@ -153,15 +199,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 				if (didChange.equals("Yes")) {
 					System.out.println("Data har blitt oppdatert!");
 					
-					lblStatus.setTextFill(Color.RED);
-					lblStatus.setText("changed");
 					btnUpdate.setVisible(true);
 					
 				} else {
-					lblStatus.setTextFill(Color.GREEN);
-					lblStatus.setText("up-to-date");
+
 					btnUpdate.setVisible(false);
-				}
+				}*/
 		    }
 		}));
 		fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
@@ -182,6 +225,66 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		fiveSecondsWonder.stop();
 	}
 	
+	private int getAppointmentsCount() {
+		String serverReply = "";
+		
+		try {
+			serverReply = client.customQuery(ServerCodes.GetAppointmentsCount, "'None'");
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		String[] answer= serverReply.split("#");
+		
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		int appointmentsCount = jsonArray.get(0).asObject().get( "count(avtaleID)" ).asInt();
+		
+		return appointmentsCount;
+	}
+	
+	private int getGroupsCount() {
+		String serverReply = "";
+		
+		try {
+			serverReply = client.customQuery(ServerCodes.GetGroupsCount, "'None'");
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		String[] answer= serverReply.split("#");
+		
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		int groupsCount = jsonArray.get(0).asObject().get( "count(gruppeID)" ).asInt();
+		
+		return groupsCount;
+	}
+	
+	private int getMembersCount() {
+		String serverReply = "";
+		
+		try {
+			serverReply = client.customQuery(ServerCodes.GetMembersCount, "'None'");
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		String[] answer= serverReply.split("#");
+		
+		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+		
+		int membersCount = jsonArray.get(0).asObject().get( "count(brukerID)" ).asInt();
+		
+		return membersCount;
+	}
+	
 	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
@@ -199,7 +302,6 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {		
 		btnUpdate.setVisible(false);
-		lblStatus.setTextFill(Color.GREEN);
 		
 		try {
 			client = new TCPClient();
@@ -229,6 +331,12 @@ public class MainPageScreenController implements Initializable, ControllerInterf
 		}
 		
 		lblUser.setText(ScreensController.getUser().getName());
+		
+		
+		appointmentsCount = getAppointmentsCount();
+		groupsCount = getGroupsCount();
+		membersCount = getMembersCount();
+		
 		startTimer();
 	}
 	

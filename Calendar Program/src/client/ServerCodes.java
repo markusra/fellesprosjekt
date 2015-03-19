@@ -34,8 +34,11 @@ public final class ServerCodes {
  	public static final String DeleteAppointment 			= "z83mdk48dhw7sn51koel";
  	public static final String GetAllAppointmentsForAdmin 	= "t3js947ch4n57ak92lem";
  	
- 	//Update Status
+ 	//Status
  	public static final String GetUpdateStatus 				= "v4nsk2jd8ut67xmf8ke3";
+ 	public static final String GetAppointmentsCount 		= "a83kdu8dbe5lg7c39qu3";
+ 	public static final String GetGroupsCount		 		= "b37chw89sk3gy2nfy7i6";
+ 	public static final String GetMembersCount		 		= "c3b8kam28duh3j7cg4n7";
  	
 }
 
