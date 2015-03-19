@@ -13,7 +13,7 @@
 
 <Pane fx:id="mainPane" onKeyPressed="#keyHandler" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainPageScreenController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7f2ff" height="1080.0" layoutX="-6.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
       <AnchorPane layoutX="103.0" layoutY="6.0" prefHeight="1068.0" prefWidth="1244.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="896.0" layoutX="146.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" width="979.0">
@@ -304,7 +304,21 @@
             <DropShadow />
          </effect>
       </Rectangle>
+<<<<<<< HEAD
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="60.0" layoutX="1391.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+=======
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#868686" height="60.0" layoutX="1390.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Label fx:id="lblUser" alignment="CENTER" layoutX="1394.0" layoutY="52.0" prefHeight="44.0" prefWidth="349.0" text="{ USER }" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34a6cf" height="60.0" layoutX="1391.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+>>>>>>> origin/master
          <effect>
             <DropShadow />
          </effect>
@@ -366,7 +380,11 @@
       </Button>
       <Button fx:id="previousWeekButton2" layoutX="143.0" layoutY="545.0" mnemonicParsing="false" onAction="#handlePreviousWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
       <Button fx:id="nextWeekButton2" layoutX="1240.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleNextWeekButton" opacity="0.0" prefHeight="83.0" prefWidth="94.0" text="Button" />
+<<<<<<< HEAD
       <Label layoutX="1465.0" layoutY="323.0" prefHeight="36.0" prefWidth="277.0" text="new appointment(s)">
+=======
+      <Label layoutX="1459.0" layoutY="213.0" prefHeight="36.0" prefWidth="277.0" text="new appointment(s)">
+>>>>>>> origin/master
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
@@ -375,6 +393,7 @@
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
+<<<<<<< HEAD
       </Label>
       <Label fx:id="lblGroupsCount" alignment="CENTER_RIGHT" layoutX="1401.0" layoutY="372.0" prefHeight="36.0" prefWidth="52.0" text="0">
          <font>
@@ -382,20 +401,33 @@
          </font>
       </Label>
       <Label layoutX="1465.0" layoutY="372.0" prefHeight="36.0" prefWidth="277.0" text="new group(s)">
+=======
+      </Button>
+      <Label fx:id="lblAppointmentsCount" alignment="CENTER_RIGHT" layoutX="1405.0" layoutY="213.0" prefHeight="40.0" prefWidth="42.0" text="0">
+>>>>>>> origin/master
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Label layoutX="1465.0" layoutY="419.0" prefHeight="36.0" prefWidth="277.0" text="new member(s)">
+=======
+      <Label fx:id="lblGroupsCount" alignment="CENTER_RIGHT" layoutX="1405.0" layoutY="272.0" prefHeight="40.0" prefWidth="42.0" text="0">
+>>>>>>> origin/master
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Label fx:id="lblMembersCount" alignment="CENTER_RIGHT" layoutX="1401.0" layoutY="419.0" prefHeight="36.0" prefWidth="52.0" text="0">
+=======
+      <Label layoutX="1459.0" layoutY="272.0" prefHeight="36.0" prefWidth="277.0" text="new group(s)">
+>>>>>>> origin/master
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="1391.0" layoutY="108.0" stroke="BLACK" strokeType="INSIDE" width="358.0">
          <effect>
             <DropShadow />
@@ -412,11 +444,18 @@
          </font>
       </Label>
       <Label fx:id="lblDate" alignment="CENTER" layoutX="1401.0" layoutY="121.0" prefHeight="36.0" prefWidth="340.0" text="Monday, 01/01/00">
+=======
+      <Label layoutX="1459.0" layoutY="334.0" prefHeight="36.0" prefWidth="277.0" text="new member(s)">
+>>>>>>> origin/master
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Label fx:id="lblTime" alignment="CENTER" layoutX="1401.0" layoutY="161.0" prefHeight="36.0" prefWidth="340.0" text="23:59:59">
+=======
+      <Label fx:id="lblMembersCount" alignment="CENTER_RIGHT" layoutX="1405.0" layoutY="334.0" prefHeight="40.0" prefWidth="42.0" text="0">
+>>>>>>> origin/master
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
