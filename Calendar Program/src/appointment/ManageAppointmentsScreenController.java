@@ -279,10 +279,11 @@ public class ManageAppointmentsScreenController implements Initializable, Contro
 	
 	
 	@FXML
-	private void doConfirm() {
+	private void doConfirm() throws IOException {
 		String rom = roomField.getValue();
 		System.out.println(rom);
 		if (valid && rom != null ) {
+			client.customQuery(ServerCodes.DeleteAppointment, "" + ScreensController.getAppointment().getAppointmentID());
 			
 			String[] splited = rom.split("\\s+");
 			String romID = splited[1];
