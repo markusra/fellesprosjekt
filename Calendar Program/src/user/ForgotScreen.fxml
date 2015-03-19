@@ -52,7 +52,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="614.0" layoutY="547.0" prefHeight="64.0" prefWidth="718.0" text="Your password will be send to your registered email-address." textAlignment="CENTER" wrapText="true">
+            <Label alignment="CENTER" layoutX="604.0" layoutY="547.0" prefHeight="64.0" prefWidth="738.0" text="Your password will be send to your registered email-address." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="27.0" />
                </font>
