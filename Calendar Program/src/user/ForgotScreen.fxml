@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane fx:id="mainPane" onKeyPressed="#keyHandler" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.ForgotScreenController">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyHandler" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.ForgotScreenController">
    <children>
       <AnchorPane>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="1080.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="308.0" layoutX="668.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="271.0" layoutX="588.0" layoutY="442.0" stroke="BLACK" strokeType="INSIDE" width="772.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -24,46 +24,39 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Label layoutX="676.0" layoutY="347.0" text="FORGOT USERNAME/PASSWORD?" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="637.0" layoutY="351.0" prefHeight="44.0" prefWidth="666.0" text="FORGOT PASSWORD" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="writeEmailField" layoutX="703.0" layoutY="525.0" prefHeight="39.0" prefWidth="250.0" promptText="Write email">
+            <TextField fx:id="txtEmail" layoutX="890.0" layoutY="471.0" prefHeight="56.0" prefWidth="436.0" promptText="Type your email">
                <tooltip>
                   <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
                </tooltip>
+               <font>
+                  <Font size="24.0" />
+               </font>
             </TextField>
-            <Label layoutX="986.0" layoutY="467.0" prefHeight="53.0" prefWidth="270.0" text="Forgot password:">
+            <Label layoutX="612.0" layoutY="471.0" prefHeight="53.0" prefWidth="271.0" text="Email-address:">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="702.0" layoutY="468.0" prefHeight="53.0" prefWidth="320.0" text="Forgot username:">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-            <Button fx:id="back" layoutX="810.0" layoutY="651.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="54.0" prefWidth="324.0" style="-fx-background-color: #69696b;" text="BACK TO SIGN IN" textFill="WHITE">
+            <Button fx:id="back" layoutX="848.0" layoutY="731.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="54.0" prefWidth="244.0" style="-fx-background-color: #69696b;" text="BACK" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="getUsernameButton" layoutX="703.0" layoutY="575.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="250.0" style="-fx-background-color: #69696b;" text="GET USERNAME" textFill="WHITE">
+            <Button fx:id="btnGetPassword" layoutX="612.0" layoutY="624.0" mnemonicParsing="false" onAction="#handleForgotPasswordButton" prefHeight="64.0" prefWidth="718.0" style="-fx-background-color: #69696b;" text="GET PASSWORD" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="getPasswordButton" layoutX="988.0" layoutY="575.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="244.0" style="-fx-background-color: #69696b;" text="GET PASSWORD" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="614.0" layoutY="547.0" prefHeight="64.0" prefWidth="718.0" text="Your password will be send to your registered email-address." textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="27.0" />
                </font>
-            </Button>
-            <TextField fx:id="writeUsernameField" layoutX="987.0" layoutY="525.0" prefHeight="39.0" prefWidth="244.0" promptText="Write username">
-               <tooltip>
-                  <Tooltip text="May only contain letters A-Å, numbers 0-9 &amp; the character @" />
-               </tooltip>
-            </TextField>
+            </Label>
          </children>
       </AnchorPane>
    </children>

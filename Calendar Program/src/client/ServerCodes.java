@@ -41,5 +41,8 @@ public final class ServerCodes {
  	public static final String GetGroupsCount		 		= "b37chw89sk3gy2nfy7i6";
  	public static final String GetMembersCount		 		= "c3b8kam28duh3j7cg4n7";
  	
+ 	//Forgot password
+ 	public static final String GetUserWithEmail 			= "j3usge51j7s68luc62net";
+ 	public static final String SendPassword 				= "n3hs7xk489fjaqi3nf6h";
 }
 

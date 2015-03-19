@@ -2,8 +2,11 @@ package user;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
+import client.ServerCodes;
+import client.TCPClient;
 import program.ControllerInterface;
 import program.Main;
 import program.ScreensController;
@@ -11,9 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import json.JsonArray;
 
 public class ForgotScreenController implements Initializable, ControllerInterface {
 	
@@ -24,13 +29,19 @@ public class ForgotScreenController implements Initializable, ControllerInterfac
 	Pane mainPane;
 	
 	@FXML
-	private Button back;
+	TextField txtEmail;
 	
+	@FXML
+	Button back;
 	
+	@FXML
+	Button btnGetPassword;
+	
+
 	@FXML
 	public void keyHandler(KeyEvent event) throws IOException {
 		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER" || code.toString() == "ESCAPE" || code.toString() == "BACK_SPACE" || code.toString() == "LEFT"){
+        if(code.toString() == "ESCAPE"){
         	mainController.setScreen(Main.loginID, Main.loginScreen);
 		}else{
 			event.consume();
@@ -49,16 +60,28 @@ public class ForgotScreenController implements Initializable, ControllerInterfac
 		mainPane.setFocusTraversable(true);
 	}
 	
-	
+
 	@FXML
-	public void handleForgotUsernameButton(ActionEvent event) {
-		//TODO legge til at en sender en forespørsel til server om aa sende epost til bruker med brukernavn
-	}
-	
-	
-	@FXML
-	public void handleForgotPasswordButton(ActionEvent event) {
-		//TODO legge til at en sender en forespørsel til server om aa sende epost til bruker med passord naar brukernavn har blitt skrevet inn
+	public void handleForgotPasswordButton(ActionEvent event) throws UnknownHostException, IOException {
+		TCPClient client = new TCPClient();
+		
+		String serverReply = client.customQuery(ServerCodes.GetUserWithEmail, "'" + txtEmail.getText() + "'");
+		
+		String[] answer = serverReply.split("#");
+
+		try {
+			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+			
+			String username = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
+			String password = jsonArray.get(0).asObject().get( "passord" ).asString();
+			
+			client.customQuery(ServerCodes.SendPassword, "'" + txtEmail.getText() + "'" + ", '" + username + "'" + ", '" + password + "'");
+			
+			mainController.setScreen(Main.loginID, Main.loginScreen);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 	@FXML
