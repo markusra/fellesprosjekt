@@ -66,14 +66,10 @@ public class LoginScreenController implements Initializable, ControllerInterface
 			if (username.contains(brukernavn) && password.contains(passord)) {
 				if (rememberMeCheckBox.isSelected()) {
 					prefs.put("username", usernameField.getText());
-					//TODO husk aa fjerne linjen under naar vi skal levere inn
-					prefs.put("password", passwordField.getText());
 					prefs.putBoolean("checkBox", true);
 				}
 				else {
 					prefs.put("username", "");
-					//TODO husk aa fjerne linjen under naar vi skal levere inn
-					prefs.put("password", "");
 					prefs.putBoolean("checkBox", false);
 				}
 				System.out.println("Successful login!");
@@ -113,14 +109,10 @@ public class LoginScreenController implements Initializable, ControllerInterface
     			if (username.contains(brukernavn) && password.contains(passord)) {
     				if (rememberMeCheckBox.isSelected()) {
     					prefs.put("username", usernameField.getText());
-    					//TODO husk aa fjerne linjen under naar vi skal levere inn
-    					prefs.put("password", passwordField.getText());
     					prefs.putBoolean("checkBox", true);
     				}
     				else {
     					prefs.put("username", "");
-    					//TODO husk aa fjerne linjen under naar vi skal levere inn
-    					prefs.put("password", "");
     					prefs.putBoolean("checkBox", false);
     				}
     				System.out.println("Successful login!");
@@ -167,13 +159,10 @@ public class LoginScreenController implements Initializable, ControllerInterface
 		});
 		if (prefs.getBoolean("checkBox", false) == true) {
 			usernameField.setText(prefs.get("username", ""));
-			//TODO husk aa fjerne linjen under naar vi skal levere inn
-			passwordField.setText(prefs.get("password", ""));
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
-					//TODO husk aa endre til passwordField fra loginButton naar vi skal levere inn
-					loginButton.requestFocus();
+					passwordField.requestFocus();
 				}
 			});
 			rememberMeCheckBox.setSelected(true);
