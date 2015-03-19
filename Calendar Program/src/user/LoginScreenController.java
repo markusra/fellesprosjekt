@@ -55,62 +55,13 @@ public class LoginScreenController implements Initializable, ControllerInterface
 		String[] answer= serverReply.split("#");
 		
 		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-		
-		int  brukerID = jsonArray.get(0).asObject().get( "brukerID" ).asInt();
-		String brukernavn = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
-		String passord = jsonArray.get(0).asObject().get( "passord" ).asString();
-		String fornavn = jsonArray.get(0).asObject().get( "fornavn" ).asString();
-		String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
-		String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
-	
-		
-		if (username.contains(brukernavn) && password.contains(passord)) {
-			if (rememberMeCheckBox.isSelected()) {
-				prefs.put("username", usernameField.getText());
-				//TODO husk aa fjerne linjen under naar vi skal levere inn
-				prefs.put("password", passwordField.getText());
-				prefs.putBoolean("checkBox", true);
-			}
-			else {
-				prefs.put("username", "");
-				//TODO husk aa fjerne linjen under naar vi skal levere inn
-				prefs.put("password", "");
-				prefs.putBoolean("checkBox", false);
-			}
-			System.out.println("Successful login!");
-			
-			ScreensController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
-			
-			client.disconnect();
-			mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
-			
-		}
-		//M� f� denne til � fungere (ikke kaste exception);
-		else {
-			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
-		}
-	}
-	
-	@FXML
-	public void keyHandler(KeyEvent event) throws IOException {
-		KeyCode code = event.getCode();
-        if(code.toString() == "ENTER"){
-        	String username =  usernameField.getText();
-			String password = passwordField.getText();
-			
-			TCPClient client = new TCPClient();
-			String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
-			String[] answer= serverReply.split("#");
-			
-			JsonArray jsonArray = JsonArray.readFrom( answer[1] );
-			
+		if (jsonArray.values().toString().contains("brukerID")) {
 			int  brukerID = jsonArray.get(0).asObject().get( "brukerID" ).asInt();
 			String brukernavn = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
 			String passord = jsonArray.get(0).asObject().get( "passord" ).asString();
 			String fornavn = jsonArray.get(0).asObject().get( "fornavn" ).asString();
 			String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
 			String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
-			
 			
 			if (username.contains(brukernavn) && password.contains(passord)) {
 				if (rememberMeCheckBox.isSelected()) {
@@ -128,14 +79,62 @@ public class LoginScreenController implements Initializable, ControllerInterface
 				System.out.println("Successful login!");
 				
 				ScreensController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
-				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 				
+				client.disconnect();
+				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
 			}
 			
-			//M� f� denne til � fungere (ikke kaste exception);
-			else {
-				mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
-			}
+		}
+		else {
+			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
+		}
+	}
+	
+	@FXML
+	public void keyHandler(KeyEvent event) throws IOException {
+		KeyCode code = event.getCode();
+        if(code.toString() == "ENTER"){
+    		String username =  usernameField.getText();
+    		String password = passwordField.getText();
+    		
+    		TCPClient client = new TCPClient();
+    		String serverReply = client.customQuery(ServerCodes.Login, "'" + username + "', '" +  password + "'");
+    		String[] answer= serverReply.split("#");
+    		
+    		JsonArray jsonArray = JsonArray.readFrom( answer[1] );
+    		if (jsonArray.values().toString().contains("brukerID")) {
+    			int  brukerID = jsonArray.get(0).asObject().get( "brukerID" ).asInt();
+    			String brukernavn = jsonArray.get(0).asObject().get( "brukernavn" ).asString();
+    			String passord = jsonArray.get(0).asObject().get( "passord" ).asString();
+    			String fornavn = jsonArray.get(0).asObject().get( "fornavn" ).asString();
+    			String etternavn = jsonArray.get(0).asObject().get( "etternavn" ).asString();
+    			String epost = jsonArray.get(0).asObject().get( "epost" ).asString();
+    			
+    			if (username.contains(brukernavn) && password.contains(passord)) {
+    				if (rememberMeCheckBox.isSelected()) {
+    					prefs.put("username", usernameField.getText());
+    					//TODO husk aa fjerne linjen under naar vi skal levere inn
+    					prefs.put("password", passwordField.getText());
+    					prefs.putBoolean("checkBox", true);
+    				}
+    				else {
+    					prefs.put("username", "");
+    					//TODO husk aa fjerne linjen under naar vi skal levere inn
+    					prefs.put("password", "");
+    					prefs.putBoolean("checkBox", false);
+    				}
+    				System.out.println("Successful login!");
+    				
+    				ScreensController.setUser(new UserModel(brukerID, brukernavn, fornavn, etternavn, epost));
+    				
+    				client.disconnect();
+    				mainController.setScreen(Main.mainPageID, Main.mainPageScreen);
+    			}
+    			
+    		}
+    		else {
+    			mainController.setScreen(Main.loginFailedID, Main.loginFailedScreen);
+    		}
 		}else{
 			event.consume();
 		}
