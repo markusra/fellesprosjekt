@@ -3,6 +3,7 @@ import MySQLdb
 import itertools
 import json
 import time
+from sendMail import *
 
 debug = False
 reply = ''
@@ -200,6 +201,19 @@ def interpreter (data):
     elif (command == 'c3b8kam28duh3j7cg4n7'): # GET MEMBERS COUNT
         reply = getMembersCount()
 
+    elif (command == 'j3usge51j7s68luc62net'): # GET NEW PASSWORD
+        email = "'" + str(data) + "'"
+
+        reply = getUserWithEmail(email)
+
+    elif (command == 'n3hs7xk489fjaqi3nf6h'): # SEND PASSWORD
+        epost = "'" + str(data[0]) + "'"
+        brukernavn = "'" + str(data[1]) + "'"
+        passord = "'" + str(data[2]) + "'"
+
+        sendMail(epost, brukernavn, passord)
+        reply = "EmailIsSend"
+
     print reply
     return command + splitChar + reply
 
@@ -367,6 +381,12 @@ def getGroupsCount():
 
 def getMembersCount():
     data = executeSQL("SELECT count(brukerID) FROM BRUKER")
+
+    return data
+
+
+def getUserWithEmail(email):
+    data = executeSQL("SELECT brukernavn, passord FROM BRUKER WHERE epost =" + email)
 
     return data
 
